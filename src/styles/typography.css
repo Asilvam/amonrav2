@@ -1,0 +1,137 @@
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  margin-block: 0;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 520;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-heading);
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-heading);
+}
+
+p,
+ul,
+ol,
+blockquote {
+  margin-block: 0;
+}
+
+small,
+.text-small {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-ui);
+}
+
+.display-title {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display);
+  font-optical-sizing: auto;
+  font-weight: 540;
+  letter-spacing: -0.045em;
+  line-height: var(--line-height-tight);
+}
+
+.metadata,
+.eyebrow {
+  color: var(--color-text-muted);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-metadata);
+  font-weight: 650;
+  letter-spacing: 0.13em;
+  line-height: var(--line-height-ui);
+  text-transform: uppercase;
+}
+
+.prose {
+  max-width: var(--width-reading);
+  font-family: var(--font-reading);
+  font-size: clamp(1.16rem, 0.45vw + 1.04rem, 1.34rem);
+  line-height: 1.78;
+  letter-spacing: -0.006em;
+}
+
+.prose > * + * {
+  margin-block-start: 1.35em;
+}
+
+.prose h2 {
+  margin-block-start: 2.25em;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.prose h3 {
+  margin-block-start: 1.8em;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.prose ul,
+.prose ol {
+  padding-inline-start: 1.4em;
+}
+
+.prose li + li {
+  margin-block-start: 0.45em;
+}
+
+.prose blockquote,
+blockquote.quote {
+  border-inline-start: 1px solid var(--color-primary-soft);
+  color: var(--color-text-muted);
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  font-style: italic;
+  font-optical-sizing: auto;
+  line-height: 1.6;
+  padding-inline-start: var(--space-5);
+}
+
+.prose a {
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.2em;
+}
+
+.prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-small);
+}
+
+.prose th,
+.prose td {
+  padding: var(--space-3) var(--space-4);
+  border-block-end: 1px solid var(--color-border);
+  text-align: start;
+}
+
+.prose th {
+  color: var(--color-primary);
+  font-weight: 600;
+}

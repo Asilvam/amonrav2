@@ -1,0 +1,127 @@
+---
+import { Image } from "astro:assets";
+import AmonraPurpose from "../components/amonra/AmonraPurpose.astro";
+import Container from "../components/layout/Container.astro";
+import { amonraMessages } from "../config/amonra-messages";
+import { amonraSectionPath, amonraSections } from "../config/amonra-sections";
+import AmonraLayout from "../layouts/AmonraLayout.astro";
+import egyptianPortal from "../assets/amonra/portal-egipcio.png";
+---
+
+<AmonraLayout
+  title="Amonra"
+  description={
+    "Red de Luz Interior Amonra Chile. " + amonraMessages.principal
+  }
+  image={egyptianPortal.src}
+>
+  <article class="overflow-clip">
+    <header class="relative isolate border-b border-antique-gold-soft/40 bg-night">
+      <div
+        class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_74%_40%,color-mix(in_srgb,var(--color-mineral-blue-soft)_55%,transparent),transparent_42%)]"
+        aria-hidden="true"
+      ></div>
+      <Container
+        size="wide"
+        class="grid min-h-[36rem] items-center gap-12 py-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(30rem,1.1fr)] lg:py-24"
+      >
+        <div class="relative z-10 max-w-[44rem]">
+          <h1 class="font-editorial text-[clamp(4.25rem,8vw,8rem)] leading-[0.88] font-medium tracking-[-0.06em] text-ivory uppercase">
+            Amonra
+          </h1>
+          <p class="mt-7 max-w-[28ch] border-l-2 border-antique-gold/60 bg-[color-mix(in_srgb,var(--color-antique-gold)_10%,transparent)] px-5 py-4 font-editorial text-[clamp(1.2rem,2vw,1.65rem)] leading-[1.25] italic text-antique-gold-soft">
+            {amonraMessages.lema}
+          </p>
+          <div class="mt-9 flex flex-wrap items-center gap-5 font-interface text-sm">
+            <a
+              class="group border border-antique-gold-soft bg-antique-gold px-6 py-3.5 font-semibold no-underline transition-colors hover:bg-old-papyrus"
+              href="#conocimiento-practica"
+            >
+              <span class="text-night group-hover:text-night">
+                Conocimiento y práctica
+              </span>
+            </a>
+            <a
+              class="px-1 py-3 font-semibold text-ivory underline decoration-antique-gold-soft underline-offset-8"
+              href="#proposito"
+            >
+              Nuestro propósito
+            </a>
+          </div>
+        </div>
+
+        <figure class="relative m-0">
+          <div
+            class="pointer-events-none absolute inset-[14%] -z-10 rounded-full bg-antique-gold/15 blur-3xl"
+            aria-hidden="true"
+          ></div>
+          <Image
+            src={egyptianPortal}
+            alt="Portal ceremonial egipcio con columnas, figuras de Anubis y símbolos solares"
+            widths={[640, 960, 1280, 1367]}
+            sizes="(min-width: 1024px) 48vw, 100vw"
+            loading="eager"
+            class="max-h-[38rem] w-full object-contain drop-shadow-2xl"
+          />
+          <figcaption class="mt-3 text-right font-interface text-xs tracking-[0.14em] text-antique-gold-soft uppercase">
+            {amonraMessages.guia}
+          </figcaption>
+        </figure>
+      </Container>
+    </header>
+
+    <section
+      class="border-b border-antique-gold-soft/50 bg-paper py-20 text-paper-ink lg:py-28"
+      id="proposito"
+      aria-label="Propósito"
+    >
+      <Container>
+        <AmonraPurpose />
+      </Container>
+    </section>
+
+    <section
+      class="border-b border-antique-gold-soft/40 bg-[var(--color-surface-warm)] py-20 lg:py-28"
+      id="conocimiento-practica"
+      aria-labelledby="universo-amonra-title"
+    >
+      <Container>
+        <div class="border-b border-antique-gold-soft/35 pb-10">
+          <p class="eyebrow text-antique-gold">Conocimiento y práctica</p>
+          <h2
+            class="mt-4 max-w-[16ch] font-editorial text-[clamp(2.7rem,5vw,4.8rem)] leading-none font-medium text-ivory"
+            id="universo-amonra-title"
+          >
+            Menú de temas
+          </h2>
+          <p class="mt-6 max-w-[42rem] font-editorial text-xl leading-relaxed italic text-old-papyrus">
+            Selecciona una categoría para comenzar.
+          </p>
+        </div>
+
+        <nav class="mt-10" aria-label="Temas de Amonra">
+          <ol class="grid list-none gap-px bg-antique-gold-soft/35 p-px md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {amonraSections.map((section, index) => (
+              <li class="bg-night">
+                <a
+                  class="group flex h-full min-h-44 flex-col p-6 text-ivory no-underline transition-colors hover:bg-night-raised focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-antique-gold"
+                  href={amonraSectionPath(section)}
+                >
+                  <span class="font-interface text-xs tracking-[0.18em] text-clay-red uppercase">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 class="mt-6 font-editorial text-[1.8rem] font-medium text-ivory group-hover:text-old-papyrus">
+                    {section.title}
+                  </h3>
+                  <span class="mt-auto pt-6 font-interface text-sm font-semibold text-antique-gold">
+                    Entrar <span aria-hidden="true">→</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      </Container>
+    </section>
+  </article>
+</AmonraLayout>

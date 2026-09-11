@@ -1,0 +1,56 @@
+---
+import Container from "../layout/Container.astro";
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+const navigation = [
+  { label: "Inicio", href: "/", current: currentPath === "/" },
+  { label: "Propósito", href: "/#proposito", current: false },
+  {
+    label: "Explorar",
+    href: "/#conocimiento-practica",
+    current: currentPath.startsWith("/temas/"),
+  },
+];
+---
+
+<header class="border-b border-antique-gold-soft/35 bg-[var(--color-surface-warm)]">
+  <Container size="wide">
+    <div class="flex min-h-24 items-center justify-between gap-7 max-[40rem]:min-h-0 max-[40rem]:items-start max-[40rem]:py-5">
+      <a
+        class="inline-flex items-baseline gap-3 text-ivory no-underline"
+        href="/"
+        aria-label="Red de Luz Interior Amonra Chile — Inicio"
+      >
+        <span class="font-editorial text-[1.75rem] tracking-[-0.025em]">Amonra</span>
+        <span class="font-interface text-[var(--font-size-metadata)] font-semibold tracking-[0.14em] text-antique-gold uppercase">
+          Red de Luz Interior
+        </span>
+      </a>
+
+      <nav aria-label="Navegación principal de Amonra">
+        <ul class="m-0 flex list-none flex-wrap gap-5 p-0 max-[40rem]:justify-end max-[40rem]:gap-3">
+          {navigation.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={item.current ? "page" : undefined}
+                class:list={[
+                  "inline-block py-2 font-interface text-[var(--font-size-small)] font-medium no-underline",
+                  item.current
+                    ? "text-ivory underline decoration-antique-gold underline-offset-[0.45rem]"
+                    : "text-ivory-muted hover:text-ivory",
+                ]}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </Container>
+</header>

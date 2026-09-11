@@ -1,0 +1,84 @@
+:root {
+  color-scheme: dark;
+
+  /*
+   * Evolución mate de la identidad histórica: azul noche, crema, oro,
+   * azul mineral y rojo solar. Los tonos claros amplían la paleta original;
+   * no introducen una identidad cromática distinta.
+   */
+  --color-background: #0c1823;
+  --color-surface: #142431;
+  --color-surface-elevated: #1c3040;
+  --color-primary: #c7ad70;
+  --color-primary-soft: #827653;
+  --color-text: #f3eddf;
+  --color-text-muted: #b8b6aa;
+  --color-border: #3d4c57;
+  --color-accent: #ae6b57;
+  --color-mineral-blue: #88aab6;
+  --color-mineral-blue-soft: #234657;
+  --color-solar-red: #c7806b;
+  --color-papyrus: #d8c392;
+  --color-stone: #c7bba6;
+  --color-surface-warm: #1b1a18;
+  --color-parchment: #ded3be;
+  --color-parchment-soft: #cec1aa;
+  --color-ink: #101923;
+  --color-ink-muted: #4b5358;
+  --color-link: #dec789;
+  --color-link-hover: #f0dda5;
+  --color-focus: #e8ce76;
+  --color-selection: rgb(199 173 112 / 30%);
+  --color-legacy-violet: #432d9d;
+  --color-legacy-violet-deep: #100b24;
+  --color-legacy-gold: #a77f39;
+
+  --font-display: "Newsreader Variable", Newsreader, Georgia, serif;
+  --font-body: "Manrope Variable", Manrope, "Segoe UI", sans-serif;
+  --font-reading: "Newsreader Variable", Newsreader, Georgia, serif;
+  --font-ui: "Manrope Variable", Manrope, "Segoe UI", sans-serif;
+
+  --font-size-display: clamp(3rem, 7vw, 6rem);
+  --font-size-h1: clamp(2.25rem, 5vw, 4.25rem);
+  --font-size-h2: clamp(1.75rem, 3.5vw, 2.75rem);
+  --font-size-h3: clamp(1.3rem, 2.2vw, 1.75rem);
+  --font-size-body: clamp(1rem, 0.25vw + 0.96rem, 1.125rem);
+  --font-size-small: 0.9375rem;
+  --font-size-metadata: 0.8125rem;
+
+  --line-height-tight: 0.98;
+  --line-height-heading: 1.08;
+  --line-height-body: 1.68;
+  --line-height-ui: 1.45;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  --radius-small: 0.2rem;
+  --radius-medium: 0.5rem;
+  --radius-large: 0.875rem;
+  --radius-pill: 999rem;
+
+  --shadow-soft: 0 1rem 3rem rgb(0 0 0 / 18%);
+  --shadow-raised: 0 1.5rem 4rem rgb(0 0 0 / 24%);
+
+  --width-reading: 46rem;
+  --width-content: 72rem;
+  --width-wide: 86rem;
+  --page-gutter: clamp(1.25rem, 4vw, 3rem);
+
+  /* Reference values; media queries repeat these because CSS variables are not valid there. */
+  --breakpoint-small: 40rem;
+  --breakpoint-navigation: 52rem;
+  --breakpoint-wide: 72rem;
+
+  --transition-color: 160ms ease;
+}

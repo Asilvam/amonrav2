@@ -1,0 +1,81 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./typography.css" layer(base);
+@import "./utilities.css" layer(components);
+
+@theme inline {
+  --color-night: var(--color-background);
+  --color-night-soft: var(--color-surface);
+  --color-night-raised: var(--color-surface-elevated);
+  --color-ivory: var(--color-text);
+  --color-ivory-muted: var(--color-text-muted);
+  --color-antique-gold: var(--color-primary);
+  --color-antique-gold-soft: var(--color-primary-soft);
+  --color-egypt-blue: var(--color-mineral-blue);
+  --color-egypt-blue-soft: var(--color-mineral-blue-soft);
+  --color-clay-red: var(--color-solar-red);
+  --color-old-papyrus: var(--color-papyrus);
+  --color-sandstone: var(--color-stone);
+  --color-paper: var(--color-parchment);
+  --color-paper-soft: var(--color-parchment-soft);
+  --color-paper-ink: var(--color-ink);
+  --color-paper-muted: var(--color-ink-muted);
+  --font-editorial: var(--font-display);
+  --font-reading: var(--font-reading);
+  --font-interface: var(--font-ui);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-width: 20rem;
+    background: var(--color-background);
+    color: var(--color-text);
+    font-synthesis: none;
+  }
+
+  main {
+    min-height: 60vh;
+  }
+
+  a {
+    color: var(--color-link);
+    text-decoration-color: color-mix(in srgb, currentColor 55%, transparent);
+    transition:
+      color var(--transition-color),
+      text-decoration-color var(--transition-color);
+  }
+
+  a:hover {
+    color: var(--color-link-hover);
+    text-decoration-color: currentColor;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 0.25rem;
+  }
+
+  ::selection {
+    background: var(--color-selection);
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+}

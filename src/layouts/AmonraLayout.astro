@@ -1,0 +1,60 @@
+---
+import "@fontsource-variable/manrope/wght.css";
+import "@fontsource-variable/newsreader/standard.css";
+import "@fontsource-variable/newsreader/standard-italic.css";
+import "../styles/global.css";
+import AmonraFooter from "../components/amonra/AmonraFooter.astro";
+import AmonraHeader from "../components/amonra/AmonraHeader.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string | URL;
+  image?: string;
+  pageType?: "website" | "article";
+}
+
+const {
+  title,
+  description = "Amonra: conocimiento, simbolismo y prácticas para el desarrollo interior.",
+  canonical,
+  image,
+  pageType = "website",
+} = Astro.props;
+const pageTitle = title === "Amonra" ? title : `${title} | Amonra`;
+const siteUrl = Astro.site ?? new URL("https://www.amonra.cl");
+const canonicalUrl = canonical
+  ? new URL(canonical, siteUrl)
+  : new URL(Astro.url.pathname, siteUrl);
+const socialImage = image ? new URL(image, siteUrl) : undefined;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:site_name" content="Amonra" />
+    <meta property="og:type" content={pageType} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    {socialImage && <meta property="og:image" content={socialImage} />}
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">
+      Saltar al contenido
+    </a>
+    <AmonraHeader currentPath={Astro.url.pathname} />
+    <main id="contenido" tabindex="-1">
+      <slot />
+    </main>
+    <AmonraFooter />
+  </body>
+</html>

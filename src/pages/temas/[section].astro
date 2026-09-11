@@ -1,0 +1,142 @@
+---
+import { Image } from "astro:assets";
+import FoundationContent from "../../components/amonra/FoundationContent.astro";
+import Breadcrumbs from "../../components/common/Breadcrumbs.astro";
+import Container from "../../components/layout/Container.astro";
+import { amonraMessages } from "../../config/amonra-messages";
+import {
+  amonraSectionPath,
+  amonraSections,
+  type AmonraSection,
+} from "../../config/amonra-sections";
+import AmonraLayout from "../../layouts/AmonraLayout.astro";
+import foundationHero from "../../assets/amonra/fundacion-hero.png";
+
+interface Props {
+  section: AmonraSection;
+}
+
+export function getStaticPaths() {
+  return amonraSections.map((section) => ({
+    params: { section: section.slug },
+    props: { section },
+  }));
+}
+
+const { section } = Astro.props;
+const currentIndex = amonraSections.findIndex(
+  (candidate) => candidate.slug === section.slug,
+);
+const previous =
+  currentIndex > 0 ? amonraSections[currentIndex - 1] : undefined;
+const next =
+  currentIndex < amonraSections.length - 1
+    ? amonraSections[currentIndex + 1]
+    : undefined;
+---
+
+<AmonraLayout
+  title={section.title}
+  description={`Red de Luz Interior Amonra Chile — ${section.title}.`}
+>
+  <article>
+    <div class="border-b border-antique-gold-soft/35 bg-night">
+      <Container size="wide" class="py-4">
+        <Breadcrumbs
+          items={[{ label: "Inicio", href: "/" }, { label: section.title }]}
+        />
+      </Container>
+    </div>
+
+    <header class="border-b border-antique-gold-soft/45 bg-[linear-gradient(120deg,var(--color-legacy-violet-deep),var(--color-surface-warm)_62%)]">
+      <Container
+        class={
+          section.slug === "fundacion"
+            ? "grid items-center gap-8 py-8 lg:grid-cols-[minmax(18rem,0.7fr)_minmax(30rem,1.3fr)] lg:py-10"
+            : "py-20 lg:py-28"
+        }
+      >
+        <div>
+          <p class="eyebrow text-antique-gold">
+            Red de Luz Interior Amonra Chile
+          </p>
+          <h1 class="mt-5 max-w-[13ch] font-editorial text-[clamp(3.6rem,7vw,7rem)] leading-[0.92] font-medium tracking-[-0.045em] text-ivory">
+            {section.title}
+          </h1>
+          {section.slug === "fundacion" && (
+            <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
+              {amonraMessages.fundamento} Al servicio de quienes mas lo necesitan.
+            </p>
+          )}
+        </div>
+
+        {section.slug === "fundacion" && (
+          <figure class="m-0">
+            <Image
+              src={foundationHero}
+              alt="Pirámides de Egipto custodiadas por Anubis y una figura egipcia bajo un cielo estrellado"
+              widths={[560, 760, 960]}
+              sizes="(min-width: 1024px) 58vw, 100vw"
+              loading="eager"
+              class="max-h-[20rem] w-full object-contain drop-shadow-2xl"
+            />
+          </figure>
+        )}
+      </Container>
+    </header>
+
+    {section.slug === "fundacion" && (
+      <section class="border-b border-antique-gold-soft/45 bg-paper py-20 text-paper-ink lg:py-24">
+        <Container>
+          <FoundationContent />
+        </Container>
+      </section>
+    )}
+
+    <nav
+      class="border-b border-antique-gold-soft/35 bg-night-soft"
+      aria-label="Continuar por los temas de Amonra"
+    >
+      <Container class="grid gap-px bg-antique-gold-soft/30 p-px md:grid-cols-2">
+        {previous ? (
+          <a
+            class="group bg-night px-6 py-6 text-ivory no-underline hover:bg-night-raised"
+            href={amonraSectionPath(previous)}
+          >
+            <span class="eyebrow text-antique-gold">Anterior</span>
+            <span class="mt-2 block font-editorial text-2xl">
+              ← {previous.title}
+            </span>
+          </a>
+        ) : (
+          <a
+            class="group bg-night px-6 py-6 text-ivory no-underline hover:bg-night-raised"
+            href="/"
+          >
+            <span class="eyebrow text-antique-gold">Índice</span>
+            <span class="mt-2 block font-editorial text-2xl">← Amonra</span>
+          </a>
+        )}
+        {next ? (
+          <a
+            class="group bg-night px-6 py-6 text-right text-ivory no-underline hover:bg-night-raised"
+            href={amonraSectionPath(next)}
+          >
+            <span class="eyebrow text-antique-gold">Siguiente</span>
+            <span class="mt-2 block font-editorial text-2xl">
+              {next.title} →
+            </span>
+          </a>
+        ) : (
+          <a
+            class="group bg-night px-6 py-6 text-right text-ivory no-underline hover:bg-night-raised"
+            href="/"
+          >
+            <span class="eyebrow text-antique-gold">Índice</span>
+            <span class="mt-2 block font-editorial text-2xl">Amonra →</span>
+          </a>
+        )}
+      </Container>
+    </nav>
+  </article>
+</AmonraLayout>

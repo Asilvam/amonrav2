@@ -1,0 +1,23 @@
+---
+interface Props {
+  size?: "content" | "reading" | "wide";
+  class?: string;
+}
+
+const { size = "content", class: className } = Astro.props;
+const sizeClassByToken = {
+  content: "[--container-width:var(--width-content)]",
+  reading: "[--container-width:var(--width-reading)]",
+  wide: "[--container-width:var(--width-wide)]",
+} as const;
+---
+
+<div
+  class:list={[
+    "mx-auto w-[min(100%,calc(var(--container-width)+2*var(--page-gutter)))] px-[var(--page-gutter)]",
+    sizeClassByToken[size],
+    className,
+  ]}
+>
+  <slot />
+</div>
