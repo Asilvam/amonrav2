@@ -1,320 +1,263 @@
+---
+import ContentTabs from "../common/ContentTabs.astro";
+
+const amuletTabs = [
+  { id: "amuletos-signos-zodiaco", label: "Signos del zodiaco" },
+  { id: "amuletos-i", label: "Símbolos y animales" },
+  { id: "amuletos-ii", label: "Objetos y figuras" },
+  { id: "amuletos-iii", label: "Piedras y gemas" },
+  { id: "amuletos-iv", label: "Runas y pentáculos" },
+];
+---
+
 <div class="space-y-8">
-  <section class="rounded-2xl border border-antique-gold-soft/30 bg-[linear-gradient(145deg,var(--color-paper-soft),#f6edd9)] p-7 shadow-[0_10px_30px_rgba(49,31,14,0.08)] lg:p-9">
-    <h3 class="font-editorial text-[clamp(2rem,2.8vw,2.8rem)] leading-tight text-paper-ink">
+  <section class="reading-section">
+    <h2 class="font-editorial text-[clamp(2rem,2.8vw,2.8rem)] leading-tight text-paper-ink">
       Amuletos y talismanes
-    </h3>
+    </h2>
     <div class="mt-4 grid gap-x-10 gap-y-5 lg:grid-cols-2">
       <p class="text-[1.04rem] leading-relaxed text-paper-muted">
-        La palabra amuleto proviene del latin "amuletum", termino usado para
+        La palabra amuleto proviene del latín "amuletum", término usado para
         nombrar objetos de resguardo frente a enfermedades, riesgos e
         influencias negativas.
       </p>
       <p class="text-[1.04rem] leading-relaxed text-paper-muted">
         Su forma puede provenir del reino vegetal, animal o mineral: serpiente,
-        escarabajo, elefante, trebol, cruzes, ojos protectores y otros simbolos
-        tradicionales. Tambien se reconocen fetiches elaborados en madera,
+        escarabajo, elefante, trébol, cruces, ojos protectores y otros símbolos
+        tradicionales. También se reconocen fetiches elaborados en madera,
         piedra o metal.
       </p>
       <p class="text-[1.04rem] leading-relaxed text-paper-muted">
-        En la tradicion, el amuleto se usa como proteccion cotidiana y apoyo de
-        fe; el talisman se considera una forma consagrada para una finalidad
-        especifica. En la cultura egipcia, uno de los emblemas mas reconocidos
+        En la tradición, el amuleto se usa como protección cotidiana y apoyo de
+        fe; el talismán se considera una forma consagrada para una finalidad
+        específica. En la cultura egipcia, uno de los emblemas más reconocidos
         fue el escarabajo, junto con pergaminos y metales grabados con
-        jeroglificos.
+        jeroglíficos.
       </p>
       <p class="text-[1.04rem] leading-relaxed text-paper-muted">
         Tradicionalmente se portan al cuello, en bolsas de tela o en espacios
-        personales del hogar, con la intencion de proteger, equilibrar y
+        personales del hogar, con la intención de proteger, equilibrar y
         fortalecer la confianza espiritual de quien los lleva.
       </p>
       <p class="text-[1.04rem] leading-relaxed text-paper-muted">
-        Con el paso del tiempo, su uso no desaparecio: se expandio entre
-        diversas culturas y escuelas espirituales. De ahi surge la importancia
-        de conocer su simbolismo, su intencion y el modo correcto de elegirlos o
+        Con el paso del tiempo, su uso no desapareció: se expandió entre
+        diversas culturas y escuelas espirituales. De ahí surge la importancia
+        de conocer su simbolismo, su intención y el modo correcto de elegirlos o
         consagrarlos.
       </p>
       <p class="text-[1.04rem] leading-relaxed text-paper-muted">
-        En distintas epocas, su popularidad genero rechazo en algunos sectores,
-        pero su presencia continuo en la vida cotidiana. Incluso cuando se
-        intentaron limitar ciertas practicas, los amuletos siguieron siendo
-        utilizados como apoyo de fe, proteccion y confianza.
+        En distintas épocas, su popularidad generó rechazo en algunos sectores,
+        pero su presencia continuó en la vida cotidiana. Incluso cuando se
+        intentaron limitar ciertas prácticas, los amuletos siguieron siendo
+        utilizados como apoyo de fe, protección y confianza.
       </p>
       <p class="text-[1.04rem] leading-relaxed text-paper-muted lg:col-span-2">
-        Tambien se transmite que muchos amuletos se preparan en relacion con un
-        pentaculo y con siete poderes jerarquicos, por lo que su consagracion
-        puede extenderse durante siete dias. En esa practica, color, metal,
-        simbolo e intencion deben corresponder entre si.
+        También se transmite que muchos amuletos se preparan en relación con un
+        pentáculo y con siete poderes jerárquicos, por lo que su consagración
+        puede extenderse durante siete días. En esa práctica, color, metal,
+        símbolo e intención deben corresponder entre sí.
       </p>
     </div>
   </section>
 
   <section class="grid gap-6 lg:grid-cols-2">
-    <article
-      id="diferencia-esencial"
-      class="scroll-mt-28 rounded-2xl border border-antique-gold-soft/30 bg-paper-soft p-7 shadow-[0_8px_24px_rgba(49,31,14,0.07)] lg:p-9"
-    >
-      <h4 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+    <article id="diferencia-esencial" class="scroll-mt-28 reading-section">
+      <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
         Diferencia esencial
-      </h4>
+      </h3>
       <p class="mt-4 text-[1.04rem] leading-relaxed text-paper-muted">
         Muchas personas confunden amuletos y talismanes. El amuleto se porta al
-        cuello, en una bolsa o cerca del cuerpo, y cumple una funcion de
-        proteccion general.
+        cuello, en una bolsa o cerca del cuerpo, y cumple una función de
+        protección general.
       </p>
       <p class="mt-4 text-[1.04rem] leading-relaxed text-paper-muted">
-        El talisman, en cambio, es un amuleto en un estado mas consagrado,
+        El talismán, en cambio, es un amuleto en un estado más consagrado,
         orientado a un objetivo determinado. Tradicionalmente se prepara con un
-        material, color y dia vinculados a un planeta y a un signo celeste.
+        material, color y día vinculados a un planeta y a un signo celeste.
       </p>
       <p class="mt-4 text-[1.04rem] leading-relaxed text-paper-muted">
-        En la tradicion esoterica, su elaboracion requiere conocimiento
-        espiritual, disciplina ritual y una intencion clara.
+        En la tradición esotérica, su elaboración requiere conocimiento
+        espiritual, disciplina ritual y una intención clara.
       </p>
       <p class="mt-4 text-[1.04rem] leading-relaxed text-paper-muted">
-        Tambien se transmite que la forma del talisman puede ser circular,
-        hexagonal o pentagonal, y que su fuerza se refuerza cuando simbolo,
-        material y dia de consagracion corresponden al objetivo espiritual.
+        También se transmite que la forma del talismán puede ser circular,
+        hexagonal o pentagonal, y que su fuerza se refuerza cuando símbolo,
+        material y día de consagración corresponden al objetivo espiritual.
       </p>
     </article>
 
-    <article
-      id="uso-eleccion"
-      class="scroll-mt-28 rounded-2xl border border-antique-gold-soft/30 bg-paper-soft p-7 shadow-[0_8px_24px_rgba(49,31,14,0.07)] lg:p-9"
-    >
-      <h4 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
-        Uso y eleccion
-      </h4>
+    <article id="uso-eleccion" class="scroll-mt-28 reading-section">
+      <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+        Uso y elección
+      </h3>
       <p class="mt-4 text-[1.04rem] leading-relaxed text-paper-muted">
         El uso tradicional aconseja elegir solo aquello que atraiga, llame la
-        atencion y transmita buena vibracion. Si genera rechazo, se considera
-        que no es el simbolo adecuado para esa persona.
+        atención y transmita buena vibración. Si genera rechazo, se considera
+        que no es el símbolo adecuado para esa persona.
       </p>
       <p class="mt-4 text-[1.04rem] leading-relaxed text-paper-muted">
-        En resumen: si portas una figura simbolica para proteccion cotidiana, se
-        trata de un amuleto. Si ese objeto se prepara para un fin especifico con
-        correspondencias rituales, se trata de un talisman.
+        En resumen: si portas una figura simbólica para protección cotidiana, se
+        trata de un amuleto. Si ese objeto se prepara para un fin específico con
+        correspondencias rituales, se trata de un talismán.
       </p>
       <p class="mt-4 text-[1.04rem] leading-relaxed text-paper-muted">
-        La tradicion recomienda no acumular objetos sin criterio: elegir uno o
-        pocos simbolos afines, mantenerlos limpios, y renovarlos cuando pierdan
-        su sentido personal o su fuerza simbolica.
+        La tradición recomienda no acumular objetos sin criterio: elegir uno o
+        pocos símbolos afines, mantenerlos limpios, y renovarlos cuando pierdan
+        su sentido personal o su fuerza simbólica.
       </p>
     </article>
   </section>
 
   <section
-    data-amulet-tabs
-    class="rounded-2xl border border-antique-gold-soft/35 bg-paper-soft p-6 shadow-[0_10px_30px_rgba(49,31,14,0.08)] lg:p-9"
+    aria-labelledby="indice-amuletos"
+    class="border-t border-antique-gold-soft/50 pt-8"
   >
-    <h4 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
-      Indice de amuletos
-    </h4>
-    <input
-      class="tab-state"
-      type="radio"
-      name="amuletos-tabs"
-      id="amu-tab-signos"
-      checked
-    />
-    <input class="tab-state" type="radio" name="amuletos-tabs" id="amu-tab-i" />
-    <input
-      class="tab-state"
-      type="radio"
-      name="amuletos-tabs"
-      id="amu-tab-ii"
-    />
-    <input
-      class="tab-state"
-      type="radio"
-      name="amuletos-tabs"
-      id="amu-tab-iii"
-    />
-    <input
-      class="tab-state"
-      type="radio"
-      name="amuletos-tabs"
-      id="amu-tab-iv"
-    />
-
-    <div
-      role="tablist"
-      aria-label="Indice de amuletos"
-      class="tab-buttons mt-5 -mx-4 flex gap-2 overflow-x-auto border-b-2 border-antique-gold-soft/60 px-4 pb-0 md:mx-0 md:flex-wrap md:px-0"
+    <h2
+      id="indice-amuletos"
+      class="mb-5 font-editorial text-3xl text-paper-ink"
     >
-      <label
-        for="amu-tab-signos"
-        class="amulet-tab shrink-0 whitespace-nowrap border-2 border-antique-gold-soft/70 border-b-transparent bg-[linear-gradient(180deg,#f6ecd3,#e6d6b4)] px-5 py-3.5 text-left font-editorial text-[1.1rem] leading-none text-paper-ink transition-all hover:bg-old-papyrus md:px-7 md:py-4 md:text-[1.22rem]"
-      >
-        Signos del Zodiaco
-      </label>
-      <label
-        for="amu-tab-i"
-        class="amulet-tab shrink-0 whitespace-nowrap border-2 border-antique-gold-soft/70 border-b-transparent bg-[linear-gradient(180deg,#f6ecd3,#e6d6b4)] px-5 py-3.5 text-left font-editorial text-[1.1rem] leading-none text-paper-ink transition-all hover:bg-old-papyrus md:px-7 md:py-4 md:text-[1.22rem]"
-      >
-        Amuletos I
-      </label>
-      <label
-        for="amu-tab-ii"
-        class="amulet-tab shrink-0 whitespace-nowrap border-2 border-antique-gold-soft/70 border-b-transparent bg-[linear-gradient(180deg,#f6ecd3,#e6d6b4)] px-5 py-3.5 text-left font-editorial text-[1.1rem] leading-none text-paper-ink transition-all hover:bg-old-papyrus md:px-7 md:py-4 md:text-[1.22rem]"
-      >
-        Amuletos II
-      </label>
-      <label
-        for="amu-tab-iii"
-        class="amulet-tab shrink-0 whitespace-nowrap border-2 border-antique-gold-soft/70 border-b-transparent bg-[linear-gradient(180deg,#f6ecd3,#e6d6b4)] px-5 py-3.5 text-left font-editorial text-[1.1rem] leading-none text-paper-ink transition-all hover:bg-old-papyrus md:px-7 md:py-4 md:text-[1.22rem]"
-      >
-        Amuletos III
-      </label>
-      <label
-        for="amu-tab-iv"
-        class="amulet-tab shrink-0 whitespace-nowrap border-2 border-antique-gold-soft/70 border-b-transparent bg-[linear-gradient(180deg,#f6ecd3,#e6d6b4)] px-5 py-3.5 text-left font-editorial text-[1.1rem] leading-none text-paper-ink transition-all hover:bg-old-papyrus md:px-7 md:py-4 md:text-[1.22rem]"
-      >
-        Amuletos IV
-      </label>
-    </div>
-    <div class="tab-panels mt-0 space-y-6">
-      <section
-        id="amuletos-i"
-        class="scroll-mt-28 rounded-b-2xl rounded-tr-2xl border border-antique-gold-soft/30 bg-paper-soft p-7 shadow-[0_8px_24px_rgba(49,31,14,0.06)] lg:p-9"
-      >
-        <h4 class="font-editorial text-[clamp(1.6rem,2.2vw,2.1rem)] leading-tight text-paper-ink">
-          Amuletos mas conocidos I
-        </h4>
+      Índice de amuletos
+    </h2>
+    <ContentTabs label="Índice de amuletos" tabs={amuletTabs}>
+      <section id="amuletos-i" class="scroll-mt-8">
+        <h3 class="font-editorial text-[clamp(1.6rem,2.2vw,2.1rem)] leading-tight text-paper-ink">
+          Símbolos y animales
+        </h3>
         <div class="mt-5 grid gap-4 md:grid-cols-2">
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Abracadabra</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Abracadabra</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Talisman antiguo asociado a proteccion frente a enfermedades y
+              Talismán antiguo asociado a protección frente a enfermedades y
               maleficios.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Ajo</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Ajo</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Usado para alejar energias negativas; en la tradicion se vincula a
+              Usado para alejar energías negativas; en la tradición se vincula a
               Marte.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Ancla</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Ancla</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Simbolo de estabilidad, seguridad interior y calma ante cambios.
+              Símbolo de estabilidad, seguridad interior y calma ante cambios.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Corazon</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Corazón</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Representa la morada del alma y la proteccion afectiva.
+              Representa la morada del alma y la protección afectiva.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Brujo</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Brujo</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Figura asociada a sabiduria, intuicion y fortalecimiento psiquico.
+              Figura asociada a sabiduría, intuición y fortalecimiento psíquico.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Buda</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Buda</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Relacionada con buena suerte y exito en emprendimientos.
+              Relacionada con buena suerte y éxito en emprendimientos.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Amanecer</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Amanecer</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Consagrado a Ra; simboliza inicio, renovacion y calma.
+              Consagrado a Ra; simboliza inicio, renovación y calma.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Cruz ansata</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Cruz ansata</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Emblema de vida, resurreccion, sabiduria y longevidad espiritual.
+              Emblema de vida, resurrección, sabiduría y longevidad espiritual.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Cruz cristiana
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Simbolo de fe, amparo y defensa frente a influencias adversas.
+              Símbolo de fe, amparo y defensa frente a influencias adversas.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
-              Cruz svastica
-            </h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Cruz esvástica
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              En su raiz tradicional se asocia a fortuna, progreso y movimiento.
+              En su raíz tradicional se asocia a fortuna, progreso y movimiento.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Cruz Tau</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Cruz Tau</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Figura protectora vinculada a salud y recuperacion.
+              Figura protectora vinculada a salud y recuperación.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Pata de conejo
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Amuleto popular para felicidad, fertilidad y buena fortuna.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Cuerno o colmillo
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Usado contra mal de ojo; simboliza fuerza y defensa.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Quirquincho</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Quirquincho</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Protector del hogar ante hechiceria y negatividad.
+              Protector del hogar ante hechicería y negatividad.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Aguila</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Águila</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Representa valor, coraje y elevacion de la vision espiritual.
+              Representa valor, coraje y elevación de la visión espiritual.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Buho</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Búho</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Simbolo de conocimiento y claridad para decidir.
+              Símbolo de conocimiento y claridad para decidir.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Dragon</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Dragón</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Amuleto de potencia vital, suerte y transformacion.
+              Amuleto de potencia vital, suerte y transformación.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Elefante</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Elefante</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Figura de buena suerte y resguardo del hogar.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Escarabajo</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Escarabajo</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Emblema egipcio de evolucion, reencarnacion y vida perpetua.
+              Emblema egipcio de evolución, reencarnación y vida perpetua.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Cobra y serpiente
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Simbolos de sabiduria, vitalidad y proteccion energetica.
+              Símbolos de sabiduría, vitalidad y protección energética.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Unicornio</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Unicornio</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Asociado a pureza y defensa ante envidias y tristeza.
             </p>
@@ -322,221 +265,212 @@
         </div>
       </section>
 
-      <section
-        id="amuletos-ii"
-        class="scroll-mt-28 rounded-b-2xl rounded-tr-2xl border border-antique-gold-soft/30 bg-paper-soft p-7 shadow-[0_8px_24px_rgba(49,31,14,0.06)] lg:p-9"
-      >
-        <h4 class="font-editorial text-[clamp(1.6rem,2.2vw,2.1rem)] leading-tight text-paper-ink">
-          Amuletos mas conocidos II
-        </h4>
+      <section id="amuletos-ii" class="scroll-mt-8">
+        <h3 class="font-editorial text-[clamp(1.6rem,2.2vw,2.1rem)] leading-tight text-paper-ink">
+          Objetos y figuras
+        </h3>
         <div class="mt-5 grid gap-4 md:grid-cols-2">
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Espada</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Espada</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Simbolo de proteccion y fuerza en la lucha del bien contra el mal.
+              Símbolo de protección y fuerza en la lucha del bien contra el mal.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Estrella de cinco puntas
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Asociada al pentaculo y al resguardo contra influencias negativas.
+              Asociada al pentáculo y al resguardo contra influencias negativas.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Estrella de David
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Representa union entre cielo y tierra y poder divino.
+              Representa unión entre cielo y tierra y poder divino.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Herradura</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Herradura</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Amuleto clasico de buena suerte y defensa del hogar.
+              Amuleto clásico de buena suerte y defensa del hogar.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Iman</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Imán</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Elemento de atraccion y proteccion en tradiciones populares.
+              Elemento de atracción y protección en tradiciones populares.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Llave</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Llave</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Vinculada a decisiones correctas y apertura de oportunidades.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Luna creciente
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Asociada a sensibilidad, amor y renovacion interior.
+              Asociada a sensibilidad, amor y renovación interior.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Mano protectora
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Simbolo tradicional contra el mal de ojo y energias adversas.
+              Símbolo tradicional contra el mal de ojo y energías adversas.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Ojo y Ojo de Horus
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Relacionados con lucidez, salud y proteccion sagrada.
+              Relacionados con lucidez, salud y protección sagrada.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Pentagrama y pentalfa
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Vinculados a disciplina mental, enfoque y defensa espiritual.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Piramide</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Pirámide</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Asociada a equilibrio energetico y fortalecimiento de la voluntad.
+              Asociada a equilibrio energético y fortalecimiento de la voluntad.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
-              Simbolo solar
-            </h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Símbolo solar
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Figura de vitalidad, exito, salud y expansion personal.
+              Figura de vitalidad, éxito, salud y expansión personal.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
-              Trebol de cuatro hojas
-            </h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Trébol de cuatro hojas
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Emblema natural de fortuna y prosperidad.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               San Jorge y Ogum
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Talismanes de defensa y superacion de obstaculos.
+              Talismanes de defensa y superación de obstáculos.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
-              Talisman de Imanja
-            </h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Talismán de Imanja
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Usado para descarga, cuidado energetico y resguardo personal.
+              Usado para descarga, cuidado energético y resguardo personal.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">El Alma (Ka)</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">El Alma (Ka)</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Simbolo egipcio de energia vital y fortalecimiento afectivo.
+              Símbolo egipcio de energía vital y fortalecimiento afectivo.
             </p>
           </article>
         </div>
       </section>
 
-      <section
-        id="amuletos-iii"
-        class="scroll-mt-28 rounded-b-2xl rounded-tr-2xl border border-antique-gold-soft/30 bg-paper-soft p-7 shadow-[0_8px_24px_rgba(49,31,14,0.06)] lg:p-9"
-      >
-        <h4 class="font-editorial text-[clamp(1.6rem,2.2vw,2.1rem)] leading-tight text-paper-ink">
-          Amuletos mas conocidos III
-        </h4>
+      <section id="amuletos-iii" class="scroll-mt-8">
+        <h3 class="font-editorial text-[clamp(1.6rem,2.2vw,2.1rem)] leading-tight text-paper-ink">
+          Piedras y gemas
+        </h3>
         <div class="mt-5 grid gap-4 md:grid-cols-2">
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Ambar</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Ámbar</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Resina fosil usada para proteccion y apoyo curativo.
+              Resina fósil usada para protección y apoyo curativo.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Coral</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Coral</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Asociado a fuerza vital y defensa ante mal de ojo.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Jade</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Jade</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Relacionado con justicia, sabiduria y buena suerte.
+              Relacionado con justicia, sabiduría y buena suerte.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Onix</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Ónix</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Piedra de Saturno para absorcion energetica y proteccion.
+              Piedra de Saturno para absorción energética y protección.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Turquesa</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Turquesa</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Vinculada a amistad, mar y advertencia energetica.
+              Vinculada a amistad, mar y advertencia energética.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Lapislazuli</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Lapislázuli</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Favorece meditacion, claridad y paz interior.
+              Favorece meditación, claridad y paz interior.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Perla</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Perla</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Asociada con lealtad, justicia y fortalecimiento del corazon.
+              Asociada con lealtad, justicia y fortalecimiento del corazón.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Cuarzo</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Cuarzo</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Mineral usado para equilibrio emocional y regeneracion.
+              Mineral usado para equilibrio emocional y regeneración.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Zafiro</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Zafiro</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Proteccion ante envidia, engano y traicion.
+              Protección ante envidia, engaño y traición.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Diamante</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Diamante</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Defensa ante influencias negativas y fuerza de voluntad.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Rubi</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Rubí</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Gema de fuego para vitalidad, confianza y decision.
+              Gema de fuego para vitalidad, confianza y decisión.
             </p>
           </article>
         </div>
       </section>
 
-      <section
-        id="amuletos-iv"
-        class="scroll-mt-28 rounded-b-2xl rounded-tr-2xl border border-antique-gold-soft/30 bg-paper-soft p-7 shadow-[0_8px_24px_rgba(49,31,14,0.06)] lg:p-9"
-      >
-        <h4 class="font-editorial text-[clamp(1.6rem,2.2vw,2.1rem)] leading-tight text-paper-ink">
-          Amuletos mas conocidos IV · Talismanes vikingos
-        </h4>
+      <section id="amuletos-iv" class="scroll-mt-8">
+        <h3 class="font-editorial text-[clamp(1.6rem,2.2vw,2.1rem)] leading-tight text-paper-ink">
+          Runas y pentáculos
+        </h3>
         <p class="mt-4 text-[1.03rem] leading-relaxed text-paper-muted">
-          El uso de las runas no se limita solo al arte de la adivinacion,
-          tambien se las utilizo grabadas, en amuletos y talismanes. Aun hoy en
-          Islandia; se pueden encontrar a la venta talismanes runicos.
+          El uso de las runas no se limita solo al arte de la adivinación,
+          también se las utilizó grabadas, en amuletos y talismanes. Aún hoy en
+          Islandia, se pueden encontrar a la venta talismanes rúnicos.
         </p>
         <p class="mt-3 text-[1.03rem] leading-relaxed text-paper-muted">
           Los amuletos se llevan puestos en forma de anillos, pulseras y
@@ -544,182 +478,182 @@
           suerte.
         </p>
         <p class="mt-3 text-[1.03rem] leading-relaxed text-paper-muted">
-          En cambio se recurre a los talismanes para que actuen como magico iman
-          y atraigan influencias beneficas en el amor, la salud, los viajes y el
+          En cambio se recurre a los talismanes para que actúen como mágico imán
+          y atraigan influencias benéficas en el amor, la salud, los viajes y el
           dinero.
         </p>
         <p class="mt-3 text-[1.03rem] leading-relaxed text-paper-muted">
-          Generalmente, son 10 los simbolos que se utilizan como talismanes y se
-          relacionan con influencias de gran profundidad en una tirada runica.
+          Generalmente, son 10 los símbolos que se utilizan como talismanes y se
+          relacionan con influencias de gran profundidad en una tirada rúnica.
         </p>
-        <h5 class="mt-8 font-editorial text-[clamp(1.35rem,1.9vw,1.7rem)] text-paper-ink">
-          Usos tradicionales de talismanes runicos
-        </h5>
+        <h4 class="mt-8 font-editorial text-[clamp(1.35rem,1.9vw,1.7rem)] text-paper-ink">
+          Usos tradicionales de talismanes rúnicos
+        </h4>
         <div class="mt-5 grid gap-4 md:grid-cols-2">
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
-              Generador de energias positivas
-            </h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Generador de energías positivas
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Para elevar vibracion personal y atraer corrientes favorables.
+              Para elevar vibración personal y atraer corrientes favorables.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
-              Sanacion de enfermedades
-            </h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Sanación de enfermedades
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Orientado a equilibrio fisico y psiquico en periodos de
-              recuperacion.
+              Orientado a equilibrio físico y psíquico en períodos de
+              recuperación.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Prosperidad material
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Vinculado a crecimiento concreto, recursos y avance sostenido.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Amor</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Amor</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Favorece encuentro afectivo, union y fortalecimiento emocional.
+              Favorece encuentro afectivo, unión y fortalecimiento emocional.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
-              Suenos proyectivos e intuicion
-            </h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Sueños proyectivos e intuición
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Asociado a clarividencia, percepcion sutil y orientacion interna.
+              Asociado a clarividencia, percepción sutil y orientación interna.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Viajes</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Viajes</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Talismana de resguardo para traslados y cambios de ruta.
+              Talismán de resguardo para traslados y cambios de ruta.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
-              Realidad protectora de fantasias
-            </h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Realidad protectora de fantasías
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Ayuda a sostener foco mental y evitar dispersion o confusion.
+              Ayuda a sostener foco mental y evitar dispersión o confusión.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
-              Disipador de energias negativas
-            </h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Disipador de energías negativas
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Proteccion frente a cargas densas e influencias adversas.
+              Protección frente a cargas densas e influencias adversas.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Arte de profetizar
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Simbolo asociado al trabajo magico y lectura adivinatoria.
+              Símbolo asociado al trabajo mágico y lectura adivinatoria.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
-              Tyr, Freyja, Thor, Odin y Balder
-            </h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Tyr, Freyja, Thor, Odín y Balder
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Conjunto simbolico para proteccion, amor, fuerza, realizacion y
-              expansion energetica.
+              Conjunto simbólico para protección, amor, fuerza, realización y
+              expansión energética.
             </p>
           </article>
         </div>
 
-        <h5 class="mt-8 font-editorial text-[clamp(1.35rem,1.9vw,1.7rem)] text-paper-ink">
+        <h4 class="mt-8 font-editorial text-[clamp(1.35rem,1.9vw,1.7rem)] text-paper-ink">
           Runas vikingas principales
-        </h5>
+        </h4>
         <div class="mt-5 grid gap-4 md:grid-cols-2">
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Tyr</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Tyr</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Figura protectora que combate influencias oscuras y malos
               recuerdos. Se usa para limpiar la mente, fortalecer el valor
-              interior y alejar energias perjudiciales.
+              interior y alejar energías perjudiciales.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Freyja</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Freyja</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Simbolo vinculado al amor y al despertar afectivo.
-              Tradicionalmente se utiliza para fortalecer vinculos, estabilizar
+              Símbolo vinculado al amor y al despertar afectivo.
+              Tradicionalmente se utiliza para fortalecer vínculos, estabilizar
               emociones y favorecer la confianza sentimental.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Thor</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Thor</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Asociado a fuerza, voluntad y superacion de obstaculos. Se
+              Asociado a fuerza, voluntad y superación de obstáculos. Se
               considera una runa de empuje para enfrentar pruebas exigentes y
-              sostener la determinacion en tiempos dificiles.
+              sostener la determinación en tiempos difíciles.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Odin</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Odín</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Representa sabiduria, vision y guia en la busqueda de proposito.
-              En la tradicion se conserva cerca durante la noche para impulsar
-              claridad y realizacion de metas.
+              Representa sabiduría, visión y guía en la búsqueda de propósito.
+              En la tradición se conserva cerca durante la noche para impulsar
+              claridad y realización de metas.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4 md:col-span-2">
-            <h5 class="font-editorial text-2xl text-paper-ink">Balder</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4 md:col-span-2">
+            <h4 class="font-editorial text-2xl text-paper-ink">Balder</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Vinculado al sol y a la expansion de energia personal. Se usa como
+              Vinculado al sol y a la expansión de energía personal. Se usa como
               apoyo para conquistas materiales, equilibrio interior y avance en
-              desafios de alta exigencia.
+              desafíos de alta exigencia.
             </p>
           </article>
         </div>
 
-        <h5 class="mt-8 font-editorial text-[clamp(1.35rem,1.9vw,1.7rem)] text-paper-ink">
-          Pentaculos tradicionales
-        </h5>
+        <h4 class="mt-8 font-editorial text-[clamp(1.35rem,1.9vw,1.7rem)] text-paper-ink">
+          Pentáculos tradicionales
+        </h4>
         <p class="mt-3 text-[1.03rem] leading-relaxed text-paper-muted">
-          En varias corrientes esotericas, los pentaculos se asocian con los
-          astros conocidos de la antiguedad. Se usan como figuras de enfoque
-          simbolico para intenciones concretas, relacionando planeta, color y
-          proposito.
+          En varias corrientes esotéricas, los pentáculos se asocian con los
+          astros conocidos de la antigüedad. Se usan como figuras de enfoque
+          simbólico para intenciones concretas, relacionando planeta, color y
+          propósito.
         </p>
         <div class="mt-5 grid gap-4 md:grid-cols-2">
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Inteligencia</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Inteligencia</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Asociado a Mercurio. Tradicionalmente se utiliza para razonar con
-              claridad, decidir con rapidez y mejorar la comunicacion en
+              claridad, decidir con rapidez y mejorar la comunicación en
               estudios, trabajo y negociaciones.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Prosperidad</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Prosperidad</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Ligado al simbolismo solar. Se emplea para fortalecer progreso
               personal y material, impulsar la autoconfianza y atraer
               oportunidades de crecimiento sostenido.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Amor</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Amor</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Vinculado a Venus. Se usa para profundizar vinculos afectivos,
-              favorecer la armonia emocional y sostener relaciones con mayor
+              Vinculado a Venus. Se usa para profundizar vínculos afectivos,
+              favorecer la armonía emocional y sostener relaciones con mayor
               sensibilidad y presencia.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Dinero</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Dinero</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Orientado a administracion y flujo de recursos. En la tradicion se
+              Orientado a administración y flujo de recursos. En la tradición se
               usa como recordatorio ritual de orden, enfoque financiero y
               disciplina para concretar metas.
             </p>
@@ -727,146 +661,160 @@
         </div>
       </section>
 
-      <section
-        id="amuletos-signos-zodiaco"
-        class="scroll-mt-28 rounded-b-2xl rounded-tr-2xl border border-antique-gold-soft/30 bg-paper p-7 shadow-[0_8px_24px_rgba(49,31,14,0.06)] lg:p-9"
-      >
-        <h4 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+      <section id="amuletos-signos-zodiaco" class="scroll-mt-8">
+        <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
           Amuletos y signos del zodiaco
-        </h4>
+        </h3>
         <p class="mt-4 max-w-[68ch] text-[1.04rem] leading-relaxed text-paper-muted">
           Los talismanes zodiacales se rigen por los doce signos del zodiaco. En
-          la tradicion, su preparacion considera dia, hora, planeta, color y
+          la tradición, su preparación considera día, hora, planeta, color y
           ciclo lunar correspondiente para cada signo.
         </p>
         <p class="mt-4 max-w-[68ch] text-[1.04rem] leading-relaxed text-paper-muted">
-          Cada signo posee caracteristicas energeticas propias. Por eso se
+          Cada signo posee características energéticas propias. Por eso se
           afirma que un amuleto confeccionado para un signo beneficia
-          principalmente a quienes nacen bajo esa misma constelacion zodiacal.
+          principalmente a quienes nacen bajo esa misma constelación zodiacal.
         </p>
         <p class="mt-4 max-w-[68ch] text-[1.04rem] leading-relaxed text-paper-muted">
           Referencia tradicional de uso zodiacal:
         </p>
         <div class="mt-5 grid gap-4 md:grid-cols-2">
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper-soft p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Aries · fuego
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Favorece negocios, trabajo, poder personal, pleitos y amor
               conyugal.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper-soft p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Tauro · tierra
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Regido por Venus; recomendado para viajes por mar y asuntos de
               amor.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper-soft p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
-              Geminis · aire
-            </h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Géminis · aire
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Regido por Mercurio; apoya trabajo, negocios y traslados.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper-soft p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
-              Cancer · agua
-            </h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Cáncer · agua
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Bajo la Luna; asociado a amores, negocios y viajes por mar.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper-soft p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Leo · fuego</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Leo · fuego</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Regido por el Sol; protege trabajo, proyectos propios y amor.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper-soft p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Virgo · tierra
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Tambien regido por Mercurio; potencia actividad laboral y
+              También regido por Mercurio; potencia actividad laboral y
               comercial.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper-soft p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">Libra · aire</h5>
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">Libra · aire</h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Regido por Venus; se relaciona con salud y buena fortuna en juegos
               de azar.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper-soft p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Escorpio · agua
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Regido por Marte y Pluton; asociado a suerte, creatividad y
+              Regido por Marte y Plutón; asociado a suerte, creatividad y
               felicidad.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper-soft p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Sagitario · fuego
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Regido por Jupiter; favorece atraccion de felicidad y suerte
+              Regido por Júpiter; favorece atracción de felicidad y suerte
               general.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper-soft p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Capricornio · tierra
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Regido por Saturno; protector del hogar, amistades y bienestar
-              fisico.
+              físico.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper-soft p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Acuario · aire
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
               Regido por Saturno y Urano; favorece negocios, comercio y amor.
             </p>
           </article>
-          <article class="rounded-xl border border-antique-gold-soft/25 bg-paper-soft p-4">
-            <h5 class="font-editorial text-2xl text-paper-ink">
+          <article class="border-t border-antique-gold-soft/40 py-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
               Piscis · agua
-            </h5>
+            </h4>
             <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-              Regido por Neptuno y Jupiter; asociado a salud, amor y buenos
+              Regido por Neptuno y Júpiter; asociado a salud, amor y buenos
               negocios.
             </p>
           </article>
         </div>
-        <h5 class="mt-8 font-editorial text-[clamp(1.4rem,2vw,1.8rem)] text-paper-ink">
+        <h4 class="mt-8 font-editorial text-[clamp(1.4rem,2vw,1.8rem)] text-paper-ink">
           Correspondencias tradicionales
-        </h5>
-        <div class="mt-5 overflow-x-auto">
+        </h4>
+        <div
+          class="mt-5 overflow-x-auto"
+          tabindex="0"
+          role="region"
+          aria-label="Correspondencias tradicionales por planeta"
+        >
           <table class="w-full min-w-[34rem] border-collapse text-left text-sm text-paper-ink">
             <thead>
               <tr class="border-b border-antique-gold-soft/40">
-                <th class="px-3 py-2 font-interface tracking-[0.08em] uppercase">
+                <th
+                  scope="col"
+                  class="px-3 py-2 font-interface tracking-[0.08em] uppercase"
+                >
                   Planeta
                 </th>
-                <th class="px-3 py-2 font-interface tracking-[0.08em] uppercase">
+                <th
+                  scope="col"
+                  class="px-3 py-2 font-interface tracking-[0.08em] uppercase"
+                >
                   Metal
                 </th>
-                <th class="px-3 py-2 font-interface tracking-[0.08em] uppercase">
+                <th
+                  scope="col"
+                  class="px-3 py-2 font-interface tracking-[0.08em] uppercase"
+                >
                   Color
                 </th>
-                <th class="px-3 py-2 font-interface tracking-[0.08em] uppercase">
-                  Dia
+                <th
+                  scope="col"
+                  class="px-3 py-2 font-interface tracking-[0.08em] uppercase"
+                >
+                  Día
                 </th>
               </tr>
             </thead>
@@ -893,11 +841,11 @@
                 <td class="px-3 py-2">Mercurio</td>
                 <td class="px-3 py-2">Azogue</td>
                 <td class="px-3 py-2">Verde y rojo</td>
-                <td class="px-3 py-2">Miercoles</td>
+                <td class="px-3 py-2">Miércoles</td>
               </tr>
               <tr class="border-b border-antique-gold-soft/20">
-                <td class="px-3 py-2">Jupiter</td>
-                <td class="px-3 py-2">Estano</td>
+                <td class="px-3 py-2">Júpiter</td>
+                <td class="px-3 py-2">Estaño</td>
                 <td class="px-3 py-2">Azul celeste</td>
                 <td class="px-3 py-2">Jueves</td>
               </tr>
@@ -911,86 +859,12 @@
                 <td class="px-3 py-2">Saturno</td>
                 <td class="px-3 py-2">Plomo</td>
                 <td class="px-3 py-2">Negro</td>
-                <td class="px-3 py-2">Sabado</td>
+                <td class="px-3 py-2">Sábado</td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
-    </div>
+    </ContentTabs>
   </section>
 </div>
-
-<style>
-  [data-amulet-tabs] .tab-buttons {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  [data-amulet-tabs] .tab-buttons::-webkit-scrollbar {
-    display: none;
-  }
-
-  [data-amulet-tabs] .tab-buttons .amulet-tab {
-    display: inline-block;
-    cursor: pointer;
-    border-color: #8b6b3f;
-    border-width: 2px;
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.45) inset;
-  }
-
-  [data-amulet-tabs] .tab-state {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-    width: 0;
-    height: 0;
-  }
-
-  [data-amulet-tabs] .tab-panels > section {
-    display: none;
-    background: linear-gradient(160deg, #f8efdb 0%, #efe0c1 100%);
-    border-color: rgba(184, 147, 86, 0.45);
-  }
-
-  [data-amulet-tabs]
-    #amu-tab-signos:checked
-    ~ .tab-panels
-    #amuletos-signos-zodiaco,
-  [data-amulet-tabs] #amu-tab-i:checked ~ .tab-panels #amuletos-i,
-  [data-amulet-tabs] #amu-tab-ii:checked ~ .tab-panels #amuletos-ii,
-  [data-amulet-tabs] #amu-tab-iii:checked ~ .tab-panels #amuletos-iii,
-  [data-amulet-tabs] #amu-tab-iv:checked ~ .tab-panels #amuletos-iv {
-    display: block;
-  }
-
-  [data-amulet-tabs]
-    #amu-tab-signos:checked
-    ~ .tab-buttons
-    label[for="amu-tab-signos"],
-  [data-amulet-tabs] #amu-tab-i:checked ~ .tab-buttons label[for="amu-tab-i"],
-  [data-amulet-tabs] #amu-tab-ii:checked ~ .tab-buttons label[for="amu-tab-ii"],
-  [data-amulet-tabs]
-    #amu-tab-iii:checked
-    ~ .tab-buttons
-    label[for="amu-tab-iii"],
-  [data-amulet-tabs]
-    #amu-tab-iv:checked
-    ~ .tab-buttons
-    label[for="amu-tab-iv"] {
-    background: linear-gradient(180deg, #fff4db 0%, #f1dfbc 100%);
-    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.65) inset;
-    border-color: rgba(184, 147, 86, 0.75);
-    position: relative;
-    top: 1px;
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
-  }
-
-  [data-amulet-tabs] .tab-panels > section {
-    border-width: 2px;
-  }
-</style>

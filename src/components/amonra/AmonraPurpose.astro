@@ -4,7 +4,7 @@ import egyptianEmblem from "../../assets/amonra/emblema-egipcio.png";
 ---
 
 <div class="space-y-10 text-[clamp(1.02rem,1.1vw,1.16rem)] leading-[1.78] text-paper-muted">
-  <section class="grid items-center gap-10 rounded-2xl border border-antique-gold-soft/30 bg-[linear-gradient(145deg,var(--color-paper-soft),#f3e7c9)] p-7 shadow-[0_12px_34px_rgba(49,31,14,0.08)] lg:grid-cols-[minmax(16rem,0.72fr)_minmax(0,1.28fr)] lg:gap-14 lg:p-10">
+  <section class="grid items-center gap-8 lg:grid-cols-[minmax(12rem,0.6fr)_minmax(0,1.4fr)] lg:gap-14">
     <figure class="m-0 flex justify-center">
       <Image
         src={egyptianEmblem}
@@ -12,7 +12,7 @@ import egyptianEmblem from "../../assets/amonra/emblema-egipcio.png";
         widths={[320, 480, 640]}
         sizes="(min-width: 1024px) 24vw, 68vw"
         loading="lazy"
-        class="w-full max-w-[22rem] drop-shadow-xl"
+        class="w-full max-w-[14rem]"
       />
     </figure>
 
@@ -36,122 +36,130 @@ import egyptianEmblem from "../../assets/amonra/emblema-egipcio.png";
     </div>
   </section>
 
-  <section aria-labelledby="como-vivimos-title">
-    <div class="mb-6 flex items-end justify-between gap-6 border-b border-antique-gold-soft/35 pb-5">
-      <h3
-        class="font-editorial text-[clamp(2rem,3vw,2.8rem)] leading-tight text-paper-ink"
-        id="como-vivimos-title"
-      >
-        Cómo lo vivimos
-      </h3>
-      <span class="hidden font-interface text-xs tracking-[0.16em] text-[#78531d] uppercase sm:block">
-        Conocimiento y práctica
-      </span>
-    </div>
-    <div class="grid gap-5 lg:grid-cols-2">
-      <p class="rounded-xl border border-antique-gold-soft/25 bg-paper px-6 py-6 shadow-[0_7px_22px_rgba(49,31,14,0.05)] lg:px-7">
-        Buscamos el despertar interno para construir una convivencia más
-        armónica, en paz y justicia, con una comunidad abierta a quienes deseen
-        nutrirse de sabiduría y avanzar en su evolución espiritual.
-      </p>
-      <p class="rounded-xl border border-antique-gold-soft/25 bg-paper px-6 py-6 shadow-[0_7px_22px_rgba(49,31,14,0.05)] lg:px-7">
-        Te invitamos a tomar lo que te sea útil, practicarlo y hacerlo vida para
-        el crecimiento del alma y de la esencia interior, en el camino de
-        retorno al Templo de la Luz Inefable.
-      </p>
-    </div>
-  </section>
+  <details class="border-t border-antique-gold-soft/50 pt-6">
+    <summary class="w-fit cursor-pointer py-3 font-interface font-semibold text-clay-ink">
+      Leer nuestro propósito completo
+    </summary>
+    <div class="mt-8 space-y-10">
+      <section aria-labelledby="como-vivimos-title">
+        <div class="mb-6 flex items-end justify-between gap-6 border-b border-antique-gold-soft/35 pb-5">
+          <h3
+            class="font-editorial text-[clamp(2rem,3vw,2.8rem)] leading-tight text-paper-ink"
+            id="como-vivimos-title"
+          >
+            Cómo lo vivimos
+          </h3>
+          <span class="hidden font-interface text-xs tracking-[0.16em] text-[#78531d] uppercase sm:block">
+            Conocimiento y práctica
+          </span>
+        </div>
+        <div class="grid gap-5 lg:grid-cols-2">
+          <p class="max-w-[65ch]">
+            Buscamos el despertar interno para construir una convivencia más
+            armónica, en paz y justicia, con una comunidad abierta a quienes
+            deseen nutrirse de sabiduría y avanzar en su evolución espiritual.
+          </p>
+          <p class="max-w-[65ch]">
+            Te invitamos a tomar lo que te sea útil, practicarlo y hacerlo vida
+            para el crecimiento del alma y de la esencia interior, en el camino
+            de retorno al Templo de la Luz Inefable.
+          </p>
+        </div>
+      </section>
 
-  <blockquote class="mx-auto max-w-[48rem] rounded-2xl border-l-4 border-clay-red bg-[var(--color-parchment-soft)] px-7 py-7 text-center font-editorial text-[clamp(1.4rem,2.2vw,1.9rem)] leading-snug text-paper-ink shadow-[0_9px_26px_rgba(49,31,14,0.08)] lg:px-10 lg:py-9">
-    “Nuestro ser, siendo central, debe encontrar en el centro, donde están todos
-    los auxilios necesarios, su existencia”. Que él ahí se encuentre con el
-    secreto de su destino y de su origen, con los medios de realizar uno
-    retornando al otro.
-  </blockquote>
+      <blockquote class="mx-auto max-w-[48rem] rounded-2xl border-l-4 border-clay-red bg-[var(--color-parchment-soft)] px-7 py-7 text-center font-editorial text-[clamp(1.4rem,2.2vw,1.9rem)] leading-snug text-paper-ink shadow-[0_9px_26px_rgba(49,31,14,0.08)] lg:px-10 lg:py-9">
+        “Nuestro ser, siendo central, debe encontrar en el centro, donde están
+        todos los auxilios necesarios, su existencia”. Que él ahí se encuentre
+        con el secreto de su destino y de su origen, con los medios de realizar
+        uno retornando al otro.
+      </blockquote>
 
-  <section class="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)]">
-    <div class="space-y-5 rounded-2xl border border-antique-gold-soft/25 bg-paper p-7 shadow-[0_8px_24px_rgba(49,31,14,0.06)] lg:p-9">
-      <h3 class="font-editorial text-[clamp(2rem,3vw,2.8rem)] leading-tight text-paper-ink">
-        Semillas de luz
-      </h3>
-      <p>
-        Ayudamos así a la evolución de la humanidad y de todos los seres que nos
-        siguen. Somos antenas cósmicas para compartir y dar, en favor del
-        despertar y del retorno a la suprema luz inefable.
-      </p>
-      <p>
-        Nuestras bendiciones para todos: que podamos superarnos en el plano
-        espiritual, expandir nuestras conciencias y alcanzar un estado de
-        armonía natural con nuestro ser, en comunión con el cosmos.
-      </p>
-      <p>
-        La idea de fondo es regalar semillas de luz que nos impulsen a seguir
-        creciendo y a acercarnos, cada vez más, al templo de la luz interior,
-        unido a los cielos y a la tierra, para el bien de quienes están y de
-        quienes nos siguen.
-      </p>
-    </div>
+      <section class="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)]">
+        <div class="space-y-5">
+          <h3 class="font-editorial text-[clamp(2rem,3vw,2.8rem)] leading-tight text-paper-ink">
+            Semillas de luz
+          </h3>
+          <p>
+            Ayudamos así a la evolución de la humanidad y de todos los seres que
+            nos siguen. Somos antenas cósmicas para compartir y dar, en favor
+            del despertar y del retorno a la suprema luz inefable.
+          </p>
+          <p>
+            Nuestras bendiciones para todos: que podamos superarnos en el plano
+            espiritual, expandir nuestras conciencias y alcanzar un estado de
+            armonía natural con nuestro ser, en comunión con el cosmos.
+          </p>
+          <p>
+            La idea de fondo es regalar semillas de luz que nos impulsen a
+            seguir creciendo y a acercarnos, cada vez más, al templo de la luz
+            interior, unido a los cielos y a la tierra, para el bien de quienes
+            están y de quienes nos siguen.
+          </p>
+        </div>
 
-    <div class="grid gap-6">
-      <aside class="flex flex-col justify-center rounded-2xl border border-[#9b7135]/45 bg-[#382116] px-7 py-8 text-center shadow-[0_10px_28px_rgba(49,31,14,0.14)]">
-        <p class="font-interface text-xs font-bold tracking-[0.18em] text-[#d8bd78] uppercase">
-          Nuestra máxima es
+        <div class="grid gap-6">
+          <aside class="flex flex-col justify-center rounded-2xl border border-[#9b7135]/45 bg-[#382116] px-7 py-8 text-center shadow-[0_10px_28px_rgba(49,31,14,0.14)]">
+            <p class="font-interface text-xs font-bold tracking-[0.18em] text-[#d8bd78] uppercase">
+              Nuestra máxima es
+            </p>
+            <p class="mt-4 font-editorial text-[clamp(2rem,3.3vw,3.2rem)] leading-[1.04] text-[#fff3cf]">
+              Crecer, crecer, crecer…
+            </p>
+          </aside>
+          <p class="max-w-[65ch]">
+            Indicar la estrella que nos conduce a Dios, su Principio. Feliz
+            aquel que permite a la iluminación esclarecer la razón con los rayos
+            de la certeza: estará más próximo a la meta. La dialéctica conduce a
+            la mística cuando revela al ser humano a sí mismo.
+          </p>
+        </div>
+      </section>
+
+      <section class="reading-section">
+        <p class="font-editorial text-lg tracking-[0.18em] text-[#782b20]">
+          FIAT LUX
         </p>
-        <p class="mt-4 font-editorial text-[clamp(2rem,3.3vw,3.2rem)] leading-[1.04] text-[#fff3cf]">
-          Crecer, crecer, crecer…
+        <div class="mt-6 grid gap-6 lg:grid-cols-2 lg:gap-10">
+          <p>
+            El camino hacia el reino de la vida, al inicio, puede estar lleno de
+            privaciones. Sin embargo, quien decida trascender su ego humano
+            afirmará su compromiso espiritual.
+          </p>
+          <p>
+            Estad siempre dispuestos a recorrer el camino de la vida y a adherir
+            a sus leyes, para despertar espiritualmente y convertiros en hijos
+            divinos, conscientes del Padre Celestial.
+          </p>
+        </div>
+      </section>
+
+      <section class="reading-section">
+        <h3 class="font-editorial text-[clamp(2rem,3vw,2.8rem)] leading-tight text-paper-ink">
+          Respeto por la vida
+        </h3>
+        <p class="mt-5 max-w-[75ch]">
+          Respeta la vida en todas sus formas: así se expande la fuerza eterna
+          del espíritu. Ese espíritu universal atraviesa los reinos mineral,
+          vegetal y animal. Dios actúa en toda la creación. Permite que
+          florezcan en ti los dones del Creador, aparta las malezas que no dejan
+          ver la luz de tu templo interior y la de tus semejantes, y avanzarás
+          por el camino que enseñó el Divino Jesús el Cristo, Redentor y
+          Maestro.
         </p>
-      </aside>
-      <p class="rounded-2xl border border-antique-gold-soft/25 bg-paper-soft/70 p-7 lg:p-8">
-        Indicar la estrella que nos conduce a Dios, su Principio. Feliz aquel
-        que permite a la iluminación esclarecer la razón con los rayos de la
-        certeza: estará más próximo a la meta. La dialéctica conduce a la
-        mística cuando revela al ser humano a sí mismo.
-      </p>
+      </section>
+
+      <footer class="grid items-center gap-8 border-t border-[var(--color-legacy-gold)]/35 pt-9 lg:grid-cols-[minmax(0,1.4fr)_minmax(18rem,0.6fr)]">
+        <p class="text-base leading-relaxed text-paper-ink">
+          Por la vida de nuestro hogar, nuestro planeta Tierra. Por nuestros
+          padres y hermanos en los cielos y en la tierra. Una luz en vuestro
+          camino. Fortalezcamos una alianza de conservación con la herencia que
+          hemos recibido, para evitar desde hoy la destrucción de nuestro hogar.
+        </p>
+        <p class="border-l-2 border-clay-red pl-6 font-editorial text-[1.15rem] font-medium italic text-paper-ink">
+          Feliluxor: fe y felicidad en la luz de oro, un jardinero trabajando en
+          su jardín de luz.
+        </p>
+      </footer>
     </div>
-  </section>
-
-  <section class="rounded-2xl border border-antique-gold-soft/30 bg-[linear-gradient(120deg,#eee0ba,var(--color-paper-soft))] p-7 shadow-[0_9px_26px_rgba(49,31,14,0.07)] lg:p-10">
-    <p class="font-editorial text-lg tracking-[0.18em] text-[#782b20]">
-      FIAT LUX
-    </p>
-    <div class="mt-6 grid gap-6 lg:grid-cols-2 lg:gap-10">
-      <p>
-        El camino hacia el reino de la vida, al inicio, puede estar lleno de
-        privaciones. Sin embargo, quien decida trascender su ego humano afirmará
-        su compromiso espiritual.
-      </p>
-      <p>
-        Estad siempre dispuestos a recorrer el camino de la vida y a adherir a
-        sus leyes, para despertar espiritualmente y convertiros en hijos
-        divinos, conscientes del Padre Celestial.
-      </p>
-    </div>
-  </section>
-
-  <section class="rounded-2xl border border-antique-gold-soft/30 bg-paper px-7 py-8 shadow-[0_8px_24px_rgba(49,31,14,0.06)] lg:px-10 lg:py-10">
-    <h3 class="font-editorial text-[clamp(2rem,3vw,2.8rem)] leading-tight text-paper-ink">
-      Respeto por la vida
-    </h3>
-    <p class="mt-5 max-w-[75ch]">
-      Respeta la vida en todas sus formas: así se expande la fuerza eterna del
-      espíritu. Ese espíritu universal atraviesa los reinos mineral, vegetal y
-      animal. Dios actúa en toda la creación. Permite que florezcan en ti los
-      dones del Creador, aparta las malezas que no dejan ver la luz de tu templo
-      interior y la de tus semejantes, y avanzarás por el camino que enseñó el
-      Divino Jesús el Cristo, Redentor y Maestro.
-    </p>
-  </section>
-
-  <footer class="grid items-center gap-8 border-t border-[var(--color-legacy-gold)]/35 pt-9 lg:grid-cols-[minmax(0,1.4fr)_minmax(18rem,0.6fr)]">
-    <p class="text-base leading-relaxed text-paper-ink">
-      Por la vida de nuestro hogar, nuestro planeta Tierra. Por nuestros padres
-      y hermanos en los cielos y en la tierra. Una luz en vuestro camino.
-      Fortalezcamos una alianza de conservación con la herencia que hemos
-      recibido, para evitar desde hoy la destrucción de nuestro hogar.
-    </p>
-    <p class="border-l-2 border-clay-red pl-6 font-editorial text-[1.15rem] font-medium italic text-paper-ink">
-      Feliluxor: fe y felicidad en la luz de oro, un jardinero trabajando en su
-      jardín de luz.
-    </p>
-  </footer>
+  </details>
 </div>

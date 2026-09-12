@@ -14,6 +14,7 @@
   --color-egypt-blue: var(--color-mineral-blue);
   --color-egypt-blue-soft: var(--color-mineral-blue-soft);
   --color-clay-red: var(--color-solar-red);
+  --color-clay-ink: var(--color-clay-ink);
   --color-old-papyrus: var(--color-papyrus);
   --color-sandstone: var(--color-stone);
   --color-paper: var(--color-parchment);
@@ -60,6 +61,10 @@
   :focus-visible {
     outline: 2px solid var(--color-focus);
     outline-offset: 0.25rem;
+  }
+
+  .text-paper-ink {
+    --color-focus: var(--color-clay-ink);
   }
 
   ::selection {

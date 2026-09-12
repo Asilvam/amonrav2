@@ -2,6 +2,21 @@
   margin-block-start: var(--flow-space, var(--space-5));
 }
 
+.reading-section {
+  border-block-start: 1px solid var(--color-primary-soft);
+  padding-block-start: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.space-y-8 > .reading-section:first-child,
+.space-y-5 > .reading-section:first-child {
+  border-block-start: 0;
+  padding-block-start: 0;
+}
+
+.reading-section p {
+  max-width: 68ch;
+}
+
 .cluster {
   display: flex;
   flex-wrap: wrap;

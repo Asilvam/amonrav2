@@ -1,0 +1,177 @@
+---
+interface Props {
+  label: string;
+  tabs: { id: string; label: string }[];
+}
+
+const { label, tabs } = Astro.props;
+---
+
+<div data-content-tabs>
+  <nav class="tab-list" aria-label={label}>
+    {tabs.map((tab) => (
+      <a id={`${tab.id}-tab`} class="tab-link" href={`#${tab.id}`}>
+        {tab.label}
+      </a>
+    ))}
+  </nav>
+  <div class="tab-panels mt-8 space-y-10">
+    <slot />
+  </div>
+</div>
+
+<script>
+  document
+    .querySelectorAll<HTMLElement>("[data-content-tabs]")
+    .forEach((root) => {
+      const list = root.querySelector<HTMLElement>(".tab-list");
+      const links = Array.from(
+        root.querySelectorAll<HTMLAnchorElement>(".tab-link"),
+      );
+      const panels = links.map((link) =>
+        document.getElementById(link.hash.slice(1)),
+      );
+      if (!list || panels.some((panel) => !panel || !root.contains(panel)))
+        return;
+
+      function selectTab(index: number, focus = false) {
+        links.forEach((link, i) => {
+          link.setAttribute("aria-selected", String(i === index));
+          link.tabIndex = i === index ? 0 : -1;
+          panels[i]!.hidden = i !== index;
+        });
+        if (focus) links[index].focus({ preventScroll: true });
+      }
+
+      function selectHashTarget() {
+        const target = document.getElementById(location.hash.slice(1));
+        const index = panels.findIndex(
+          (panel) => target && panel!.contains(target),
+        );
+        if (index < 0) return false;
+        selectTab(index);
+        requestAnimationFrame(() => target!.scrollIntoView({ block: "start" }));
+        return true;
+      }
+
+      list.setAttribute("role", "tablist");
+      links.forEach((link, index) => {
+        link.setAttribute("role", "tab");
+        link.setAttribute("aria-controls", panels[index]!.id);
+        panels[index]!.setAttribute("role", "tabpanel");
+        panels[index]!.setAttribute("aria-labelledby", link.id);
+        panels[index]!.tabIndex = 0;
+
+        function activate() {
+          selectTab(index, true);
+          history.replaceState(history.state, "", link.hash);
+        }
+
+        link.addEventListener("click", (event) => {
+          if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+            return;
+          event.preventDefault();
+          activate();
+        });
+
+        link.addEventListener("keydown", (event) => {
+          let next: number;
+          switch (event.key) {
+            case "ArrowRight":
+              next = (index + 1) % links.length;
+              break;
+            case "ArrowLeft":
+              next = (index - 1 + links.length) % links.length;
+              break;
+            case "Home":
+              next = 0;
+              break;
+            case "End":
+              next = links.length - 1;
+              break;
+            case " ":
+            case "Enter":
+              event.preventDefault();
+              activate();
+              return;
+            default:
+              return;
+          }
+          event.preventDefault();
+          selectTab(next, true);
+          history.replaceState(history.state, "", links[next].hash);
+        });
+      });
+
+      if (!selectHashTarget()) selectTab(0);
+      window.addEventListener("hashchange", selectHashTarget);
+    });
+</script>
+
+<style>
+  .tab-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--color-primary-soft);
+    padding-block: 0.5rem 1rem;
+  }
+
+  .tab-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    border: 1px solid var(--color-primary-soft);
+    border-radius: var(--radius-small);
+    padding: 0.65rem 1rem;
+    color: var(--color-ink);
+    font-family: var(--font-ui);
+    font-size: 0.9375rem;
+    font-weight: 650;
+    line-height: 1.4;
+    text-decoration: none;
+  }
+
+  .tab-link:hover {
+    background: var(--color-parchment-soft);
+    color: var(--color-ink);
+  }
+
+  .tab-link[aria-selected="true"] {
+    border-color: var(--color-clay-ink);
+    background: var(--color-clay-ink);
+    color: #fff8df;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+
+  .tab-link:focus-visible,
+  .tab-panels > :global([role="tabpanel"]:focus-visible) {
+    outline: 3px solid var(--color-clay-ink);
+    outline-offset: 3px;
+  }
+
+  .tab-panels > :global([role="tabpanel"]) {
+    margin-block-start: 0;
+  }
+
+  .tab-panels > :global([hidden]) {
+    display: none;
+  }
+
+  .tab-panels :global(p) {
+    max-width: 68ch;
+  }
+
+  @media print {
+    .tab-list {
+      display: none;
+    }
+    .tab-panels > :global([hidden]) {
+      display: block;
+    }
+    .tab-panels > :global([role="tabpanel"]) {
+      margin-block-start: 2rem;
+    }
+  }
+</style>

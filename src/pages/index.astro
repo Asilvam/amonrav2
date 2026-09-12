@@ -71,17 +71,7 @@ import egyptianPortal from "../assets/amonra/portal-egipcio.png";
     </header>
 
     <section
-      class="border-b border-antique-gold-soft/50 bg-paper py-20 text-paper-ink lg:py-28"
-      id="proposito"
-      aria-label="Propósito"
-    >
-      <Container>
-        <AmonraPurpose />
-      </Container>
-    </section>
-
-    <section
-      class="border-b border-antique-gold-soft/40 bg-[var(--color-surface-warm)] py-20 lg:py-28"
+      class="border-b border-antique-gold-soft/40 bg-[var(--color-surface-warm)] py-12 lg:py-20"
       id="conocimiento-practica"
       aria-labelledby="universo-amonra-title"
     >
@@ -99,28 +89,39 @@ import egyptianPortal from "../assets/amonra/portal-egipcio.png";
           </p>
         </div>
 
-        <nav class="mt-10" aria-label="Temas de Amonra">
-          <ol class="grid list-none gap-px bg-antique-gold-soft/35 p-px md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {amonraSections.map((section, index) => (
-              <li class="bg-night">
+        <nav class="mt-6" aria-label="Temas de Amonra">
+          <ol class="grid list-none gap-x-8 p-0 md:grid-cols-2 lg:grid-cols-3">
+            {amonraSections.map((section) => (
+              <li class="border-b border-antique-gold-soft/35">
                 <a
-                  class="group flex h-full min-h-44 flex-col p-6 text-ivory no-underline transition-colors hover:bg-night-raised focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-antique-gold"
+                  class="group grid h-full grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-3 py-4 text-ivory no-underline transition-colors hover:bg-night-raised focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-antique-gold md:py-6"
                   href={amonraSectionPath(section)}
                 >
-                  <span class="font-interface text-xs tracking-[0.18em] text-clay-red uppercase">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <h3 class="mt-6 font-editorial text-[1.8rem] font-medium text-ivory group-hover:text-old-papyrus">
-                    {section.title}
-                  </h3>
-                  <span class="mt-auto pt-6 font-interface text-sm font-semibold text-antique-gold">
-                    Entrar <span aria-hidden="true">→</span>
+                  <div>
+                    <h3 class="font-editorial text-2xl font-medium text-ivory group-hover:text-old-papyrus">
+                      {section.title}
+                    </h3>
+                    <p class="mt-1 text-sm leading-relaxed text-ivory-muted">
+                      {section.description}
+                    </p>
+                  </div>
+                  <span aria-hidden="true" class="text-xl text-antique-gold">
+                    →
                   </span>
                 </a>
               </li>
             ))}
           </ol>
         </nav>
+      </Container>
+    </section>
+    <section
+      class="border-b border-antique-gold-soft/50 bg-paper py-20 text-paper-ink lg:py-28"
+      id="proposito"
+      aria-label="Propósito"
+    >
+      <Container>
+        <AmonraPurpose />
       </Container>
     </section>
   </article>
