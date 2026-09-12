@@ -6,7 +6,7 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev --port 4323",
+    "dev": "astro dev --port 4321",
     "build": "astro build",
     "check": "astro check && eslint . && prettier --check .",
     "lint": "eslint .",

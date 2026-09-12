@@ -50,7 +50,11 @@ export const amonraSections = [
     title: "Numerología",
     legacyPath: "index_numerologia.htm",
   },
-  { slug: "oraculos", title: "Oráculos", legacyPath: "amonra.cl/index_oraculos.htm" },
+  {
+    slug: "oraculos",
+    title: "Oráculos",
+    legacyPath: "amonra.cl/index_oraculos.htm",
+  },
   {
     slug: "runas",
     title: "Runas",

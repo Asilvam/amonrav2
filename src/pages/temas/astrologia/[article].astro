@@ -1,0 +1,169 @@
+---
+import { Image } from "astro:assets";
+import AstrologyArticleContent from "../../../components/amonra/AstrologyArticleContent.astro";
+import Breadcrumbs from "../../../components/common/Breadcrumbs.astro";
+import Container from "../../../components/layout/Container.astro";
+import {
+  astrologyArticlePath,
+  astrologyArticles,
+  type AstrologyArticle,
+  type AstrologyArticleSlug,
+} from "../../../config/astrology-articles";
+import AmonraLayout from "../../../layouts/AmonraLayout.astro";
+import astrologyAstros from "../../../assets/amonra/astrologia-astros.jpg";
+import astrologyCaldea from "../../../assets/amonra/astrologia-caldea.jpg";
+import astrologyCartaAstral from "../../../assets/amonra/astrologia-carta-astral.jpg";
+import astrologyEcliptica from "../../../assets/amonra/astrologia-ecliptica.png";
+import astrologyHistory from "../../../assets/amonra/astrologia-historia.jpg";
+import astrologyOccidental from "../../../assets/amonra/astrologia-occidental.jpg";
+import astrologyZodiac from "../../../assets/amonra/astrologia-zodiaco.jpg";
+import personalChart from "../../../assets/amonra/tu-carta-astral.jpg";
+
+interface Props {
+  article: AstrologyArticle;
+}
+
+export function getStaticPaths() {
+  return astrologyArticles.map((article) => ({
+    params: { article: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const currentIndex = astrologyArticles.findIndex(
+  (candidate) => candidate.slug === article.slug,
+);
+const previous =
+  currentIndex > 0 ? astrologyArticles[currentIndex - 1] : undefined;
+const next =
+  currentIndex < astrologyArticles.length - 1
+    ? astrologyArticles[currentIndex + 1]
+    : undefined;
+
+const articleImages = {
+  "astrologia-occidental": astrologyOccidental,
+  "antecedentes-historicos": astrologyHistory,
+  "vision-caldea": astrologyCaldea,
+  ecliptica: astrologyEcliptica,
+  "zodiaco-signos": astrologyZodiac,
+  astros: astrologyAstros,
+  "que-es-carta-astral": astrologyCartaAstral,
+  "tu-carta-astral": personalChart,
+} as const;
+
+const articleImageAlt: Record<AstrologyArticleSlug, string> = {
+  "astrologia-occidental":
+    "Representación de las tradiciones astrológicas occidental y védica",
+  "antecedentes-historicos":
+    "Representación histórica del estudio de la astrología",
+  "vision-caldea": "Representación caldea vinculada al estudio del cielo",
+  ecliptica: "Diagrama de la eclíptica y la órbita terrestre",
+  "zodiaco-signos": "Rueda con los doce signos del zodiaco",
+  astros: "Representación simbólica de los astros",
+  "que-es-carta-astral": "Carta astral circular con signos y casas",
+  "tu-carta-astral": "Representación de una carta astral personal",
+};
+---
+
+<AmonraLayout
+  title={`${article.title} | Astrología`}
+  description={article.description}
+>
+  <article>
+    <div class="border-b border-antique-gold-soft/35 bg-night">
+      <Container size="wide" class="py-4">
+        <Breadcrumbs
+          items={[
+            { label: "Inicio", href: "/" },
+            { label: "Astrología", href: "/temas/astrologia/" },
+            { label: article.title },
+          ]}
+        />
+      </Container>
+    </div>
+
+    <header class="border-b border-antique-gold-soft/45 bg-[linear-gradient(120deg,var(--color-legacy-violet-deep),var(--color-surface-warm)_62%)]">
+      <Container class="grid items-center gap-8 py-8 lg:grid-cols-[minmax(22rem,1fr)_minmax(22rem,0.85fr)] lg:py-10">
+        <div>
+          <p class="eyebrow text-antique-gold">Astrología</p>
+          <h1 class="mt-5 max-w-[16ch] font-editorial text-[clamp(3rem,6vw,5.8rem)] leading-[0.95] font-medium tracking-[-0.04em] text-ivory">
+            {article.title}
+          </h1>
+          <p class="mt-5 max-w-[34rem] font-editorial text-[clamp(1.2rem,2vw,1.55rem)] leading-snug italic text-old-papyrus">
+            {article.description}
+          </p>
+        </div>
+
+        <figure class="m-0">
+          <Image
+            src={articleImages[article.slug]}
+            alt={articleImageAlt[article.slug]}
+            widths={[420, 640, 880]}
+            sizes="(min-width: 1024px) 42vw, 92vw"
+            loading="eager"
+            class:list={[
+              "mx-auto w-full rounded-xl border border-antique-gold-soft/35 object-contain shadow-2xl",
+              article.slug === "vision-caldea" ||
+              article.slug === "tu-carta-astral"
+                ? "max-h-[19rem] max-w-[18rem] bg-night-soft"
+                : "max-h-[19rem] max-w-[34rem] bg-night-soft",
+            ]}
+          />
+        </figure>
+      </Container>
+    </header>
+
+    <section class="border-b border-antique-gold-soft/45 bg-paper py-16 text-paper-ink lg:py-20">
+      <Container>
+        <AstrologyArticleContent article={article} />
+      </Container>
+    </section>
+
+    <nav
+      class="border-b border-antique-gold-soft/35 bg-night-soft"
+      aria-label="Continuar por los temas de astrología"
+    >
+      <Container class="grid gap-px bg-antique-gold-soft/30 p-px md:grid-cols-2">
+        {previous ? (
+          <a
+            class="group bg-night px-6 py-6 text-ivory no-underline hover:bg-night-raised"
+            href={astrologyArticlePath(previous)}
+          >
+            <span class="eyebrow text-antique-gold">Anterior</span>
+            <span class="mt-2 block font-editorial text-2xl">
+              ← {previous.title}
+            </span>
+          </a>
+        ) : (
+          <a
+            class="group bg-night px-6 py-6 text-ivory no-underline hover:bg-night-raised"
+            href="/temas/astrologia/"
+          >
+            <span class="eyebrow text-antique-gold">Índice</span>
+            <span class="mt-2 block font-editorial text-2xl">← Astrología</span>
+          </a>
+        )}
+        {next ? (
+          <a
+            class="group bg-night px-6 py-6 text-right text-ivory no-underline hover:bg-night-raised"
+            href={astrologyArticlePath(next)}
+          >
+            <span class="eyebrow text-antique-gold">Siguiente</span>
+            <span class="mt-2 block font-editorial text-2xl">
+              {next.title} →
+            </span>
+          </a>
+        ) : (
+          <a
+            class="group bg-night px-6 py-6 text-right text-ivory no-underline hover:bg-night-raised"
+            href="/temas/astrologia/"
+          >
+            <span class="eyebrow text-antique-gold">Índice</span>
+            <span class="mt-2 block font-editorial text-2xl">Astrología →</span>
+          </a>
+        )}
+      </Container>
+    </nav>
+  </article>
+</AmonraLayout>

@@ -23,7 +23,10 @@ const { items } = Astro.props;
               {item.label}
             </a>
           ) : (
-            <span aria-current={isLast ? "page" : undefined} class={isLast ? "text-ivory" : undefined}>
+            <span
+              aria-current={isLast ? "page" : undefined}
+              class={isLast ? "text-ivory" : undefined}
+            >
               {item.label}
             </span>
           )}

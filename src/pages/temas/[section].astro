@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import AmuletsContent from "../../components/amonra/AmuletsContent.astro";
+import AstrologyContent from "../../components/amonra/AstrologyContent.astro";
 import FoundationContent from "../../components/amonra/FoundationContent.astro";
 import HistoryContent from "../../components/amonra/HistoryContent.astro";
 import Breadcrumbs from "../../components/common/Breadcrumbs.astro";
@@ -13,6 +14,7 @@ import {
 } from "../../config/amonra-sections";
 import AmonraLayout from "../../layouts/AmonraLayout.astro";
 import amuletsHero from "../../assets/amonra/amuletos-hero.jpg";
+import astrologyHero from "../../assets/amonra/astrologia-hero.jpg";
 import foundationHero from "../../assets/amonra/fundacion-hero.png";
 import historyHero from "../../assets/amonra/historia-hero.jpg";
 
@@ -28,6 +30,12 @@ export function getStaticPaths() {
 }
 
 const { section } = Astro.props;
+const hasCompactHero = [
+  "fundacion",
+  "historia",
+  "amuletos",
+  "astrologia",
+].includes(section.slug);
 const currentIndex = amonraSections.findIndex(
   (candidate) => candidate.slug === section.slug,
 );
@@ -55,7 +63,7 @@ const next =
     <header class="border-b border-antique-gold-soft/45 bg-[linear-gradient(120deg,var(--color-legacy-violet-deep),var(--color-surface-warm)_62%)]">
       <Container
         class={
-          section.slug === "fundacion" || section.slug === "historia" || section.slug === "amuletos"
+          hasCompactHero
             ? "grid items-center gap-8 py-8 lg:grid-cols-[minmax(18rem,0.7fr)_minmax(30rem,1.3fr)] lg:py-10"
             : "py-20 lg:py-28"
         }
@@ -69,17 +77,23 @@ const next =
           </h1>
           {section.slug === "fundacion" && (
             <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
-              {amonraMessages.fundamento} Al servicio de quienes mas lo necesitan.
+              {amonraMessages.fundamento} Al servicio de quienes más lo
+              necesitan.
             </p>
           )}
           {section.slug === "historia" && (
             <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
-              Raices simbolicas de Amon y Ra en la tradicion espiritual egipcia.
+              Raíces simbólicas de Amon y Ra en la tradición espiritual egipcia.
             </p>
           )}
           {section.slug === "amuletos" && (
             <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
               Diferencias y uso tradicional de amuletos y talismanes.
+            </p>
+          )}
+          {section.slug === "astrologia" && (
+            <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
+              Una mirada a los astros, sus movimientos y sus influencias.
             </p>
           )}
         </div>
@@ -122,6 +136,19 @@ const next =
             />
           </figure>
         )}
+
+        {section.slug === "astrologia" && (
+          <figure class="m-0">
+            <Image
+              src={astrologyHero}
+              alt="Representación renacentista de la esfera celeste"
+              widths={[400, 640, 800]}
+              sizes="(min-width: 1024px) 42vw, 88vw"
+              loading="eager"
+              class="mx-auto max-h-[20rem] w-full max-w-[18rem] object-contain drop-shadow-2xl"
+            />
+          </figure>
+        )}
       </Container>
     </header>
 
@@ -145,6 +172,14 @@ const next =
       <section class="border-b border-antique-gold-soft/45 bg-paper py-20 text-paper-ink lg:py-24">
         <Container>
           <AmuletsContent />
+        </Container>
+      </section>
+    )}
+
+    {section.slug === "astrologia" && (
+      <section class="border-b border-antique-gold-soft/45 bg-paper py-20 text-paper-ink lg:py-24">
+        <Container>
+          <AstrologyContent />
         </Container>
       </section>
     )}

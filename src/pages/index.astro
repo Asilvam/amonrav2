@@ -5,20 +5,22 @@ import Container from "../components/layout/Container.astro";
 import { amonraMessages } from "../config/amonra-messages";
 import { amonraSectionPath, amonraSections } from "../config/amonra-sections";
 import AmonraLayout from "../layouts/AmonraLayout.astro";
+import papyrusTexture from "../assets/amonra/papiro-jeroglificos.jpg";
 import egyptianPortal from "../assets/amonra/portal-egipcio.png";
 ---
 
 <AmonraLayout
   title="Amonra"
-  description={
-    "Red de Luz Interior Amonra Chile. " + amonraMessages.principal
-  }
+  description={"Red de Luz Interior Amonra Chile. " + amonraMessages.principal}
   image={egyptianPortal.src}
 >
   <article class="overflow-clip">
-    <header class="relative isolate border-b border-antique-gold-soft/40 bg-night">
+    <header
+      class="relative isolate border-b border-[#9b7135]/55 bg-[#eadb9b]"
+      style={`background-image: linear-gradient(rgb(246 232 174 / 82%), rgb(229 207 137 / 88%)), url("${papyrusTexture.src}"); background-repeat: repeat;`}
+    >
       <div
-        class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_74%_40%,color-mix(in_srgb,var(--color-mineral-blue-soft)_55%,transparent),transparent_42%)]"
+        class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_72%_42%,rgb(255_244_190/0.72),transparent_42%),linear-gradient(90deg,rgb(112_71_23/0.06),transparent_38%)]"
         aria-hidden="true"
       ></div>
       <Container
@@ -26,23 +28,24 @@ import egyptianPortal from "../assets/amonra/portal-egipcio.png";
         class="grid min-h-[36rem] items-center gap-12 py-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(30rem,1.1fr)] lg:py-24"
       >
         <div class="relative z-10 max-w-[44rem]">
-          <h1 class="font-editorial text-[clamp(4.25rem,8vw,8rem)] leading-[0.88] font-medium tracking-[-0.06em] text-ivory uppercase">
+          <p class="eyebrow text-[#78531d]">
+            Red de Luz Interior · Amonra Chile
+          </p>
+          <h1 class="mt-5 font-editorial text-[clamp(4.25rem,8vw,8rem)] leading-[0.88] font-medium tracking-[-0.06em] text-[#2e1b10] uppercase drop-shadow-[0_1px_0_rgb(255_249_220/0.75)]">
             Amonra
           </h1>
-          <p class="mt-7 max-w-[28ch] border-l-2 border-antique-gold/60 bg-[color-mix(in_srgb,var(--color-antique-gold)_10%,transparent)] px-5 py-4 font-editorial text-[clamp(1.2rem,2vw,1.65rem)] leading-[1.25] italic text-antique-gold-soft">
+          <p class="mt-7 max-w-[24ch] font-editorial text-[clamp(1.8rem,3vw,2.7rem)] leading-tight font-medium text-[#782b20]">
             {amonraMessages.lema}
           </p>
-          <div class="mt-9 flex flex-wrap items-center gap-5 font-interface text-sm">
+          <div class="mt-8 flex flex-wrap items-center gap-5 font-interface text-sm">
             <a
-              class="group border border-antique-gold-soft bg-antique-gold px-6 py-3.5 font-semibold no-underline transition-colors hover:bg-old-papyrus"
+              class="group border border-[#552018] bg-[#782b20] px-6 py-3.5 font-semibold text-[#fff8df] no-underline shadow-[0_7px_18px_rgb(75_38_12/0.16)] transition-colors hover:bg-[#5c2119] hover:text-white"
               href="#conocimiento-practica"
             >
-              <span class="text-night group-hover:text-night">
-                Conocimiento y práctica
-              </span>
+              <span>Conocimiento y práctica</span>
             </a>
             <a
-              class="px-1 py-3 font-semibold text-ivory underline decoration-antique-gold-soft underline-offset-8"
+              class="px-1 py-3 font-semibold text-[#372318] underline decoration-[#8f5c26] underline-offset-8 hover:text-[#782b20]"
               href="#proposito"
             >
               Nuestro propósito
@@ -52,7 +55,7 @@ import egyptianPortal from "../assets/amonra/portal-egipcio.png";
 
         <figure class="relative m-0">
           <div
-            class="pointer-events-none absolute inset-[14%] -z-10 rounded-full bg-antique-gold/15 blur-3xl"
+            class="pointer-events-none absolute inset-[14%] -z-10 rounded-full bg-[#fff4be]/55 blur-3xl"
             aria-hidden="true"
           ></div>
           <Image
@@ -61,11 +64,8 @@ import egyptianPortal from "../assets/amonra/portal-egipcio.png";
             widths={[640, 960, 1280, 1367]}
             sizes="(min-width: 1024px) 48vw, 100vw"
             loading="eager"
-            class="max-h-[38rem] w-full object-contain drop-shadow-2xl"
+            class="max-h-[38rem] w-full object-contain drop-shadow-[0_22px_26px_rgb(78_45_13/0.24)]"
           />
-          <figcaption class="mt-3 text-right font-interface text-xs tracking-[0.14em] text-antique-gold-soft uppercase">
-            {amonraMessages.guia}
-          </figcaption>
         </figure>
       </Container>
     </header>

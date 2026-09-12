@@ -1,15 +1,13 @@
 ---
 import Container from "../layout/Container.astro";
-import { amonraMessages } from "../../config/amonra-messages";
 
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="border-t border-antique-gold-soft/35 bg-[var(--color-surface-warm)] text-ivory-muted">
   <Container>
-    <div class="grid grid-cols-[auto_minmax(0,1fr)_auto] items-baseline gap-5 py-7 font-interface text-[var(--font-size-small)] max-[40rem]:grid-cols-1 max-[40rem]:gap-2">
+    <div class="flex items-baseline justify-between gap-5 py-7 font-interface text-[var(--font-size-small)] max-[40rem]:flex-col max-[40rem]:gap-2">
       <p>Red de Luz Interior Amonra Chile</p>
-      <p class="text-antique-gold-soft">{amonraMessages.lema}</p>
       <small>© {currentYear}</small>
     </div>
   </Container>
