@@ -139,35 +139,35 @@
     <div
       role="tablist"
       aria-label="Indice de amuletos"
-      class="tab-buttons mt-5 flex flex-wrap gap-2 border-b-2 border-antique-gold-soft/60 pb-0"
+      class="tab-buttons mt-5 -mx-4 flex gap-2 overflow-x-auto border-b-2 border-antique-gold-soft/60 px-4 pb-0 md:mx-0 md:flex-wrap md:px-0"
     >
       <label
         for="amu-tab-signos"
-        class="amulet-tab border-2 border-antique-gold-soft/70 border-b-transparent bg-[linear-gradient(180deg,#f6ecd3,#e6d6b4)] px-7 py-4 text-left font-editorial text-[1.22rem] leading-none text-paper-ink transition-all hover:bg-old-papyrus"
+        class="amulet-tab shrink-0 whitespace-nowrap border-2 border-antique-gold-soft/70 border-b-transparent bg-[linear-gradient(180deg,#f6ecd3,#e6d6b4)] px-5 py-3.5 text-left font-editorial text-[1.1rem] leading-none text-paper-ink transition-all hover:bg-old-papyrus md:px-7 md:py-4 md:text-[1.22rem]"
       >
         Signos del Zodiaco
       </label>
       <label
         for="amu-tab-i"
-        class="amulet-tab border-2 border-antique-gold-soft/70 border-b-transparent bg-[linear-gradient(180deg,#f6ecd3,#e6d6b4)] px-7 py-4 text-left font-editorial text-[1.22rem] leading-none text-paper-ink transition-all hover:bg-old-papyrus"
+        class="amulet-tab shrink-0 whitespace-nowrap border-2 border-antique-gold-soft/70 border-b-transparent bg-[linear-gradient(180deg,#f6ecd3,#e6d6b4)] px-5 py-3.5 text-left font-editorial text-[1.1rem] leading-none text-paper-ink transition-all hover:bg-old-papyrus md:px-7 md:py-4 md:text-[1.22rem]"
       >
         Amuletos I
       </label>
       <label
         for="amu-tab-ii"
-        class="amulet-tab border-2 border-antique-gold-soft/70 border-b-transparent bg-[linear-gradient(180deg,#f6ecd3,#e6d6b4)] px-7 py-4 text-left font-editorial text-[1.22rem] leading-none text-paper-ink transition-all hover:bg-old-papyrus"
+        class="amulet-tab shrink-0 whitespace-nowrap border-2 border-antique-gold-soft/70 border-b-transparent bg-[linear-gradient(180deg,#f6ecd3,#e6d6b4)] px-5 py-3.5 text-left font-editorial text-[1.1rem] leading-none text-paper-ink transition-all hover:bg-old-papyrus md:px-7 md:py-4 md:text-[1.22rem]"
       >
         Amuletos II
       </label>
       <label
         for="amu-tab-iii"
-        class="amulet-tab border-2 border-antique-gold-soft/70 border-b-transparent bg-[linear-gradient(180deg,#f6ecd3,#e6d6b4)] px-7 py-4 text-left font-editorial text-[1.22rem] leading-none text-paper-ink transition-all hover:bg-old-papyrus"
+        class="amulet-tab shrink-0 whitespace-nowrap border-2 border-antique-gold-soft/70 border-b-transparent bg-[linear-gradient(180deg,#f6ecd3,#e6d6b4)] px-5 py-3.5 text-left font-editorial text-[1.1rem] leading-none text-paper-ink transition-all hover:bg-old-papyrus md:px-7 md:py-4 md:text-[1.22rem]"
       >
         Amuletos III
       </label>
       <label
         for="amu-tab-iv"
-        class="amulet-tab border-2 border-antique-gold-soft/70 border-b-transparent bg-[linear-gradient(180deg,#f6ecd3,#e6d6b4)] px-7 py-4 text-left font-editorial text-[1.22rem] leading-none text-paper-ink transition-all hover:bg-old-papyrus"
+        class="amulet-tab shrink-0 whitespace-nowrap border-2 border-antique-gold-soft/70 border-b-transparent bg-[linear-gradient(180deg,#f6ecd3,#e6d6b4)] px-5 py-3.5 text-left font-editorial text-[1.1rem] leading-none text-paper-ink transition-all hover:bg-old-papyrus md:px-7 md:py-4 md:text-[1.22rem]"
       >
         Amuletos IV
       </label>
@@ -922,6 +922,16 @@
 </div>
 
 <style>
+  [data-amulet-tabs] .tab-buttons {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  [data-amulet-tabs] .tab-buttons::-webkit-scrollbar {
+    display: none;
+  }
+
   [data-amulet-tabs] .tab-buttons .amulet-tab {
     display: inline-block;
     cursor: pointer;
