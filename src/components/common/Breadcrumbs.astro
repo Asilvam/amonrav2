@@ -19,13 +19,19 @@ const { items } = Astro.props;
       return (
         <li class="flex items-center gap-2">
           {item.href && !isLast ? (
-            <a class="text-inherit" href={item.href}>
+            <a
+              class="inline-flex min-h-[2.75rem] items-center py-1 text-inherit"
+              href={item.href}
+            >
               {item.label}
             </a>
           ) : (
             <span
               aria-current={isLast ? "page" : undefined}
-              class={isLast ? "text-ivory" : undefined}
+              class:list={[
+                "inline-flex min-h-[2.75rem] items-center py-1",
+                isLast ? "text-ivory" : undefined,
+              ]}
             >
               {item.label}
             </span>

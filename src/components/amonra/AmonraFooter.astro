@@ -4,7 +4,7 @@ import Container from "../layout/Container.astro";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="border-t border-antique-gold-soft/35 bg-[var(--color-surface-warm)] text-ivory-muted">
+<footer class="border-t border-antique-gold-soft/35 bg-[var(--color-surface-warm)] pb-[env(safe-area-inset-bottom,0px)] text-ivory-muted">
   <Container>
     <div class="flex items-baseline justify-between gap-5 py-7 font-interface text-[var(--font-size-small)] max-[40rem]:flex-col max-[40rem]:gap-2">
       <p>Red de Luz Interior Amonra Chile</p>
