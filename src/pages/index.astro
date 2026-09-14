@@ -1,10 +1,10 @@
 ---
 import AmonraHero from "../components/amonra/AmonraHero.astro";
 import ExploreByIntent from "../components/amonra/ExploreByIntent";
+import KnowledgePaths from "../components/amonra/KnowledgePaths.astro";
 import AmonraPurpose from "../components/amonra/AmonraPurpose.astro";
 import Container from "../components/layout/Container.astro";
 import { amonraMessages } from "../config/amonra-messages";
-import { amonraSectionPath, amonraSections } from "../config/amonra-sections";
 import AmonraLayout from "../layouts/AmonraLayout.astro";
 import egyptianPortal from "../assets/amonra/portal-egipcio.png";
 ---
@@ -19,51 +19,8 @@ import egyptianPortal from "../assets/amonra/portal-egipcio.png";
 
     <ExploreByIntent client:visible />
 
-    <section
-      class="border-b border-antique-gold-soft/40 bg-[var(--color-surface-warm)] py-12 lg:py-20"
-      id="conocimiento-practica"
-      aria-labelledby="universo-amonra-title"
-    >
-      <Container>
-        <div class="border-b border-antique-gold-soft/35 pb-10">
-          <p class="eyebrow text-antique-gold">Conocimiento y práctica</p>
-          <h2
-            class="mt-4 max-w-[16ch] font-editorial text-[clamp(2.7rem,5vw,4.8rem)] leading-none font-medium text-ivory"
-            id="universo-amonra-title"
-          >
-            Menú de temas
-          </h2>
-          <p class="mt-6 max-w-[42rem] font-editorial text-xl leading-relaxed italic text-old-papyrus">
-            Selecciona una categoría para comenzar.
-          </p>
-        </div>
+    <KnowledgePaths />
 
-        <nav class="mt-6" aria-label="Temas de Amonra">
-          <ol class="grid list-none gap-x-8 p-0 md:grid-cols-2 lg:grid-cols-3">
-            {amonraSections.map((section) => (
-              <li class="border-b border-antique-gold-soft/35">
-                <a
-                  class="group grid h-full grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-3 py-4 text-ivory no-underline transition-colors hover:bg-night-raised focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-antique-gold md:py-6"
-                  href={amonraSectionPath(section)}
-                >
-                  <div>
-                    <h3 class="font-editorial text-2xl font-medium text-ivory group-hover:text-old-papyrus">
-                      {section.title}
-                    </h3>
-                    <p class="mt-1 text-sm leading-relaxed text-ivory-muted">
-                      {section.description}
-                    </p>
-                  </div>
-                  <span aria-hidden="true" class="text-xl text-antique-gold">
-                    →
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ol>
-        </nav>
-      </Container>
-    </section>
     <section
       class="border-b border-antique-gold-soft/50 bg-paper py-20 text-paper-ink lg:py-28"
       id="proposito"
