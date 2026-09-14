@@ -1,0 +1,66 @@
+---
+import Container from "../layout/Container.astro";
+import {
+  getFeaturedSections,
+  amonraSectionPath,
+} from "../../config/amonra-sections";
+
+const featured = getFeaturedSections()
+  .filter((s) => s.status === "published")
+  .slice(0, 4);
+
+const groupLabels: Record<string, string> = {
+  amonra: "Amonra",
+  autoconocimiento: "Autoconocimiento",
+  simbolismo: "Sabiduría simbólica",
+  practicas: "Prácticas",
+  bienestar: "Bienestar",
+};
+---
+
+{featured.length > 0 && (
+  <section
+    class="border-b border-antique-gold-soft/40 bg-night py-16 lg:py-24"
+    aria-labelledby="featured-content-title"
+  >
+    <Container>
+      <div class="mb-12 border-b border-antique-gold-soft/35 pb-6">
+        <h2
+          class="font-editorial text-[clamp(2.4rem,4vw,3.5rem)] font-medium text-ivory"
+          id="featured-content-title"
+        >
+          Destacados
+        </h2>
+      </div>
+
+      <ul class="grid list-none gap-6 p-0 md:grid-cols-2 lg:grid-cols-3">
+        {featured.map((section) => (
+          <li>
+            <a
+              class="group flex h-full flex-col border border-antique-gold-soft/30 bg-night-soft p-6 no-underline transition-colors hover:border-antique-gold-soft/70 hover:bg-night-raised focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-antique-gold md:p-8"
+              href={amonraSectionPath(section)}
+            >
+              <p class="mb-4 font-interface text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-antique-gold">
+                {groupLabels[section.group]}
+              </p>
+              <h3 class="font-editorial text-2xl font-medium text-ivory group-hover:text-old-papyrus">
+                {section.title}
+              </h3>
+              <p class="mt-3 text-[0.95rem] leading-relaxed text-ivory-muted">
+                {section.description}
+              </p>
+              <div class="mt-auto pt-8">
+                <span
+                  class="block font-interface text-sm font-semibold text-antique-gold"
+                  aria-hidden="true"
+                >
+                  Leer →
+                </span>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </Container>
+  </section>
+)}

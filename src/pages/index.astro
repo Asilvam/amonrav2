@@ -2,6 +2,7 @@
 import AmonraHero from "../components/amonra/AmonraHero.astro";
 import ExploreByIntent from "../components/amonra/ExploreByIntent";
 import KnowledgePaths from "../components/amonra/KnowledgePaths.astro";
+import FeaturedContent from "../components/amonra/FeaturedContent.astro";
 import AmonraPurpose from "../components/amonra/AmonraPurpose.astro";
 import Container from "../components/layout/Container.astro";
 import { amonraMessages } from "../config/amonra-messages";
@@ -20,6 +21,8 @@ import egyptianPortal from "../assets/amonra/portal-egipcio.png";
     <ExploreByIntent client:visible />
 
     <KnowledgePaths />
+
+    <FeaturedContent />
 
     <section
       class="border-b border-antique-gold-soft/50 bg-paper py-20 text-paper-ink lg:py-28"
