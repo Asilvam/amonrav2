@@ -1,5 +1,6 @@
 ---
 import AmonraHero from "../components/amonra/AmonraHero.astro";
+import ExploreByIntent from "../components/amonra/ExploreByIntent";
 import AmonraPurpose from "../components/amonra/AmonraPurpose.astro";
 import Container from "../components/layout/Container.astro";
 import { amonraMessages } from "../config/amonra-messages";
@@ -15,6 +16,8 @@ import egyptianPortal from "../assets/amonra/portal-egipcio.png";
 >
   <article class="overflow-clip">
     <AmonraHero />
+
+    <ExploreByIntent client:visible />
 
     <section
       class="border-b border-antique-gold-soft/40 bg-[var(--color-surface-warm)] py-12 lg:py-20"
