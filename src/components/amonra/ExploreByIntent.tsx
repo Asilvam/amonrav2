@@ -39,6 +39,7 @@ export default function ExploreByIntent() {
 
   return (
     <section
+      id="explorar"
       aria-labelledby="explore-intent-title"
       className="border-b border-antique-gold-soft/40 bg-night py-16 lg:py-24"
     >
