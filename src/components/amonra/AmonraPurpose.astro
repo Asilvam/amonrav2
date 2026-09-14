@@ -36,11 +36,19 @@ import egyptianEmblem from "../../assets/amonra/emblema-egipcio.png";
     </div>
   </section>
 
-  <details class="border-t border-antique-gold-soft/50 pt-6">
-    <summary class="w-fit cursor-pointer py-3 font-interface font-semibold text-clay-ink">
-      Leer nuestro propósito completo
+  <details class="group/details border-t border-antique-gold-soft/50 pt-6">
+    <summary class="group w-fit cursor-pointer list-none py-3 font-interface font-semibold text-clay-ink transition-colors hover:text-clay-red focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-antique-gold [&::-webkit-details-marker]:hidden">
+      <span class="inline-flex items-center gap-2">
+        Leer nuestro propósito completo
+        <span
+          class="text-antique-gold transition-transform group-open/details:rotate-180"
+          aria-hidden="true"
+        >
+          ↓
+        </span>
+      </span>
     </summary>
-    <div class="mt-8 space-y-10">
+    <div class="mt-8 space-y-10 animate-[fade-in_0.4s_ease-out]">
       <section aria-labelledby="como-vivimos-title">
         <div class="mb-6 flex items-end justify-between gap-6 border-b border-antique-gold-soft/35 pb-5">
           <h3
