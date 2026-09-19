@@ -75,7 +75,10 @@ const groups: { id: AmonraSectionGroup; label: string }[] = [
                         </span>
                       </a>
                     ) : (
-                      <div class="grid h-full grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-3 py-4 md:py-6 opacity-70">
+                      <div
+                        class="grid h-full grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-3 py-4 md:py-6 opacity-70"
+                        aria-disabled="true"
+                      >
                         <div>
                           <h4 class="font-editorial text-2xl font-medium text-ivory-muted">
                             {section.title}
