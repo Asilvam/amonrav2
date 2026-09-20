@@ -74,6 +74,7 @@ export const amonraSections = [
     group: "practicas",
     intentions: ["explorar", "bienestar"],
     status: "published",
+    featured: true,
     order: 5,
     legacyPath: "index_gemas.htm",
   },
@@ -94,6 +95,7 @@ export const amonraSections = [
     group: "practicas",
     intentions: ["bienestar", "explorar"],
     status: "published",
+    featured: true,
     order: 7,
     legacyPath: "amonra.cl/index_inciensos.html",
   },
@@ -144,6 +146,7 @@ export const amonraSections = [
     group: "autoconocimiento",
     intentions: ["orientacion", "profundizar"],
     status: "published",
+    featured: true,
     order: 12,
     legacyPath: "index_suenos.html",
   },
@@ -174,6 +177,7 @@ export const amonraSections = [
     group: "practicas",
     intentions: ["explorar", "bienestar"],
     status: "published",
+    featured: true,
     order: 15,
     legacyPath: "velas.html",
   },
@@ -190,9 +194,13 @@ export function getPublishedSections(): AmonraSection[] {
 }
 
 export function getFeaturedSections(): AmonraSection[] {
-  return amonraSections.filter(
-    (s: AmonraSection) => s.featured,
-  ) as unknown as AmonraSection[];
+  return amonraSections
+    .filter((s: AmonraSection) => s.featured)
+    .sort(
+      (a, b) =>
+        (a.order ?? Number.MAX_SAFE_INTEGER) -
+        (b.order ?? Number.MAX_SAFE_INTEGER),
+    ) as unknown as AmonraSection[];
 }
 
 export function getSectionsByGroup(group: AmonraSectionGroup): AmonraSection[] {

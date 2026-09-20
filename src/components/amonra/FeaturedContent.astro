@@ -5,9 +5,7 @@ import {
   amonraSectionPath,
 } from "../../config/amonra-sections";
 
-const featured = getFeaturedSections()
-  .filter((s) => s.status === "published")
-  .slice(0, 4);
+const featured = getFeaturedSections().filter((s) => s.status === "published");
 
 const groupLabels: Record<string, string> = {
   amonra: "Amonra",
