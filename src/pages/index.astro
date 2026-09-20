@@ -7,13 +7,12 @@ import AmonraPurpose from "../components/amonra/AmonraPurpose.astro";
 import Container from "../components/layout/Container.astro";
 import { amonraMessages } from "../config/amonra-messages";
 import AmonraLayout from "../layouts/AmonraLayout.astro";
-import egyptianPortal from "../assets/amonra/portal-egipcio.png";
 ---
 
 <AmonraLayout
   title="Amonra"
   description={"Red de Luz Interior Amonra Chile. " + amonraMessages.principal}
-  image={egyptianPortal.src}
+  image="/amonra-og.png"
 >
   <article class="overflow-clip">
     <AmonraHero />
