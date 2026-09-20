@@ -12,6 +12,35 @@ const gemTabs = [
   { id: "catalogo", label: "Catálogo de gemas y minerales" },
   { id: "zodiaco", label: "Zodíaco y correspondencias caldeas" },
 ];
+
+const additionalGems = [
+  "Diamante",
+  "Esmeralda",
+  "Zafiro",
+  "Rubí",
+  "Ópalo",
+  "Topacio",
+  "Jaspe",
+  "Aguamarina",
+  "Ágata",
+  "Perla",
+  "Coral",
+  "Amazonita",
+  "Sodalita",
+  "Ojo de gato",
+  "Obsidiana",
+  "Cornalina",
+  "Azabache",
+  "Azurita",
+  "Heliotropo",
+  "Onix",
+  "Crisocola",
+  "Granate",
+  "Malaquita",
+  "Peridoto",
+  "Turmalina",
+  "Celestita",
+];
 ---
 
 <div class="space-y-12">
@@ -32,18 +61,16 @@ const gemTabs = [
 
     <div class="gems-columns mt-6 grid gap-x-10 gap-y-5 lg:grid-cols-2">
       <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
-        El uso de cualquier forma de cristal de cuarzo beneficia el campo vital.
-        ¿Qué podemos hacer con estas gemas para ayudarnos a nosotros mismos?
-        Podemos meditar con ellas, colocarlas sobre una zona del cuerpo que
-        requiera sosiego, llevarlas en el bolsillo o lucirlas como joyas. Ellas
-        actúan como un amigo leal cuya compañía serena entusiasma el espíritu.
+        En la tradición de Amonra, el cuarzo se utiliza como apoyo simbólico
+        para la contemplación. Podemos meditar con estas gemas, llevarlas en el
+        bolsillo o lucirlas como joyas; su presencia puede servir como un
+        recordatorio personal de calma, intención y cuidado.
       </p>
       <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
-        La tendencia natural del reino mineral es crear la armonía y el balance
-        perfecto. Cuando la energía pasa a través de un cristal de cuarzo se
-        armoniza y conserva su equilibrio primordial. Si las energías del
-        usuario están descompensadas, el cristal opera como un corrector natural
-        que reordena las frecuencias personales.
+        La tradición describe el reino mineral mediante imágenes de armonía y
+        equilibrio. En esta página esas expresiones se presentan como lenguaje
+        simbólico y espiritual, no como una explicación médica ni como un
+        mecanismo comprobado para modificar el organismo.
       </p>
       <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
         Fueron sobre todo los sacerdotes caldeos y babilonios de Mesopotamia
@@ -53,10 +80,10 @@ const gemTabs = [
         sobre la influencia que los minerales ejercen en el bienestar humano.
       </p>
       <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
-        Estudiaron escrupulosamente las cualidades de cada piedra y su utilidad
-        terapéutica y preventiva, estructurando un zodíaco mineral que hoy
-        reconstruimos con fidelidad. Cada piedra guarda una afinidad vibratoria
-        con un signo, consagrando la alianza entre el cielo y la tierra.
+        Estudiaron las cualidades atribuidas a cada piedra y construyeron un
+        zodíaco mineral que hoy presentamos como parte de esa tradición. Cada
+        piedra guarda, en este marco simbólico, una afinidad con un signo y con
+        determinadas virtudes contemplativas.
       </p>
     </div>
   </section>
@@ -74,33 +101,40 @@ const gemTabs = [
       <section id="sanacion" class="scroll-mt-8 space-y-10">
         <article class="reading-section">
           <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
-            Sanación tradicional con agua de cristal de cuarzo
+            Agua de cristal: práctica histórica y simbólica
           </h3>
           <div class="gems-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
             <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
-              Uno de los métodos más conocidos en la tradición para revitalizar
-              el organismo y armonizar el aura es la preparación del agua de
-              cristal. Este procedimiento aprovecha la capacidad del cuarzo para
-              impregnar el agua pura con su signatura electromagnética,
-              transformando sus propiedades físicas mediante la imposición
-              magnética del practicante.
+              Algunas corrientes esotéricas describen la preparación de agua de
+              cristal como un ritual de intención y contemplación. Se conserva
+              aquí para representar el contenido histórico del sitio original,
+              no como un procedimiento capaz de transformar el agua ni de
+              revitalizar o tratar el organismo.
             </p>
             <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
-              El cuarzo blanco transparente se utiliza como método preventivo y
-              vitalizante general, mientras que la amatista sin pulir se
-              recomienda cuando se desea acompañar a una persona que atraviesa
-              dolencias activas, gracias a la capacidad transmutadora de su
-              frecuencia violeta. El agua resultante absorbe no sólo las
-              cualidades intrínsecas de la gema, sino la programación consciente
-              depositada en ella.
+              El cuarzo blanco y la amatista aparecen en esa tradición como
+              símbolos de claridad y serenidad. Ninguna gema sustituye una
+              consulta médica y no se debe ingerir agua que haya estado en
+              contacto directo con minerales: su composición, tratamientos o
+              inclusiones pueden volverla insegura.
             </p>
           </div>
         </article>
 
         <div class="space-y-4">
           <h4 class="font-editorial text-2xl font-medium text-paper-ink">
-            Protocolo tradicional de preparación en 7 etapas
+            Descripción tradicional en 7 etapas
           </h4>
+          <div
+            class="rounded-xl border border-clay-red/30 bg-clay-red/5 px-5 py-4 text-sm leading-relaxed text-paper-muted"
+            role="note"
+          >
+            <strong class="text-paper-ink">Nota de seguridad:</strong> esta
+            secuencia se muestra únicamente como referencia cultural. No
+            recomendamos beber agua preparada con cristales, usarla para tratar
+            enfermedades ni seguir pautas de dosificación. Para cualquier
+            problema de salud, consulta a un profesional cualificado.
+          </div>
           <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {healingWaterSteps.map((step) => (
               <div class="flex flex-col justify-between rounded-xl border border-antique-gold-soft/40 bg-surface-warm/30 p-5 shadow-xs">
@@ -207,21 +241,21 @@ const gemTabs = [
       <section id="catalogo" class="scroll-mt-8 space-y-10">
         <article class="reading-section">
           <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
-            Catálogo enciclopédico de piedras y cristales
+            Selección de piedras y cristales
           </h3>
           <div class="gems-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
             <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
-              A lo largo de los siglos, diversas culturas han atesorado las
-              propiedades electromagnéticas y las virtudes curativas de los
-              minerales. Desde los cuarzos de la familia del sílice hasta las
-              gemas preciosas y resinas fósiles, cada piedra encierra una
-              frecuencia vibratoria distintiva.
+              A lo largo de los siglos, diversas culturas han atesorado las A lo
+              largo de los siglos, diversas culturas han atribuido significados
+              y usos rituales a los minerales. Desde los cuarzos de la familia
+              del sílice hasta las gemas preciosas y resinas fósiles, cada
+              piedra aparece en distintas tradiciones simbólicas.
             </p>
             <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
-              En este compendio histórico de Amonra se detallan los usos
-              terapéuticos tradicionales, la polaridad energética (emisora,
-              receptiva o equilibrante) y la aplicación espiritual de cada
-              mineral para acompañar la vida diaria con sabiduría.
+              Esta selección reúne los minerales desarrollados en la versión
+              actual y conserva sus asociaciones tradicionales. La polaridad
+              energética y los usos espirituales son categorías culturales, no
+              diagnósticos ni recomendaciones de salud.
             </p>
           </div>
         </article>
@@ -258,7 +292,7 @@ const gemTabs = [
                   </div>
                   <div>
                     <span class="font-semibold text-paper-ink">
-                      Uso terapéutico tradicional:
+                      Asociación tradicional (no médica):
                     </span>
                     <p class="max-w-none mt-1">{gem.traditionalHealing}</p>
                   </div>
@@ -270,6 +304,24 @@ const gemTabs = [
               </div>
             </div>
           ))}
+        </div>
+
+        <div class="rounded-xl border border-antique-gold-soft/40 bg-surface-warm/25 p-5">
+          <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+            Otras piedras mencionadas en el compendio original
+          </h4>
+          <p class="mt-2 text-sm leading-relaxed text-paper-muted">
+            Estos nombres también formaban parte del material antiguo. Se
+            mantienen como índice de correspondencias para que la migración no
+            los pierda, aunque todavía no cuentan con una ficha independiente.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {additionalGems.map((gem) => (
+              <span class="rounded-full border border-antique-gold-soft/40 bg-[var(--color-parchment-soft)] px-3 py-1 text-xs text-paper-muted">
+                {gem}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -350,7 +402,9 @@ const gemTabs = [
               </div>
 
               <div class="mt-4 border-t border-antique-gold-soft/20 pt-3 text-xs italic text-paper-ink">
-                <p class="max-w-none">{z.therapeuticProperties}</p>
+                <p class="max-w-none">
+                  Asociación tradicional no médica: {z.therapeuticProperties}
+                </p>
               </div>
             </div>
           ))}

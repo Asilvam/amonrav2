@@ -2,6 +2,20 @@
 
 Sitio web de `amonra.cl`, construido con Astro y generado como un sitio estático.
 
+## Estado actual
+
+El proyecto cuenta con 15 secciones configuradas:
+
+- 10 secciones publicadas: Fundación, Historia, Amuletos, Astrología, Gemas,
+  Inciensos, Runas, Sueños, Tarot y Velas.
+- 5 secciones en migración: Horóscopos, Magia, Numerología, Oráculos y
+  Terapias.
+
+La migración consolida los contenidos históricos en páginas temáticas con
+índices, pestañas y fichas reutilizables. El objetivo es conservar los temas
+importantes del sitio original en una experiencia más clara y adaptable a
+escritorio y móvil, sin exigir una página nueva por cada archivo antiguo.
+
 ## Requisitos
 
 - Node.js `>=22.12.0`.
@@ -75,14 +89,45 @@ npm run preview
 Las secciones marcadas como publicadas en `src/config/amonra-sections.ts` son:
 
 `fundacion`, `historia`, `amuletos`, `astrologia`, `gemas`, `inciensos`,
-`suenos` y `velas`.
+`runas`, `suenos`, `tarot` y `velas`.
 
 Las secciones en migración son:
 
-`horoscopos`, `magia`, `numerologia`, `oraculos`, `runas`, `tarot` y
-`terapias`.
+`horoscopos`, `magia`, `numerologia`, `oraculos` y `terapias`.
 
 Los bloques con contenido personalizado incluyen Fundación, Historia, Amuletos,
-Astrología, Gemas, Inciensos, Sueños y Velas. Amuletos y Astrología incorporan
-índices de navegación internos; Astrología además cuenta con páginas dinámicas
-para sus artículos.
+Astrología, Gemas, Inciensos, Runas, Sueños, Tarot y Velas. Amuletos, Gemas,
+Runas, Tarot y Astrología incorporan índices o pestañas de navegación interna;
+Astrología además cuenta con páginas dinámicas para sus artículos.
+
+## Criterios editoriales de la migración
+
+- Los contenidos históricos y esotéricos se presentan como tradición cultural,
+  mitología o interpretación simbólica cuando no corresponden a hechos
+  verificables.
+- Gemas, amuletos, inciensos y velas no sustituyen atención médica ni otras
+  formas de ayuda profesional. En particular, la sección Gemas no recomienda
+  ingerir agua que haya estado en contacto con minerales.
+- Runas distingue el Futhark histórico de incorporaciones oraculares modernas,
+  como la Runa en Blanco o Wyrd.
+- La sección de Sueños evita repetir el resumen de cada símbolo dentro de su
+  interpretación ampliada.
+
+## Validación local
+
+La comprobación habitual se realiza con:
+
+```sh
+npm run check
+npm run build
+```
+
+La build actual genera 24 rutas estáticas y valida las páginas publicadas,
+incluidas `/temas/gemas/`, `/temas/runas/`, `/temas/amuletos/`,
+`/temas/fundacion/` y `/temas/historia/`. El smoke test revisa que estas rutas
+existan, que incluyan sus contenidos clave y que Gemas no conserve pautas de
+ingestión de agua con cristales.
+
+Si `npm run check` informa una advertencia de Prettier en
+`docs/migracion_100_amonra.md`, corresponde a documentación pendiente de
+formato y no a los componentes de las secciones publicadas.

@@ -2,21 +2,21 @@
 
 **Proyecto:** `amonrav2` (Astro 7.3.2, Tailwind CSS 4, React 19, TypeScript)  
 **Fecha de corte:** 2026-09-20  
-**Estado Actual:** 9 de 15 secciones migradas y publicadas (**60,0% del portal**)  
+**Estado Actual:** 10 de 15 secciones migradas y publicadas (**66,7% del portal**)  
 **Objetivo:** Migración del 100% del legado histórico de `backup-original/public_html/amonra.cl/` (216 archivos HTML originales)
 
 ---
 
 ## 1. Estado Global del Proyecto
 
-| Categoría                            | Cantidad | Porcentaje | Detalle                                                                                             |
-| ------------------------------------ | :------: | :--------: | --------------------------------------------------------------------------------------------------- |
-| **Secciones Totales del Portal**     |    15    |    100%    | Configuración canónica en `src/config/amonra-sections.ts`                                           |
-| **Secciones Publicadas (Completas)** |    9     |   60,0%    | `fundacion`, `historia`, `amuletos`, `astrologia`, `velas`, `inciensos`, `gemas`, `suenos`, `tarot` |
-| **Secciones Pendientes (Restantes)** |    6     |   40,0%    | `runas`, `oraculos`, `numerologia`, `magia`, `horoscopos`, `terapias`                               |
-| **Archivos HTML en Backup Original** |   216    |    100%    | Todos los documentos históricos preservados                                                         |
-| **Archivos HTML ya integrados**      |    57    |   26,4%    | Pertenecientes a las 9 secciones publicadas                                                         |
-| **Archivos HTML por integrar**       |   159    |   73,6%    | Desglosados exhaustivamente en este documento                                                       |
+| Categoría                            | Cantidad | Porcentaje | Detalle                                                                                                      |
+| ------------------------------------ | :------: | :--------: | ------------------------------------------------------------------------------------------------------------ |
+| **Secciones Totales del Portal**     |    15    |    100%    | Configuración canónica en `src/config/amonra-sections.ts`                                                    |
+| **Secciones Publicadas (Completas)** |    10    |   66,7%    | `fundacion`, `historia`, `amuletos`, `astrologia`, `velas`, `inciensos`, `gemas`, `suenos`, `tarot`, `runas` |
+| **Secciones Pendientes (Restantes)** |    5     |   33,3%    | `oraculos`, `numerologia`, `magia`, `horoscopos`, `terapias`                                                 |
+| **Archivos HTML en Backup Original** |   216    |    100%    | Todos los documentos históricos preservados                                                                  |
+| **Archivos HTML ya integrados**      |    89    |   41,2%    | Pertenecientes a las 10 secciones publicadas                                                                 |
+| **Archivos HTML por integrar**       |   127    |   58,8%    | Desglosados exhaustivamente en este documento                                                                |
 
 ---
 
@@ -65,24 +65,25 @@ MIGRACIÓN RESTANTE (168 archivos HTML / 7 secciones)
 
 ### Tema 6: RUNAS (`/temas/runas/`)
 
-- **Estado:** Pendiente (`migration`)
-- **Archivos HTML originales (32 archivos, 420 KB):**
+- **Estado:** **100% COMPLETADO Y PUBLICADO (`published`)**
+- **Archivos HTML integrados (32 archivos, 420 KB):**
   - _Doctrina y Métodos (7 archivos):_
     1. `index_runas.htm` (26 KB) — Introducción al Futhark Antiguo, el misterio y el susurro nórdico.
     2. `runas_origen.htm` (38 KB) — Mitología escandinava, Odín colgado del Yggdrasil (Hávamál) y el regalo de los signos.
     3. `runas_caracteres.htm` (35 KB) — Estructura de los tres Aettir (Aett de Freyr, Aett de Heimdall, Aett de Tyr).
-    4. `runas_preparacion.htm` (29 KB) — Talla, recolección de madera/piedra, consagración ritual y tinción de los caracteres.
+    4. `runas_preparacion.htm` (29 KB) — Talla, recolección de madera/piedra, consagración ritual, Canto de Odín y tinción de los caracteres.
     5. `runas_significado.htm` (25 KB) — Compendio y tabla sintética de virtudes adivinatorias.
     6. `runas_tecnicas.htm` (27 KB) — Métodos de tirada (Tirada de Odín, Tirada de las Tres Nornas, Cruz Rúnica).
-    7. `runas.html` (30 KB) — Ética del maestro rúnico y consideraciones de lectura.
+    7. `runas_tecnicas2.htm` (27 KB) — Tirada de Desbloqueo y Tirada de las Vidas Pasadas.
   - _Catálogo Monográfico Individual de las 25 Runas (25 archivos):_
-    - `runa1.htm` (Fehu: Ganado / Riqueza) a `runa24.htm` (Othala: Herencia / Hogar)
-    - `runa25.htm` (Wyrd: La Runa en Blanco / Lo Inevitable)
-- **Activos disponibles:** Carpeta `backup-original/public_html/amonra.cl/runas/` (102 imágenes con el glifo y grabado tradicional de cada runa).
-- **Entregables técnicos a construir:**
-  - `src/config/runes-data.ts`: Catálogo íntegro de las 25 runas con etimología nórdica, significado derecho/invertido, correspondencia elemental y consejo.
-  - `src/components/amonra/RunesContent.astro`: 4 pestañas accesibles (`mitologia`, `futhark`, `consagracion`, `tiradas`).
-  - `src/assets/amonra/runas-hero.jpg`: Hero histórico optimizado.
+    - `runa1.htm` (Mannaz: El Sí Mismo) a `runa24.htm` (Sowelu: La Fuerza del Sol)
+    - `runa25.htm` (Wyrd / Runa en Blanco / Odín: El Destino Trascendente)
+- **Activos entregados:** `src/assets/amonra/runas-hero.jpg` (hero histórico optimizado) + `src/assets/amonra/runas/` (42 imágenes: 25 glifos upright + glifos invertidos).
+- **Entregables técnicos implementados:**
+  - `src/config/runes-data.ts`: Catálogo íntegro de las 25 runas con etimología nórdica, significado derecho/invertido, correspondencia elemental, consejo del Guerrero Espiritual, 3 Aettir, Canto de Odín y 5 tiradas clásicas.
+  - `src/components/amonra/RunesContent.astro`: 4 pestañas accesibles (`origen`, `futhark`, `consagracion`, `tiradas`), layout 2 columnas de escritorio con `max-w-none` y callouts balanceados.
+  - `src/pages/temas/[section].astro`: Integración de héroe compacto, subtítulo y componente de contenido.
+  - QA Artifact: `qa_etapa2_tema2_runas.md` (100% PASS en 33 pruebas automatizadas de smoke test, build SSG verificado).
 
 ---
 

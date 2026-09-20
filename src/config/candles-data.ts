@@ -31,7 +31,7 @@ export const candleColors: CandleColor[] = [
     colorCss: "#ffffff",
     textColor: "#1a1816",
     description:
-      "Las velas blancas se asocian con la verdad, la pureza, la paz y la protección espiritual. Se utilizan para armonizar el campo energético, fortalecer la fe y acompañar prácticas de limpieza interior. Tradicionalmente se relacionan con la plata, el número dos y los rituales de clarificación.",
+      "En la tradición, las velas blancas se asocian con la verdad, la pureza, la paz, la limpieza, la protección, la modestia y la fe. Se consideran una opción neutra para acompañar oraciones, clarificar una intención y cultivar serenidad. También se relacionan simbólicamente con la plata, el número dos y la espiritualidad familiar.",
   },
   {
     id: "amarillas",
@@ -39,7 +39,7 @@ export const candleColors: CandleColor[] = [
     colorCss: "#f59e0b",
     textColor: "#1a1816",
     description:
-      "Las velas amarillas se vinculan con la mente, la comunicación y el impulso para emprender nuevos caminos. Se encienden para favorecer estudios, intercambios, decisiones laborales y claridad de pensamiento. En la tradición también se asocian con el mediodía, el sándalo y la energía de Mercurio.",
+      "Las velas amarillas se vinculan simbólicamente con la mente, la comunicación, el optimismo y el impulso para emprender nuevos caminos. Se encienden como apoyo para estudios, viajes, intercambios y decisiones laborales. En la tradición se asocian con el sol, el mediodía, el sándalo y la energía de Mercurio.",
   },
   {
     id: "azules",
@@ -47,7 +47,7 @@ export const candleColors: CandleColor[] = [
     colorCss: "#2563eb",
     textColor: "#ffffff",
     description:
-      "Las velas azules representan serenidad, nobleza, fidelidad e inspiración. Se utilizan para fortalecer la voluntad, equilibrar relaciones y buscar estabilidad emocional. Se consideran propicias para momentos de reflexión, perseverancia y protección frente a conflictos.",
+      "Las velas azules representan serenidad, nobleza, honor, fidelidad, inspiración y verdad. Se utilizan simbólicamente para acompañar la reflexión, fortalecer la voluntad, equilibrar relaciones y buscar estabilidad ante conflictos. También se relacionan con la calma, la claridad y la perseverancia.",
   },
   {
     id: "rojas",
@@ -55,7 +55,7 @@ export const candleColors: CandleColor[] = [
     colorCss: "#dc2626",
     textColor: "#ffffff",
     description:
-      "Las velas rojas se asocian con la fuerza vital, la pasión, el valor y la acción. Se emplean en rituales vinculados al amor, la determinación y el impulso para superar obstáculos. En la tradición se relacionan con Marte, el hierro y el clavel rojo.",
+      "Las velas rojas se asocian con la fuerza vital, la pasión, el amor, el valor, la acción y la determinación. Se emplean en rituales simbólicos para enfocar energía, iniciativa y voluntad frente a un desafío. En la tradición se relacionan con Marte, el hierro, el fuego y el clavel rojo.",
   },
   {
     id: "doradas",
@@ -63,7 +63,7 @@ export const candleColors: CandleColor[] = [
     colorCss: "#d97706",
     textColor: "#ffffff",
     description:
-      "Las velas doradas simbolizan prosperidad, confianza y expansión personal. Se encienden para pedir abundancia, fortalecer proyectos y atraer oportunidades favorables. También se vinculan con la energía solar, el oro y el mediodía como momento de activación.",
+      "Las velas doradas simbolizan prosperidad, confianza, prestigio y expansión personal. En la tradición se encienden para acompañar peticiones de abundancia, éxito, salud, amor o fortalecimiento de proyectos. Se vinculan con la energía solar, el oro, la elevación espiritual y el mediodía.",
   },
   {
     id: "naranjas",
@@ -71,7 +71,7 @@ export const candleColors: CandleColor[] = [
     colorCss: "#ea580c",
     textColor: "#ffffff",
     description:
-      "Las velas naranjas se relacionan con entusiasmo, creatividad, magnetismo y claridad mental. Se utilizan para dinamizar procesos, recuperar ánimo y sostener tareas exigentes. Tradicionalmente se asocian con el amanecer, el romero y el impulso de crecimiento.",
+      "Las velas naranjas se relacionan con entusiasmo, creatividad, magnetismo, comunicación y claridad mental. Se utilizan simbólicamente para dinamizar procesos, recuperar ánimo y sostener tareas exigentes. Tradicionalmente se asocian con el amanecer, el romero, la vitalidad y el impulso de crecimiento.",
   },
   {
     id: "celestes",
@@ -79,7 +79,7 @@ export const candleColors: CandleColor[] = [
     colorCss: "#38bdf8",
     textColor: "#0f172a",
     description:
-      "Las velas celestes se vinculan con armonía afectiva, comprensión, sensibilidad y calma interior. Se emplean en reconciliaciones, equilibrio emocional y búsqueda de paz espiritual. En la tradición se asocian con la tarde, el cobre y el lapislázuli.",
+      "Las velas celestes se vinculan con armonía afectiva, comprensión, sensibilidad, fidelidad y calma interior. Se emplean en la tradición para acompañar reconciliaciones, comunicación serena, equilibrio emocional y búsqueda de paz espiritual. Se asocian con la tarde, el cobre y el lapislázuli.",
   },
   {
     id: "grises",
@@ -87,7 +87,7 @@ export const candleColors: CandleColor[] = [
     colorCss: "#6b7280",
     textColor: "#ffffff",
     description:
-      "Las velas grises representan neutralidad, madurez y discernimiento ante situaciones complejas. Se usan para equilibrar polaridades, desactivar tensiones y tomar distancia de influencias negativas. También se vinculan con estudio, introspección y orden mental.",
+      "Las velas grises representan neutralidad, madurez y discernimiento ante situaciones complejas. Se usan simbólicamente para equilibrar polaridades, desactivar tensiones y tomar distancia de influencias negativas. Algunas corrientes las relacionan con el triunfo del equilibrio sobre el conflicto, el estudio y el orden mental.",
   },
   {
     id: "granates",
@@ -95,7 +95,7 @@ export const candleColors: CandleColor[] = [
     colorCss: "#881337",
     textColor: "#ffffff",
     description:
-      "Las velas granates se asocian con vigor, determinación y proyección en metas de mayor alcance. Se encienden para fortalecer optimismo, liderazgo y constancia en procesos exigentes. En varias corrientes se consideran favorables para iniciativas de expansión.",
+      "Las velas granates se asocian con vigor, determinación, liderazgo y proyección en metas de mayor alcance. Se encienden como apoyo simbólico para fortalecer optimismo y constancia en procesos exigentes. En varias corrientes se consideran favorables para iniciativas de expansión y afirmación personal.",
   },
   {
     id: "marrones",
@@ -103,7 +103,7 @@ export const candleColors: CandleColor[] = [
     colorCss: "#78350f",
     textColor: "#ffffff",
     description:
-      "Las velas marrones se relacionan con estabilidad, realismo, disciplina y arraigo. Se utilizan para reforzar concentración, protección del hogar y toma de decisiones prácticas. Tradicionalmente se vinculan con procesos de orden, responsabilidad y perseverancia.",
+      "Las velas marrones se relacionan con estabilidad, realismo, disciplina, concentración y arraigo. Se utilizan para acompañar el estudio, la protección simbólica del hogar y la toma de decisiones prácticas. Tradicionalmente se vinculan con la responsabilidad, la perseverancia y el contacto con la tierra.",
   },
   {
     id: "verdes",
@@ -111,7 +111,7 @@ export const candleColors: CandleColor[] = [
     colorCss: "#16a34a",
     textColor: "#ffffff",
     description:
-      "Las velas verdes simbolizan salud, esperanza, crecimiento y equilibrio con la naturaleza. Se encienden para apoyar prosperidad, trabajo, recuperación y armonía financiera. En la tradición se asocian con constancia, fertilidad y construcción de futuro.",
+      "Las velas verdes simbolizan vida, esperanza, crecimiento, naturaleza y equilibrio. Se encienden en la tradición para acompañar peticiones de prosperidad, trabajo, recuperación y armonía financiera, sin sustituir la atención profesional. También se asocian con juventud, fertilidad, constancia y construcción de futuro.",
   },
   {
     id: "purpuras",
@@ -119,7 +119,7 @@ export const candleColors: CandleColor[] = [
     colorCss: "#7c3aed",
     textColor: "#ffffff",
     description:
-      "Las velas púrpuras se vinculan con espiritualidad, meditación, autoridad interior y transformación. Se utilizan para fortalecer intuición, enfoque y profundidad en prácticas de introspección. También se asocian con procesos de elevación simbólica y toma de decisiones.",
+      "Las velas púrpuras se vinculan con espiritualidad, meditación, autoridad interior y transformación. Se utilizan simbólicamente para fortalecer intuición, enfoque y profundidad en prácticas de introspección. También se asocian con poder, prestigio, toma de decisiones y procesos de elevación espiritual.",
   },
   {
     id: "negras",
@@ -127,7 +127,7 @@ export const candleColors: CandleColor[] = [
     colorCss: "#18181b",
     textColor: "#ffffff",
     description:
-      "Las velas negras se relacionan con protección de frontera, corte de cargas densas y trabajo de resguardo. En distintas tradiciones su uso requiere criterio, guía y una intención claramente definida. También se emplean para neutralizar influencias negativas en momentos críticos.",
+      "Las velas negras tienen significados distintos según la corriente: pueden representar límite, protección, corte de cargas densas o resguardo, y también aparecen asociadas a prácticas de daño. Por eso su uso debe leerse dentro de una tradición concreta, con criterio, guía y una intención no dañina.",
   },
   {
     id: "rosadas",
@@ -135,7 +135,7 @@ export const candleColors: CandleColor[] = [
     colorCss: "#ec4899",
     textColor: "#ffffff",
     description:
-      "Las velas rosadas simbolizan ternura, afecto, reconciliación y armonía en los vínculos. Se encienden para cultivar empatía, cuidado mutuo y equilibrio emocional. Tradicionalmente se asocian con Venus, la belleza y la expansión del amor sereno.",
+      "Las velas rosadas simbolizan ternura, afecto, reconciliación, esperanza y armonía en los vínculos. Se encienden para cultivar empatía, cuidado mutuo y equilibrio emocional. Tradicionalmente se asocian con Venus, la belleza, la dulzura y la expansión del amor sereno.",
   },
   {
     id: "tres-colores",
@@ -143,7 +143,7 @@ export const candleColors: CandleColor[] = [
     colorCss: "linear-gradient(135deg, #dc2626 0%, #16a34a 50%, #ec4899 100%)",
     textColor: "#ffffff",
     description:
-      "Las velas de tres colores combinan intenciones complementarias en una sola pieza ritual. Las variantes rojo-verde-rosado y púrpura-verde-rosado se emplean para integrar prosperidad, amor, estabilidad y buena fortuna. Se consideran útiles cuando se busca armonizar varios propósitos a la vez.",
+      "Las velas de tres colores combinan intenciones complementarias en una sola pieza ritual. Las variantes rojo-verde-rosado y púrpura-verde-rosado se emplean, según la tradición, para integrar prosperidad, amor, estabilidad y buena fortuna. Su función es concentrar varios símbolos en una misma práctica contemplativa.",
   },
 ];
 
@@ -153,84 +153,84 @@ export const zodiacCandles: ZodiacCandle[] = [
     element: "Fuego",
     colors: "Carmesí o rojo vivaz",
     description:
-      "Aries: El color apropiado es el carmesí o rojo vivaz. Utilizado normalmente para fortalecer los emprendimientos, sean de empresas, negocios o trámites de diversa índole. Este color da ímpetu, fuerza y coraje ante dificultades.",
+      "Aries: En la correspondencia tradicional, el color apropiado es el carmesí o rojo vivaz. Se utiliza como símbolo para fortalecer emprendimientos, negocios y trámites, y para representar ímpetu, fuerza y coraje ante las dificultades.",
   },
   {
     sign: "Tauro",
     element: "Tierra",
     colors: "Verde (todas las tonalidades)",
     description:
-      "Tauro: Su color es el verde en todas sus tonalidades. Favorece la estabilidad económica, tanto en el hogar como en el trabajo. Ayuda a superar problemas que impiden el normal desenvolvimiento de las actividades cotidianas.",
+      "Tauro: Su color tradicional es el verde en todas sus tonalidades. Se relaciona simbólicamente con la estabilidad económica del hogar y del trabajo, el arraigo y la capacidad de sostener las actividades cotidianas.",
   },
   {
     sign: "Géminis",
     element: "Aire",
     colors: "Lavanda, gris, celeste",
     description:
-      "Géminis: Color regente lavanda, gris, celeste. Actúa en los negocios, estudios, comercio, y en actividades que requieran fortalecer la mente y el entendimiento ante situaciones complejas.",
+      "Géminis: Sus colores tradicionales son lavanda, gris y celeste. Se vinculan con los negocios, los estudios, el comercio y las actividades que requieren fortalecer la mente, la comunicación y el entendimiento ante situaciones complejas.",
   },
   {
     sign: "Cáncer",
     element: "Agua",
     colors: "Blanco, amarillo claro",
     description:
-      "Cáncer: Color usado en las velas blanco y amarillo claro. Propicia la receptividad, la intuición, la protección de la familia, viajes y sentimientos puros.",
+      "Cáncer: Sus colores tradicionales son el blanco y el amarillo claro. Representan receptividad, intuición, protección de la familia, viajes y sentimientos puros dentro del lenguaje simbólico de estas correspondencias.",
   },
   {
     sign: "Leo",
     element: "Fuego",
     colors: "Naranja, amarillo oro, rojo",
     description:
-      "Leo: Su color es el naranja, amarillo oro y rojo. Su empleo favorece los buenos negocios, el éxito en emprendimientos comerciales y la protección de bienes materiales y familiares.",
+      "Leo: Sus colores tradicionales son naranja, amarillo oro y rojo. Se relacionan con expresión, iniciativa, buenos negocios, emprendimientos comerciales y protección simbólica de los bienes materiales y familiares.",
   },
   {
     sign: "Virgo",
     element: "Tierra",
     colors: "Marrón, azul",
     description:
-      "Virgo: Generalmente se usa el color marrón y azul. Se emplea para tranquilizar a las personas, llevar serenidad y calma ante situaciones de descontrol o angustia.",
+      "Virgo: Generalmente se utilizan el marrón y el azul. Dentro de esta tradición se relacionan con serenidad, orden, calma y una actitud cuidadosa ante situaciones de descontrol o angustia.",
   },
   {
     sign: "Libra",
     element: "Aire",
     colors: "Celeste, verde claro, rojo cobre",
     description:
-      "Libra: Color usado en las velas celeste, verde claro y rojo cobre. Ayuda a liberar la mente de oscuridades, colabora en la unión de parejas y fomenta el equilibrio y la armonía.",
+      "Libra: Sus colores tradicionales son celeste, verde claro y rojo cobre. Se asocian con claridad, unión de parejas, equilibrio, armonía y búsqueda de acuerdos en los vínculos.",
   },
   {
     sign: "Escorpio",
     element: "Agua",
     colors: "Rojo fuerte, azul oscuro, violeta profundo",
     description:
-      "Escorpio: Color rojo fuerte, azul oscuro y violeta profundo. Actúa favorablemente en los aspectos místicos y en personas que sientan inclinación por la meditación profunda y la transformación espiritual.",
+      "Escorpio: Sus colores tradicionales son rojo fuerte, azul oscuro y violeta profundo. Se vinculan con los aspectos místicos, la meditación profunda, la intensidad emocional y los procesos de transformación espiritual.",
   },
   {
     sign: "Sagitario",
     element: "Fuego",
     colors: "Azul, turquesa",
     description:
-      "Sagitario: Lleva color azul y turquesa. Atrae la ayuda de maestros espirituales; utilizadas normalmente para lograr mayor comprensión de la vida, expansión y viajes.",
+      "Sagitario: Sus colores tradicionales son azul y turquesa. Se relacionan con la búsqueda de comprensión, expansión, viajes y orientación espiritual dentro del lenguaje simbólico de la tradición.",
   },
   {
     sign: "Capricornio",
     element: "Tierra",
     colors: "Marrón, gris, rojo oscuro",
     description:
-      "Capricornio: El color en las velas puede ser marrón, gris o rojo oscuro. Protege contra malas influencias y dificultades derivadas de la envidia, otorgando firmeza y perseverancia.",
+      "Capricornio: Los colores tradicionales son marrón, gris y rojo oscuro. Se asocian con firmeza, perseverancia, disciplina y resguardo simbólico frente a influencias negativas o dificultades derivadas de la envidia.",
   },
   {
     sign: "Acuario",
     element: "Aire",
     colors: "Violeta, verde claro, rojo",
     description:
-      "Acuario: Utiliza el color violeta, verde claro y rojo. Es propicia para la paz, situaciones tormentosas o imprevistas, y la búsqueda de libertad interior.",
+      "Acuario: Sus colores tradicionales son violeta, verde claro y rojo. Se relacionan con la paz, la adaptación ante situaciones imprevistas y la búsqueda de libertad interior.",
   },
   {
     sign: "Piscis",
     element: "Agua",
     colors: "Verde claro, celeste, amarillo oscuro",
     description:
-      "Piscis: El color apropiado es verde claro, celeste y amarillo oscuro. Ayuda a proyectar los sentimientos, la paz y la claridad en momentos de duda y aflicción.",
+      "Piscis: Sus colores tradicionales son verde claro, celeste y amarillo oscuro. Se vinculan con la expresión de los sentimientos, la paz y la claridad simbólica en momentos de duda o aflicción.",
   },
 ];
 

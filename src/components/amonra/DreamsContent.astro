@@ -14,6 +14,15 @@ const dreamTabs = [
   { id: "diccionario", label: "Diccionario de 25 símbolos" },
   { id: "practica", label: "Práctica de lucidez y memoria" },
 ];
+
+const additionalInterpretation = (symbol: (typeof dreamSymbols)[number]) => {
+  const summary = symbol.summary.trim();
+  const detail = symbol.detailedInterpretation.trim();
+
+  return detail.startsWith(summary)
+    ? detail.slice(summary.length).trim()
+    : detail;
+};
 ---
 
 <div class="space-y-12">
@@ -324,9 +333,14 @@ const dreamTabs = [
                   {symbol.summary}
                 </p>
 
-                <p class="max-w-none mt-3 text-xs leading-relaxed text-paper-muted">
-                  {symbol.detailedInterpretation}
-                </p>
+                {additionalInterpretation(symbol) && (
+                  <p class="max-w-none mt-3 text-xs leading-relaxed text-paper-muted">
+                    <span class="font-semibold text-paper-ink">
+                      Interpretación ampliada:
+                    </span>{" "}
+                    {additionalInterpretation(symbol)}
+                  </p>
+                )}
               </div>
 
               <div class="mt-4 border-t border-antique-gold-soft/30 pt-3">

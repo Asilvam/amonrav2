@@ -1,0 +1,734 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import ContentTabs from "../common/ContentTabs.astro";
+import {
+  runesIntro,
+  runesHistory,
+  runesAettir,
+  runesConsecration,
+  runesSpreads,
+  runesCatalog,
+} from "../../config/runes-data";
+
+import runeManaz from "../../assets/amonra/runas/manaz.jpg";
+import runeGebo from "../../assets/amonra/runas/gebo.jpg";
+import runeAnsuz from "../../assets/amonra/runas/ansuz.jpg";
+import runeOthila from "../../assets/amonra/runas/othila.jpg";
+import runeUruz from "../../assets/amonra/runas/uruz.jpg";
+import runePerth from "../../assets/amonra/runas/perth.jpg";
+import runeNauthiz from "../../assets/amonra/runas/nauthiz.jpg";
+import runeInguz from "../../assets/amonra/runas/inguz.jpg";
+import runeEihwaz from "../../assets/amonra/runas/eihwaz.jpg";
+import runeAlgiz from "../../assets/amonra/runas/algiz.jpg";
+import runeFehu from "../../assets/amonra/runas/fehu.jpg";
+import runeWunjo from "../../assets/amonra/runas/wunjo.jpg";
+import runeJera from "../../assets/amonra/runas/jera.jpg";
+import runeKano from "../../assets/amonra/runas/kano.jpg";
+import runeTiewaz from "../../assets/amonra/runas/tiewaz.jpg";
+import runeBerkana from "../../assets/amonra/runas/berkana.jpg";
+import runeEhwaz from "../../assets/amonra/runas/ehiwaz.jpg";
+import runeLaguz from "../../assets/amonra/runas/laguz.jpg";
+import runeHagalaz from "../../assets/amonra/runas/hagalaz.jpg";
+import runeRaido from "../../assets/amonra/runas/raido.jpg";
+import runeThurisaz from "../../assets/amonra/runas/thurisaz.jpg";
+import runeDagaz from "../../assets/amonra/runas/dagaz.jpg";
+import runeIsa from "../../assets/amonra/runas/isa.jpg";
+import runeSowelu from "../../assets/amonra/runas/sowelu.jpg";
+import runeOdin from "../../assets/amonra/runas/odin.jpg";
+
+import runeManazInv from "../../assets/amonra/runas/manaz_i.jpg";
+import runeUruzInv from "../../assets/amonra/runas/uruz_i.jpg";
+import runePerthInv from "../../assets/amonra/runas/perth_i.jpg";
+import runeNauthizInv from "../../assets/amonra/runas/nauthiz_i.jpg";
+import runeWunjoInv from "../../assets/amonra/runas/wunjo_i.jpg";
+import runeKanoInv from "../../assets/amonra/runas/kano_i.jpg";
+import runeTiewazInv from "../../assets/amonra/runas/tiewaz_i.jpg";
+import runeBerkanaInv from "../../assets/amonra/runas/berkana_i.jpg";
+import runeLaguzInv from "../../assets/amonra/runas/laguz_i.jpg";
+import runeRaidoInv from "../../assets/amonra/runas/raido_i.jpg";
+import runeThurisazInv from "../../assets/amonra/runas/thurisaz_i.jpg";
+
+const runeUprightImages: Record<number, ImageMetadata> = {
+  1: runeManaz,
+  2: runeGebo,
+  3: runeAnsuz,
+  4: runeOthila,
+  5: runeUruz,
+  6: runePerth,
+  7: runeNauthiz,
+  8: runeInguz,
+  9: runeEihwaz,
+  10: runeAlgiz,
+  11: runeFehu,
+  12: runeWunjo,
+  13: runeJera,
+  14: runeKano,
+  15: runeTiewaz,
+  16: runeBerkana,
+  17: runeEhwaz,
+  18: runeLaguz,
+  19: runeHagalaz,
+  20: runeRaido,
+  21: runeThurisaz,
+  22: runeDagaz,
+  23: runeIsa,
+  24: runeSowelu,
+  25: runeOdin,
+};
+
+const runeInvertedImages: Record<number, ImageMetadata> = {
+  1: runeManazInv,
+  5: runeUruzInv,
+  6: runePerthInv,
+  7: runeNauthizInv,
+  12: runeWunjoInv,
+  14: runeKanoInv,
+  15: runeTiewazInv,
+  16: runeBerkanaInv,
+  18: runeLaguzInv,
+  20: runeRaidoInv,
+  21: runeThurisazInv,
+};
+
+const runeTabs = [
+  { id: "origen", label: "Origen y mitología nórdica" },
+  { id: "futhark", label: "Las 25 Runas y los 3 Aettir" },
+  { id: "consagracion", label: "Preparación y consagración" },
+  { id: "tiradas", label: "Tiradas y métodos de lectura" },
+];
+
+const hasDistinctSymbolism = (rune: (typeof runesCatalog)[number]) =>
+  rune.symbolism.trim() !== rune.upright.trim();
+---
+
+<div class="space-y-12">
+  {/* SECCIÓN HERO / LECTURA PRINCIPAL */}
+  <section class="reading-section">
+    <div class="rounded-2xl border-l-4 border-clay-red bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+      <blockquote class="m-0 space-y-3">
+        <p class="max-w-none font-editorial text-[clamp(1.55rem,2.7vw,2.3rem)] leading-tight text-paper-ink italic">
+          {runesIntro.havamalQuote.text}
+        </p>
+        <footer class="font-interface text-sm font-semibold tracking-wider text-clay-red uppercase">
+          — {runesIntro.havamalQuote.verse} ({runesIntro.havamalQuote.source})
+        </footer>
+      </blockquote>
+      <p class="mt-5 max-w-none font-editorial text-xl leading-snug text-paper-ink">
+        {runesIntro.centralThesis}
+      </p>
+      <p class="mt-5 max-w-none border-t border-antique-gold-soft/40 pt-4 text-[1.02rem] leading-relaxed text-paper-muted">
+        {runesIntro.foundationalText}
+      </p>
+      <p class="mt-4 text-sm font-semibold tracking-wide text-clay-red">
+        {runesIntro.motto}
+      </p>
+    </div>
+
+    <div
+      class="mt-5 rounded-xl border border-antique-gold-soft/50 bg-surface-warm/25 px-5 py-4 text-sm leading-relaxed text-paper-muted"
+      role="note"
+    >
+      <strong class="text-paper-ink">Nota de contexto:</strong> aquí se
+      distinguen las runas como sistema histórico de escritura de sus lecturas
+      mitológicas y oraculares modernas. El Futhark antiguo reúne 24 signos; la
+      runa en blanco o Wyrd es una incorporación esotérica contemporánea, no un
+      carácter histórico universal.
+    </div>
+
+    <div class="runes-columns mt-6 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Las Runas son las letras de un alfabeto sagrado que los pueblos nórdicos
+        y germánicos utilizaban hace más de dos mil años. Más allá de su empleo
+        cotidiano como escritura fonética, cada runa es un ideograma cargado de
+        poder cósmico, un símbolo sagrado que condensa principios filosóficos,
+        fuerzas de la naturaleza y leyes del destino humano.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        En la cosmología escandinava, las runas no fueron inventadas por la mano
+        del hombre, sino arrancadas a las profundidades cósmicas por el dios
+        Odín tras permanecer colgado durante nueve noches en el fresno del
+        mundo, Yggdrasil. Es un acto de sacrificio supremo que enseña que la
+        verdadera sabiduría requiere entrega, renuncia y veneración ante el
+        misterio.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        El Futhark tradicional reúne 24 caracteres agrupados en tres familias de
+        ocho runas, llamadas Aettir (singular Aett). A ellos se suma en la
+        práctica moderna la Runa de Odín o Runa en Blanco, que representa el
+        Wyrd: el destino trascendente, lo incognoscible y la confianza absoluta
+        en las fuerzas cósmicas que guían el alma hacia su autorrealización.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        En Amonra preservamos la enseñanza de las runas como la senda del
+        Guerrero Espiritual: no para temer predicciones cerradas ni traspasar la
+        responsabilidad a un oráculo pasivo, sino para abrir los ojos, asumir el
+        propio camino y recordar en todo momento que la diferencia siempre está
+        en ti.
+      </p>
+    </div>
+  </section>
+
+  {/* PESTAÑAS PRINCIPALES */}
+  <section
+    aria-labelledby="indice-runas"
+    class="border-t border-antique-gold-soft/50 pt-8"
+  >
+    <h2 id="indice-runas" class="mb-6 font-editorial text-3xl text-paper-ink">
+      Sabiduría Sagrada del Futhark y Consulta Oracular
+    </h2>
+
+    <ContentTabs label="Contenido de runas" tabs={runeTabs}>
+      {/* PESTAÑA 1: ORIGEN Y MITOLOGÍA */}
+      <section id="origen" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Origen Sagrado, Mitología y los Tres Aettir
+          </h3>
+          <p class="mt-5 max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+            La existencia de las runas se ha visto desde épocas inmemoriales
+            cubierta por un velo legendario y misterioso. Su historia enlaza los
+            petroglifos de la Edad de Bronce con los mitos boreales de Odín, el
+            árbol sagrado Yggdrasil y las Nornas que tejen el destino junto al
+            manantial primordial.
+          </p>
+        </article>
+
+        {/* CRONOLOGÍA HISTÓRICA */}
+        <div class="relative space-y-5 border-l-2 border-antique-gold-soft/60 pl-6 lg:pl-8">
+          {runesHistory.map((entry) => (
+            <article class="relative rounded-xl border border-antique-gold-soft/40 bg-surface-warm/25 p-5 shadow-xs">
+              <span
+                class="absolute -left-[2.05rem] top-6 h-3 w-3 rounded-full border-2 border-paper bg-clay-red lg:-left-[2.55rem]"
+                aria-hidden="true"
+              />
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="font-interface text-xs font-bold tracking-wider text-clay-red uppercase">
+                  {entry.period}
+                </span>
+                <span class="rounded-full border border-antique-gold-soft/50 px-2 py-0.5 text-[0.68rem] font-semibold tracking-wide text-antique-gold-deep uppercase">
+                  {entry.kind}
+                </span>
+              </div>
+              <h4 class="mt-2 font-editorial text-2xl font-medium text-paper-ink">
+                {entry.title}
+              </h4>
+              <p class="mt-3 max-w-none text-sm leading-relaxed text-paper-muted">
+                {entry.description}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        {/* DOCTRINA DE LOS TRES AETTIR */}
+        <article class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h3 class="font-editorial text-2xl font-medium text-paper-ink">
+                Estructura Sagrada: Los Tres Aettir del Futhark
+              </h3>
+              <p class="mt-1 text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                24 runas tradicionales divididas en 3 familias de iniciación +
+                la Runa de Odín
+              </p>
+            </div>
+            <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3.5 py-1 text-xs font-semibold text-antique-gold-deep">
+              Tríada cósmica nórdica
+            </span>
+          </div>
+
+          <p class="mt-4 max-w-none text-sm leading-relaxed text-paper-muted">
+            La palabra <em>aett</em> (plural <em>aettir</em>) significa en
+            antiguo nórdico «familia», «linaje» u «octava». Los maestros rúnicos
+            comprendieron que el Futhark describe un viaje iniciático en tres
+            etapas: desde el despertar terrenal de Freyr, pasando por las
+            pruebas cósmicas de Heimdall, hasta la consumación heroica de Tyr y
+            la entrega total a Odín.
+          </p>
+
+          <div class="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {runesAettir.slice(0, 3).map((aett) => (
+              <div class="rounded-xl border border-antique-gold-soft/35 bg-surface-warm/40 p-5 shadow-xs">
+                <div class="flex items-center justify-between">
+                  <span class="rounded-md bg-clay-red/10 px-2 py-0.5 font-interface text-[0.68rem] font-bold tracking-wider text-clay-red uppercase">
+                    {aett.name}
+                  </span>
+                  <span class="font-interface text-xs font-semibold text-antique-gold-deep">
+                    {aett.runesCount} runas
+                  </span>
+                </div>
+                <h4 class="mt-3 font-editorial text-xl font-medium text-paper-ink">
+                  {aett.title}
+                </h4>
+                <p class="mt-2 text-xs font-semibold text-antique-gold-deep">
+                  Regente: {aett.ruler}
+                </p>
+                <p class="mt-3 text-xs leading-relaxed text-paper-muted">
+                  {aett.description}
+                </p>
+                <p class="mt-3 border-t border-antique-gold-soft/30 pt-2 text-xs font-medium text-paper-ink italic">
+                  Enfoque: {aett.spiritualFocus}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* CALLOUT ODIN / WYRD */}
+          <div class="mt-6 rounded-xl border-l-4 border-antique-gold bg-surface-warm/30 p-5 shadow-xs">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <h4 class="font-editorial text-xl font-medium text-paper-ink">
+                {runesAettir[3].name}: {runesAettir[3].title}
+              </h4>
+              <span class="rounded-full border border-antique-gold-soft px-2.5 py-0.5 text-xs font-semibold text-clay-red">
+                Runa #25 (Wyrd)
+              </span>
+            </div>
+            <p class="mt-2 text-sm leading-relaxed text-paper-muted">
+              {runesAettir[3].description}
+            </p>
+            <p class="mt-2 text-xs font-semibold tracking-wide text-antique-gold-deep uppercase">
+              Enfoque iniciático: {runesAettir[3].spiritualFocus}
+            </p>
+          </div>
+        </article>
+
+        {/* BENDICIÓN AMONRA */}
+        <div class="rounded-2xl border-l-4 border-antique-gold bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+          <div class="grid gap-x-10 gap-y-3 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p class="max-w-none font-editorial text-2xl font-medium leading-snug text-paper-ink">
+                Amonra: Una luz en vuestro camino
+              </p>
+              <p class="mt-1 max-w-none text-xs font-semibold tracking-wider text-antique-gold-deep uppercase">
+                Sabiduría rúnica para vuestro ser
+              </p>
+            </div>
+            <div>
+              <p class="max-w-none text-[1.02rem] leading-relaxed text-paper-muted font-medium">
+                Feliluxor: Fe y felicidad en la luz de oro.
+              </p>
+              <p class="mt-1 max-w-none text-xs text-paper-muted">
+                Las runas develan las corrientes invisibles del momento. No son
+                cadenas que atan, sino alas para quien comprende el lenguaje de
+                la naturaleza y obra con rectitud.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PESTAÑA 2: LAS 25 RUNAS SAGRADAS */}
+      <section id="futhark" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+                Catálogo Monográfico: Las 25 Runas Sagradas
+              </h3>
+              <p class="mt-1 text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                Del Manaz (#1) al misterio de la Runa en Blanco / Odín (#25)
+              </p>
+            </div>
+            <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3.5 py-1 text-xs font-semibold text-antique-gold-deep">
+              25 glifos completos con derecho e invertido
+            </span>
+          </div>
+
+          <div class="runes-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Cada runa condensa una enseñanza viva. En las 25 monografías que
+              siguen se preserva el texto íntegro registrado por la escuela
+              Amonra: el glifo tradicional grabado en madera o piedra, su
+              fonética ancestral, su regente arquetípico, su lectura derecha, su
+              advertencia invertida y el consejo medular para el Guerrero
+              Espiritual.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Al consultar este compendio, atiende especialmente al contraste
+              entre la energía fluida del símbolo y su advertencia en posición
+              invertida: no expresa fatalidad, sino el bloqueo temporal de una
+              fuerza que busca recuperar su libre curso en tu existencia.
+            </p>
+          </div>
+        </article>
+
+        {/* ÍNDICE RÁPIDO DE NAVEGACIÓN */}
+        <div
+          data-runes-index
+          class="rounded-2xl border border-antique-gold-soft/45 bg-surface-warm/25 p-5 shadow-xs lg:p-7"
+        >
+          <div class="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+                Índice rápido de las 25 Runas
+              </h4>
+              <p class="mt-1 text-sm text-paper-muted">
+                Selecciona cualquier runa para navegar de inmediato a su ficha.
+              </p>
+            </div>
+            <span class="font-interface text-xs font-semibold tracking-wide text-antique-gold-deep uppercase">
+              Futhark + Wyrd
+            </span>
+          </div>
+
+          <div class="mt-6 grid grid-cols-2 gap-2.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {runesCatalog.map((r) => (
+              <a
+                href={`#runa-${r.number}-${r.id}`}
+                class="group flex items-center gap-2.5 rounded-lg border border-antique-gold-soft/40 bg-surface-warm/35 p-2.5 text-xs text-paper-ink transition hover:border-clay-red hover:bg-surface-warm"
+              >
+                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-clay-red font-editorial text-xs font-bold text-ivory">
+                  {r.number}
+                </span>
+                <div class="min-w-0 flex-1">
+                  <p class="truncate font-editorial font-medium text-paper-ink group-hover:text-clay-red">
+                    {r.name}
+                  </p>
+                  <p class="truncate text-[0.68rem] text-paper-muted">
+                    {r.transliteration} · {r.aett.replace("Aett de ", "")}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* FICHAS MONOGRÁFICAS DE LAS 25 RUNAS */}
+        <div class="space-y-12">
+          {runesCatalog.map((r) => (
+            <article
+              id={`runa-${r.number}-${r.id}`}
+              class="scroll-mt-8 rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-sm lg:p-8"
+            >
+              {/* ENCABEZADO DE LA RUNA */}
+              <div class="flex flex-wrap items-center justify-between gap-4 border-b border-antique-gold-soft/40 pb-5">
+                <div class="flex items-center gap-3.5">
+                  <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-clay-red font-editorial text-lg font-bold text-ivory shadow-xs">
+                    {r.number}
+                  </span>
+                  <div>
+                    <h4 class="font-editorial text-2xl font-medium text-paper-ink lg:text-3xl">
+                      {r.name}
+                    </h4>
+                    <p class="font-interface text-xs font-semibold tracking-wider text-antique-gold-deep uppercase">
+                      Letra: {r.transliteration} · {r.aett}
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="rounded-full border border-antique-gold-soft/60 bg-surface-warm/40 px-3 py-1 font-interface text-xs font-medium text-paper-ink">
+                    {r.archetype}
+                  </span>
+                  <span
+                    class={`rounded-full px-2.5 py-0.5 text-[0.7rem] font-bold tracking-wider uppercase font-interface ${
+                      r.reversible
+                        ? "border border-clay-red/40 bg-clay-red/10 text-clay-red"
+                        : "border border-antique-gold/40 bg-antique-gold/10 text-antique-gold-deep"
+                    }`}
+                  >
+                    {r.reversible ? "Reversible" : "Inmutable"}
+                  </span>
+                </div>
+              </div>
+
+              {/* CUERPO DE LA RUNA: GLIFO PROPORCIONAL + DOCTRINA */}
+              <div class="mt-6 grid gap-6 md:grid-cols-[110px_1fr] lg:grid-cols-[125px_1fr] md:items-start">
+                {/* COLUMNA VISUAL DEL GLIFO */}
+                <div class="flex flex-col items-center">
+                  <div class="group relative overflow-hidden rounded-xl border-2 border-antique-gold-soft/70 bg-gradient-to-b from-paper to-surface-warm p-2 shadow-[0_6px_18px_rgba(49,31,14,0.12)] transition-all duration-300 hover:border-antique-gold hover:shadow-[0_8px_24px_rgba(49,31,14,0.22)]">
+                    <Image
+                      src={runeUprightImages[r.number]}
+                      alt={`Glifo tradicional de la runa ${r.name}`}
+                      width={90}
+                      height={90}
+                      class="h-auto w-20 rounded-lg object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-105 sm:w-24 md:w-full"
+                      loading="lazy"
+                    />
+                  </div>
+                  <span class="mt-2 font-interface text-[0.68rem] font-semibold tracking-wider text-antique-gold-deep uppercase text-center">
+                    Derecha
+                  </span>
+
+                  {/* GLIFO INVERTIDO SI EXISTE */}
+                  {r.reversible && runeInvertedImages[r.number] && (
+                    <div class="mt-4 flex flex-col items-center">
+                      <div class="group relative overflow-hidden rounded-lg border border-antique-gold-soft/50 bg-surface-warm/40 p-1.5 shadow-xs">
+                        <Image
+                          src={runeInvertedImages[r.number]}
+                          alt={`Glifo invertido de la runa ${r.name}`}
+                          width={65}
+                          height={65}
+                          class="h-auto w-14 rounded object-contain opacity-80 transition-opacity hover:opacity-100"
+                          loading="lazy"
+                        />
+                      </div>
+                      <span class="mt-1 font-interface text-[0.62rem] font-medium tracking-wider text-clay-red uppercase text-center">
+                        Invertida
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* COLUMNA DE CONTENIDO Y LECTURA */}
+                <div class="min-w-0 space-y-6">
+                  {/* SIGNIFICADO Y ATRIBUTOS */}
+                  <div>
+                    <p class="font-editorial text-lg font-medium text-paper-ink">
+                      {r.meaning}
+                    </p>
+                    <div class="mt-2 flex flex-wrap gap-1.5">
+                      {r.keywords.map((kw) => (
+                        <span class="rounded-md border border-antique-gold-soft/30 bg-surface-warm/30 px-2 py-0.5 text-xs text-paper-muted">
+                          #{kw}
+                        </span>
+                      ))}
+                    </div>
+                    {hasDistinctSymbolism(r) && (
+                      <p class="mt-4 max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+                        {r.symbolism}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* MANIFESTACIÓN DERECHA E INVERTIDA */}
+                  <div class="grid gap-4 sm:grid-cols-2">
+                    <div class="rounded-xl border border-antique-gold-soft/30 bg-surface-warm/35 p-4">
+                      <h5 class="flex items-center gap-2 font-interface text-xs font-bold tracking-wider text-antique-gold-deep uppercase">
+                        <span
+                          class="h-2 w-2 rounded-full bg-antique-gold"
+                          aria-hidden="true"
+                        />
+                        Posición Derecha
+                      </h5>
+                      <p class="mt-2 text-xs leading-relaxed text-paper-ink">
+                        {r.upright}
+                      </p>
+                    </div>
+
+                    <div
+                      class={`rounded-xl border p-4 ${
+                        r.reversible
+                          ? "border-clay-red/30 bg-clay-red/5"
+                          : "border-antique-gold-soft/30 bg-surface-warm/20"
+                      }`}
+                    >
+                      <h5 class="flex items-center gap-2 font-interface text-xs font-bold tracking-wider uppercase text-clay-red">
+                        <span
+                          class="h-2 w-2 rounded-full bg-clay-red"
+                          aria-hidden="true"
+                        />
+                        {r.reversible
+                          ? "Posición Invertida"
+                          : "Naturaleza Inmutable"}
+                      </h5>
+                      <p class="mt-2 text-xs leading-relaxed text-paper-ink">
+                        {r.inverted}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* CONSEJO DEL GUERRERO ESPIRITUAL */}
+                  <aside class="rounded-xl border-l-4 border-antique-gold bg-surface-warm/40 px-5 py-4">
+                    <p class="font-interface text-xs font-bold tracking-wider text-antique-gold-deep uppercase">
+                      Consejo del Guerrero Espiritual
+                    </p>
+                    <p class="mt-1 text-sm font-medium leading-relaxed text-paper-ink italic">
+                      {r.counsel}
+                    </p>
+                  </aside>
+                </div>
+              </div>
+
+              <p class="mt-5 text-right text-xs font-semibold tracking-wide text-clay-red uppercase">
+                <a href="#indice-runas" class="underline underline-offset-4">
+                  Volver al índice
+                </a>
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* PESTAÑA 3: PREPARACIÓN Y CONSAGRACIÓN */}
+      <section id="consagracion" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            {runesConsecration.title}
+          </h3>
+          <p class="mt-1 text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+            {runesConsecration.subtitle}
+          </p>
+          <p class="mt-5 max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+            {runesConsecration.intro}
+          </p>
+        </article>
+
+        {/* PASOS DE PREPARACIÓN */}
+        <div class="grid gap-5 md:grid-cols-3">
+          {runesConsecration.ritualSteps.map((step, idx) => (
+            <div class="rounded-xl border border-antique-gold-soft/40 bg-surface-warm/25 p-5 shadow-xs">
+              <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-clay-red font-editorial text-sm font-bold text-ivory">
+                {idx + 1}
+              </span>
+              <h4 class="mt-3 font-editorial text-xl font-medium text-paper-ink">
+                {step.title}
+              </h4>
+              <p class="mt-2 text-xs leading-relaxed text-paper-muted">
+                {step.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* EL CANTO RÚNICO DE ODÍN */}
+        <article class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h3 class="font-editorial text-2xl font-medium text-paper-ink">
+                {runesConsecration.odinChant.title}
+              </h3>
+              <p class="mt-1 text-xs font-semibold tracking-wider text-antique-gold-deep uppercase font-interface">
+                Cinco llamadas al aprendizaje rúnico
+              </p>
+            </div>
+            <span class="rounded-full border border-clay-red bg-clay-red/10 px-3 py-0.5 text-xs font-semibold text-clay-red">
+              Hávamál ceremonial
+            </span>
+          </div>
+
+          <div class="mt-6 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
+            {runesConsecration.odinChant.learningCalls.map((item) => (
+              <div class="rounded-xl border border-antique-gold-soft/30 bg-surface-warm/40 p-4">
+                <p class="font-editorial text-lg font-medium text-clay-red">
+                  {item.call}
+                </p>
+                <p class="mt-2 text-xs leading-relaxed text-paper-muted">
+                  {item.meaning}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* TRES ADVERTENCIAS SAGRADAS */}
+          <div class="mt-8 border-t border-antique-gold-soft/40 pt-6">
+            <h4 class="font-interface text-xs font-bold tracking-wider text-clay-red uppercase">
+              Las Tres Advertencias Sagradas
+            </h4>
+
+            <div class="mt-4 space-y-3">
+              {runesConsecration.odinChant.warnings.map((w) => (
+                <div class="rounded-xl border-l-4 border-clay-red bg-surface-warm/30 px-5 py-3.5">
+                  <p class="font-editorial text-base font-medium text-paper-ink">
+                    «{w.warning}»
+                  </p>
+                  <p class="mt-1 text-xs text-paper-muted">{w.explanation}</p>
+                </div>
+              ))}
+            </div>
+
+            <aside class="mt-6 rounded-xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-5 text-center shadow-xs">
+              <p class="font-editorial text-base font-medium leading-relaxed text-paper-ink italic">
+                {runesConsecration.odinChant.reflection}
+              </p>
+            </aside>
+          </div>
+        </article>
+      </section>
+
+      {/* PESTAÑA 4: TIRADAS Y MÉTODOS DE LECTURA */}
+      <section id="tiradas" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Técnicas y Métodos Clásicos de Lectura
+          </h3>
+          <p class="mt-5 max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+            El oráculo rúnico se expresa con claridad rotunda. A continuación se
+            detallan los cinco métodos tradicionales preservados en Amonra:
+            desde la consulta concisa de una sola runa para el día a día hasta
+            la compleja exploración de vidas pasadas y la Cruz Rúnica completa.
+          </p>
+        </article>
+
+        {/* LISTADO DE TIRADAS */}
+        <div class="space-y-8">
+          {runesSpreads.map((spread) => (
+            <article class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+              <div class="flex flex-wrap items-center justify-between gap-3 border-b border-antique-gold-soft/40 pb-4">
+                <div>
+                  <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+                    {spread.name}
+                  </h4>
+                  <p class="text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                    {spread.subtitle}
+                  </p>
+                </div>
+                <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3 py-1 font-interface text-xs font-semibold text-antique-gold-deep">
+                  {spread.runesCount}{" "}
+                  {spread.runesCount === 1 ? "runa" : "runas"}
+                </span>
+              </div>
+
+              <p class="mt-4 max-w-none text-sm leading-relaxed text-paper-muted">
+                <strong class="text-paper-ink">Propósito y uso:</strong>{" "}
+                {spread.usage}
+              </p>
+
+              {/* INSTRUCCIONES */}
+              <div class="mt-4 rounded-xl border border-antique-gold-soft/30 bg-surface-warm/25 p-4">
+                <h5 class="font-interface text-xs font-bold tracking-wider text-antique-gold-deep uppercase">
+                  Procedimiento ritual
+                </h5>
+                <ul class="mt-2 space-y-1.5 text-xs leading-relaxed text-paper-muted">
+                  {spread.instructions.map((inst) => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-clay-red">•</span>
+                      <span>{inst}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* POSICIONES GEOMÉTRICAS */}
+              <div class="mt-6 space-y-3">
+                <h5 class="font-interface text-xs font-bold tracking-wider text-clay-red uppercase">
+                  Posiciones de la tirada
+                </h5>
+                <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {spread.positions.map((pos) => (
+                    <div class="rounded-xl border border-antique-gold-soft/30 bg-surface-warm/40 p-3.5">
+                      <span class="flex h-6 w-6 items-center justify-center rounded bg-clay-red font-editorial text-xs font-bold text-ivory">
+                        {pos.position}
+                      </span>
+                      <p class="mt-2 font-editorial text-base font-medium text-paper-ink">
+                        {pos.name}
+                      </p>
+                      <p class="mt-1 text-xs leading-relaxed text-paper-muted">
+                        {pos.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* CONSEJO DE LECTURA */}
+              <aside class="mt-6 rounded-xl border-l-4 border-antique-gold bg-surface-warm/40 px-5 py-4">
+                <p class="font-interface text-xs font-bold tracking-wider text-antique-gold-deep uppercase">
+                  Consejo de interpretación
+                </p>
+                <p class="mt-1 text-xs leading-relaxed text-paper-ink">
+                  {spread.advice}
+                </p>
+              </aside>
+            </article>
+          ))}
+        </div>
+      </section>
+    </ContentTabs>
+  </section>
+</div>
+
+<style>
+  .reading-section p {
+    max-width: none;
+  }
+</style>

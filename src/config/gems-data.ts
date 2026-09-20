@@ -188,43 +188,43 @@ export const healingWaterSteps: HealingWaterStep[] = [
     stepNumber: 1,
     title: "Selección y limpieza previa del cristal",
     instruction:
-      "Para un propósito preventivo general y armonización del aura, utilice un cristal de cuarzo blanco transparente de tamaño mediano. Si se requiere apoyar un proceso curativo ya manifiesto, se aconseja una amatista sin pulir. El cristal debe lavarse con agua pura y sal marina, dejándolo secar al aire.",
+      "La tradición menciona cuarzo blanco y amatista como símbolos de claridad y serenidad. Esta referencia es cultural: no se presentan como métodos preventivos ni curativos.",
   },
   {
     stepNumber: 2,
     title: "Programación consciente de la gema",
     instruction:
-      "Sostenga el cristal limpio entre sus manos o llévelo al entrecejo (tercer ojo). Proyéctele con claridad la intención de sanación, pureza y vitalidad con la que va a impregnar el agua, fijando el pensamiento en su perfección geométrica y luminosa.",
+      "Como ejercicio contemplativo, sostenga la gema entre las manos y formule una intención de calma, claridad o cuidado. La programación pertenece al lenguaje ritual y no cambia las propiedades físicas del mineral.",
   },
   {
     stepNumber: 3,
     title: "Preparación del recipiente cristalino",
     instruction:
-      "Deposite el cristal programado en el fondo de un recipiente de vidrio o cristal transparente lleno de agua pura de manantial o filtrada. El vidrio transparente permite que la luz solar interactúe libremente con el campo mineral.",
+      "El relato original describe un recipiente transparente y luz natural. No coloque minerales directamente en agua destinada al consumo: algunos pueden liberar sustancias, polvo o tratamientos no seguros.",
   },
   {
     stepNumber: 4,
     title: "Sensibilización magnética de las manos",
     instruction:
-      "Frote enérgicamente las palmas de las manos hasta que adquieran calor palpable. Colóquelas sobre la boca del recipiente sin tocar el agua, con las palmas orientadas hacia abajo, concentrándose en el flujo de su magnetismo personal.",
+      "La práctica simbólica propone calentar las manos y mantenerlas sobre el recipiente, sin tocar el agua, mientras se centra la atención en la respiración y en la intención personal.",
   },
   {
     stepNumber: 5,
     title: "Imposición circular en sentido horario",
     instruction:
-      "Comience a mover suavemente las manos en círculos sobre el recipiente siguiendo el movimiento de las agujas del reloj (hacia la derecha). Repita el giro tres o cuatro veces hasta percibir un cambio de densidad o sutil cosquilleo magnético entre el agua y sus manos.",
+      "El movimiento circular forma parte del simbolismo ritual descrito en el material original. No implica una modificación medible de la composición o de las propiedades del agua.",
   },
   {
     stepNumber: 6,
     title: "Exposición solar y potenciación",
     instruction:
-      "Deje reposar el recipiente en un lugar donde reciba la luz solar directa por un período mínimo de veinticuatro horas. Opcionalmente, puede cubrirse con una pequeña estructura piramidal para concentrar las frecuencias etéricas.",
+      "La exposición a la luz solar y la referencia a una pirámide aparecen como elementos simbólicos de contemplación. No convierten el agua en un producto terapéutico y deben evitarse recipientes cerrados que puedan calentarse o contaminarse.",
   },
   {
     stepNumber: 7,
     title: "Administración y posología tradicional",
     instruction:
-      "Para revitalización diaria, tome un vaso pequeño en ayunas. En casos de convalecencia o debilidad acusada, la tradición recomienda administrar un pequeño vasito cada quince minutos durante la primera hora y luego espaciarlo en tomas suaves a lo largo de la jornada.",
+      "No se incluye una pauta de ingestión. Amonra no recomienda beber agua que haya estado en contacto con cristales ni utilizarla para tratar dolencias; esta etapa queda registrada solo para explicar el contenido del material antiguo.",
   },
 ];
 
