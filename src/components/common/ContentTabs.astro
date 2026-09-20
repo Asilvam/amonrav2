@@ -163,6 +163,10 @@ const { label, tabs } = Astro.props;
     max-width: 68ch;
   }
 
+  .tab-panels :global(p.max-w-none) {
+    max-width: none;
+  }
+
   @media print {
     .tab-list {
       display: none;

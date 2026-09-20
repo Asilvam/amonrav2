@@ -17,6 +17,10 @@
   max-width: 68ch;
 }
 
+.reading-section p.max-w-none {
+  max-width: none;
+}
+
 .cluster {
   display: flex;
   flex-wrap: wrap;
