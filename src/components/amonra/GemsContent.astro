@@ -1,0 +1,389 @@
+---
+import ContentTabs from "../common/ContentTabs.astro";
+import {
+  zodiacGems,
+  healingWaterSteps,
+  gemCatalog,
+} from "../../config/gems-data";
+
+const gemTabs = [
+  { id: "sanacion", label: "Sanación y agua de cristal" },
+  { id: "meditacion", label: "Meditación y tercer ojo" },
+  { id: "catalogo", label: "Catálogo de gemas y minerales" },
+  { id: "zodiaco", label: "Zodíaco y correspondencias caldeas" },
+];
+---
+
+<div class="space-y-12">
+  <section class="reading-section">
+    <div class="rounded-2xl border-l-4 border-clay-red bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+      <p class="max-w-none font-editorial text-[clamp(1.55rem,2.7vw,2.3rem)] leading-tight text-paper-ink">
+        Las gemas y cristales son los transmisores y condensadores de la luz en
+        el seno de la tierra.
+      </p>
+      <p class="mt-5 max-w-none border-t border-antique-gold-soft/40 pt-4 text-[1.02rem] leading-relaxed text-paper-muted">
+        Su estructura geométrica pura y sus vibraciones magnéticas ofrecen un
+        camino de armonización física, psíquica y espiritual. En la tradición de
+        Amonra, el reino mineral es reconocido como un aliado fiel que ayuda a
+        la persona mediante su sola presencia, su pureza cristalina y su
+        resonancia continua con las fuerzas de la naturaleza.
+      </p>
+    </div>
+
+    <div class="gems-columns mt-6 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        El uso de cualquier forma de cristal de cuarzo beneficia el campo vital.
+        ¿Qué podemos hacer con estas gemas para ayudarnos a nosotros mismos?
+        Podemos meditar con ellas, colocarlas sobre una zona del cuerpo que
+        requiera sosiego, llevarlas en el bolsillo o lucirlas como joyas. Ellas
+        actúan como un amigo leal cuya compañía serena entusiasma el espíritu.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        La tendencia natural del reino mineral es crear la armonía y el balance
+        perfecto. Cuando la energía pasa a través de un cristal de cuarzo se
+        armoniza y conserva su equilibrio primordial. Si las energías del
+        usuario están descompensadas, el cristal opera como un corrector natural
+        que reordena las frecuencias personales.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Fueron sobre todo los sacerdotes caldeos y babilonios de Mesopotamia
+        quienes establecieron analogías entre las piedras, los signos del
+        zodíaco y los astros. Su propósito no era el comercio falaz ni la
+        superstición, sino el fruto de largas y atentas observaciones empíricas
+        sobre la influencia que los minerales ejercen en el bienestar humano.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Estudiaron escrupulosamente las cualidades de cada piedra y su utilidad
+        terapéutica y preventiva, estructurando un zodíaco mineral que hoy
+        reconstruimos con fidelidad. Cada piedra guarda una afinidad vibratoria
+        con un signo, consagrando la alianza entre el cielo y la tierra.
+      </p>
+    </div>
+  </section>
+
+  <section
+    aria-labelledby="indice-gemas"
+    class="border-t border-antique-gold-soft/50 pt-8"
+  >
+    <h2 id="indice-gemas" class="mb-6 font-editorial text-3xl text-paper-ink">
+      Sabiduría tradicional de los cristales
+    </h2>
+
+    <ContentTabs label="Contenido de gemas" tabs={gemTabs}>
+      {/* PESTAÑA 1: SANACIÓN Y AGUA DE CRISTAL */}
+      <section id="sanacion" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Sanación tradicional con agua de cristal de cuarzo
+          </h3>
+          <div class="gems-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Uno de los métodos más conocidos en la tradición para revitalizar
+              el organismo y armonizar el aura es la preparación del agua de
+              cristal. Este procedimiento aprovecha la capacidad del cuarzo para
+              impregnar el agua pura con su signatura electromagnética,
+              transformando sus propiedades físicas mediante la imposición
+              magnética del practicante.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              El cuarzo blanco transparente se utiliza como método preventivo y
+              vitalizante general, mientras que la amatista sin pulir se
+              recomienda cuando se desea acompañar a una persona que atraviesa
+              dolencias activas, gracias a la capacidad transmutadora de su
+              frecuencia violeta. El agua resultante absorbe no sólo las
+              cualidades intrínsecas de la gema, sino la programación consciente
+              depositada en ella.
+            </p>
+          </div>
+        </article>
+
+        <div class="space-y-4">
+          <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+            Protocolo tradicional de preparación en 7 etapas
+          </h4>
+          <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {healingWaterSteps.map((step) => (
+              <div class="flex flex-col justify-between rounded-xl border border-antique-gold-soft/40 bg-surface-warm/30 p-5 shadow-xs">
+                <div>
+                  <div class="flex items-center gap-3 border-b border-antique-gold-soft/30 pb-3">
+                    <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-clay-red font-interface text-xs font-semibold text-ivory">
+                      {step.stepNumber}
+                    </span>
+                    <h5 class="font-editorial text-lg font-medium text-paper-ink">
+                      {step.title}
+                    </h5>
+                  </div>
+                  <p class="max-w-none mt-3 text-xs leading-relaxed text-paper-muted">
+                    {step.instruction}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="rounded-2xl border-l-4 border-antique-gold bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+          <div class="grid gap-x-10 gap-y-3 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p class="max-w-none font-editorial text-2xl font-medium leading-snug text-paper-ink">
+                Aplicación del agua según los centros vitales
+              </p>
+              <p class="mt-1 max-w-none text-xs font-semibold uppercase tracking-wider text-antique-gold-deep">
+                Correspondencia con los siete chakras
+              </p>
+            </div>
+            <p class="max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              En la gemoterapia de Amonra, muchas personas preparan agua de
+              cristal empleando la piedra correspondiente al centro que desean
+              energizar: cuarzo rosa para el centro del corazón, malaquita o
+              citrino para el plexo solar, lapislázuli para el centro laríngeo y
+              amatista para el centro coronario.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* PESTAÑA 2: MEDITACIÓN Y TERCER OJO */}
+      <section id="meditacion" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Sintonización interior y el cristal en el entrecejo
+          </h3>
+          <div class="gems-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Los cristales de cuarzo son una ayuda invaluable en la meditación,
+              pues poseen la facultad de disipar la confusión mental y facilitar
+              la sintonía con la Personalidad más Alta. Al enfocar la atención
+              en la transparencia luminosa de la piedra, la mente trasciende el
+              ruido cotidiano y accede a estados de profunda calma
+              contemplativa.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Para trabajar meditativamente con una gema, tómela entre sus manos
+              previamente lavada y purificada, y elévela suavemente hasta la
+              altura del entrecejo (tercer ojo). Prográmela con el propósito que
+              desea alcanzar, proyectando sus anhelos más elevados en la
+              estructura perfecta del cristal.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              La arquitectura del cuarzo actúa como un dispositivo de enfoque
+              que induce un estado de serenidad meditativa. Esta quietud permite
+              explorar con lucidez los contenidos guardados en el subconsciente,
+              encontrar respuestas a dudas complejas y despertar la percepción
+              intuitiva hacia las corrientes etéricas sutiles.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              La estructura de los cristales es estéticamente armónica y
+              rigurosamente geométrica, reflejando un orden universal que
+              tranquiliza la mente humana. Más allá de su belleza formal, el
+              cristal amplifica las fuerzas universales, acumulando y dirigiendo
+              las energías psíquicas hacia fines de noble elevación espiritual.
+            </p>
+          </div>
+        </article>
+
+        <div class="rounded-2xl border-l-4 border-clay-red bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+          <div class="grid gap-x-10 gap-y-3 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p class="max-w-none font-editorial text-2xl font-medium leading-snug text-paper-ink">
+                La regla áurea de la voluntad consciente
+              </p>
+              <p class="mt-1 max-w-none text-xs font-semibold uppercase tracking-wider text-antique-gold-deep">
+                Dirección ética del poder mineral
+              </p>
+            </div>
+            <p class="max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              La energía elemental del cristal es dirigida principalmente por
+              nuestra voluntad más alta. Solo necesitamos mantener la pureza de
+              intención y sintonizarnos con esa dimensión elevada para vivir en
+              perfecta armonía con nosotros mismos, con los demás y con el orden
+              de la naturaleza.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* PESTAÑA 3: CATÁLOGO DE GEMAS Y MINERALES */}
+      <section id="catalogo" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Catálogo enciclopédico de piedras y cristales
+          </h3>
+          <div class="gems-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              A lo largo de los siglos, diversas culturas han atesorado las
+              propiedades electromagnéticas y las virtudes curativas de los
+              minerales. Desde los cuarzos de la familia del sílice hasta las
+              gemas preciosas y resinas fósiles, cada piedra encierra una
+              frecuencia vibratoria distintiva.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              En este compendio histórico de Amonra se detallan los usos
+              terapéuticos tradicionales, la polaridad energética (emisora,
+              receptiva o equilibrante) y la aplicación espiritual de cada
+              mineral para acompañar la vida diaria con sabiduría.
+            </p>
+          </div>
+        </article>
+
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {gemCatalog.map((gem) => (
+            <div class="flex flex-col justify-between rounded-xl border border-antique-gold-soft/40 bg-surface-warm/30 p-5 shadow-xs transition hover:border-antique-gold/60">
+              <div>
+                <div class="flex items-center justify-between border-b border-antique-gold-soft/30 pb-3">
+                  <h4 class="font-editorial text-xl font-medium text-paper-ink">
+                    {gem.name}
+                  </h4>
+                  <span
+                    class={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider ${
+                      gem.energyType === "Emisora"
+                        ? "bg-clay-red/15 text-clay-red"
+                        : gem.energyType === "Receptiva"
+                          ? "bg-sky-500/15 text-sky-700"
+                          : "bg-antique-gold/20 text-antique-gold-deep"
+                    }`}
+                  >
+                    {gem.energyType}
+                  </span>
+                </div>
+
+                <div class="mt-3 space-y-3 text-xs leading-relaxed text-paper-muted">
+                  <div>
+                    <span class="font-semibold text-paper-ink">Grupo:</span>{" "}
+                    {gem.mineralGroup}
+                  </div>
+                  <div>
+                    <span class="font-semibold text-paper-ink">Color:</span>{" "}
+                    {gem.color}
+                  </div>
+                  <div>
+                    <span class="font-semibold text-paper-ink">
+                      Uso terapéutico tradicional:
+                    </span>
+                    <p class="max-w-none mt-1">{gem.traditionalHealing}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 border-t border-antique-gold-soft/20 pt-3 text-xs italic text-paper-ink">
+                <p class="max-w-none">{gem.spiritualUse}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* PESTAÑA 4: ZODÍACO Y CORRESPONDENCIAS CALDEAS */}
+      <section id="zodiaco" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Zodíaco de las piedras y la tradición caldea
+          </h3>
+          <div class="gems-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Fueron los astrólogos y sacerdotes de Caldea y Mesopotamia quienes
+              reconstruyeron las correspondencias analógicas entre los doce
+              signos zodiacales y las signaturas minerales. No buscaron
+              propiedades arbitrarias, sino virtudes terapéuticas y éticas
+              confirmadas a través de generaciones de observación.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Cada signo natal encuentra en una gema tutelar el soporte idóneo
+              para compensar sus excesos temperamentales, reforzar sus virtudes
+              innatas y propiciar la armonía integral entre el cuerpo físico y
+              el destino espiritual.
+            </p>
+          </div>
+        </article>
+
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {zodiacGems.map((z) => (
+            <div class="flex flex-col justify-between rounded-xl border border-antique-gold-soft/40 bg-surface-warm/30 p-5 shadow-xs transition hover:border-antique-gold/60">
+              <div>
+                <div class="flex items-center justify-between border-b border-antique-gold-soft/30 pb-3">
+                  <div class="flex items-center gap-2">
+                    <span class="font-editorial text-2xl text-antique-gold-deep">
+                      {z.symbol}
+                    </span>
+                    <h4 class="font-editorial text-xl font-medium text-paper-ink">
+                      {z.sign}
+                    </h4>
+                  </div>
+                  <span class="text-xs font-medium uppercase tracking-wider text-paper-muted">
+                    {z.element}
+                  </span>
+                </div>
+
+                <div class="mt-3 space-y-3 text-xs leading-relaxed text-paper-muted">
+                  <div>
+                    <span class="font-semibold text-paper-ink">
+                      Piedra tutelar:
+                    </span>{" "}
+                    <span class="font-medium text-antique-gold-deep">
+                      {z.primaryGem}
+                    </span>
+                  </div>
+
+                  {z.secondaryGems && (
+                    <div>
+                      <span class="font-semibold text-paper-ink">
+                        Otras afinidades:
+                      </span>{" "}
+                      {z.secondaryGems}
+                    </div>
+                  )}
+
+                  <div>
+                    <span class="font-semibold text-paper-ink">
+                      Naturaleza analógica:
+                    </span>
+                    <p class="max-w-none mt-0.5">{z.etymologyAndNature}</p>
+                  </div>
+
+                  <div>
+                    <span class="font-semibold text-paper-ink">
+                      Virtudes espirituales:
+                    </span>
+                    <p class="max-w-none mt-0.5">{z.analogousVirtues}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 border-t border-antique-gold-soft/20 pt-3 text-xs italic text-paper-ink">
+                <p class="max-w-none">{z.therapeuticProperties}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="rounded-2xl border-l-4 border-antique-gold bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+          <div class="grid gap-x-10 gap-y-3 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p class="max-w-none font-editorial text-2xl font-medium leading-snug text-paper-ink">
+                Pauta analógica y uso responsable
+              </p>
+              <p class="mt-1 max-w-none text-xs font-semibold uppercase tracking-wider text-antique-gold-deep">
+                Criterio clásico de afinidad mineral
+              </p>
+            </div>
+            <p class="max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              En la tradición caldea, la gema tutelar no actúa como amuleto
+              pasivo, sino como un sintonizador consciente. La afinidad
+              vibratoria entre el signo y el mineral estimula la
+              autoobservación, ayudando a la persona a reconocer sus tendencias
+              innatas y a manifestar su potencial más luminoso con
+              discernimiento.
+            </p>
+          </div>
+        </div>
+      </section>
+    </ContentTabs>
+  </section>
+</div>
+
+<style>
+  .gems-columns p,
+  :global([data-content-tabs] p.max-w-none) {
+    max-width: none;
+  }
+</style>

@@ -1,0 +1,473 @@
+---
+import ContentTabs from "../common/ContentTabs.astro";
+import {
+  dreamsIntro,
+  dreamTraditions,
+  dreamTypes,
+  dreamSymbols,
+  lucidPracticeStages,
+} from "../../config/dreams-data";
+
+const dreamTabs = [
+  { id: "doctrina", label: "Doctrina y memoria onírica" },
+  { id: "tipos", label: "Tipos tradicionales de sueños" },
+  { id: "diccionario", label: "Diccionario de 25 símbolos" },
+  { id: "practica", label: "Práctica de lucidez y memoria" },
+];
+---
+
+<div class="space-y-12">
+  {/* SECCIÓN HERO / LECTURA PRINCIPAL */}
+  <section class="reading-section">
+    <div class="rounded-2xl border-l-4 border-clay-red bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+      <blockquote class="m-0 space-y-3">
+        <p class="max-w-none font-editorial text-[clamp(1.55rem,2.7vw,2.3rem)] leading-tight text-paper-ink">
+          &ldquo;{dreamsIntro.quote.text}&rdquo;
+        </p>
+        <footer class="font-interface text-sm font-semibold tracking-wider text-clay-red uppercase">
+          — {dreamsIntro.quote.author}
+        </footer>
+      </blockquote>
+      <p class="mt-5 max-w-none border-t border-antique-gold-soft/40 pt-4 text-[1.02rem] leading-relaxed text-paper-muted">
+        {dreamsIntro.foundationalText}
+      </p>
+    </div>
+
+    <div class="dreams-columns mt-6 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        ¿Qué es lo que soñamos y por qué se interpretan de manera diferente
+        entre una y otra persona? A veces las vivencias nocturnas son
+        traumáticas y grotescas; otras resultan terroríficas o espeluznantes,
+        mientras que también se experimentan sueños eróticos, visiones
+        domésticas y, en determinadas circunstancias, avisos proféticos.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Los mismos sueños presentan variaciones sustanciales de un individuo a
+        otro. Cada persona puede interpretarlos de acuerdo a su propia realidad,
+        pero un análisis certero exige atender al contexto particular del
+        soñante. Al leer estos significados tradicionales, es indispensable
+        determinar cuál se ajusta a su circunstancia íntima.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Si alguien sueña con un monstruo, por ejemplo, deberá dilucidar si se
+        trata del influjo de una película vista la víspera o de un temor
+        arraigado en su subconsciente desde la infancia. Es posible que esa
+        figura simbolice profundas fuerzas anímicas de las cuales todavía no ha
+        podido desprenderse en su vida de vigilia.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Las investigaciones evidencian que todo ser humano sueña cada noche,
+        aunque muchos olviden sus visiones al abrir los ojos. Gran número de
+        sueños continúan su trama en reposos sucesivos —como una película por
+        entregas—, mientras que otros concluyen con un desenlace rápido justo
+        antes de despertar.
+      </p>
+    </div>
+  </section>
+
+  {/* PESTAÑAS PRINCIPALES */}
+  <section
+    aria-labelledby="indice-suenos"
+    class="border-t border-antique-gold-soft/50 pt-8"
+  >
+    <h2 id="indice-suenos" class="mb-6 font-editorial text-3xl text-paper-ink">
+      Sabiduría y Misterio del Mundo Onírico
+    </h2>
+
+    <ContentTabs label="Contenido de sueños" tabs={dreamTabs}>
+      {/* PESTAÑA 1: DOCTRINA Y MEMORIA ONÍRICA */}
+      <section id="doctrina" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Antropología espiritual del reino de los sueños
+          </h3>
+          <div class="dreams-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              La historia de la interpretación onírica se remonta a los años
+              3000 a 4000 a. C. en las primeras civilizaciones fluviales. Los
+              pueblos antiguos no concebían el sueño como una simple ilusión
+              fisiológica, sino como una prolongación viva de la realidad y un
+              plano de poder superior al mundo sensorial diurno.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              En las civilizaciones griega y romana, los intérpretes de sueños
+              marchaban al frente junto a los estrategas militares. En Egipto,
+              los sacerdotes actuaban como intermediarios que fijaban en
+              jeroglíficos los mensajes de los dioses. Poseer un sueño vívido
+              era signo de bendición espiritual, y quienes descifraban su enigma
+              gozaban de honor y respeto público.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              El mundo onírico era concebido como un paraje real que el espíritu
+              y el alma recorren cada noche. Los sabios de la antigua China
+              sostenían que el alma se desprende del cuerpo físico en reposo; de
+              ahí que evitaran sobresaltar bruscamente al durmiente para que su
+              aliento no fracasase al reintegrarse en la envoltura carnal.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Tradiciones similares florecieron en los Cárpatos y en el folclore
+              americano: las almas dormidas vuelan con la levedad de un pájaro,
+              y en los sueños de los pueblos indígenas los antepasados toman
+              forma en árboles y plantas para guiar al soñante hacia el
+              cumplimiento de su vocación sagrada.
+            </p>
+          </div>
+        </article>
+
+        {/* TRADICIONES HISTÓRICAS */}
+        <div class="space-y-4">
+          <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+            El reino onírico en las culturas ancestrales
+          </h4>
+          <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {dreamTraditions.map((trad) => (
+              <div class="flex flex-col justify-between rounded-xl border border-antique-gold-soft/40 bg-surface-warm/30 p-5 shadow-xs">
+                <div>
+                  <span class="font-interface text-xs font-semibold tracking-wider text-clay-red uppercase">
+                    {trad.era}
+                  </span>
+                  <h5 class="mt-1 font-editorial text-lg font-medium text-paper-ink">
+                    {trad.culture}
+                  </h5>
+                  <p class="mt-3 text-xs leading-relaxed text-paper-muted">
+                    {trad.conception}
+                  </p>
+                </div>
+                <p class="mt-4 border-t border-antique-gold-soft/30 pt-3 text-[0.8rem] italic text-paper-muted">
+                  {trad.practice}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CALLOUT: LA REGLA DE ORO DEL REGISTRO */}
+        <div class="rounded-2xl border-l-4 border-antique-gold bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+          <div class="grid gap-x-10 gap-y-3 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p class="max-w-none font-editorial text-2xl font-medium leading-snug text-paper-ink">
+                La regla de oro del registro onírico
+              </p>
+              <p class="mt-1 max-w-none text-xs font-semibold tracking-wider text-antique-gold-deep uppercase">
+                Consejo fundamental de la escuela de Amonra
+              </p>
+            </div>
+            <p class="max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              Si desea conocer el significado de sus sueños y el mensaje secreto
+              que en ellos se oculta, conserve una libreta junto a su cabecera.
+              Tan pronto como abra los ojos —aunque sea a medianoche— escriba de
+              inmediato todo lo que logre recordar antes de levantarse o iniciar
+              el día. La memoria onírica se disipa en cuestión de instantes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* PESTAÑA 2: TIPOS TRADICIONALES DE SUEÑOS */}
+      <section id="tipos" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Clasificación tradicional y psicológica de las visiones
+          </h3>
+          <div class="dreams-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Un sueño unifica cuerpo, mente y espíritu. Proporciona claves
+              sobre nuestra constitución anímica y medios para la exploración de
+              la propia personalidad. A través de ellos el subconsciente
+              examina, clasifica y procesa los problemas que nos inquietan
+              durante la vida despierta.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Muchos han pretendido descartar la interpretación de los sueños
+              como superchería; no obstante, el trabajo de psicoanalistas como
+              Sigmund Freud y Carl G. Jung demostró que el lenguaje onírico
+              sigue leyes psicológicas precisas. Aplicados a la propia vivencia,
+              estos principios enseñan a las personas a equilibrar su existencia
+              y vivir con mayor plenitud.
+            </p>
+          </div>
+        </article>
+
+        {/* LISTADO DE LOS 7 TIPOS */}
+        <div class="space-y-8">
+          {dreamTypes.map((type) => (
+            <div class="rounded-2xl border border-antique-gold-soft/45 bg-surface-warm/25 p-6 shadow-sm lg:p-8">
+              <div class="flex flex-wrap items-center justify-between gap-3 border-b border-antique-gold-soft/30 pb-4">
+                <div>
+                  <span class="font-interface text-xs font-semibold tracking-wider text-clay-red uppercase">
+                    {type.category}
+                  </span>
+                  <h4 class="mt-1 font-editorial text-2xl font-medium text-paper-ink lg:text-3xl">
+                    {type.title}
+                  </h4>
+                </div>
+                <span class="rounded-full border border-antique-gold-soft/60 bg-[var(--color-parchment-soft)] px-3.5 py-1 font-interface text-xs font-medium text-paper-ink">
+                  Tradición Amonra
+                </span>
+              </div>
+
+              <div class="dreams-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+                <div>
+                  <p class="max-w-none text-[1.02rem] leading-relaxed font-medium text-paper-ink">
+                    {type.summary}
+                  </p>
+                  <p class="mt-3 max-w-none text-sm leading-relaxed text-paper-muted">
+                    {type.historicalOrScientificContext}
+                  </p>
+
+                  {type.quoteOrExample && (
+                    <div class="mt-4 rounded-xl border-l-3 border-clay-red bg-[var(--color-parchment-soft)] p-4">
+                      <p class="max-w-none font-editorial text-sm italic text-paper-ink">
+                        &ldquo;{type.quoteOrExample.quote}&rdquo;
+                      </p>
+                      <p class="mt-2 max-w-none text-xs font-semibold text-clay-red">
+                        — {type.quoteOrExample.source}
+                      </p>
+                      {type.quoteOrExample.details && (
+                        <p class="mt-1 max-w-none text-xs text-paper-muted">
+                          {type.quoteOrExample.details}
+                        </p>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                <div class="flex flex-col justify-between space-y-4">
+                  <div>
+                    <h5 class="text-xs font-semibold tracking-wider text-antique-gold-deep uppercase">
+                      Mecanismos y rasgos distintivos
+                    </h5>
+                    <ul class="mt-3 space-y-2 text-sm text-paper-muted">
+                      {type.coreMechanisms.map((mech) => (
+                        <li class="flex items-start gap-2">
+                          <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-clay-red" />
+                          <span class="leading-relaxed">{mech}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div class="rounded-xl border border-antique-gold-soft/30 bg-night/5 p-4">
+                    <p class="max-w-none text-xs font-medium leading-relaxed text-paper-ink">
+                      <strong class="text-clay-red">Orientación:</strong>{" "}
+                      {type.guidanceOrMeaning}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CALLOUT: ACTITUD FRENTE A LOS SUEÑOS RECURRENTES */}
+        <div class="rounded-2xl border-l-4 border-clay-red bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+          <div class="grid gap-x-10 gap-y-3 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p class="max-w-none font-editorial text-2xl font-medium leading-snug text-paper-ink">
+                Clave de superación para sueños reiterativos
+              </p>
+              <p class="mt-1 max-w-none text-xs font-semibold tracking-wider text-clay-red uppercase">
+                Desarmar la máscara defensiva del inconsciente
+              </p>
+            </div>
+            <p class="max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              Para descifrar un sueño recurrente se debe estar dispuesto a mirar
+              hacia adentro con absoluta objetividad. Hay que trascender la
+              emoción inmediata (miedo, enfado o dolor) y concentrarse en las
+              imágenes arquetípicas. Cuando el soñante comprende lo que el
+              patrón repetitivo busca advertirle, el ciclo se extingue por
+              completo.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* PESTAÑA 3: DICCIONARIO DE 25 SÍMBOLOS */}
+      <section id="diccionario" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Diccionario tradicional de 25 símbolos oníricos de Amonra
+          </h3>
+          <div class="dreams-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              En la cosmovisión de Amonra, los símbolos del sueño no son
+              definiciones rígidas de diccionario comercial, sino arquetipos
+              vivos que dialogan con el estado ético y emocional del soñante.
+              Cada figura refleja un espejo del alma que proyecta anhelos,
+              frenos ocultos o advertencias oportunas.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              A continuación se presentan los veinticinco símbolos canónicos
+              recogidos en los registros de la escuela. Evalúe cada símbolo
+              según las sensaciones experimentadas durante el sueño y su momento
+              vital presente para extraer el consejo que su propia sabiduría
+              interior le convoca a escuchar.
+            </p>
+          </div>
+        </article>
+
+        {/* CATÁLOGO DE 25 SÍMBOLOS */}
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {dreamSymbols.map((symbol) => (
+            <div class="flex flex-col justify-between rounded-xl border border-antique-gold-soft/45 bg-surface-warm/25 p-5 shadow-xs transition-shadow duration-200 hover:shadow-md">
+              <div>
+                <div class="flex items-center justify-between border-b border-antique-gold-soft/30 pb-3">
+                  <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+                    {symbol.term}
+                  </h4>
+                  <span class="rounded-full bg-clay-red/10 px-2.5 py-0.5 font-interface text-[0.7rem] font-semibold tracking-wider text-clay-red uppercase">
+                    {symbol.category}
+                  </span>
+                </div>
+
+                <p class="max-w-none mt-3 text-sm font-medium leading-snug text-paper-ink">
+                  {symbol.summary}
+                </p>
+
+                <p class="max-w-none mt-3 text-xs leading-relaxed text-paper-muted">
+                  {symbol.detailedInterpretation}
+                </p>
+              </div>
+
+              <div class="mt-4 border-t border-antique-gold-soft/30 pt-3">
+                <p class="max-w-none text-[0.78rem] leading-relaxed text-paper-ink">
+                  <strong class="font-semibold text-antique-gold-deep">
+                    Clave tradicional:
+                  </strong>{" "}
+                  {symbol.keyAdvice}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CALLOUT: EL CONTEXTO INDIVIDUAL */}
+        <div class="rounded-2xl border-l-4 border-antique-gold bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+          <div class="grid gap-x-10 gap-y-3 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p class="max-w-none font-editorial text-2xl font-medium leading-snug text-paper-ink">
+                El valor primordial del contexto personal
+              </p>
+              <p class="mt-1 max-w-none text-xs font-semibold tracking-wider text-antique-gold-deep uppercase">
+                Criterio interpretativo de Amonra
+              </p>
+            </div>
+            <p class="max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              Un mismo símbolo cambia radicalmente si quien lo contempla siente
+              paz, asombro o desasosiego. Nunca aísle la imagen del clima
+              afectivo del sueño. Ningún manual sustituye la sincera
+              autoobservación de los sucesos reales que acontecen en su vida
+              despierta.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* PESTAÑA 4: PRÁCTICA DE LUCIDEZ Y MEMORIA */}
+      <section id="practica" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Protocolo para despertar en el sueño y dominar la lucidez
+          </h3>
+          <div class="dreams-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Cuando no estamos lúcidos en el reposo, pensamos y nos comportamos
+              con la misma pasividad que en la rutina común: sufrimos angustias
+              por plazos que vencen, exámenes olvidados o pérdidas ficticias. Al
+              conquistar la lucidez onírica esas sombras se disipan de
+              inmediato, porque quien sabe que sueña comprende que ninguna
+              imagen puede herirle.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              El soñador lúcido puede emplear deliberadamente el potencial de su
+              imaginación para resolver dilemas creativos, superar bloqueos
+              artísticos o practicar ejecuciones físicas complejas. A
+              continuación se detallan los cinco pasos metódicos enseñados por
+              la tradición para inducir y sostener este estado despierto.
+            </p>
+          </div>
+        </article>
+
+        {/* 5 ETAPAS DE PRÁCTICA */}
+        <div class="space-y-6">
+          {lucidPracticeStages.map((stage) => (
+            <div class="rounded-2xl border border-antique-gold-soft/45 bg-surface-warm/25 p-6 shadow-xs lg:p-7">
+              <div class="flex flex-wrap items-center justify-between gap-3 border-b border-antique-gold-soft/30 pb-3">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-clay-red font-interface text-sm font-semibold text-ivory">
+                    {stage.stageNumber}
+                  </span>
+                  <div>
+                    <h4 class="font-editorial text-xl font-medium text-paper-ink lg:text-2xl">
+                      {stage.title}
+                    </h4>
+                    <p class="text-xs font-semibold tracking-wide text-clay-red uppercase">
+                      {stage.techniqueName}
+                    </p>
+                  </div>
+                </div>
+                <span class="rounded-full border border-antique-gold-soft/60 bg-[var(--color-parchment-soft)] px-3 py-1 font-interface text-xs text-paper-muted">
+                  Etapa {stage.stageNumber} de 5
+                </span>
+              </div>
+
+              <div class="dreams-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+                <div>
+                  <h5 class="text-xs font-semibold tracking-wider text-antique-gold-deep uppercase">
+                    Instrucción práctica
+                  </h5>
+                  <p class="max-w-none mt-2 text-[1.02rem] leading-relaxed text-paper-ink">
+                    {stage.instructions}
+                  </p>
+                  <p class="max-w-none mt-3 text-sm leading-relaxed text-paper-muted">
+                    {stage.rationale}
+                  </p>
+                </div>
+
+                <div class="flex flex-col justify-end">
+                  <div class="rounded-xl border-l-3 border-antique-gold bg-[var(--color-parchment-soft)] p-4">
+                    <p class="max-w-none text-xs font-semibold tracking-wider text-antique-gold-deep uppercase">
+                      Consejo de aplicación
+                    </p>
+                    <p class="max-w-none mt-1 text-sm leading-relaxed text-paper-muted">
+                      {stage.practicalTip}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CALLOUT: INMUNIDAD EN EL SUEÑO LÚCIDO */}
+        <div class="rounded-2xl border-l-4 border-antique-gold bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+          <div class="grid gap-x-10 gap-y-3 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p class="max-w-none font-editorial text-2xl font-medium leading-snug text-paper-ink">
+                Inmunidad del testigo en el sueño lúcido
+              </p>
+              <p class="mt-1 max-w-none text-xs font-semibold tracking-wider text-antique-gold-deep uppercase">
+                La soberanía de la conciencia
+              </p>
+            </div>
+            <p class="max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              En el momento exacto en que te reconoces soñando, el miedo
+              desaparece: sabes que estás a salvo en tu lecho y que cualquier
+              escenario es una creación mental transitoria. Esta convicción no
+              solo transforma las pesadillas en aventuras fecundas, sino que
+              infunde un temple inquebrantable de serenidad para la vigilia
+              cotidiana.
+            </p>
+          </div>
+        </div>
+      </section>
+    </ContentTabs>
+  </section>
+</div>
+
+<style>
+  .dreams-columns p,
+  :global([data-content-tabs] p.max-w-none) {
+    max-width: none;
+  }
+</style>

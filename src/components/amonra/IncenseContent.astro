@@ -1,0 +1,474 @@
+---
+import ContentTabs from "../common/ContentTabs.astro";
+import {
+  incenseElements,
+  zodiacIncenses,
+  traditionalPurposes,
+  incenseFormats,
+} from "../../config/incense-data";
+
+const incenseTabs = [
+  { id: "historia", label: "Historia y tradiciones sagradas" },
+  { id: "elementos", label: "Incienso y los cuatro elementos" },
+  { id: "zodiaco", label: "Signos zodiacales y correspondencias" },
+  { id: "preparacion", label: "Preparación, formatos y purificación" },
+];
+---
+
+<div class="space-y-12">
+  <section class="reading-section">
+    <div class="rounded-2xl border-l-4 border-clay-red bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+      <p class="max-w-none font-editorial text-[clamp(1.55rem,2.7vw,2.3rem)] leading-tight text-paper-ink">
+        El dulce aroma que se eleva encrespado a las estrellas es un componente
+        imprescindible de prácticas rituales y religiosas.
+      </p>
+      <p class="mt-5 max-w-none border-t border-antique-gold-soft/40 pt-4 text-[1.02rem] leading-relaxed text-paper-muted">
+        El hombre ha utilizado incienso en relación con ritos y tradiciones
+        espirituales desde tiempos inmemoriales. Antiguamente, hace miles de
+        años, se arrojaban al fuego o a las ascuas hierbas aromáticas mezcladas
+        con maderas nobles para liberar los componentes balsámicos de las
+        plantas.
+      </p>
+    </div>
+
+    <div class="incense-columns mt-6 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        La fuerza del incienso descansa, por una parte, en sus sutiles
+        vibraciones, y por otra, en su aroma. Es interesante destacar que,
+        cuando se sahúman como incienso, muchas plantas desprenden un olor
+        totalmente diferente al que puede presumirse por su aroma en estado
+        natural.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        La importancia de muchas mezclas radica no tanto en su perfume como en
+        las vibraciones que se liberan cuando la combinación de hierbas y
+        aserrín se quema lentamente sin llama en el incensario sobre carbón
+        vegetal.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        El incienso también enriquece cualquier ritual: un incensario armónico
+        es una caricia para la vista, la sublimación del humo fragante crea una
+        atmósfera misteriosa y excelsa, y la oscilación rítmica del incensario
+        hace que el proceso destaque claramente de las prácticas cotidianas.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Se quema al realizar prácticas espirituales con el fin de estimular la
+        conciencia ritual, es decir, el estado de ánimo preciso para despertar y
+        dirigir la energía personal. Es una valiosa ayuda para nuestras
+        plegarias, ya que al elevarse el humo, lleva el mensaje directamente a
+        las divinidades que se imploran o invocan.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Cuando el incienso se quema con anterioridad a las labores sagradas, su
+        humo purifica también el altar y el área circundante, alejando las
+        vibraciones perturbadoras. Aunque tal purificación a veces se perciba de
+        manera invisible, ayuda a afianzar el estado anímico adecuado para
+        alcanzar el éxito en los trabajos interiores.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Hay que tener presente que es uno de los mejores purificadores
+        tradicionales: limpiar de energías perjudiciales todo aquello que nos
+        rodea, ya se trate de personas, hogares o santuarios. Al arder sin
+        llama, las vibraciones vegetales se liberan y se apresuran a colaborar
+        con la manifestación del objetivo luminoso propuesto.
+      </p>
+    </div>
+  </section>
+
+  <section
+    aria-labelledby="indice-inciensos"
+    class="border-t border-antique-gold-soft/50 pt-8"
+  >
+    <h2
+      id="indice-inciensos"
+      class="mb-6 font-editorial text-3xl text-paper-ink"
+    >
+      Sabiduría tradicional de los inciensos
+    </h2>
+
+    <ContentTabs label="Contenido de inciensos" tabs={incenseTabs}>
+      {/* PESTAÑA 1: HISTORIA Y TRADICIONES SAGRADAS */}
+      <section id="historia" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Inciensos en la magia egipcia y el Kyphi sagrado
+          </h3>
+          <div class="incense-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Los antiguos egipcios eran maestros en la preparación y
+              utilización de incienso y elevaron ambas actividades a la
+              categoría de arte sublime. El más renombrado de todos los tipos de
+              incienso egipcios era el kifi (Kyphi). Los ingredientes del kifi
+              nos obsequian el bienestar: puede acunar al hombre en su sueño,
+              evocar sueños y desterrar las preocupaciones diarias, pues otorga
+              paz y serenidad a quien lo inhala.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Los ingredientes del kifi se mezclaban en el curso de un ritual
+              secreto bajo la recitación de textos sagrados. La preparación
+              seguía un ritual templario especial extremadamente reservado cuyo
+              misterioso efecto generaba un estado de perfecta armonía. Uno de
+              los ingredientes primordiales del kifi era la resina de olíbano
+              (incienso puro), tan apreciada en nuestros días, puesto que entre
+              los antiguos egipcios gozaba de la más alta consideración.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Los perfumes e inciensos fragantes eran tenidos en alta estimación
+              por los egipcios y jugaban una parte decisiva en sus vidas. Se
+              usaban en tratamientos para desterrar influencias adversas y
+              enfermedades. Se levantaban altares a las deidades y al dios Ra se
+              le pedía que llevara el alma al cielo en el humo del incienso. La
+              composición del Kyphi era un rito donde se leían los libros
+              sagrados en voz alta en los recintos sagrados.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              De acuerdo con descubrimientos arqueológicos, en algunos de los
+              magníficos vasos encontrados en la tumba de Tutankhamón, la
+              fragancia del incienso todavía se percibe intacta tras un período
+              de más de 3.000 años. El perfume sagrado de Kyphi se ofrendaba al
+              dios solar Ra al ponerse, elaborado con la combinación mágica de
+              4x4 (dieciséis esencias) citada por Plutarco, ejerciendo un efecto
+              fisiológico y anímico armonizador en quienes lo preparaban y
+              aspiraban.
+            </p>
+          </div>
+        </article>
+
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Mandamiento bíblico en la historia hebrea
+          </h3>
+          <div class="incense-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              El uso de incienso entre los hebreos se remonta a la época más
+              temprana de la historia como un mandamiento divino directo:
+              <em>
+                «Harás un altar en el que quemarás incienso, y Aarón quemará en
+                él incienso suave todas las mañanas»
+              </em>{" "}
+              (Éxodo 30: 1-7). Los hebreos usaban sustancias aromáticas no sólo
+              por su fragancia, sino en infinidad de formas: sazonaban con
+              especias, fumigaban con ellas sus vestiduras, lechos y estancias,
+              y las utilizaban en los ritos de purificación.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              La receta canónica de incienso revelada en el Éxodo (capítulo 30,
+              versículo 34) indica que Moisés recibió la prescripción que
+              consistía en especias dulces (estacte), uña aromática (oncha) y
+              gálbano, junto con incienso puro (olíbano) en partes iguales, bajo
+              el mandato estricto de consagrar esta composición sagrada para la
+              veneración divina y el servicio del santuario.
+            </p>
+          </div>
+        </article>
+
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Tradición védica de la India y ritos de Oriente
+          </h3>
+          <div class="incense-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Siglos antes de la era cristiana, en la India se utilizaban gomas
+              y maderas de olor suave como incienso y para perfumar vestiduras,
+              tanto en ceremonias religiosas comunitarias como privadas. Una
+              parte esencial de la veneración hindú consiste en ofrecer agua
+              perfumada para lavar la representación divina, junto con madera de
+              sándalo en polvo fino, azafrán y preparados tradicionales.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              En la India occidental se conserva viva la tradición pura del rito
+              del incienso como la practicaban sus antepasados desde tiempos
+              antiguos. Asimismo, las comunidades tradicionales queman
+              sahumerios e inciensos fragantes en ceremonias familiares de
+              matrimonio, ritos de paso y solemnidades de despedida.
+            </p>
+          </div>
+        </article>
+
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Ritos místicos y el aporte de la alquimia árabe
+          </h3>
+          <div class="incense-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Los inciensos de ritos místicos corresponden a preparados de grado
+              altamente fino que al arder producen un aroma sereno de ensueño
+              oriental. Se elaboran a partir de un polvo pardo dorado muy
+              finamente molido, tal como se ha utilizado siempre en el Lejano
+              Oriente. Favorece la introspección y el recogimiento interior,
+              especialmente si se practican ejercicios para el desenvolvimiento
+              de las facultades espirituales elevadas.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Aún antes de la edificación del Templo de Salomón se conocía y
+              utilizaba profusamente la fragancia de esencias raras y costosas
+              que invocaban influencias sutiles. Por siglos, estas preparaciones
+              secretas fueron preservadas y perfeccionadas por los antiguos
+              químicos y sabios árabes, a cuyos estudios debe la tradición gran
+              parte del saber del incienso oriental.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      {/* PESTAÑA 2: INCIENSO Y LOS CUATRO ELEMENTOS */}
+      <section id="elementos" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Inciensos rituales de los cuatro elementos
+          </h3>
+          <div class="incense-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              En la cosmología tradicional preservada por Amonra, cada elemento
+              de la naturaleza vibra en una frecuencia específica y se relaciona
+              con plantas, resinas y esencias correspondientes. El sahumerio
+              elemental permite sintonizar el espacio con las virtudes cósmicas
+              precisas que el practicante desea invocar.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Al combinar las materias botánicas correctas y dejarlas arder sin
+              llama sobre el carbón vegetal, se libera la signatura energética
+              de cada elemento, propiciando el equilibrio entre el mundo
+              interior y el orden de la creación.
+            </p>
+          </div>
+        </article>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          {incenseElements.map((elem) => (
+            <div class="rounded-2xl border border-antique-gold-soft/40 bg-surface-warm/40 p-6 shadow-sm transition hover:shadow-md lg:p-7">
+              <div class="flex items-center justify-between border-b border-antique-gold-soft/30 pb-3">
+                <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+                  {elem.name}
+                </h4>
+                <span class="rounded-full bg-paper px-3 py-1 text-xs font-semibold uppercase tracking-wider text-paper-muted">
+                  {elem.element}
+                </span>
+              </div>
+
+              <div class="mt-4 space-y-4 text-sm text-paper-muted">
+                <div>
+                  <span class="font-semibold text-paper-ink">
+                    Ingredientes tradicionales:
+                  </span>
+                  <ul class="mt-2 list-inside list-disc space-y-1">
+                    {elem.ingredients.map((ing) => (
+                      <li>{ing}</li>
+                    ))}
+                  </ul>
+                  {elem.substitute && (
+                    <p class="mt-2 text-xs italic text-antique-gold-deep">
+                      * {elem.substitute}
+                    </p>
+                  )}
+                </div>
+
+                <div class="border-t border-antique-gold-soft/20 pt-3">
+                  <p class="font-semibold text-paper-ink">
+                    Propósito y facultades:
+                  </p>
+                  <p class="mt-1 leading-relaxed">{elem.purpose}</p>
+                </div>
+
+                <div class="rounded-lg bg-paper/60 p-3 text-xs leading-relaxed text-paper-muted">
+                  <span class="font-medium text-paper-ink">
+                    Indicación de quemado:
+                  </span>{" "}
+                  {elem.ritualTips}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* PESTAÑA 3: SIGNOS ZODIACALES Y CORRESPONDENCIAS */}
+      <section id="zodiaco" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Signos astrológicos e incienso
+          </h3>
+          <div class="incense-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Existe una correspondencia ancestral entre los doce signos del
+              zodíaco y las virtudes curativas y aromáticas de la botánica
+              sagrada. Cada signo encuentra en determinadas resinas, flores y
+              maderas el vehículo propicio para armonizar su temperamento natal
+              y acrecentar sus facultades naturales.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Las mezclas astrológicas pueden emplearse como sahumerio personal,
+              aceite de unción o incienso ambiental, sintonizando la vibración
+              del momento con el arquetipo zodiacal correspondiente.
+            </p>
+          </div>
+        </article>
+
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {zodiacIncenses.map((z) => (
+            <div class="flex flex-col justify-between rounded-xl border border-antique-gold-soft/40 bg-surface-warm/30 p-5 shadow-xs transition hover:border-antique-gold/60">
+              <div>
+                <div class="flex items-center justify-between border-b border-antique-gold-soft/30 pb-3">
+                  <div class="flex items-center gap-2">
+                    <span class="font-editorial text-2xl text-antique-gold-deep">
+                      {z.symbol}
+                    </span>
+                    <h4 class="font-editorial text-xl font-medium text-paper-ink">
+                      {z.sign}
+                    </h4>
+                  </div>
+                  <span class="text-xs font-medium uppercase tracking-wider text-paper-muted">
+                    {z.element}
+                  </span>
+                </div>
+
+                <div class="mt-3 space-y-3 text-xs leading-relaxed text-paper-muted">
+                  <div>
+                    <span class="font-semibold text-paper-ink">
+                      Componentes:
+                    </span>
+                    <p class="mt-0.5">{z.primaryIngredients.join(", ")}.</p>
+                  </div>
+
+                  {z.alternativeBlend && (
+                    <div>
+                      <span class="font-semibold text-paper-ink">
+                        Combinación alternativa:
+                      </span>
+                      <p class="mt-0.5">{z.alternativeBlend}</p>
+                    </div>
+                  )}
+
+                  {z.oils && (
+                    <div>
+                      <span class="font-semibold text-paper-ink">
+                        Esencia y aceites:
+                      </span>
+                      <p class="mt-0.5">{z.oils}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div class="mt-4 border-t border-antique-gold-soft/20 pt-3 text-xs italic text-paper-ink">
+                {z.ritualPurpose}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="rounded-2xl border-l-4 border-antique-gold bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+          <div class="grid gap-x-10 gap-y-3 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p class="max-w-none font-editorial text-2xl font-medium leading-snug text-paper-ink">
+                Pauta fundamental de combinación
+              </p>
+              <p class="mt-1 max-w-none text-xs font-semibold uppercase tracking-wider text-antique-gold-deep">
+                Signaturas astrológicas y armonía vegetal
+              </p>
+            </div>
+            <p class="max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              Las mezclas de los inciensos astrológicos son muy variadas debido
+              a la relación que existe entre los signos del zodíaco y los
+              inciensos; por ello hay que saber combinar las diversas
+              correspondencias para obtener el fin deseado con discernimiento y
+              armonía.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* PESTAÑA 4: PREPARACIÓN, FORMATOS Y PURIFICACIÓN */}
+      <section id="preparacion" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Los cuatro fines tradicionales del incienso
+          </h3>
+          <div class="incense-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Al igual que en el presente, en épocas antiguas el incienso se
+              utilizó con constancia y veneración para cuatro fines
+              fundamentales que abarcan la relación con lo sagrado, la
+              comunicación espiritual, la purificación del entorno y el
+              bienestar del alma.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Comprender estos cuatro pilares permite al practicante orientar su
+              mente y corazón con absoluta claridad antes de encender las
+              ascuas, transformando un acto físico en un rito de elevación
+              interior.
+            </p>
+          </div>
+        </article>
+
+        <div class="grid gap-5 md:grid-cols-2">
+          {traditionalPurposes.map((purp) => (
+            <div class="rounded-xl border border-antique-gold-soft/40 bg-surface-warm/40 p-6 shadow-xs">
+              <h4 class="font-editorial text-xl font-medium text-paper-ink">
+                {purp.title}
+              </h4>
+              <p class="mt-2 text-xs font-semibold tracking-wide text-antique-gold-deep">
+                {purp.summary}
+              </p>
+              <p class="mt-3 text-sm leading-relaxed text-paper-muted">
+                {purp.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <article class="reading-section border-t border-antique-gold-soft/30 pt-8">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Formatos de presentación y el arte de la propia mezcla
+          </h3>
+          <div class="incense-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Hoy día el incienso puede comprarse en los más variados
+              establecimientos: herboristerías, librerías esotéricas y casas de
+              accesorios tradicionales. No obstante, la enseñanza perenne
+              recalca que el incienso más poderoso y eficaz es el que compone
+              uno mismo. El incienso manufacturado cumple su misión, pero las
+              mezclas elaboradas a mano se ven enriquecidas con una dimensión
+              adicional: la impregnación directa del propósito consciente de
+              quien lo elabora.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              El incienso se presenta habitualmente en forma de grano, resina,
+              polvo tamizado, conos y barritas. Los conos y las barritas pueden
+              sahumarse sin más, mientras que para la quema de incienso en grano
+              o en polvo se necesita carbón vegetal y un incensario o recipiente
+              refractario con base de arena fina marina o sal, garantizando un
+              fuego sereno y seguro.
+            </p>
+          </div>
+        </article>
+
+        <div class="grid gap-5 md:grid-cols-2">
+          {incenseFormats.map((form) => (
+            <div class="rounded-xl border border-antique-gold-soft/30 bg-surface-warm/20 p-5">
+              <h4 class="font-editorial text-lg font-medium text-paper-ink">
+                {form.name}
+              </h4>
+              <p class="mt-2 text-xs leading-relaxed text-paper-muted">
+                {form.description}
+              </p>
+              <div class="mt-3 border-t border-antique-gold-soft/20 pt-2 text-xs text-paper-ink">
+                <span class="font-semibold text-paper-muted">
+                  Método tradicional:
+                </span>{" "}
+                {form.burnMethod}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </ContentTabs>
+  </section>
+</div>
+
+<style>
+  .incense-columns p,
+  :global([data-content-tabs] p.max-w-none) {
+    max-width: none;
+  }
+</style>

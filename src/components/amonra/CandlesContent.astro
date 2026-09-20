@@ -1,0 +1,416 @@
+---
+import ContentTabs from "../common/ContentTabs.astro";
+import {
+  candleColors,
+  zodiacCandles,
+  saintsCandles,
+  magicCandles,
+} from "../../config/candles-data";
+
+const candleTabs = [
+  { id: "historia", label: "Historia y orígenes" },
+  { id: "colores", label: "Significado de los colores" },
+  { id: "astrologia", label: "Astrología y devociones" },
+  { id: "luz-magica", label: "Velas de Luz Mágica" },
+  { id: "arte-negativo", label: "Discernimiento y resguardo" },
+];
+---
+
+<div class="space-y-12">
+  <section class="reading-section">
+    <div class="rounded-2xl border-l-4 border-clay-red bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+      <p class="max-w-none font-editorial text-[clamp(1.55rem,2.7vw,2.3rem)] leading-tight text-paper-ink">
+        El ser humano siempre ha querido indagar en la razón de ser de los
+        fenómenos de la naturaleza.
+      </p>
+      <p class="mt-5 max-w-none border-t border-antique-gold-soft/40 pt-4 text-[1.02rem] leading-relaxed text-paper-muted">
+        En los primeros tiempos, el hombre se sentía impotente frente a las
+        manifestaciones de las fuerzas naturales. Desde esa época, y para
+        protegerse, recurrió a la invocación de fuerzas inexplicables para él.
+      </p>
+    </div>
+
+    <div class="candles-columns mt-6 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Con el tiempo, el hombre pudo contar con las certezas que le ofrecía la
+        ciencia. Pero hoy, pese a los asombrosos progresos del conocimiento, una
+        parte enorme de la realidad queda sin poder ser asimilada con la
+        categoría de la racionalidad.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Aunque algunos desconocen y desprecian las expresiones religiosas y
+        mágicas del hombre, no por eso estas dejan de formar parte activa de
+        nuestras vidas cada día. Los talismanes y amuletos se han usado desde
+        las épocas más remotas de la humanidad como centros de irradiación para
+        beneficio de quien los porta.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Muchos les atribuyen la cualidad de concretar fuerzas sagradas
+        procedentes de su propia naturaleza. Las velas ocupan un lugar
+        privilegiado dentro de estos objetos: su luz nos ayuda a canalizar y
+        orientar las energías de la naturaleza para entrar en contacto con
+        nuestros planos sagrados, santos y divinidades.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        En las prácticas de la magia, las velas tienen una importancia
+        trascendental como centros energéticos. Recurrimos a ellas para
+        ayudarnos a triunfar sobre las dificultades cotidianas y abrirnos las
+        puertas de otras realidades, favoreciendo la concentración, la
+        meditación y el autoconocimiento interior.
+      </p>
+    </div>
+  </section>
+
+  <section
+    aria-labelledby="indice-velas"
+    class="border-t border-antique-gold-soft/50 pt-8"
+  >
+    <h2 id="indice-velas" class="mb-6 font-editorial text-3xl text-paper-ink">
+      Conocimiento tradicional de las velas
+    </h2>
+
+    <ContentTabs label="Contenido de velas" tabs={candleTabs}>
+      {/* PESTAÑA 1: HISTORIA */}
+      <section id="historia" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Orígenes y desarrollo de la vela en el culto
+          </h3>
+          <div class="candles-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Antes de la invención de las velas, se utilizaban pequeñas
+              lámparas de aceite en los templos antiguos y en los santuarios
+              caseros llamadas lámparas de votivo, como fieles conductoras de
+              las plegarias a las deidades de antaño. Cuando se inventaron las
+              velas, estas reemplazaron rápidamente a las lámparas de aceite en
+              el culto.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Las velas hechas de cera de abejas ya se utilizaban en Egipto y
+              Creta en el año 3000 a. C. Tallados en relieve en las tumbas del
+              Egipto antiguo en Tebas muestran velas en forma de cono sobre
+              soportes en forma de platos o candeleros. El hallazgo arqueológico
+              más antiguo conocido en Europa, de un fragmento de vela, fue cerca
+              de Aviñón en Francia, datado en el siglo I de la era cristiana.
+            </p>
+          </div>
+        </article>
+
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Gremios medievales y evolución de los materiales
+          </h3>
+          <div class="candles-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              En el siglo XIII se establecieron gremios de cereros o fabricantes
+              de velas. Estos artesanos iban de casa en casa en Londres y París
+              fabricando velas. La cera de abejas o sebo (la grasa sólida y dura
+              procesada del ganado y las ovejas) se utilizó en la fabricación de
+              las velas hasta aproximadamente el año 1825.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Las tintas naturales utilizadas para colorear telas y otros
+              materiales por más de 5.000 años se mezclaban en la cera de abejas
+              o el sebo mientras se derretía, produciendo velas de colores. La
+              cera de parafina, residuo de la destilación del aceite crudo, fue
+              introducida en la década de 1850 y todavía es ampliamente
+              utilizada. En el siglo XIX se experimentó con ácido esteárico,
+              cera microcristalina y ceresina de petróleo, y a inicios del siglo
+              XX se introdujeron las velas de siete días.
+            </p>
+          </div>
+        </article>
+
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            La práctica universal de la llama y la devoción
+          </h3>
+          <div class="candles-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              La práctica de utilizar una llama de cualquier clase es universal:
+              es aceptada y utilizada en las principales religiones y
+              tradiciones del mundo. La práctica de exponer luces como una
+              ofrenda junto con la oración no es vudú, ni brujería, ni
+              superstición como algunos pretenden hacer creer utilizando la
+              ignorancia y el miedo: es simplemente un acto de devoción, uno de
+              los muchos caminos que llevan a Dios.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Pese al avance de la ciencia y la legitimación de visiones
+              estrictamente racionales, la magia natural no ha perdido su poder
+              sobre la conciencia humana. Pretende actuar sobre la realidad por
+              medio de rituales prácticos en los que intervienen palabras,
+              oraciones y elementos naturales, invocando las fuerzas presentes e
+              implícitas en la naturaleza como obra divina.
+            </p>
+          </div>
+        </article>
+
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Magia natural y resguardo popular
+          </h3>
+          <div class="candles-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              La cacería de brujas medieval es atribuida por sociólogos a la
+              necesidad de autoridades locales de buscar chivos expiatorios ante
+              calamidades de peste y hambre. La verdadera magia natural tiene un
+              origen popular e intenta actuar para proteger a las personas de
+              enfermedades, desgracias y dificultades cotidianas en su lucha por
+              la vida.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Muchos practicantes de ritos devocionales consideran que no actúan
+              en contra de sus convicciones religiosas, sino que sus rituales
+              constituyen un complemento natural a su cosmovisión del mundo,
+              manteniendo una relación de respeto y reverencia ante lo sagrado.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      {/* PESTAÑA 2: COLORES */}
+      <section id="colores" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            El lenguaje y la vibración de los colores
+          </h3>
+          <div class="candles-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Los colores forman parte de nuestras vidas de manera consciente o
+              inconsciente. Tenemos preferencias por determinados colores, y
+              nuestras costumbres nos llevan a percibir la realidad matizada por
+              sus presencias. Los colores influyen en nuestro ánimo, en nuestro
+              carácter y en nuestras expectativas cotidianas.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Cada color posee una virtud propia: cuando encendemos una vela de
+              determinado color ayudamos a que una situación deseada se concrete
+              y armonice, alineando nuestra intención mental y espiritual con
+              las energías naturales del entorno.
+            </p>
+          </div>
+        </article>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          {candleColors.map((color) => (
+            <article class="rounded-xl border border-antique-gold-soft/40 bg-[var(--color-parchment-soft)] p-6 shadow-sm transition-all hover:border-antique-gold">
+              <header class="flex items-center gap-4 border-b border-antique-gold-soft/30 pb-4">
+                <span
+                  class="inline-block h-8 w-8 shrink-0 rounded-full border border-black/15 shadow-inner"
+                  style={{ background: color.colorCss }}
+                  aria-hidden="true"
+                />
+                <h4 class="font-editorial text-2xl text-paper-ink">
+                  {color.name}
+                </h4>
+              </header>
+              <p class="max-w-none mt-4 text-sm leading-relaxed text-paper-muted">
+                {color.description}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* PESTAÑA 3: ASTROLOGÍA Y DEVOCIONES */}
+      <section id="astrologia" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Luz, polaridad y orden celeste
+          </h3>
+          <div class="candles-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              La luz y la oscuridad son contrastes necesarios para la mente que
+              reconoce a través de las diferencias su propia intervención en el
+              quehacer universal. Toma conciencia de su posición a través de la
+              reflexión y verifica a través de experiencias su presencia en el
+              mundo.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              La luz es una referencia, una señal que nos ayuda a orientarnos en
+              el camino para saber cabalmente dónde estamos parados. Las velas
+              son el elemento más primario que transporta la iluminación, junto
+              con el sol y el fuego de la hoguera de nuestros antepasados.
+            </p>
+          </div>
+        </article>
+
+        <section aria-labelledby="zodiaco-velas-title" class="reading-section">
+          <h4
+            id="zodiaco-velas-title"
+            class="font-editorial text-2xl text-paper-ink"
+          >
+            Correspondencias zodiacales de las velas
+          </h4>
+          <p class="max-w-none mt-2 text-sm text-paper-muted">
+            En la tradición astrológica, cada signo del zodíaco se vincula con
+            tonalidades que refuerzan sus cualidades y armonizan sus
+            inclinaciones.
+          </p>
+          <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {zodiacCandles.map((z) => (
+              <article class="rounded-lg border border-antique-gold-soft/40 bg-[var(--color-parchment-soft)] p-5">
+                <div class="flex items-baseline justify-between">
+                  <h5 class="font-editorial text-xl text-paper-ink">
+                    {z.sign}
+                  </h5>
+                  <span class="font-interface text-xs uppercase tracking-wider text-antique-gold">
+                    {z.element}
+                  </span>
+                </div>
+                <p class="max-w-none mt-2 font-interface text-xs font-semibold text-paper-ink">
+                  Tonalidades:{" "}
+                  <span class="font-normal text-paper-muted">{z.colors}</span>
+                </p>
+                <p class="max-w-none mt-3 text-xs leading-relaxed text-paper-muted">
+                  {z.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section aria-labelledby="santos-velas-title" class="reading-section">
+          <h4
+            id="santos-velas-title"
+            class="font-editorial text-2xl text-paper-ink"
+          >
+            Santos, entidades espirituales y sus colores de velas
+          </h4>
+          <p class="max-w-none mt-2 text-sm text-paper-muted">
+            Cada santo o entidad espiritual se invoca tradicionalmente a través
+            del encendido de una vela del color asociado a sus virtudes o a la
+            gracia solicitada:
+          </p>
+          <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {saintsCandles.map((s) => (
+              <article class="rounded-lg border border-antique-gold-soft/30 bg-[var(--color-parchment-soft)] p-4">
+                <h5 class="font-editorial text-lg font-medium text-paper-ink">
+                  {s.name}
+                </h5>
+                <p class="max-w-none mt-1 text-xs text-antique-gold">
+                  {s.role}
+                </p>
+                <div class="mt-3 border-t border-antique-gold-soft/20 pt-2">
+                  <span class="font-interface text-[0.75rem] font-semibold text-paper-ink">
+                    Vela:
+                  </span>{" "}
+                  <span class="text-xs text-paper-muted">{s.colors}</span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <figure class="rounded-2xl border border-antique-gold-soft/50 bg-night px-6 py-7 text-ivory shadow-[0_10px_28px_rgba(8,13,22,0.4)] lg:px-10 lg:py-9">
+          <div class="mx-auto max-w-[72rem]">
+            <p class="text-center font-interface text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-antique-gold">
+              Fiat Lux • Red de Luz Interior Amonra Chile
+            </p>
+            <blockquote class="mx-auto mt-5 max-w-[60rem] text-center font-editorial text-[clamp(1.45rem,2.35vw,2.2rem)] leading-tight italic text-old-papyrus">
+              "A mis padres y hermanos que están en los cielos y en la tierra.
+              Por una humanidad en que broten nuestras semillas fértiles. Por el
+              florecimiento de la santa luz inefable en todos los corazones de
+              los seres humanos."
+            </blockquote>
+            <figcaption class="mt-5 border-t border-antique-gold-soft/30 pt-3 text-center font-interface text-xs text-antique-gold lg:text-right">
+              Feliluxor — Fe y felicidad en la Luz de Oro (Santiago de Chile,
+              Diciembre 2013)
+            </figcaption>
+          </div>
+        </figure>
+      </section>
+
+      {/* PESTAÑA 4: LUZ MÁGICA */}
+      <section id="luz-magica" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Velas de Luz Mágica y propósitos devocionales
+          </h3>
+          <div class="candles-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Las velas de Luz Mágica reúnen formas, colores e intenciones
+              específicas transmitidas por la tradición esotérica y popular. Se
+              elaboran en formas figurativas, velones consagrados o
+              combinaciones de varios colores para atender propósitos concretos.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Se emplean tradicionalmente en peticiones de trabajo, salud,
+              armonía conyugal, protección frente a envidias, superación de
+              obstáculos y agradecimiento espiritual ante santos y protectores.
+            </p>
+          </div>
+        </article>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {magicCandles.map((item) => (
+            <article class="rounded-lg border border-antique-gold-soft/40 bg-[var(--color-parchment-soft)] p-5 transition-colors hover:border-antique-gold">
+              <h4 class="font-editorial text-xl text-paper-ink">{item.name}</h4>
+              <p class="max-w-none mt-2 text-xs leading-relaxed text-paper-muted">
+                {item.description}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* PESTAÑA 5: ARTE NEGATIVO Y RESGUARDO */}
+      <section id="arte-negativo" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            El arte negativo en las velas: discernimiento y polaridad
+          </h3>
+          <div class="candles-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Puesto que las velas de ritual tienen su aspecto oscuro y
+              negativo, ¿se pueden utilizar velas en la magia negra? La
+              respuesta es afirmativa: por supuesto que sí. El entrenamiento
+              para la magia negra y la magia blanca es primariamente el mismo
+              hasta cierto punto. El bien y el mal pasan por el mismo velo, y la
+              diferencia estriba en el uso para el que se emplee el conocimiento
+              y el entrenamiento mágico.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Las velas negras se utilizan como la fuente primera para rituales
+              pensados para dañar o producir caos. Se debe poner de manifiesto
+              la forma hermosa que en ocasiones adopta el mal: la verdadera
+              distinción entre la belleza del mal y la del bien estriba en la
+              temperatura de su radiación; es decir, la belleza del mal es una
+              belleza fría, y ahí está el secreto. Debemos preocuparnos siempre
+              de a quién o a qué concedemos nuestra lealtad.
+            </p>
+          </div>
+        </article>
+
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Advertencia y salvaguardia ética
+          </h3>
+          <div class="candles-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              ¿Qué consejo podríamos dar a los presuntos seguidores del sendero
+              izquierdo? Es simple: ¡no lo tome! La gente —y los jóvenes son
+              especialmente vulnerables— se puede exponer a un considerable
+              riesgo trabajando con fuerzas que, careciendo de guía moral y
+              espiritual, son incapaces de controlar.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              La salvaguardia infalible es la máxima precaución y el adecuado
+              entrenamiento asegurado por una guía cualificada. El principio de
+              Amonra es actuar con gran vigilancia, rechazando toda intención
+              dañina y manteniendo el encendido de la llama como un acto de luz,
+              fe y elevación del ser.
+            </p>
+          </div>
+        </article>
+      </section>
+    </ContentTabs>
+  </section>
+</div>
+
+<style>
+  .candles-columns p {
+    max-width: none;
+  }
+</style>

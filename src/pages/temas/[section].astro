@@ -2,8 +2,12 @@
 import { Image } from "astro:assets";
 import AmuletsContent from "../../components/amonra/AmuletsContent.astro";
 import AstrologyContent from "../../components/amonra/AstrologyContent.astro";
+import CandlesContent from "../../components/amonra/CandlesContent.astro";
 import FoundationContent from "../../components/amonra/FoundationContent.astro";
 import HistoryContent from "../../components/amonra/HistoryContent.astro";
+import IncenseContent from "../../components/amonra/IncenseContent.astro";
+import GemsContent from "../../components/amonra/GemsContent.astro";
+import DreamsContent from "../../components/amonra/DreamsContent.astro";
 import Breadcrumbs from "../../components/common/Breadcrumbs.astro";
 import Container from "../../components/layout/Container.astro";
 import { amonraMessages } from "../../config/amonra-messages";
@@ -15,8 +19,12 @@ import {
 import AmonraLayout from "../../layouts/AmonraLayout.astro";
 import amuletsHero from "../../assets/amonra/amuletos-hero.jpg";
 import astrologyHero from "../../assets/amonra/astrologia-hero.jpg";
+import candlesHero from "../../assets/amonra/velas-hero.png";
 import foundationHero from "../../assets/amonra/fundacion-hero.png";
 import historyHero from "../../assets/amonra/historia-hero.jpg";
+import incenseHero from "../../assets/amonra/inciensos-hero.jpg";
+import gemsHero from "../../assets/amonra/gemas-hero.jpg";
+import dreamsHero from "../../assets/amonra/suenos-hero.jpg";
 
 interface Props {
   section: AmonraSection;
@@ -35,6 +43,10 @@ const hasCompactHero = [
   "historia",
   "amuletos",
   "astrologia",
+  "velas",
+  "inciensos",
+  "gemas",
+  "suenos",
 ].includes(section.slug);
 const currentIndex = amonraSections.findIndex(
   (candidate) => candidate.slug === section.slug,
@@ -96,6 +108,26 @@ const next =
               Una mirada a los astros, sus movimientos y sus influencias.
             </p>
           )}
+          {section.slug === "velas" && (
+            <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
+              Luz, colores y devoción tradicional en la práctica espiritual.
+            </p>
+          )}
+          {section.slug === "inciensos" && (
+            <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
+              Aromas sagrados, correspondencias elementales y purificación.
+            </p>
+          )}
+          {section.slug === "gemas" && (
+            <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
+              Cristales, gemoterapia y armonización energética tradicional.
+            </p>
+          )}
+          {section.slug === "suenos" && (
+            <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
+              Imágenes, arquetipos y despertar consciente en el mundo onírico.
+            </p>
+          )}
         </div>
 
         {section.slug === "fundacion" && (
@@ -149,6 +181,58 @@ const next =
             />
           </figure>
         )}
+
+        {section.slug === "velas" && (
+          <figure class="m-0">
+            <Image
+              src={candlesHero}
+              alt="Composición ceremonial de velas de la tradición de Amonra"
+              widths={[380, 560, 760]}
+              sizes="(min-width: 1024px) 42vw, 88vw"
+              loading="eager"
+              class="mx-auto max-h-[20rem] w-full max-w-[18rem] object-contain drop-shadow-2xl"
+            />
+          </figure>
+        )}
+
+        {section.slug === "inciensos" && (
+          <figure class="m-0">
+            <Image
+              src={incenseHero}
+              alt="Inciensos rituales y fragancias sagradas de la tradición de Amonra"
+              widths={[380, 560, 640]}
+              sizes="(min-width: 1024px) 42vw, 88vw"
+              loading="eager"
+              class="mx-auto max-h-[20rem] w-full max-w-[18rem] rounded-xl object-contain drop-shadow-2xl"
+            />
+          </figure>
+        )}
+
+        {section.slug === "gemas" && (
+          <figure class="m-0">
+            <Image
+              src={gemsHero}
+              alt="Composición de gemas y cristales de la tradición de Amonra"
+              widths={[380, 560, 800]}
+              sizes="(min-width: 1024px) 42vw, 88vw"
+              loading="eager"
+              class="mx-auto max-h-[20rem] w-full max-w-[18rem] rounded-xl object-contain drop-shadow-2xl"
+            />
+          </figure>
+        )}
+
+        {section.slug === "suenos" && (
+          <figure class="m-0">
+            <Image
+              src={dreamsHero}
+              alt="Figura en reposo bajo la noche estrellada y el farol de la conciencia onírica"
+              widths={[380, 560, 700]}
+              sizes="(min-width: 1024px) 42vw, 88vw"
+              loading="eager"
+              class="mx-auto max-h-[20rem] w-full max-w-[20rem] rounded-xl object-contain drop-shadow-2xl"
+            />
+          </figure>
+        )}
       </Container>
     </header>
 
@@ -180,6 +264,38 @@ const next =
       <section class="border-b border-antique-gold-soft/45 bg-paper py-20 text-paper-ink lg:py-24">
         <Container>
           <AstrologyContent />
+        </Container>
+      </section>
+    )}
+
+    {section.slug === "velas" && (
+      <section class="border-b border-antique-gold-soft/45 bg-paper py-20 text-paper-ink lg:py-24">
+        <Container>
+          <CandlesContent />
+        </Container>
+      </section>
+    )}
+
+    {section.slug === "inciensos" && (
+      <section class="border-b border-antique-gold-soft/45 bg-paper py-20 text-paper-ink lg:py-24">
+        <Container>
+          <IncenseContent />
+        </Container>
+      </section>
+    )}
+
+    {section.slug === "gemas" && (
+      <section class="border-b border-antique-gold-soft/45 bg-paper py-20 text-paper-ink lg:py-24">
+        <Container>
+          <GemsContent />
+        </Container>
+      </section>
+    )}
+
+    {section.slug === "suenos" && (
+      <section class="border-b border-antique-gold-soft/45 bg-paper py-20 text-paper-ink lg:py-24">
+        <Container>
+          <DreamsContent />
         </Container>
       </section>
     )}
