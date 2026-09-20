@@ -1,0 +1,1009 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import ContentTabs from "../common/ContentTabs.astro";
+import {
+  tarotIntro,
+  tarotHistory,
+  majorArcana,
+  tarotTraditions,
+  tarotEthics,
+  tarotSpreads,
+} from "../../config/tarot-data";
+
+import arcano0 from "../../assets/amonra/tarot/arcano-00-el-loco.jpg";
+import arcano1 from "../../assets/amonra/tarot/arcano-01-el-mago.jpg";
+import arcano2 from "../../assets/amonra/tarot/arcano-02-la-sacerdotisa.jpg";
+import arcano3 from "../../assets/amonra/tarot/arcano-03-la-emperatriz.jpg";
+import arcano4 from "../../assets/amonra/tarot/arcano-04-el-emperador.jpg";
+import arcano5 from "../../assets/amonra/tarot/arcano-05-el-sumo-sacerdote.jpg";
+import arcano6 from "../../assets/amonra/tarot/arcano-06-los-enamorados.jpg";
+import arcano7 from "../../assets/amonra/tarot/arcano-07-el-carro.jpg";
+import arcano8 from "../../assets/amonra/tarot/arcano-08-la-justicia.jpg";
+import arcano9 from "../../assets/amonra/tarot/arcano-09-el-ermitano.jpg";
+import arcano10 from "../../assets/amonra/tarot/arcano-10-la-rueda-de-la-fortuna.jpg";
+import arcano11 from "../../assets/amonra/tarot/arcano-11-la-fuerza.jpg";
+import arcano12 from "../../assets/amonra/tarot/arcano-12-el-colgado.jpg";
+import arcano13 from "../../assets/amonra/tarot/arcano-13-la-muerte.jpg";
+import arcano14 from "../../assets/amonra/tarot/arcano-14-la-templanza.jpg";
+import arcano15 from "../../assets/amonra/tarot/arcano-15-el-diablo.jpg";
+import arcano16 from "../../assets/amonra/tarot/arcano-16-la-torre.jpg";
+import arcano17 from "../../assets/amonra/tarot/arcano-17-la-estrella.jpg";
+import arcano18 from "../../assets/amonra/tarot/arcano-18-la-luna.jpg";
+import arcano19 from "../../assets/amonra/tarot/arcano-19-el-sol.jpg";
+import arcano20 from "../../assets/amonra/tarot/arcano-20-el-juicio.jpg";
+import arcano21 from "../../assets/amonra/tarot/arcano-21-el-mundo.jpg";
+
+import diagramCruzSimple from "../../assets/amonra/tarot/tirada-cruz-simple.png";
+import diagramArcanosSimples from "../../assets/amonra/tarot/tirada-arcanos-simples.png";
+import diagramCruzCeltica from "../../assets/amonra/tarot/tirada-cruz-celtica.png";
+import diagramHexagrama from "../../assets/amonra/tarot/tirada-hexagrama.png";
+import diagramTresLaminas from "../../assets/amonra/tarot/tirada-tres-laminas.png";
+
+const arcanaImages: Record<number, ImageMetadata> = {
+  0: arcano0,
+  1: arcano1,
+  2: arcano2,
+  3: arcano3,
+  4: arcano4,
+  5: arcano5,
+  6: arcano6,
+  7: arcano7,
+  8: arcano8,
+  9: arcano9,
+  10: arcano10,
+  11: arcano11,
+  12: arcano12,
+  13: arcano13,
+  14: arcano14,
+  15: arcano15,
+  16: arcano16,
+  17: arcano17,
+  18: arcano18,
+  19: arcano19,
+  20: arcano20,
+  21: arcano21,
+};
+
+const spreadDiagrams: Record<string, ImageMetadata> = {
+  "cruz-simple": diagramCruzSimple,
+  "arcanos-simples": diagramArcanosSimples,
+  "cruz-celtica": diagramCruzCeltica,
+  hexagrama: diagramHexagrama,
+  "tirada-romani": diagramTresLaminas,
+  "tirada-tres-sintesis": diagramTresLaminas,
+};
+
+const tarotTabs = [
+  { id: "historia", label: "Historia y estructura" },
+  { id: "doctrina", label: "Doctrina y origen sagrado" },
+  { id: "arcanos", label: "Los 22 Arcanos Mayores" },
+  { id: "barajas", label: "Barajas y Tradición Esotérica" },
+  { id: "tiradas", label: "Tiradas y Métodos de Lectura" },
+];
+---
+
+<div class="space-y-12">
+  {/* SECCIÓN HERO / LECTURA PRINCIPAL */}
+  <section class="reading-section">
+    <div class="rounded-2xl border-l-4 border-clay-red bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+      <blockquote class="m-0 space-y-3">
+        <p class="max-w-none font-editorial text-[clamp(1.55rem,2.7vw,2.3rem)] leading-tight text-paper-ink">
+          &ldquo;{tarotIntro.quote.text}&rdquo;
+        </p>
+        <footer class="font-interface text-sm font-semibold tracking-wider text-clay-red uppercase">
+          — {tarotIntro.quote.author} ({tarotIntro.quote.source})
+        </footer>
+      </blockquote>
+      <p class="mt-5 max-w-none font-editorial text-xl leading-snug text-paper-ink">
+        {tarotIntro.centralThesis}
+      </p>
+      <p class="mt-5 max-w-none border-t border-antique-gold-soft/40 pt-4 text-[1.02rem] leading-relaxed text-paper-muted">
+        {tarotIntro.foundationalText}
+      </p>
+      <p class="mt-4 text-sm font-semibold tracking-wide text-clay-red">
+        {tarotIntro.motto}
+      </p>
+    </div>
+
+    <div class="tarot-columns mt-6 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        El Tarot es una baraja de naipes que permite jugar y, al mismo tiempo,
+        explorar el simbolismo y las preguntas personales. Cada una de sus
+        láminas está colmada de una rica simbología. La evidencia disponible
+        sitúa la formación de los mazos europeos en la Italia del siglo XV; la
+        tradición esotérica posterior los relacionó con juegos antiguos de
+        China, la India y Egipto, aunque esas conexiones no prueban un origen
+        directo.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Desde Italia, los juegos de Tarot se difundieron hacia Francia y otras
+        regiones europeas. El vínculo con el antiguo Egipto, el «Libro de
+        Thoth», Hermes Trismegisto y la Tabla Esmeralda pertenece a la tradición
+        hermética posterior y debe leerse como una interpretación simbólica.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Algunas corrientes herméticas identificaron a Hermes con Thoth y
+        asociaron los Arcanos Mayores con la Tabla Esmeralda. También existen
+        relatos que vinculan el Tarot con la Orden del Temple; no hay evidencia
+        suficiente para afirmar que los templarios conservaran o transmitieran
+        el Tarot.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Hoy el mazo canónico consta de 78 cartas: 22 Arcanos Mayores —claves del
+        viaje espiritual del alma— y 56 Arcanos Menores divididos en cuatro
+        palos (Copas, Espadas, Bastos y Oros). En la doctrina de Amonra, estas
+        imágenes no son meros dibujos fortuitos: son arquetipos vivos de la
+        herencia subconsciente de la humanidad, espejos sagrados donde el ser
+        encuentra guía, lucidez y redención.
+      </p>
+    </div>
+  </section>
+
+  {/* PESTAÑAS PRINCIPALES */}
+  <section
+    aria-labelledby="indice-tarot"
+    class="border-t border-antique-gold-soft/50 pt-8"
+  >
+    <h2 id="indice-tarot" class="mb-6 font-editorial text-3xl text-paper-ink">
+      Sabiduría Iniciática y Mancia de los Arcanos
+    </h2>
+
+    <ContentTabs label="Contenido de tarot" tabs={tarotTabs}>
+      {/* PESTAÑA 1: HISTORIA Y ESTRUCTURA */}
+      <section id="historia" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Historia, tradiciones y evolución del Tarot
+          </h3>
+          <p class="mt-5 max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+            El Tarot reúne una historia documentada de juegos de cartas y una
+            historia esotérica construida posteriormente por distintas escuelas.
+            Separar ambas capas permite conservar la riqueza simbólica sin
+            presentar las hipótesis tradicionales como hechos comprobados.
+          </p>
+        </article>
+
+        <div class="relative space-y-5 border-l-2 border-antique-gold-soft/60 pl-6 lg:pl-8">
+          {tarotHistory.map((entry) => (
+            <article class="relative rounded-xl border border-antique-gold-soft/40 bg-surface-warm/25 p-5 shadow-xs">
+              <span
+                class="absolute -left-[2.05rem] top-6 h-3 w-3 rounded-full border-2 border-paper bg-clay-red lg:-left-[2.55rem]"
+                aria-hidden="true"
+              ></span>
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="font-interface text-xs font-bold tracking-wider text-clay-red uppercase">
+                  {entry.period}
+                </span>
+                <span class="rounded-full border border-antique-gold-soft/50 px-2 py-0.5 text-[0.68rem] font-semibold tracking-wide text-antique-gold-deep uppercase">
+                  {entry.kind}
+                </span>
+              </div>
+              <h4 class="mt-2 font-editorial text-2xl font-medium text-paper-ink">
+                {entry.title}
+              </h4>
+              <p class="mt-3 max-w-none text-sm leading-relaxed text-paper-muted">
+                {entry.description}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        <aside class="rounded-2xl border-l-4 border-antique-gold bg-[var(--color-parchment-soft)] px-6 py-5 text-sm leading-relaxed text-paper-muted lg:px-8">
+          <strong class="text-paper-ink">Nota editorial:</strong> El origen
+          egipcio, templario o atlante pertenece a la tradición esotérica y no
+          cuenta con la misma evidencia que las referencias históricas a los
+          mazos europeos. Ambas perspectivas pueden estudiarse, siempre que se
+          presenten con claridad.
+        </aside>
+
+        <p class="text-xs leading-relaxed text-paper-muted">
+          Para la distinción histórica se consultaron referencias de colecciones
+          del
+          <a
+            href="https://www.metmuseum.org/fr/perspectives/tarot-2"
+            target="_blank"
+            rel="noreferrer"
+            class="font-semibold text-clay-red underline underline-offset-4"
+          >
+            Metropolitan Museum of Art
+          </a>
+          y de la
+          <a
+            href="https://wellcomecollection.org/works/vckmg3j7"
+            target="_blank"
+            rel="noreferrer"
+            class="font-semibold text-clay-red underline underline-offset-4"
+          >
+            Wellcome Collection
+          </a>
+          .
+        </p>
+
+        <article class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+          <h3 class="font-editorial text-2xl font-medium text-paper-ink">
+            Cómo se organiza una baraja de Tarot
+          </h3>
+          <p class="mt-3 max-w-none text-sm leading-relaxed text-paper-muted">
+            El mazo canónico reúne 78 cartas: 22 Arcanos Mayores y 56 Arcanos
+            Menores. Los Mayores expresan grandes imágenes arquetípicas; los
+            Menores describen situaciones más próximas a la vida cotidiana.
+          </p>
+          <div class="mt-6 grid gap-4 md:grid-cols-2">
+            {tarotIntro.minorArcanaDoctrine.ranks.map((rank) => (
+              <div class="rounded-xl border border-antique-gold-soft/35 bg-surface-warm/35 p-4">
+                <p class="font-editorial text-xl font-medium text-paper-ink">
+                  {rank.name}
+                </p>
+                <p class="mt-1 text-xs font-semibold tracking-wider text-clay-red uppercase">
+                  {rank.range}
+                </p>
+                <p class="mt-2 text-sm leading-relaxed text-paper-muted">
+                  {rank.meaning}
+                </p>
+              </div>
+            ))}
+          </div>
+          <p class="mt-5 border-t border-antique-gold-soft/35 pt-4 text-sm leading-relaxed text-paper-muted">
+            {tarotIntro.minorArcanaDoctrine.structureNote}
+          </p>
+        </article>
+      </section>
+
+      {/* PESTAÑA 2: DOCTRINA Y ORIGEN SAGRADO */}
+      <section id="doctrina" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            El Tarot como Espejo del Inconsciente y Vía de Conocimiento
+          </h3>
+          <div class="tarot-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Popularmente, el Tarot se ha difundido desde una perspectiva casi
+              exclusivamente adivinatoria. Bajo esta mirada predictiva, el
+              consultante acude con la urgencia de conocer «su futuro»,
+              partiendo del supuesto de que existe un destino fatalmente
+              predeterminado. Ésta es ciertamente una forma válida y tradicional
+              de aproximación, pero no es la única ni la más fecunda.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Existe otra manera de interpretar y vivenciar el Tarot: la
+              exploración del simbolismo de sus imágenes y de su profundo
+              significado psicológico. Esta corriente no busca dictar lo que
+              inevitablemente habrá de suceder, sino comprender el proceso
+              anímico por el cual transita la persona y encontrar la mejor vía
+              interior para atravesarlo con entereza.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Como señala Karen Hamaker Zondag en su esclarecedor texto, la vida
+              es un torrente de movimientos continuos. Las cartas ayudan a
+              discernir qué fuerzas operan a tu alrededor y qué factores están
+              en juego. Al identificar los procesos, puedes enfocarlos de forma
+              constructiva. Es imposible predecir si un trance concluirá en
+              drama o en triunfo porque ello depende de la voluntad y
+              discernimiento del individuo: las cartas revelan las tendencias
+              básicas, pero dejan siempre el espacio soberano para maniobrar.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              De hecho, en el mismo instante en que se barajan los naipes con
+              una actitud libre de ansiedad, la conciencia del consultante ya
+              está modificando el resultado. El Tarot actúa como un espejo
+              límpido de la mente profunda: no impone condenas, sino que alumbra
+              la parcela del alma que en este preciso momento está lista para la
+              experimentación y el despertar.
+            </p>
+          </div>
+        </article>
+
+        {/* COMPARATIVA DE LAS DOS PERSPECTIVAS */}
+        <div class="grid gap-6 md:grid-cols-2">
+          {tarotIntro.perspectives.map((persp) => (
+            <div class="flex flex-col justify-between rounded-xl border border-antique-gold-soft/45 bg-surface-warm/25 p-6 shadow-xs">
+              <div>
+                <span class="font-interface text-xs font-semibold tracking-wider text-clay-red uppercase">
+                  Doctrina Hermética
+                </span>
+                <h4 class="mt-2 font-editorial text-2xl font-medium text-paper-ink">
+                  {persp.title}
+                </h4>
+                <p class="mt-4 max-w-none text-sm leading-relaxed text-paper-muted">
+                  {persp.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CASO PRÁCTICO: EL ARCANO DE LA TORRE */}
+        <article class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+          <div class="flex items-center gap-3 border-b border-antique-gold-soft/30 pb-4">
+            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-clay-red text-ivory font-editorial font-bold text-sm">
+              XVI
+            </span>
+            <div>
+              <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+                El misterio iniciático de La Torre: La ruptura del ego
+              </h4>
+              <p class="text-xs text-antique-gold-deep uppercase tracking-wider font-interface">
+                Ejemplo doctrinal de individuación y superación de crisis
+              </p>
+            </div>
+          </div>
+          <div class="tarot-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              Supongamos que una relación ha entrado en crisis y deseas saber
+              qué sucederá. Sacas La Torre y contemplas un rayo que impacta
+              sobre la cúspide y a dos personas precipitándose al vacío. La
+              reacción superficial suele ser el terror: «¡Va a haber una ruptura
+              trágica y destructiva!». Sin embargo, si atiendes al simbolismo
+              profundo y a su papel en el proceso de individuación, el panorama
+              cobra una luz completamente distinta.
+            </p>
+            <p class="max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              La carta advierte que te has atrincherado en convicciones rígidas
+              y patrones caducos que ya no resultan útiles. Si rehúsas escuchar
+              las señales, la presión del inconsciente forzará la ruptura del
+              dique. La predicción de La Torre no exige una separación forzosa:
+              exige derribar las máscaras del ego. Si eres capaz de afrontar esa
+              renovación, el vínculo renace purificado. Lo hostil se transmuta
+              en alivio y libertad interior.
+            </p>
+          </div>
+        </article>
+
+        {/* MAESTROS Y APORTES CONTEMPORÁNEOS */}
+        <div class="rounded-xl border border-antique-gold-soft/35 bg-surface-warm/20 p-6">
+          <h4 class="font-editorial text-xl font-medium text-paper-ink">
+            Aportes a la exploración interior
+          </h4>
+          <p class="mt-3 max-w-none text-sm leading-relaxed text-paper-muted">
+            Investigadoras y eruditos como Sallie Nichols, Rachel Pollack, Mary
+            Greer, Liz Greene y Hajo Banzhaf han devuelto al Tarot su verdadera
+            dimensión como mapa arquetípico del ser. Aunque la asociación
+            meramente popular persista, paso a paso se rescata este maravilloso
+            alfabeto sagrado, semejante a un sueño antiguo que emerge victorioso
+            desde la noche de los tiempos.
+          </p>
+        </div>
+
+        {/* CALLOUT: BENDICIÓN CANÓNICA AMONRA */}
+        <div class="rounded-2xl border-l-4 border-antique-gold bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+          <div class="grid gap-x-10 gap-y-3 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p class="max-w-none font-editorial text-2xl font-medium leading-snug text-paper-ink">
+                Amonra: Una luz en vuestro camino
+              </p>
+              <p class="mt-1 max-w-none text-xs font-semibold tracking-wider text-antique-gold-deep uppercase">
+                Fuente de sabiduría para vuestro ser
+              </p>
+            </div>
+            <div>
+              <p class="max-w-none text-[1.02rem] leading-relaxed text-paper-muted font-medium">
+                Feliluxor: Fe y felicidad en la luz de oro.
+              </p>
+              <p class="mt-1 max-w-none text-xs text-paper-muted">
+                La enseñanza iniciática de los arcanos custodia la certeza de
+                que todo ser humano posee la facultad de transmutar su destino a
+                través de la sabiduría y el recto discernimiento.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PESTAÑA 3: LOS 22 ARCANOS MAYORES */}
+      <section id="arcanos" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+                Los 22 Arcanos Mayores: Claves, Láminas y Pronósticos
+              </h3>
+              <p class="mt-1 text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                El sendero iniciático del Loco (0) al Mundo (XXI)
+              </p>
+            </div>
+            <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3.5 py-1 text-xs font-semibold text-antique-gold-deep">
+              22 láminas canónicas completas
+            </span>
+          </div>
+
+          <div class="tarot-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Los Arcanos Mayores representan situaciones arquetípicas y
+              principios cósmicos fundamentales de la existencia. Cada lámina
+              encarna un dios, mito o energía viva que dialoga con los misterios
+              profundos del alma humana. En ellos se condensa la totalidad de la
+              experiencia: desde el salto de fe de El Loco hasta la consagración
+              cósmica de El Mundo.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              A continuación se presenta el registro literal preservado por la
+              escuela Amonra: la lámina original de Marsella para cada carta, su
+              esencia filosófica y sus pronósticos concretos en los distintos
+              ámbitos de la vida cotidiana: el trabajo, las finanzas, los lazos
+              familiares, la salud y el amor.
+            </p>
+          </div>
+        </article>
+
+        <aside class="rounded-2xl border-l-4 border-clay-red bg-[var(--color-parchment-soft)] px-6 py-5 text-sm leading-relaxed text-paper-muted lg:px-8">
+          <strong class="text-paper-ink">Lectura responsable:</strong> Los
+          significados que siguen pertenecen a la tradición simbólica de Amonra.
+          No son diagnósticos ni predicciones inevitables y no sustituyen
+          orientación médica, psicológica, legal o financiera. Las referencias a
+          salud, embarazo, dinero o destino deben leerse como lenguaje
+          tradicional, no como consejo profesional.
+        </aside>
+
+        <div
+          data-arcana-index
+          class="rounded-2xl border border-antique-gold-soft/45 bg-surface-warm/25 p-5 shadow-xs lg:p-7"
+        >
+          <div class="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+                Índice rápido de los 22 Arcanos
+              </h4>
+              <p class="mt-1 text-sm text-paper-muted">
+                Selecciona una carta para ir directamente a su interpretación.
+              </p>
+            </div>
+            <label class="grid gap-1 font-interface text-xs font-semibold tracking-wide text-clay-red uppercase">
+              Buscar arcano
+              <input
+                data-arcana-search
+                type="search"
+                placeholder="Ej.: Torre"
+                autocomplete="off"
+                class="min-h-11 rounded-lg border border-antique-gold-soft/60 bg-paper px-3 text-sm font-normal normal-case tracking-normal text-paper-ink outline-none focus:border-clay-red focus:ring-2 focus:ring-clay-red/25"
+              />
+            </label>
+          </div>
+          <p
+            data-arcana-count
+            class="mt-4 text-xs text-paper-muted"
+            aria-live="polite"
+          >
+            22 arcanos disponibles
+          </p>
+          <nav
+            aria-label="Índice de Arcanos Mayores"
+            class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6"
+          >
+            {majorArcana.map((card) => (
+              <a
+                data-arcana-link
+                data-arcana-name={`${card.number} ${card.name}`}
+                href={`#${card.id}`}
+                class="flex min-h-11 items-center gap-2 rounded-lg border border-antique-gold-soft/45 bg-[var(--color-parchment-soft)] px-3 py-2 text-sm font-medium text-paper-ink no-underline transition-colors hover:border-clay-red hover:bg-clay-red/5"
+              >
+                <span class="text-xs font-bold text-clay-red">
+                  {card.romanNumeral}
+                </span>
+                <span>{card.name}</span>
+              </a>
+            ))}
+          </nav>
+        </div>
+
+        {/* LISTADO DE LOS 22 ARCANOS CON LÁMINA PROPORCIONAL */}
+        <div class="space-y-8">
+          {majorArcana.map((card) => (
+            <article
+              id={card.id}
+              data-arcana-card
+              data-arcana-name={card.name}
+              class="scroll-mt-6 rounded-2xl border border-antique-gold-soft/45 bg-surface-warm/25 p-6 shadow-xs transition-shadow duration-200 hover:shadow-md lg:p-8"
+            >
+              <div class="flex flex-wrap items-center justify-between gap-3 border-b border-antique-gold-soft/30 pb-4">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-clay-red font-editorial text-lg font-bold text-ivory shadow-xs">
+                    {card.romanNumeral}
+                  </span>
+                  <div>
+                    <h4 class="font-editorial text-2xl font-medium text-paper-ink lg:text-3xl">
+                      {card.name}
+                    </h4>
+                    <p class="text-xs font-semibold tracking-wider text-antique-gold-deep uppercase font-interface">
+                      Arquetipo: {card.archetype}
+                    </p>
+                  </div>
+                </div>
+                <span class="rounded-full border border-antique-gold-soft/60 bg-[var(--color-parchment-soft)] px-3 py-1 font-interface text-xs font-medium text-paper-ink">
+                  Arcano Mayor #{card.number}
+                </span>
+              </div>
+
+              {/* CUERPO DEL ARCANO: LÁMINA PROPORCIONAL + INFORMACIÓN */}
+              <div class="mt-6 grid gap-6 md:grid-cols-[120px_1fr] lg:grid-cols-[135px_1fr] md:items-start">
+                {/* COLUMNA DE LA LÁMINA */}
+                <div class="flex flex-col items-center">
+                  <div class="group relative overflow-hidden rounded-xl border-2 border-antique-gold-soft/70 bg-gradient-to-b from-paper to-surface-warm p-1.5 shadow-[0_6px_18px_rgba(49,31,14,0.12)] transition-all duration-300 hover:border-antique-gold hover:shadow-[0_8px_24px_rgba(49,31,14,0.22)]">
+                    <Image
+                      src={arcanaImages[card.number]}
+                      alt={`Lámina tradicional de ${card.name} (Arcano ${card.romanNumeral})`}
+                      width={120}
+                      height={235}
+                      class="h-auto w-24 rounded-lg object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-105 sm:w-28 md:w-full"
+                      loading="lazy"
+                    />
+                  </div>
+                  <span class="mt-2 font-interface text-[0.68rem] font-semibold tracking-wider text-antique-gold-deep uppercase text-center">
+                    Lámina #{card.number}
+                  </span>
+                </div>
+
+                {/* COLUMNA DE TEXTO Y PRONÓSTICOS */}
+                <div class="min-w-0 space-y-6">
+                  {/* SIGNIFICADO FILOSÓFICO / SIMBÓLICO */}
+                  <div>
+                    <h5 class="text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                      Significado Filosófico y Simbolismo
+                    </h5>
+                    <p class="mt-2 max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+                      {card.symbolism}
+                    </p>
+                  </div>
+
+                  {/* PRONÓSTICOS EN LO CONCRETO */}
+                  <div class="rounded-xl border border-antique-gold-soft/35 bg-[var(--color-parchment-soft)] p-5">
+                    <h5 class="text-xs font-semibold tracking-wider text-antique-gold-deep uppercase font-interface">
+                      Manifestaciones en la Vida Práctica
+                    </h5>
+
+                    <div class="mt-4 grid gap-3.5 sm:grid-cols-2 xl:grid-cols-3">
+                      <div class="rounded-lg border border-antique-gold-soft/25 bg-surface-warm/40 p-3.5">
+                        <p class="text-xs font-bold text-clay-red uppercase tracking-wider">
+                          En lo concreto
+                        </p>
+                        <p class="mt-1 text-xs leading-relaxed text-paper-ink">
+                          {card.concrete}
+                        </p>
+                      </div>
+
+                      <div class="rounded-lg border border-antique-gold-soft/25 bg-surface-warm/40 p-3.5">
+                        <p class="text-xs font-bold text-clay-red uppercase tracking-wider">
+                          En trabajo
+                        </p>
+                        <p class="mt-1 text-xs leading-relaxed text-paper-ink">
+                          {card.work}
+                        </p>
+                      </div>
+
+                      <div class="rounded-lg border border-antique-gold-soft/25 bg-surface-warm/40 p-3.5">
+                        <p class="text-xs font-bold text-clay-red uppercase tracking-wider">
+                          En dinero
+                        </p>
+                        <p class="mt-1 text-xs leading-relaxed text-paper-ink">
+                          {card.money}
+                        </p>
+                      </div>
+
+                      <div class="rounded-lg border border-antique-gold-soft/25 bg-surface-warm/40 p-3.5">
+                        <p class="text-xs font-bold text-clay-red uppercase tracking-wider">
+                          En amor
+                        </p>
+                        <p class="mt-1 text-xs leading-relaxed text-paper-ink">
+                          {card.love}
+                        </p>
+                      </div>
+
+                      <div class="rounded-lg border border-antique-gold-soft/25 bg-surface-warm/40 p-3.5">
+                        <p class="text-xs font-bold text-clay-red uppercase tracking-wider">
+                          En amistad y familia
+                        </p>
+                        <p class="mt-1 text-xs leading-relaxed text-paper-ink">
+                          <strong>Amistad:</strong> {card.friendship} <br />
+                          <strong>Familia:</strong> {card.family}
+                        </p>
+                      </div>
+
+                      <div class="rounded-lg border border-antique-gold-soft/25 bg-surface-warm/40 p-3.5">
+                        <p class="text-xs font-bold text-clay-red uppercase tracking-wider">
+                          En salud
+                        </p>
+                        <p class="mt-1 text-xs leading-relaxed text-paper-ink">
+                          {card.health}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-5 text-right text-xs font-semibold tracking-wide text-clay-red uppercase">
+                <a href="#indice-tarot" class="underline underline-offset-4">
+                  Volver al índice
+                </a>
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* PESTAÑA 4: BARAJAS Y TRADICIÓN ESOTÉRICA */}
+      <section id="barajas" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Tradiciones Canónicas del Tarot: Egipto, la Baraja Gitana y los 4
+            Palos
+          </h3>
+          <div class="tarot-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              El Tarot no es una corriente estática ni monolítica: a través de
+              los siglos floreció en distintas tradiciones de lectura, cada una
+              con su propia impronta iconográfica, método adivinatorio y riqueza
+              simbólica. Dos de las vertientes más influyentes y veneradas son
+              el misterioso Tarot Egipcio y el intuitivo Tarot Gitano.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Ambas tradiciones comparten la premisa esencial de que los naipes
+              ofrecen caminos y consejos ante las dudas de la vida, pero jamás
+              dictámenes irrevocables. Al final, el destino y la decisión final
+              pertenecen soberanamente a cada individuo.
+            </p>
+          </div>
+        </article>
+
+        {/* TRADICIONES DETALLADAS */}
+        <div class="space-y-8">
+          {tarotTraditions.map((tradition) => (
+            <div class="rounded-2xl border border-antique-gold-soft/45 bg-surface-warm/25 p-6 shadow-xs lg:p-8">
+              <div class="flex flex-wrap items-center justify-between gap-3 border-b border-antique-gold-soft/30 pb-4">
+                <div>
+                  <span class="font-interface text-xs font-semibold tracking-wider text-clay-red uppercase">
+                    {tradition.origin}
+                  </span>
+                  <h4 class="mt-1 font-editorial text-2xl font-medium text-paper-ink lg:text-3xl">
+                    {tradition.title}
+                  </h4>
+                  <p class="text-xs text-antique-gold-deep font-semibold">
+                    {tradition.subtitle}
+                  </p>
+                </div>
+              </div>
+
+              <p class="mt-4 max-w-none text-[1.02rem] leading-relaxed font-medium text-paper-ink">
+                {tradition.description}
+              </p>
+
+              <div class="mt-4 space-y-3">
+                {tradition.details.map((detail) => (
+                  <p class="max-w-none text-sm leading-relaxed text-paper-muted">
+                    {detail}
+                  </p>
+                ))}
+              </div>
+
+              {tradition.correspondences && (
+                <div class="mt-6 border-t border-antique-gold-soft/30 pt-5">
+                  <h5 class="text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                    Correspondencias esotéricas de los cuatro palos
+                  </h5>
+                  <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {tradition.correspondences.map((corr) => (
+                      <div class="rounded-xl border border-antique-gold-soft/35 bg-[var(--color-parchment-soft)] p-4">
+                        <p class="text-sm font-bold text-paper-ink">
+                          {corr.item}
+                        </p>
+                        <p class="mt-1 text-xs font-semibold text-antique-gold-deep uppercase">
+                          Equivale a: {corr.equivalent}
+                        </p>
+                        <p class="mt-2 text-xs leading-relaxed text-paper-muted">
+                          {corr.meaning}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* ESTRUCTURA DE LOS ARCANOS MENORES Y EFICACIA PREDICTIVA */}
+        <div class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+          <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+            {tarotIntro.minorArcanaDoctrine.title}
+          </h4>
+          <p class="mt-2 max-w-none text-sm leading-relaxed text-paper-muted">
+            {tarotIntro.minorArcanaDoctrine.summary}
+          </p>
+
+          <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {tarotIntro.minorArcanaDoctrine.suits.map((suit) => (
+              <div class="rounded-xl border border-antique-gold-soft/30 bg-surface-warm/30 p-4">
+                <span class="rounded-full bg-clay-red/10 px-2.5 py-0.5 text-[0.7rem] font-semibold text-clay-red uppercase tracking-wider">
+                  Elemento {suit.element}
+                </span>
+                <h5 class="mt-2 font-editorial text-lg font-medium text-paper-ink">
+                  {suit.name}
+                </h5>
+                <p class="mt-2 text-xs leading-relaxed text-paper-ink font-medium">
+                  {suit.domain}
+                </p>
+                <p class="mt-2 text-xs leading-relaxed text-paper-muted">
+                  <em>Símbolo:</em> {suit.symbolism}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div class="tarot-columns mt-6 grid gap-x-10 gap-y-5 border-t border-antique-gold-soft/30 pt-5 lg:grid-cols-2">
+            <div>
+              <h5 class="font-editorial text-xl font-medium text-paper-ink">
+                ¿Es eficaz el Tarot como instrumento predictivo?
+              </h5>
+              <p class="mt-2 max-w-none text-sm leading-relaxed text-paper-muted">
+                En la visión tradicional de Amonra, el Tarot puede utilizarse
+                como instrumento de orientación simbólica. Sus cartas no ofrecen
+                una predicción verificable: cada lámina representa un arquetipo
+                que puede dialogar con la experiencia de la persona. La relación
+                con la psicología de Jung pertenece a una lectura interpretativa
+                posterior, no a una demostración científica de la eficacia
+                predictiva del Tarot.
+              </p>
+            </div>
+            <div>
+              <h5 class="font-editorial text-xl font-medium text-paper-ink">
+                La comprobación progresiva del consultante
+              </h5>
+              <p class="mt-2 max-w-none text-sm leading-relaxed text-paper-muted">
+                El conjunto de los arcanos ofrece un lenguaje amplio para
+                conversar sobre distintas experiencias. El lector puede
+                desarrollar una práctica interpretativa y encontrar en las
+                imágenes preguntas, patrones y perspectivas, sin convertirlas en
+                certezas sobre el pasado o el futuro.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PESTAÑA 5: TIRADAS Y MÉTODOS DE LECTURA */}
+      <section id="tiradas" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            El Arte Ético de la Consulta y las 6 Tiradas Tradicionales
+          </h3>
+          <div class="tarot-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              A la hora de consultar el Tarot, una cuestión primordial es el
+              modo en que se formula la pregunta. Las cartas actúan como un
+              instrumento de guía y orientación genuina sólo si el consultante
+              se sitúa en una postura madura de apertura, autoindagación y
+              responsabilidad consciente sobre sus propios actos.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Joan Bunning en su clásico «Curso Práctico de Tarot» recuerda que
+              el primer paso consiste en revisar a fondo la situación:
+              considerar a todas las personas implicadas sin juzgar ni censurar,
+              dejar que la mente fluya con serenidad y aplicar la intuición
+              antes que la lógica rígida. Dedicar apenas tres minutos a afinar
+              la pregunta multiplica exponencialmente la claridad de la
+              respuesta.
+            </p>
+          </div>
+        </article>
+
+        {/* GUÍA ÉTICA DE JOAN BUNNING: 7 PRINCIPIOS */}
+        <div class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+          <div class="border-b border-antique-gold-soft/30 pb-4">
+            <span class="text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+              Pautas Éticas Fundamentales
+            </span>
+            <h4 class="mt-1 font-editorial text-2xl font-medium text-paper-ink">
+              Cómo formular la pregunta al Tarot según Joan Bunning
+            </h4>
+          </div>
+
+          <div class="mt-6 space-y-6">
+            {tarotEthics.map((rule) => (
+              <div class="rounded-xl border border-antique-gold-soft/35 bg-surface-warm/30 p-5">
+                <h5 class="font-editorial text-lg font-medium text-paper-ink">
+                  {rule.title}
+                </h5>
+                <p class="mt-1 max-w-none text-sm font-medium text-clay-red">
+                  {rule.summary}
+                </p>
+
+                <div class="mt-4 grid gap-4 md:grid-cols-2">
+                  {rule.avoidExamples && (
+                    <div class="rounded-lg border border-clay-red/20 bg-clay-red/5 p-3.5">
+                      <p class="text-xs font-bold text-clay-red uppercase tracking-wider">
+                        {rule.avoidTitle || "Evitar preguntas como:"}
+                      </p>
+                      <ul class="mt-2 space-y-1.5 text-xs text-paper-muted">
+                        {rule.avoidExamples.map((ex) => (
+                          <li class="italic">{ex}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {rule.preferExamples && (
+                    <div class="rounded-lg border border-antique-gold-soft/40 bg-surface-warm/40 p-3.5">
+                      <p class="text-xs font-bold text-antique-gold-deep uppercase tracking-wider">
+                        {rule.preferTitle || "Preferir formulaciones como:"}
+                      </p>
+                      <ul class="mt-2 space-y-1.5 text-xs text-paper-ink font-medium">
+                        {rule.preferExamples.map((ex) => (
+                          <li>{ex}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+
+                <p class="mt-4 max-w-none text-xs leading-relaxed text-paper-muted border-t border-antique-gold-soft/20 pt-3">
+                  <strong>Fundamento ético:</strong> {rule.explanation}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CATÁLOGO DE LAS 6 TIRADAS CANÓNICAS */}
+        <div class="space-y-8">
+          <div class="border-b border-antique-gold-soft/35 pb-3">
+            <h4 class="font-editorial text-2xl font-medium text-paper-ink lg:text-3xl">
+              Las 6 Tiradas Tradicionales de la Escuela Amonra
+            </h4>
+            <p class="mt-1 text-xs font-semibold tracking-wider text-antique-gold-deep uppercase font-interface">
+              Estructura geométrica, procedimiento e interpretación de cada
+              posición
+            </p>
+          </div>
+
+          {tarotSpreads.map((spread) => (
+            <article class="rounded-2xl border border-antique-gold-soft/45 bg-surface-warm/25 p-6 shadow-xs lg:p-8">
+              <div class="flex flex-wrap items-center justify-between gap-3 border-b border-antique-gold-soft/30 pb-4">
+                <div>
+                  <span class="rounded-full bg-clay-red/10 px-2.5 py-0.5 text-xs font-semibold text-clay-red">
+                    {spread.cardsCount} láminas
+                  </span>
+                  <h5 class="mt-2 font-editorial text-2xl font-medium text-paper-ink lg:text-3xl">
+                    {spread.name}
+                  </h5>
+                  <p class="text-xs text-antique-gold-deep font-semibold">
+                    {spread.subtitle}
+                  </p>
+                </div>
+                <span class="rounded-full border border-antique-gold-soft/60 bg-[var(--color-parchment-soft)] px-3 py-1 font-interface text-xs font-medium text-paper-ink">
+                  Método clásico
+                </span>
+              </div>
+
+              <p class="mt-4 max-w-none text-sm font-medium leading-relaxed text-paper-ink">
+                <strong>Uso recomendado:</strong> {spread.usage}
+              </p>
+
+              {/* PROCEDIMIENTO Y ESQUEMA VISUAL DE DISTRIBUCIÓN */}
+              <div class="mt-5 grid gap-5 md:grid-cols-[1fr_auto] md:items-center rounded-xl border border-antique-gold-soft/30 bg-[var(--color-parchment-soft)] p-4">
+                <div>
+                  <p class="text-xs font-semibold text-clay-red uppercase tracking-wider font-interface">
+                    Procedimiento de reparto
+                  </p>
+                  <ul class="mt-2 space-y-2 text-xs leading-relaxed text-paper-muted">
+                    {spread.instructions.map((inst) => (
+                      <li class="flex items-start gap-2">
+                        <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-antique-gold-deep" />
+                        <span>{inst}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {spreadDiagrams[spread.id] && (
+                  <div class="flex flex-col items-center justify-center border-t border-antique-gold-soft/25 pt-4 md:border-t-0 md:border-l md:pl-5 md:pt-0">
+                    <div class="overflow-hidden rounded-lg border border-antique-gold-soft/50 bg-paper p-1.5 shadow-sm">
+                      <Image
+                        src={spreadDiagrams[spread.id]}
+                        alt={`Esquema de distribución para ${spread.name}`}
+                        width={180}
+                        height={220}
+                        class="max-h-40 w-auto object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                    <span class="mt-1.5 font-interface text-[0.65rem] font-semibold tracking-wider text-antique-gold-deep uppercase">
+                      Esquema Tradicional
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* POSICIONES NUMERADAS */}
+              <div class="mt-6">
+                <p class="text-xs font-semibold text-antique-gold-deep uppercase tracking-wider font-interface">
+                  Significado de cada posición
+                </p>
+                <div class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {spread.positions.map((pos) => (
+                    <div class="rounded-xl border border-antique-gold-soft/30 bg-surface-warm/35 p-3.5">
+                      <div class="flex items-center gap-2">
+                        <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-clay-red text-[0.7rem] font-bold text-ivory">
+                          {pos.position}
+                        </span>
+                        <p class="text-xs font-bold text-paper-ink leading-tight">
+                          {pos.name}
+                        </p>
+                      </div>
+                      <p class="mt-2 text-xs leading-relaxed text-paper-muted">
+                        {pos.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {spread.advice && (
+                <div class="mt-5 rounded-xl border border-antique-gold-soft/35 bg-night/5 p-3.5">
+                  <p class="text-xs text-paper-ink leading-relaxed font-medium">
+                    <strong class="text-clay-red">Consejo de lectura:</strong>{" "}
+                    {spread.advice}
+                  </p>
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+    </ContentTabs>
+  </section>
+</div>
+
+<script>
+  document
+    .querySelectorAll<HTMLElement>("[data-arcana-index]")
+    .forEach((root) => {
+      const search = root.querySelector<HTMLInputElement>(
+        "[data-arcana-search]",
+      );
+      const count = root.querySelector<HTMLElement>("[data-arcana-count]");
+      const links = Array.from(
+        root.querySelectorAll<HTMLAnchorElement>("[data-arcana-link]"),
+      );
+      const cards = links
+        .map((link) => document.getElementById(link.hash.slice(1)))
+        .filter((card): card is HTMLElement => Boolean(card));
+
+      if (!search || !count || cards.length !== links.length) return;
+
+      const searchInput = search;
+      const countElement = count;
+
+      function normalize(value: string) {
+        return value
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .trim();
+      }
+
+      function update() {
+        const query = normalize(searchInput.value);
+        let visible = 0;
+
+        links.forEach((link, index) => {
+          const name = normalize(link.dataset.arcanaName || "");
+          const matches = !query || name.includes(query);
+          link.hidden = !matches;
+          cards[index].hidden = !matches;
+          if (matches) visible += 1;
+        });
+
+        countElement.textContent = query
+          ? `${visible} ${visible === 1 ? "arcano encontrado" : "arcanos encontrados"}`
+          : "22 arcanos disponibles";
+      }
+
+      searchInput.addEventListener("input", update);
+    });
+</script>
+
+<style>
+  .tarot-columns p,
+  :global([data-content-tabs] p.max-w-none) {
+    max-width: none;
+  }
+</style>

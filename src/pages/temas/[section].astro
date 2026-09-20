@@ -8,6 +8,7 @@ import HistoryContent from "../../components/amonra/HistoryContent.astro";
 import IncenseContent from "../../components/amonra/IncenseContent.astro";
 import GemsContent from "../../components/amonra/GemsContent.astro";
 import DreamsContent from "../../components/amonra/DreamsContent.astro";
+import TarotContent from "../../components/amonra/TarotContent.astro";
 import Breadcrumbs from "../../components/common/Breadcrumbs.astro";
 import Container from "../../components/layout/Container.astro";
 import { amonraMessages } from "../../config/amonra-messages";
@@ -25,6 +26,7 @@ import historyHero from "../../assets/amonra/historia-hero.jpg";
 import incenseHero from "../../assets/amonra/inciensos-hero.jpg";
 import gemsHero from "../../assets/amonra/gemas-hero.jpg";
 import dreamsHero from "../../assets/amonra/suenos-hero.jpg";
+import tarotHero from "../../assets/amonra/tarot-hero.jpg";
 
 interface Props {
   section: AmonraSection;
@@ -47,6 +49,7 @@ const hasCompactHero = [
   "inciensos",
   "gemas",
   "suenos",
+  "tarot",
 ].includes(section.slug);
 const currentIndex = amonraSections.findIndex(
   (candidate) => candidate.slug === section.slug,
@@ -126,6 +129,12 @@ const next =
           {section.slug === "suenos" && (
             <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
               Imágenes, arquetipos y despertar consciente en el mundo onírico.
+            </p>
+          )}
+          {section.slug === "tarot" && (
+            <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
+              Los 22 Arcanos Mayores, tradiciones egipcia y gitana, y métodos
+              clásicos de lectura.
             </p>
           )}
         </div>
@@ -233,6 +242,19 @@ const next =
             />
           </figure>
         )}
+
+        {section.slug === "tarot" && (
+          <figure class="m-0">
+            <Image
+              src={tarotHero}
+              alt="Lectura ceremonial del Tarot ante el pebetero y las cartas arcanas"
+              widths={[380, 520, 600]}
+              sizes="(min-width: 1024px) 42vw, 88vw"
+              loading="eager"
+              class="mx-auto max-h-[20rem] w-full max-w-[18rem] rounded-xl object-contain drop-shadow-2xl"
+            />
+          </figure>
+        )}
       </Container>
     </header>
 
@@ -296,6 +318,14 @@ const next =
       <section class="border-b border-antique-gold-soft/45 bg-paper py-20 text-paper-ink lg:py-24">
         <Container>
           <DreamsContent />
+        </Container>
+      </section>
+    )}
+
+    {section.slug === "tarot" && (
+      <section class="border-b border-antique-gold-soft/45 bg-paper py-20 text-paper-ink lg:py-24">
+        <Container>
+          <TarotContent />
         </Container>
       </section>
     )}
