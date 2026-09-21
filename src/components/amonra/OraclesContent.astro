@@ -1,0 +1,646 @@
+---
+import { Image } from "astro:assets";
+import ContentTabs from "../common/ContentTabs.astro";
+import {
+  oraclesIntro,
+  oraclesHistory,
+  delphiMaxims,
+  delphiSanctuary,
+  ichingTrigrams,
+  ichingCoinRules,
+  oracleMethods,
+  oracleEthics,
+} from "../../config/oracles-data";
+
+import imgDelfosPitia from "../../assets/amonra/oraculos/delfos-pitia.jpg";
+import imgDelfosSantuario from "../../assets/amonra/oraculos/delfos-santuario.jpg";
+import imgIchingBagua from "../../assets/amonra/oraculos/iching-bagua.jpg";
+import imgIchingMonedas from "../../assets/amonra/oraculos/iching-monedas.jpg";
+import imgCleromancia from "../../assets/amonra/oraculos/cleromancia.jpg";
+
+const oracleTabs = [
+  { id: "filosofia", label: "Filosofía y Sabiduría Interior" },
+  { id: "delfos", label: "El Oráculo de Delfos y la Pitonisa" },
+  { id: "iching", label: "El I Ching y los 8 Trigramas" },
+  { id: "metodos", label: "Métodos Tradicionales de Consulta" },
+];
+---
+
+<div class="space-y-12">
+  {/* SECCIÓN HERO / LECTURA PRINCIPAL */}
+  <section class="reading-section">
+    <div class="rounded-2xl border-l-4 border-clay-red bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+      <blockquote class="m-0 space-y-3">
+        <p class="max-w-none font-editorial text-[clamp(1.55rem,2.7vw,2.3rem)] leading-tight text-paper-ink italic">
+          {oraclesIntro.jungQuote.text}
+        </p>
+        <footer class="font-interface text-sm font-semibold tracking-wider text-clay-red uppercase">
+          — {oraclesIntro.jungQuote.author} ({oraclesIntro.jungQuote.source})
+        </footer>
+      </blockquote>
+      <p class="mt-5 max-w-none font-editorial text-xl leading-snug text-paper-ink">
+        {oraclesIntro.centralThesis}
+      </p>
+      <p class="mt-5 max-w-none border-t border-antique-gold-soft/40 pt-4 text-[1.02rem] leading-relaxed text-paper-muted">
+        {oraclesIntro.foundationalText}
+      </p>
+      <p class="mt-4 text-sm font-semibold tracking-wide text-clay-red">
+        {oraclesIntro.motto}
+      </p>
+    </div>
+
+    <div class="oracles-columns mt-6 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        A lo largo del tiempo, la humanidad siempre ha buscado anticipar lo por
+        venir. En las civilizaciones arcaicas, esta inquietud no brotaba del
+        miedo pasivo, sino del anhelo sagrado de armonizar las decisiones
+        individuales y comunitarias con las corrientes invisibles del cosmos. Un
+        oráculo era, originariamente, el espacio donde la Divinidad y el ser
+        humano entablaban un diálogo reverente.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Desde los videntes y chamanes de las primeras tribus que interpretaban
+        el susurro de las hojas y el vuelo de las aves, pasando por los
+        sacerdotes de Babilonia y Caldea que descifraron las estrellas, hasta el
+        trípode profético de Delfos y el Libro de las Mutaciones en la China
+        imperial, los oráculos acompañaron los momentos culminantes de la
+        historia humana.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Con la llegada del siglo IV y la imposición de dogmas excluyentes, los
+        grandes santuarios oraculares fueron silenciados y las artes mánticas
+        relegadas a la superstición clandestina. Sin embargo, su verdad
+        simbólica permaneció intacta, custodiada por filósofos herméticos,
+        alquimistas y maestros de sabiduría.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Hoy los oráculos viven un renacimiento sin precedentes. A la luz de la
+        psicología profunda de Carl Jung y la sincronicidad, comprendemos que
+        las monedas del I Ching o los guijarros sagrados no predicen un destino
+        cerrado: actúan como un espejo translúcido del inconsciente, permitiendo
+        que el alma reconozca su propio sendero y asuma con coraje su libre
+        albedrío.
+      </p>
+    </div>
+  </section>
+
+  {/* PESTAÑAS PRINCIPALES */}
+  <section
+    aria-labelledby="indice-oraculos"
+    class="border-t border-antique-gold-soft/50 pt-8"
+  >
+    <h2
+      id="indice-oraculos"
+      class="mb-6 font-editorial text-3xl text-paper-ink"
+    >
+      Mancias Sagradas, Arquetipos y Filosofía Oracular
+    </h2>
+
+    <ContentTabs label="Contenido de oráculos" tabs={oracleTabs}>
+      {/* PESTAÑA 1: FILOSOFÍA Y SABIDURÍA INTERIOR */}
+      <section id="filosofia" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            Filosofía, Evolución Histórica y la Senda del Discernimiento
+          </h3>
+          <p class="mt-5 max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+            La consulta oracular es una de las prácticas más antiguas de la
+            conciencia humana. Comprender su evolución desde el chamanismo
+            primordial hasta la era de la sincronicidad contemporánea permite
+            despojar al oráculo de temores fatídicos y redescubrirlo como un
+            mapa vivo para la introspección y el recto actuar.
+          </p>
+        </article>
+
+        {/* CRONOLOGÍA HISTÓRICA */}
+        <div class="relative space-y-5 border-l-2 border-antique-gold-soft/60 pl-6 lg:pl-8">
+          {oraclesHistory.map((stage) => (
+            <article class="relative rounded-xl border border-antique-gold-soft/40 bg-surface-warm/25 p-5 shadow-xs">
+              <span
+                class="absolute -left-[2.05rem] top-6 h-3 w-3 rounded-full border-2 border-paper bg-clay-red lg:-left-[2.55rem]"
+                aria-hidden="true"
+              />
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="font-interface text-xs font-bold tracking-wider text-clay-red uppercase">
+                  {stage.period}
+                </span>
+                <span class="rounded-full border border-antique-gold-soft/50 px-2 py-0.5 text-[0.68rem] font-semibold tracking-wide text-antique-gold-deep uppercase">
+                  {stage.civilization}
+                </span>
+              </div>
+              <h4 class="mt-2 font-editorial text-2xl font-medium text-paper-ink">
+                {stage.title}
+              </h4>
+              <p class="mt-3 max-w-none text-sm leading-relaxed text-paper-muted">
+                {stage.description}
+              </p>
+              <p class="mt-3 border-t border-antique-gold-soft/30 pt-2 text-xs font-medium text-paper-ink italic">
+                Legado esencial: {stage.legacy}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        {/* ÉTICA DEL CONSULTANTE */}
+        <article class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h3 class="font-editorial text-2xl font-medium text-paper-ink">
+                Las Cuatro Leyes Éticas de la Consulta Oracular
+              </h3>
+              <p class="mt-1 text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                Directrices para una práctica lúcida, responsable y soberana
+              </p>
+            </div>
+            <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3.5 py-1 text-xs font-semibold text-antique-gold-deep">
+              Doctrina de Amonra
+            </span>
+          </div>
+
+          <div class="mt-6 grid gap-4 md:grid-cols-2">
+            {oracleEthics.map((rule) => (
+              <div class="rounded-xl border border-antique-gold-soft/35 bg-surface-warm/40 p-5 shadow-xs">
+                <h4 class="font-editorial text-lg font-medium text-paper-ink">
+                  {rule.title}
+                </h4>
+                <p class="mt-2 text-xs leading-relaxed text-paper-muted">
+                  {rule.detail}
+                </p>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        {/* BENDICIÓN AMONRA */}
+        <div class="rounded-2xl border-l-4 border-antique-gold bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+          <div class="grid gap-x-10 gap-y-3 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p class="max-w-none font-editorial text-2xl font-medium leading-snug text-paper-ink">
+                Amonra: Una luz en vuestro camino
+              </p>
+              <p class="mt-1 max-w-none text-xs font-semibold tracking-wider text-antique-gold-deep uppercase">
+                Sabiduría oracular para vuestro ser
+              </p>
+            </div>
+            <div>
+              <p class="max-w-none text-[1.02rem] leading-relaxed text-paper-muted font-medium">
+                Feliluxor: Fe y felicidad en la luz de oro.
+              </p>
+              <p class="mt-1 max-w-none text-xs text-paper-muted">
+                El oráculo no es un amo que impone, sino un amigo sabio que
+                aconseja. Recuerda siempre que la última palabra y la victoria
+                final descansan en tu propio corazón.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PESTAÑA 2: EL ORÁCULO DE DELFOS Y LA PITONISA */}
+      <section id="delfos" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+                El Santuario de Delfos: Apolo, la Pitonisa y el Ónfalo Cósmico
+              </h3>
+              <p class="mt-1 text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                El centro espiritual y profético del mundo helénico al pie del
+                Parnaso
+              </p>
+            </div>
+            <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3.5 py-1 text-xs font-semibold text-antique-gold-deep">
+              Grecia Clásica
+            </span>
+          </div>
+
+          <div class="oracles-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Situado en una impresionante garganta rocosa al pie del monte
+              Parnaso, el templo de Apolo en Delfos fue considerado el centro
+              geográfico y espiritual de la Tierra: el <em>ónfalo</em> o punto
+              de contacto entre el cielo, la tierra y el inframundo. De las
+              rocas brotaban fuentes célebres como Castalia y Casotis, donde se
+              purificaban sacerdotes y peregrinos antes de formular sus
+              preguntas.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              La intermediaria entre Apolo y los mortales era la Pitonisa o
+              Pitia. En los orígenes eran jóvenes doncellas, pero tras
+              incidentes históricos fueron sustituidas por mujeres campesinas
+              mayores de cincuenta años, quienes vestían con sobriedad y pureza
+              para consagrarse enteramente a la comunión divina. Su voz en
+              trance moldeó la historia de Grecia y la expansión de sus
+              ciudades.
+            </p>
+          </div>
+        </article>
+
+        {/* ILUSTRACIONES Y MARCO DE DELFOS */}
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="overflow-hidden rounded-2xl border-2 border-antique-gold-soft/70 bg-surface-warm/30 p-2 shadow-md">
+            <Image
+              src={imgDelfosPitia}
+              alt="La Pitonisa de Delfos sentada en el trípode profético sosteniendo el laurel"
+              width={380}
+              height={300}
+              class="h-56 w-full rounded-xl object-cover"
+              loading="lazy"
+            />
+            <p class="mt-2 text-center font-interface text-[0.72rem] font-semibold text-antique-gold-deep uppercase">
+              La Pitia en el Ádyton sagrado
+            </p>
+          </div>
+          <div class="overflow-hidden rounded-2xl border-2 border-antique-gold-soft/70 bg-surface-warm/30 p-2 shadow-md">
+            <Image
+              src={imgDelfosSantuario}
+              alt="Ruinas y columnas del santuario y templo de Apolo en Delfos al pie del monte Parnaso"
+              width={380}
+              height={300}
+              class="h-56 w-full rounded-xl object-cover"
+              loading="lazy"
+            />
+            <p class="mt-2 text-center font-interface text-[0.72rem] font-semibold text-antique-gold-deep uppercase">
+              Santuario de Apolo en el Monte Parnaso
+            </p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+            El Rito Sagrado de la Consulta Profética
+          </h4>
+          <p class="max-w-none text-sm leading-relaxed text-paper-muted">
+            {delphiSanctuary.historicalNote}
+          </p>
+          <div class="grid gap-3 sm:grid-cols-2">
+            {delphiSanctuary.pythiaRite.map((step) => (
+              <div class="rounded-xl border border-antique-gold-soft/30 bg-surface-warm/35 p-3.5">
+                <span class="font-interface text-xs font-bold text-clay-red uppercase">
+                  Paso {step.step}: {step.title}
+                </span>
+                <p class="mt-1 text-xs leading-relaxed text-paper-muted">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* LAS TRES MÁXIMAS DÉLFICAS */}
+        <article class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h3 class="font-editorial text-2xl font-medium text-paper-ink">
+                Las Tres Máximas de los Siete Sabios
+              </h3>
+              <p class="mt-1 text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                Inscripciones sagradas del pronaos del templo de Apolo
+              </p>
+            </div>
+            <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3 py-0.5 text-xs font-semibold text-antique-gold-deep">
+              Sabiduría clásica
+            </span>
+          </div>
+
+          <div class="mt-6 grid gap-5 lg:grid-cols-3">
+            {delphiMaxims.map((m) => (
+              <div class="flex flex-col justify-between rounded-xl border border-antique-gold-soft/35 bg-surface-warm/40 p-5 shadow-xs">
+                <div>
+                  <span class="font-editorial text-xl font-bold text-clay-red">
+                    {m.greek}
+                  </span>
+                  <p class="font-interface text-xs font-semibold tracking-wider text-antique-gold-deep uppercase">
+                    «{m.transliteration}»
+                  </p>
+                  <h4 class="mt-2 font-editorial text-lg font-medium text-paper-ink">
+                    {m.translation}
+                  </h4>
+                  <p class="mt-3 text-xs leading-relaxed text-paper-muted">
+                    {m.meaning}
+                  </p>
+                </div>
+                <p class="mt-4 border-t border-antique-gold-soft/30 pt-2 text-[0.72rem] text-paper-muted italic">
+                  {m.philosophicalContext}
+                </p>
+              </div>
+            ))}
+          </div>
+        </article>
+      </section>
+
+      {/* PESTAÑA 3: EL I CHING Y LOS 8 TRIGRAMAS */}
+      <section id="iching" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+                El I Ching: El Libro de las Mutaciones y los 8 Trigramas
+              </h3>
+              <p class="mt-1 text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                Cosmología del Yin y el Yang, el Bagua y los 64 Hexagramas
+              </p>
+            </div>
+            <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3.5 py-1 text-xs font-semibold text-antique-gold-deep">
+              Tradición Imperial China
+            </span>
+          </div>
+
+          <div class="oracles-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              El <em>I Ching</em> o <em>Zhouyi</em> es a la vez un libro
+              puramente sapiencial y una herramienta oracular de precisión
+              incomparable. Como obra sapiencial, condensa la visión ontológica,
+              ética y psicológica de la civilización china; como oráculo, opera
+              como una brújula infalible para discernir la dirección del cambio
+              en la naturaleza y en los asuntos humanos.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Su cosmología descansa en la interacción del Yin (la fuerza
+              oscura, receptiva, femenina, representada por líneas quebradas
+              <code>- -</code>) y el Yang (la fuerza luminosa, activa,
+              masculina, representada por líneas continuas <code>———</code>). El
+              símbolo del Taijitu enseña que nada en el universo permanece
+              estático: cuando una fuerza alcanza su plenitud extrema, contiene
+              ya en su seno la semilla de su opuesto complementario.
+            </p>
+          </div>
+        </article>
+
+        {/* ILUSTRACIÓN DEL BAGUA Y EXPLICACIÓN */}
+        <div class="grid gap-6 md:grid-cols-[280px_1fr] lg:grid-cols-[320px_1fr] md:items-center">
+          <div class="overflow-hidden rounded-2xl border-2 border-antique-gold-soft/70 bg-surface-warm/30 p-2 shadow-md">
+            <Image
+              src={imgIchingBagua}
+              alt="Diagrama tradicional del Bagua con el Yin-Yang central y los 8 trigramas cósmicos"
+              width={320}
+              height={320}
+              class="h-auto w-full rounded-xl object-contain"
+              loading="lazy"
+            />
+            <p class="mt-2 text-center font-interface text-[0.72rem] font-semibold text-antique-gold-deep uppercase">
+              El Bagua y la Rueda del Cambio Cósmico
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+              Los Cuatro Grandes Sabios del I Ching
+            </h4>
+            <div class="grid gap-3 sm:grid-cols-2">
+              <div class="rounded-xl border border-antique-gold-soft/30 bg-surface-warm/35 p-3.5">
+                <p class="font-editorial text-base font-bold text-clay-red">
+                  1. Fu Xi (Mítico Soberano)
+                </p>
+                <p class="mt-1 text-xs leading-relaxed text-paper-muted">
+                  Observó los signos del cielo y las formas de la tierra,
+                  dibujando los 8 trigramas primordiales (Bagua).
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-antique-gold-soft/30 bg-surface-warm/35 p-3.5">
+                <p class="font-editorial text-base font-bold text-clay-red">
+                  2. El Rey Wen de Zhou
+                </p>
+                <p class="mt-1 text-xs leading-relaxed text-paper-muted">
+                  Estando en prisión, combinó los 8 trigramas entre sí formando
+                  los 64 hexagramas y redactó los juicios globales.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-antique-gold-soft/30 bg-surface-warm/35 p-3.5">
+                <p class="font-editorial text-base font-bold text-clay-red">
+                  3. El Duque de Zhou
+                </p>
+                <p class="mt-1 text-xs leading-relaxed text-paper-muted">
+                  Redactó las interpretaciones poéticas de las 384 líneas
+                  individuales de cada hexagrama, analizando su movimiento.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-antique-gold-soft/30 bg-surface-warm/35 p-3.5">
+                <p class="font-editorial text-base font-bold text-clay-red">
+                  4. Confucio (Kung Fu-Tse)
+                </p>
+                <p class="mt-1 text-xs leading-relaxed text-paper-muted">
+                  Compuso «Las Diez Alas» (comentarios filosóficos y morales)
+                  que elevaron el texto a cumbre del humanismo oriental.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CATÁLOGO DE LOS 8 TRIGRAMAS */}
+        <article class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h3 class="font-editorial text-2xl font-medium text-paper-ink">
+                Los Ocho Trigramas Primordiales (Ba Gua)
+              </h3>
+              <p class="mt-1 text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                Las 8 fuerzas elementales cuya combinación genera los 64
+                hexagramas
+              </p>
+            </div>
+            <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3 py-0.5 text-xs font-semibold text-antique-gold-deep">
+              Matriz binaria universal
+            </span>
+          </div>
+
+          <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {ichingTrigrams.map((tri) => (
+              <div class="rounded-xl border border-antique-gold-soft/35 bg-surface-warm/40 p-4 shadow-xs">
+                <div class="flex items-center justify-between">
+                  <span class="font-editorial text-3xl font-bold text-clay-red">
+                    {tri.symbol}
+                  </span>
+                  <span class="rounded-md bg-clay-red/10 px-2 py-0.5 font-interface text-xs font-bold text-clay-red">
+                    {tri.chineseName} ({tri.pinyin})
+                  </span>
+                </div>
+                <h4 class="mt-3 font-editorial text-lg font-medium text-paper-ink">
+                  {tri.nature}
+                </h4>
+                <p class="text-xs font-semibold text-antique-gold-deep">
+                  Elemento: {tri.element}
+                </p>
+                <p class="mt-1 text-[0.72rem] text-paper-muted">
+                  Rol: {tri.familyRole} · Dirección: {tri.cardinalDirection}
+                </p>
+                <p class="mt-2.5 text-xs leading-relaxed text-paper-muted">
+                  {tri.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        {/* MÉTODO DE LAS TRES MONEDAS */}
+        <article class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+          <div class="grid gap-6 md:grid-cols-[200px_1fr] md:items-center">
+            <div class="flex flex-col items-center">
+              <div class="overflow-hidden rounded-xl border border-antique-gold-soft/50 bg-surface-warm/30 p-2">
+                <Image
+                  src={imgIchingMonedas}
+                  alt="Tres monedas chinas tradicionales de bronce perforadas para la consulta del I Ching"
+                  width={180}
+                  height={180}
+                  class="h-auto w-36 rounded-lg object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <span class="mt-2 font-interface text-[0.68rem] font-semibold tracking-wider text-antique-gold-deep uppercase">
+                Tres Monedas Rituales
+              </span>
+            </div>
+
+            <div>
+              <h3 class="font-editorial text-2xl font-medium text-paper-ink">
+                Técnica Clásica de Consulta con Tres Monedas
+              </h3>
+              <p class="mt-2 max-w-none text-xs leading-relaxed text-paper-muted">
+                Para formular un hexagrama se lanzan simultáneamente tres
+                monedas iguales seis veces consecutivas, construyendo las líneas
+                de abajo hacia arriba (desde la línea 1 inferior hasta la línea
+                6 en la cúspide). A cada cara (lado con valor) se le asigna
+                valor 2 (Yin), y a cada cruz (lado de la inscripción) se le
+                asigna valor 3 (Yang).
+              </p>
+
+              <div class="mt-4 grid gap-2.5 sm:grid-cols-2">
+                {ichingCoinRules.map((r) => (
+                  <div class="rounded-lg border border-antique-gold-soft/30 bg-surface-warm/40 p-3">
+                    <div class="flex items-center justify-between">
+                      <span class="font-interface text-xs font-bold text-clay-red uppercase">
+                        Suma {r.sum}: {r.composition}
+                      </span>
+                      <code class="rounded bg-surface-warm px-1.5 py-0.5 text-xs font-bold text-paper-ink">
+                        {r.symbolRepresentation}
+                      </code>
+                    </div>
+                    <p class="mt-1 font-editorial text-sm font-medium text-paper-ink">
+                      {r.lineType}
+                    </p>
+                    <p class="mt-1 text-[0.72rem] leading-relaxed text-paper-muted">
+                      {r.meaning} (<strong>Mutación:</strong> {r.mutatesTo})
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      {/* PESTAÑA 4: MÉTODOS TRADICIONALES DE CONSULTA */}
+      <section id="metodos" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+                Métodos Clásicos de Cleromancia y Sabiduría Ritual
+              </h3>
+              <p class="mt-1 text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                Suertes, dados sagrados, gemas y la palabra revelada
+              </p>
+            </div>
+            <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3.5 py-1 text-xs font-semibold text-antique-gold-deep">
+              4 Mancias Históricas
+            </span>
+          </div>
+
+          <div class="oracles-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Además de los grandes sistemas de Delfos y el I Ching, los pueblos
+              antiguos conservaron modalidades oraculares cotidianas para
+              orientar sus pasos en el día a día. El principio fundamental de
+              todas ellas es la cleromancia: la creencia de que cuando el ser
+              humano renuncia a manipular los objetos y los confía al azar
+              sagrado en un marco de pureza y silencio, las fuerzas universales
+              hacen visible la respuesta a través de la sincronicidad.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              A continuación se describen cuatro de los métodos más respetados y
+              perdurables de la tradición: el juicio de las suertes o
+              cleromancia, los dados sagrados (astragalomancia), el oráculo de
+              gemas (litomancia) y la bibliomancia espiritual.
+            </p>
+          </div>
+        </article>
+
+        {/* MÉTODOS TRADICIONALES */}
+        <div class="space-y-8">
+          {oracleMethods.map((method) => (
+            <article class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+              <div class="flex flex-wrap items-center justify-between gap-3 border-b border-antique-gold-soft/40 pb-4">
+                <div>
+                  <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+                    {method.name}
+                  </h4>
+                  <p class="text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                    «{method.traditionalName}» · {method.origin}
+                  </p>
+                </div>
+                <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3 py-1 font-interface text-xs font-semibold text-antique-gold-deep">
+                  Elemento: {method.element}
+                </span>
+              </div>
+
+              <p class="mt-4 max-w-none text-sm leading-relaxed text-paper-muted">
+                {method.description}
+              </p>
+
+              {method.id === "cleromancia" && (
+                <div class="mt-4 overflow-hidden rounded-xl border border-antique-gold-soft/60 bg-surface-warm/30 p-2 sm:max-w-md">
+                  <Image
+                    src={imgCleromancia}
+                    alt="Lanzamiento ritual de las suertes sagradas en la tradición cleromántica"
+                    width={420}
+                    height={260}
+                    class="h-auto w-full rounded-lg object-cover"
+                    loading="lazy"
+                  />
+                  <p class="mt-1.5 text-center font-interface text-[0.7rem] font-semibold text-antique-gold-deep uppercase">
+                    Cleromancia y consagración de las suertes
+                  </p>
+                </div>
+              )}
+
+              {/* PROCEDIMIENTO */}
+              <div class="mt-4 rounded-xl border border-antique-gold-soft/30 bg-surface-warm/25 p-4">
+                <h5 class="font-interface text-xs font-bold tracking-wider text-antique-gold-deep uppercase">
+                  Procedimiento ritual
+                </h5>
+                <ul class="mt-2 space-y-1.5 text-xs leading-relaxed text-paper-muted">
+                  {method.procedure.map((p) => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-clay-red">•</span>
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* VIRTUD */}
+              <aside class="mt-4 rounded-xl border-l-4 border-antique-gold bg-surface-warm/40 px-5 py-3.5">
+                <p class="font-interface text-xs font-bold tracking-wider text-antique-gold-deep uppercase">
+                  Virtud oracular
+                </p>
+                <p class="mt-1 text-xs leading-relaxed text-paper-ink">
+                  {method.virtue}
+                </p>
+              </aside>
+            </article>
+          ))}
+        </div>
+      </section>
+    </ContentTabs>
+  </section>
+</div>
+
+<style>
+  .reading-section p {
+    max-width: none;
+  }
+</style>

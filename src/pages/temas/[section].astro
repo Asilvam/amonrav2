@@ -10,6 +10,7 @@ import GemsContent from "../../components/amonra/GemsContent.astro";
 import DreamsContent from "../../components/amonra/DreamsContent.astro";
 import TarotContent from "../../components/amonra/TarotContent.astro";
 import RunesContent from "../../components/amonra/RunesContent.astro";
+import OraclesContent from "../../components/amonra/OraclesContent.astro";
 import Breadcrumbs from "../../components/common/Breadcrumbs.astro";
 import Container from "../../components/layout/Container.astro";
 import { amonraMessages } from "../../config/amonra-messages";
@@ -29,6 +30,7 @@ import gemsHero from "../../assets/amonra/gemas-hero.jpg";
 import dreamsHero from "../../assets/amonra/suenos-hero.jpg";
 import tarotHero from "../../assets/amonra/tarot-hero.jpg";
 import runesHero from "../../assets/amonra/runas-hero.jpg";
+import oraclesHero from "../../assets/amonra/oraculos-hero.jpg";
 
 interface Props {
   section: AmonraSection;
@@ -53,6 +55,7 @@ const hasCompactHero = [
   "suenos",
   "tarot",
   "runas",
+  "oraculos",
 ].includes(section.slug);
 const currentIndex = amonraSections.findIndex(
   (candidate) => candidate.slug === section.slug,
@@ -144,6 +147,12 @@ const next =
             <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
               El Futhark Sagrado de 25 caracteres, los tres Aettir y métodos
               clásicos de lectura nórdica.
+            </p>
+          )}
+          {section.slug === "oraculos" && (
+            <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
+              El Templo de Delfos, el I Ching milenario y los métodos
+              tradicionales de consulta oracular.
             </p>
           )}
         </div>
@@ -277,6 +286,19 @@ const next =
             />
           </figure>
         )}
+
+        {section.slug === "oraculos" && (
+          <figure class="m-0">
+            <Image
+              src={oraclesHero}
+              alt="Pitia de Delfos sobre el trípode délfico en el santuario de Apolo"
+              widths={[380, 560, 800]}
+              sizes="(min-width: 1024px) 42vw, 88vw"
+              loading="eager"
+              class="mx-auto max-h-[20rem] w-full max-w-[18rem] rounded-xl object-contain drop-shadow-2xl"
+            />
+          </figure>
+        )}
       </Container>
     </header>
 
@@ -356,6 +378,14 @@ const next =
       <section class="border-b border-antique-gold-soft/45 bg-paper py-20 text-paper-ink lg:py-24">
         <Container>
           <RunesContent />
+        </Container>
+      </section>
+    )}
+
+    {section.slug === "oraculos" && (
+      <section class="border-b border-antique-gold-soft/45 bg-paper py-20 text-paper-ink lg:py-24">
+        <Container>
+          <OraclesContent />
         </Container>
       </section>
     )}

@@ -6,10 +6,10 @@ Sitio web de `amonra.cl`, construido con Astro y generado como un sitio estátic
 
 El proyecto cuenta con 15 secciones configuradas:
 
-- 10 secciones publicadas: Fundación, Historia, Amuletos, Astrología, Gemas,
-  Inciensos, Runas, Sueños, Tarot y Velas.
-- 5 secciones en migración: Horóscopos, Magia, Numerología, Oráculos y
-  Terapias.
+- 11 secciones publicadas: Fundación, Historia, Amuletos, Astrología, Gemas,
+  Inciensos, Oráculos, Runas, Sueños, Tarot y Velas (73,3% del portal).
+- 4 secciones en migración: Horóscopos, Magia, Numerología y Terapias (26,7%
+  restante).
 
 La migración consolida los contenidos históricos en páginas temáticas con
 índices, pestañas y fichas reutilizables. El objetivo es conservar los temas
@@ -89,16 +89,17 @@ npm run preview
 Las secciones marcadas como publicadas en `src/config/amonra-sections.ts` son:
 
 `fundacion`, `historia`, `amuletos`, `astrologia`, `gemas`, `inciensos`,
-`runas`, `suenos`, `tarot` y `velas`.
+`oraculos`, `runas`, `suenos`, `tarot` y `velas`.
 
 Las secciones en migración son:
 
-`horoscopos`, `magia`, `numerologia`, `oraculos` y `terapias`.
+`horoscopos`, `magia`, `numerologia` y `terapias`.
 
 Los bloques con contenido personalizado incluyen Fundación, Historia, Amuletos,
-Astrología, Gemas, Inciensos, Runas, Sueños, Tarot y Velas. Amuletos, Gemas,
-Runas, Tarot y Astrología incorporan índices o pestañas de navegación interna;
-Astrología además cuenta con páginas dinámicas para sus artículos.
+Astrología, Gemas, Inciensos, Oráculos, Runas, Sueños, Tarot y Velas. Amuletos,
+Gemas, Oráculos, Runas, Tarot y Astrología incorporan índices o pestañas de
+navegación interna; Astrología además cuenta con páginas dinámicas para sus
+artículos.
 
 ## Criterios editoriales de la migración
 
@@ -110,6 +111,10 @@ Astrología además cuenta con páginas dinámicas para sus artículos.
   ingerir agua que haya estado en contacto con minerales.
 - Runas distingue el Futhark histórico de incorporaciones oraculares modernas,
   como la Runa en Blanco o Wyrd.
+- Oráculos aborda la consulta mántica desde la perspectiva de la sincronicidad
+  y el diálogo con el inconsciente propuesta por Carl Gustav Jung, despojándola
+  de fatalismo predictivo y priorizando el libre albedrío y la soberanía ética
+  del consultante.
 - La sección de Sueños evita repetir el resumen de cada símbolo dentro de su
   interpretación ampliada.
 
@@ -123,11 +128,11 @@ npm run build
 ```
 
 La build actual genera 24 rutas estáticas y valida las páginas publicadas,
-incluidas `/temas/gemas/`, `/temas/runas/`, `/temas/amuletos/`,
-`/temas/fundacion/` y `/temas/historia/`. El smoke test revisa que estas rutas
-existan, que incluyan sus contenidos clave y que Gemas no conserve pautas de
-ingestión de agua con cristales.
+incluidas `/temas/oraculos/`, `/temas/runas/`, `/temas/tarot/`, `/temas/gemas/`,
+`/temas/amuletos/`, `/temas/fundacion/` e `/temas/historia/`. El smoke test
+revisa que estas rutas existan, que incluyan sus contenidos clave y que Gemas no
+conserve pautas de ingestión de agua con cristales.
 
 Si `npm run check` informa una advertencia de Prettier en
-`docs/migracion_100_amonra.md`, corresponde a documentación pendiente de
-formato y no a los componentes de las secciones publicadas.
+`docs/migracion_100_amonra.md`, corresponde a documentación pendiente de formato
+y no a los componentes de las secciones publicadas.

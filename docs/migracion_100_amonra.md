@@ -9,14 +9,14 @@
 
 ## 1. Estado Global del Proyecto
 
-| Categoría                            | Cantidad | Porcentaje | Detalle                                                                                                      |
-| ------------------------------------ | :------: | :--------: | ------------------------------------------------------------------------------------------------------------ |
-| **Secciones Totales del Portal**     |    15    |    100%    | Configuración canónica en `src/config/amonra-sections.ts`                                                    |
-| **Secciones Publicadas (Completas)** |    10    |   66,7%    | `fundacion`, `historia`, `amuletos`, `astrologia`, `velas`, `inciensos`, `gemas`, `suenos`, `tarot`, `runas` |
-| **Secciones Pendientes (Restantes)** |    5     |   33,3%    | `oraculos`, `numerologia`, `magia`, `horoscopos`, `terapias`                                                 |
-| **Archivos HTML en Backup Original** |   216    |    100%    | Todos los documentos históricos preservados                                                                  |
-| **Archivos HTML ya integrados**      |    89    |   41,2%    | Pertenecientes a las 10 secciones publicadas                                                                 |
-| **Archivos HTML por integrar**       |   127    |   58,8%    | Desglosados exhaustivamente en este documento                                                                |
+| Categoría                            | Cantidad | Porcentaje | Detalle                                                                                                                  |
+| ------------------------------------ | :------: | :--------: | ------------------------------------------------------------------------------------------------------------------------ |
+| **Secciones Totales del Portal**     |    15    |    100%    | Configuración canónica en `src/config/amonra-sections.ts`                                                                |
+| **Secciones Publicadas (Completas)** |    11    |   73,3%    | `fundacion`, `historia`, `amuletos`, `astrologia`, `velas`, `inciensos`, `gemas`, `suenos`, `tarot`, `runas`, `oraculos` |
+| **Secciones Pendientes (Restantes)** |    4     |   26,7%    | `numerologia`, `magia`, `horoscopos`, `terapias`                                                                         |
+| **Archivos HTML en Backup Original** |   216    |    100%    | Todos los documentos históricos preservados                                                                              |
+| **Archivos HTML ya integrados**      |    94    |   43,5%    | Pertenecientes a las 11 secciones publicadas                                                                             |
+| **Archivos HTML por integrar**       |   122    |   56,5%    | Desglosados exhaustivamente en este documento                                                                            |
 
 ---
 
@@ -89,18 +89,19 @@ MIGRACIÓN RESTANTE (168 archivos HTML / 7 secciones)
 
 ### Tema 7: ORÁCULOS (`/temas/oraculos/`)
 
-- **Estado:** Pendiente (`migration`)
-- **Archivos HTML originales (5 archivos, 200 KB):**
+- **Estado:** **100% COMPLETADO Y PUBLICADO (`published`)**
+- **Archivos HTML integrados (5 archivos, 200 KB):**
   1. `index_oraculos.htm` (43 KB) — Filosofía de la consulta oracular, sincronicidad y diálogo con la sabiduría interior.
   2. `oraculos.html` (44 KB) — El precepto sagrado «Conócete a ti mismo» (_Gnothi Seauton_) como fundamento oracular.
   3. `oraculos_delfos.htm` (34 KB) — El Templo de Apolo en Delfos, la Pitonisa, rituales de purificación y la tradición griega.
   4. `oraculos_iching.htm` (40 KB) — El I Ching o Libro de las Mutaciones (Yin/Yang, los 8 Trigramas del Bagua, técnica de las tres monedas y hexagramas).
   5. `oraculos_tipos.htm` (37 KB) — Métodos oraculares tradicionales (cleromancia, dados sagrados, oráculo de gemas y bibliomancia).
-- **Activos disponibles:** Carpeta `backup-original/public_html/amonra.cl/oraculos/` (68 imágenes históricas).
-- **Entregables técnicos a construir:**
-  - `src/config/oracles-data.ts`: Fichas del I Ching, Delfos, trigramas y métodos de cleromancia.
-  - `src/components/amonra/OraclesContent.astro`: 4 pestañas (`filosofia`, `delfos`, `iching`, `metodos`).
-  - `src/assets/amonra/oraculos-hero.jpg`: Hero histórico optimizado.
+- **Activos entregados:** `src/assets/amonra/oraculos-hero.jpg` (hero de la Pitia en el trípode délfico) + `src/assets/amonra/oraculos/` (6 imágenes históricas: Pitia, Santuario de Apolo, Bagua, monedas I Ching, cleromancia y ruinas).
+- **Entregables técnicos implementados:**
+  - `src/config/oracles-data.ts`: Fichas completas del I Ching (8 Trigramas con caracteres, pinyin, elemento y naturaleza; 4 sabios; método de 3 monedas y mutaciones de líneas), el Santuario de Delfos (3 máximas en griego y español, rito de la Pitonisa en 4 pasos, fuentes Castalia y Casotis), 4 mancias tradicionales (cleromancia, astragalomancia, litomancia, bibliomancia) y las 4 leyes éticas de consulta.
+  - `src/components/amonra/OraclesContent.astro`: 4 pestañas accesibles (`filosofia`, `delfos`, `iching`, `metodos`), layout 2 columnas de escritorio con `max-w-none`, tipografía editorial y callouts balanceados.
+  - `src/pages/temas/[section].astro`: Integración de héroe compacto, subtítulo y componente de contenido.
+  - QA Artifact: `qa_etapa2_tema3_oraculos.md` (100% PASS en 34 pruebas automatizadas de smoke test, build SSG verificado).
 
 ---
 
