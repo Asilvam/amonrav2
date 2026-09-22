@@ -41,6 +41,15 @@ const { label, tabs } = Astro.props;
           panels[i]!.hidden = i !== index;
         });
         if (focus) links[index].focus({ preventScroll: true });
+
+        // Optimización iOS / iPhone: autodesplaza horizontalmente la pestaña activa al centro visible
+        if (window.innerWidth < 640 && links[index]) {
+          links[index].scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center",
+          });
+        }
       }
 
       function selectHashTarget() {
@@ -121,7 +130,7 @@ const { label, tabs } = Astro.props;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 44px;
+    min-height: 44px; /* Cumple estándar táctil Apple HIG de 44pt */
     border: 1px solid var(--color-primary-soft);
     border-radius: var(--radius-small);
     padding: 0.65rem 1.15rem;
@@ -131,11 +140,17 @@ const { label, tabs } = Astro.props;
     font-weight: 650;
     line-height: 1.35;
     text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
     transition:
       background 0.15s ease,
       border-color 0.15s ease,
       color 0.15s ease,
-      box-shadow 0.15s ease;
+      box-shadow 0.15s ease,
+      transform 0.1s ease;
+  }
+
+  .tab-link:active {
+    transform: scale(0.97); /* Respuesta táctil al toque en iOS/iPhone */
   }
 
   .tab-link:hover {
@@ -155,14 +170,26 @@ const { label, tabs } = Astro.props;
     .tab-list {
       flex-wrap: nowrap;
       overflow-x: auto;
+      overscroll-behavior-x: contain; /* Evita que el swipe horizontal active la navegación atrás de iOS Safari */
       padding-bottom: 0.75rem;
-      scrollbar-width: thin;
-      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+      -webkit-overflow-scrolling: touch; /* Momentum scrolling nativo de iOS */
+      scroll-snap-type: x proximity;
+      scroll-padding-inline: 1rem;
+      padding-inline-end: 1.5rem; /* Margen de resguardo para que la última pestaña no quede pegada al borde en iPhone */
+    }
+
+    .tab-list::-webkit-scrollbar {
+      display: none; /* Oculta la barra de scroll en iOS Safari */
     }
 
     .tab-link {
       white-space: nowrap;
       flex-shrink: 0;
+      scroll-snap-align: start;
+      user-select: none;
+      -webkit-user-select: none; /* Evita selección de texto accidental al arrastrar */
     }
   }
 
