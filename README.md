@@ -6,10 +6,10 @@ Sitio web de `amonra.cl`, construido con Astro y generado como un sitio estátic
 
 El proyecto cuenta con 15 secciones configuradas:
 
-- 12 secciones publicadas: Fundación, Historia, Amuletos, Astrología, Gemas,
-  Inciensos, Numerología, Oráculos, Runas, Sueños, Tarot y Velas (80,0% del
+- 13 secciones publicadas: Fundación, Historia, Amuletos, Astrología, Gemas,
+  Inciensos, Magia, Numerología, Oráculos, Runas, Sueños, Tarot y Velas (86,7% del
   portal).
-- 3 secciones en migración: Horóscopos, Magia y Terapias (20,0% restante).
+- 2 secciones en migración: Horóscopos y Terapias (13,3% restante).
 
 La migración consolida los contenidos históricos en páginas temáticas con
 índices, pestañas y fichas reutilizables. El objetivo es conservar los temas
@@ -89,15 +89,15 @@ npm run preview
 Las secciones marcadas como publicadas en `src/config/amonra-sections.ts` son:
 
 `fundacion`, `historia`, `amuletos`, `astrologia`, `gemas`, `inciensos`,
-`numerologia`, `oraculos`, `runas`, `suenos`, `tarot` y `velas`.
+`magia`, `numerologia`, `oraculos`, `runas`, `suenos`, `tarot` y `velas`.
 
 Las secciones en migración son:
 
-`horoscopos`, `magia` y `terapias`.
+`horoscopos` y `terapias`.
 
 Los bloques con contenido personalizado incluyen Fundación, Historia, Amuletos,
-Astrología, Gemas, Inciensos, Numerología, Oráculos, Runas, Sueños, Tarot y
-Velas. Amuletos, Gemas, Numerología, Oráculos, Runas, Tarot y Astrología
+Astrología, Gemas, Inciensos, Magia, Numerología, Oráculos, Runas, Sueños, Tarot
+y Velas. Amuletos, Gemas, Magia, Numerología, Oráculos, Runas, Tarot y Astrología
 incorporan índices o pestañas de navegación interna; Astrología además cuenta
 con páginas dinámicas para sus artículos.
 
@@ -119,6 +119,11 @@ con páginas dinámicas para sus artículos.
   autoconocimiento y ciclos temporales de la conciencia (Música de las Esferas
   de Pitágoras), distinguiendo el análisis ético y psicológico de cualquier
   determinismo supersticioso.
+- Magia aborda la doctrina hermética tradicional, las leyes cósmicas del Kybalion
+  y la Rueda del Año desde la transmutación interior de la conciencia y la
+  reverencia ética a la naturaleza (enfoque dual austral/boreal), distinguiendo
+  el arte de la Voluntad (Magiak) y la Ley del Tres del mero ilusionismo
+  escénico profano.
 - La sección de Sueños evita repetir el resumen de cada símbolo dentro de su
   interpretación ampliada.
 

@@ -1,0 +1,606 @@
+---
+import { Image } from "astro:assets";
+import ContentTabs from "../common/ContentTabs.astro";
+import {
+  magicIntro,
+  hermeticPrinciples,
+  magicTraditions,
+  wheelOfYear,
+  altarTools,
+  lunarPhases,
+  sacredPlantsCatalog,
+} from "../../config/magic-data";
+
+import imgDruidas from "../../assets/amonra/magia/druidas.jpg";
+import imgArbolCelta from "../../assets/amonra/magia/arbol-celta.jpg";
+import imgMagiaCelta from "../../assets/amonra/magia/magia-celta.jpg";
+import imgMagiaBlanca from "../../assets/amonra/magia/magia-blanca.jpg";
+import imgMagiaVerde from "../../assets/amonra/magia/magia-verde.jpg";
+import imgRituales from "../../assets/amonra/magia/rituales.jpg";
+import imgHerbolaria from "../../assets/amonra/magia/herbolaria.jpg";
+
+const magicTabs = [
+  { id: "doctrina", label: "Doctrina Hermética y Leyes Cósmicas" },
+  { id: "druidas", label: "Magia Celta y Tradición Druídica" },
+  { id: "estaciones", label: "La Rueda del Año y Ciclos Solares" },
+  { id: "rituales", label: "Herramientas, Fases Lunares y Plantas" },
+];
+---
+
+<div class="space-y-12">
+  {/* SECCIÓN HERO / LECTURA PRINCIPAL */}
+  <section class="reading-section">
+    <div class="rounded-2xl border-l-4 border-clay-red bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+      <blockquote class="m-0 space-y-3">
+        <p class="max-w-none font-editorial text-[clamp(1.55rem,2.7vw,2.3rem)] leading-tight text-paper-ink">
+          &ldquo;{magicIntro.quote.text}&rdquo;
+        </p>
+        <footer class="font-interface text-sm font-semibold tracking-wider text-clay-red uppercase">
+          — {magicIntro.quote.author} ({magicIntro.quote.source})
+        </footer>
+      </blockquote>
+      <p class="mt-5 max-w-none font-editorial text-xl leading-snug text-paper-ink">
+        {magicIntro.centralThesis}
+      </p>
+      <p class="mt-5 max-w-none border-t border-antique-gold-soft/40 pt-4 text-[1.02rem] leading-relaxed text-paper-muted">
+        {magicIntro.foundationalText}
+      </p>
+      <p class="mt-4 text-sm font-semibold tracking-wide text-clay-red">
+        {magicIntro.motto}
+      </p>
+    </div>
+
+    <div class="magic-columns mt-6 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Desde los primeros balbuceos de la civilización, el ser humano ha
+        sentido la necesidad de dialogar con las fuerzas invisibles que rigen el
+        cosmos. La magia nació como el intento primordial de descifrar la
+        urdimbre viva de la realidad: no como un desafío a las leyes divinas,
+        sino como la búsqueda paciente de la armonía con ellas.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        En Amonra, la magia se enseña como un sendero de responsabilidad y
+        autotransformación. Quien comprende que cada pensamiento es una semilla
+        energética, cuida sus palabras como encantamientos creadores y sus actos
+        como oraciones vivas en beneficio de toda la humanidad.
+      </p>
+    </div>
+  </section>
+
+  {/* TABS DE NAVEGACIÓN */}
+  <section
+    class="space-y-8"
+    aria-label="Contenido de Magia y Ciclos Estacionales"
+  >
+    <ContentTabs
+      label="Contenido de Magia y Ciclos Estacionales"
+      tabs={magicTabs}
+    >
+      {/* PESTAÑA 1: DOCTRINA HERMÉTICA Y LEYES UNIVERSALES */}
+      <section id="doctrina" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <div class="overflow-hidden rounded-2xl border border-antique-gold-soft/60 shadow-sm">
+            <Image
+              src={imgMagiaBlanca}
+              alt="Magia Blanca y Sabiduría de la Luz"
+              class="w-full h-auto object-cover max-h-[360px]"
+            />
+          </div>
+
+          <h3 class="mt-6 font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            El Sendero Hermético: Magia, Magiak y Leyes Cósmicas
+          </h3>
+          <div class="magic-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              A menudo el lenguaje cotidiano confunde la magia con el truco
+              teatral o la prestidigitación de circo. Sin embargo, en el saber
+              oculto tradicional, la magia describe el flujo de la energía
+              universal canalizada por la voluntad consciente. Por ello,
+              Aleister Crowley y las escuelas iniciáticas del siglo XX adoptaron
+              la grafía <em>Magiak</em> (Magick), recordando que todo acto
+              intencional engendra transformaciones reales en la conciencia.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              El principio ético primordial es la <strong>Ley del Tres</strong>:
+              la energía proyectada hacia el exterior —sea amorosa o rencorosa—
+              regresa triplicada al operador. La Magia Blanca es, por
+              definición, inofensiva: jamás doblega la soberanía de otra alma,
+              pues comprende que forzar el destino ajeno genera deudas kármicas
+              y discordia interior.
+            </p>
+          </div>
+        </article>
+
+        {/* LOS 7 PRINCIPIOS HERMÉTICOS DEL KYBALION */}
+        <div class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+          <div class="border-b border-antique-gold-soft/30 pb-4">
+            <span class="text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+              Filosofía Hermética Fundamental
+            </span>
+            <h4 class="mt-1 font-editorial text-2xl font-medium text-paper-ink">
+              Los 7 Principios Universales del Kybalion
+            </h4>
+            <p class="mt-2 text-sm text-paper-muted">
+              Los cimientos inmutables sobre los cuales opera toda práctica
+              espiritual y transmutación de la realidad interior.
+            </p>
+          </div>
+
+          <div class="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {hermeticPrinciples.map((item) => (
+              <div class="rounded-xl border border-antique-gold-soft/40 bg-surface-warm/35 p-5 flex flex-col justify-between">
+                <div>
+                  <h5 class="font-editorial text-lg font-medium text-paper-ink">
+                    {item.principle}
+                  </h5>
+                  <p class="mt-1 text-xs font-semibold tracking-wide text-clay-red">
+                    {item.axiom}
+                  </p>
+                  <p class="mt-3 text-sm leading-relaxed text-paper-muted">
+                    {item.explanation}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* LAS 5 TRADICIONES DE MAGIA DE LUZ */}
+        <div class="space-y-6">
+          <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+            Las Vertientes Tradicionales de la Magia
+          </h4>
+          <div class="grid gap-6 md:grid-cols-2">
+            {magicTraditions.map((trad) => (
+              <article class="rounded-2xl border border-antique-gold-soft/45 bg-surface-warm/20 p-6 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between border-b border-antique-gold-soft/30 pb-3">
+                    <span class="text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                      {trad.name}
+                    </span>
+                  </div>
+                  <h5 class="mt-3 font-editorial text-xl font-medium text-paper-ink">
+                    {trad.title}
+                  </h5>
+                  <p class="text-sm font-medium text-paper-muted italic">
+                    {trad.subtitle}
+                  </p>
+                  <p class="mt-3 text-[0.98rem] leading-relaxed text-paper-muted">
+                    {trad.description}
+                  </p>
+
+                  {trad.id === "verde" && (
+                    <div class="my-3 overflow-hidden rounded-xl border border-antique-gold-soft/40 shadow-xs">
+                      <Image
+                        src={imgMagiaVerde}
+                        alt="Magia Verde y Herbología Mágica"
+                        class="h-32 w-full object-cover"
+                      />
+                    </div>
+                  )}
+
+                  <div class="mt-4 space-y-2">
+                    <p class="text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                      Principios Fundamentales:
+                    </p>
+                    <ul class="space-y-1.5 pl-4 text-xs text-paper-muted list-disc">
+                      {trad.principles.map((p) => (
+                        <li>{p}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div class="mt-4 space-y-2">
+                    <p class="text-xs font-semibold tracking-wider text-paper-ink uppercase font-interface">
+                      Prácticas Habituales:
+                    </p>
+                    <ul class="space-y-1.5 pl-4 text-xs text-paper-muted list-disc">
+                      {trad.practices.map((pr) => (
+                        <li>{pr}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="mt-5 border-t border-antique-gold-soft/30 pt-3 text-xs text-paper-muted/80">
+                  <strong>Raíz histórica:</strong> {trad.historicalContext}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PESTAÑA 2: MAGIA CELTA Y TRADICIÓN DRUÍDICA */}
+      <section id="druidas" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <div class="overflow-hidden rounded-2xl border border-antique-gold-soft/60 shadow-sm">
+            <Image
+              src={imgMagiaCelta}
+              alt="Magia Celta y los Druidas de la Naturaleza"
+              class="w-full h-auto object-cover max-h-[360px]"
+            />
+          </div>
+
+          <h3 class="mt-6 font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            El Sacerdocio de los Bosques: Los Druidas y el Alma de la Tierra
+          </h3>
+          <div class="magic-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Para el pueblo celta, la frontera entre el reino natural y el
+              mundo de los espíritus era porosa y transparente. Los druidas no
+              realizaban sus cultos en templos cerrados con techumbres de
+              piedra: consideraban que encerrar la divinidad bajo muros era una
+              ofensa a los cielos abiertos. Sus santuarios eran los{" "}
+              <em>nemetones</em>, claros circulares en lo más profundo de
+              antiquísimos robledales donde el viento y el canto de las aves
+              constituían la liturgia viva.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              El roble (<em>Duir</em> en gaélico, que significa a la vez 'árbol'
+              y 'puerta') era el eje sagrado que unía las tres regiones del
+              cosmos: las raíces se hundían en el inframundo nutricio de los
+              antepasados, el tronco sostenía el mundo de los vivos y la copa
+              abrazaba las esferas de luz. El muérdago que crecía en sus ramas
+              sin tocar jamás el suelo era considerado una emanación directa del
+              rocío cósmico y la medicina suprema.
+            </p>
+          </div>
+        </article>
+
+        {/* GALERÍA HISTÓRICA CELTA */}
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="overflow-hidden rounded-xl border border-antique-gold-soft/40 shadow-xs mb-4">
+                <Image
+                  src={imgDruidas}
+                  alt="La Casta Druídica y los Ritos Sagrados"
+                  class="w-full h-56 object-cover"
+                />
+              </div>
+              <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+                Los Tres Órdenes Tradicionales Celtas
+              </h4>
+              <p class="mt-2 text-sm text-paper-muted leading-relaxed">
+                La sociedad celta reconocía tres categorías complementarias de
+                custodios del saber sagrado:
+              </p>
+              <ul class="mt-3 space-y-2 text-sm text-paper-muted">
+                <li>
+                  <strong class="text-paper-ink">1. Los Bardos:</strong>{" "}
+                  Guardianes del canto, la poesía mística y la genealogía
+                  sagrada. Sus palabras memorizadas preservaban la historia viva
+                  y despertaban las emociones elevadas.
+                </li>
+                <li>
+                  <strong class="text-paper-ink">2. Los Ovates (Vates):</strong>{" "}
+                  Sanadores, médicos de hierbas y videntes. Estudiaban los
+                  misterios de la muerte, el vuelo de las aves y las corrientes
+                  telúricas de la tierra.
+                </li>
+                <li>
+                  <strong class="text-paper-ink">3. Los Druidas:</strong>{" "}
+                  Filósofos, legisladores y sacerdotes supremos. Consagraban los
+                  sacrificios pacíficos, decidían tratados y enseñaban la
+                  inmortalidad del alma.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="overflow-hidden rounded-xl border border-antique-gold-soft/40 shadow-xs mb-4">
+                <Image
+                  src={imgArbolCelta}
+                  alt="El Árbol Celta de la Vida y el Alfabeto Ogham"
+                  class="w-full h-56 object-cover"
+                />
+              </div>
+              <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+                El Alfabeto Sagrado de los Árboles (Ogham)
+              </h4>
+              <p class="mt-2 text-sm text-paper-muted leading-relaxed">
+                El Ogham (llamado el habla secreta de Ogma, dios de la
+                elocuencia) consistía en incisiones lineales sobre postes de
+                madera o cantos de piedra. Cada letra correspondía a un árbol
+                tutelar y a un período del año lunar:
+              </p>
+              <div class="mt-3 grid grid-cols-2 gap-2 text-xs text-paper-muted">
+                <div class="rounded-lg bg-surface-warm/40 p-2.5">
+                  <strong class="text-clay-red block">Beth (Abedul):</strong>{" "}
+                  Comienzos puros y renovación.
+                </div>
+                <div class="rounded-lg bg-surface-warm/40 p-2.5">
+                  <strong class="text-clay-red block">
+                    Luis (Fresno silvestre):
+                  </strong>{" "}
+                  Protección ante sortilegios.
+                </div>
+                <div class="rounded-lg bg-surface-warm/40 p-2.5">
+                  <strong class="text-clay-red block">Nion (Fresno):</strong>{" "}
+                  Conexión con los tres planos cósmicos.
+                </div>
+                <div class="rounded-lg bg-surface-warm/40 p-2.5">
+                  <strong class="text-clay-red block">Duir (Roble):</strong>{" "}
+                  Fortaleza moral, sabiduría y firmeza.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PESTAÑA 3: LA RUEDA DEL AÑO Y CICLOS SOLARES */}
+      <section id="estaciones" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            La Rueda del Año: Las 8 Festividades Solares y el Doble Hemisferio
+          </h3>
+          <div class="magic-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              La Rueda del Año es el mapa circular que entrelaza los cuatro
+              hitos solares mayores (los dos solsticios y los dos equinoccios)
+              con las cuatro fiestas de fuego intermedias. Celebrar la rueda es
+              recordar que nuestra existencia no es una línea recta fragmentada,
+              sino un espiral sagrado de muerte, gestación, siembra,
+              florecimiento y cosecha.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              <strong>El Enfoque Austral de Amonra Chile:</strong>{" "}
+              Históricamente, la literatura esotérica europea describe las
+              estaciones según el Hemisferio Norte. Amonra recuerda con devoción
+              la correspondencia astronómica real del Hemisferio Sur: cuando en
+              Europa se celebra Yule (invierno en diciembre), en nuestras
+              tierras australes resplandece Litha (solsticio de verano); y
+              cuando en el norte es Samhain (mayo/noviembre), aquí vivimos el
+              tiempo de los ancestros o la primavera plena.
+            </p>
+          </div>
+        </article>
+
+        {/* CATÁLOGO DE LAS 8 FESTIVIDADES */}
+        <div class="grid gap-6 md:grid-cols-2">
+          {wheelOfYear.map((fest) => (
+            <div class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs flex flex-col justify-between">
+              <div>
+                <div class="border-b border-antique-gold-soft/30 pb-3">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                      {fest.celticName}
+                    </span>
+                    <span class="text-xs font-medium text-paper-muted">
+                      {fest.correspondences.element}
+                    </span>
+                  </div>
+                  <h4 class="mt-1 font-editorial text-2xl font-medium text-paper-ink">
+                    {fest.name}
+                  </h4>
+                  <p class="text-xs font-semibold tracking-wide text-paper-muted italic">
+                    Símbolo: {fest.symbol}
+                  </p>
+                </div>
+
+                {/* DUALIDAD DE HEMISFERIOS */}
+                <div class="mt-4 grid grid-cols-2 gap-2 text-xs">
+                  <div class="rounded-lg border border-clay-red/20 bg-clay-red/5 p-2.5">
+                    <span class="font-bold text-clay-red block">
+                      Hemisferio Sur (Chile/Austral):
+                    </span>
+                    <span class="text-paper-ink font-medium">
+                      {fest.southHemisphere}
+                    </span>
+                  </div>
+                  <div class="rounded-lg border border-antique-gold-soft/30 bg-surface-warm/30 p-2.5">
+                    <span class="font-bold text-paper-ink block">
+                      Hemisferio Norte (Boreal):
+                    </span>
+                    <span class="text-paper-muted">{fest.northHemisphere}</span>
+                  </div>
+                </div>
+
+                <p class="mt-4 text-[0.98rem] leading-relaxed text-paper-muted">
+                  {fest.meaning}
+                </p>
+
+                <div class="mt-4 space-y-2">
+                  <span class="text-xs font-semibold tracking-wider text-clay-red uppercase font-interface block">
+                    Rituales Tradicionales Recomendados:
+                  </span>
+                  <ul class="space-y-1.5 pl-4 text-xs text-paper-muted list-disc">
+                    {fest.rituals.map((r) => (
+                      <li>{r}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div class="mt-5 border-t border-antique-gold-soft/30 pt-3 text-xs text-paper-muted/90 grid grid-cols-2 gap-2">
+                <div>
+                  <strong>Colores:</strong>{" "}
+                  {fest.correspondences.colors.join(", ")}
+                </div>
+                <div>
+                  <strong>Hierbas:</strong>{" "}
+                  {fest.correspondences.herbs.join(", ")}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* PESTAÑA 4: HERRAMIENTAS, FASES LUNARES Y PLANTAS MÁGICAS */}
+      <section id="rituales" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <div class="overflow-hidden rounded-2xl border border-antique-gold-soft/60 shadow-sm">
+            <Image
+              src={imgRituales}
+              alt="Rituales Sagrados, Altares y Herramientas"
+              class="w-full h-auto object-cover max-h-[360px]"
+            />
+          </div>
+
+          <h3 class="mt-6 font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+            El Altar Sagrado, los 4 Cuartos y la Conexión con los Ciclos Lunares
+          </h3>
+          <div class="magic-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              El altar no es un escaparate de objetos curiosos, sino un
+              microcosmos ordenado que refleja la armonía de la creación. Al
+              preparar un espacio sagrado, se traza mental y espiritualmente el{" "}
+              <strong>Círculo Mágico de Protección</strong> invocando a los
+              cuatro cuadrantes cósmicos: el Aire en el Este (viento del alba e
+              intelecto), el Fuego en el Sur (pasión de mediodía y voluntad), el
+              Agua en el Oeste (emoción de ocaso e intuición) y la Tierra en el
+              Norte (estabilidad de medianoche y raíz material).
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Asimismo, la Luna rige los fluidos terrestres y las mareas de la
+              psique humana. Ajustar cada plegaria, limpieza o consagración a la
+              fase lunar correspondiente potencia de forma natural la
+              efectividad de la práctica contemplativa.
+            </p>
+          </div>
+        </article>
+
+        {/* LAS 5 HERRAMIENTAS SAGRADAS */}
+        <div class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+          <div class="border-b border-antique-gold-soft/30 pb-4">
+            <span class="text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+              Liturgia y Símbolos del Altar
+            </span>
+            <h4 class="mt-1 font-editorial text-2xl font-medium text-paper-ink">
+              Las 5 Herramientas Sagradas Tradicionales
+            </h4>
+          </div>
+
+          <div class="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {altarTools.map((tool) => (
+              <div class="rounded-xl border border-antique-gold-soft/40 bg-surface-warm/35 p-5 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between border-b border-antique-gold-soft/25 pb-2">
+                    <span class="text-xs font-semibold text-clay-red font-interface uppercase">
+                      {tool.element}
+                    </span>
+                    <span class="text-xs text-paper-muted">
+                      {tool.direction}
+                    </span>
+                  </div>
+                  <h5 class="mt-3 font-editorial text-lg font-medium text-paper-ink">
+                    {tool.name}
+                  </h5>
+                  <p class="mt-2 text-xs leading-relaxed text-paper-muted">
+                    {tool.symbolism}
+                  </p>
+                </div>
+                <p class="mt-4 border-t border-antique-gold-soft/20 pt-2 text-xs text-paper-ink font-medium">
+                  <strong>Uso ritual:</strong> {tool.usage}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* LAS 4 FASES LUNARES */}
+        <div class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+          <div class="border-b border-antique-gold-soft/30 pb-4">
+            <span class="text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+              El Ritmo de la Noche
+            </span>
+            <h4 class="mt-1 font-editorial text-2xl font-medium text-paper-ink">
+              Las Cuatro Fases Lunares y sus Fuerzas Sagradas
+            </h4>
+          </div>
+
+          <div class="mt-6 grid gap-5 md:grid-cols-2">
+            {lunarPhases.map((lp) => (
+              <div class="rounded-xl border border-antique-gold-soft/40 bg-surface-warm/35 p-5">
+                <span class="text-xs font-semibold text-clay-red uppercase font-interface">
+                  {lp.energy}
+                </span>
+                <h5 class="mt-1 font-editorial text-xl font-medium text-paper-ink">
+                  {lp.phase}
+                </h5>
+                <p class="mt-2 text-sm text-paper-muted leading-relaxed">
+                  {lp.focus}
+                </p>
+
+                <div class="mt-4 space-y-1.5 border-t border-antique-gold-soft/25 pt-3">
+                  <span class="text-xs font-semibold text-paper-ink uppercase block">
+                    Acciones y Rituales Recomendados:
+                  </span>
+                  <ul class="pl-4 text-xs text-paper-muted list-disc space-y-1">
+                    {lp.recommendedRituals.map((r) => (
+                      <li>{r}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* HERBOLOGÍA MÁGICA: CATÁLOGO DE 10 PLANTAS SAGRADAS */}
+        <div class="space-y-6">
+          <div class="flex items-center gap-4">
+            <div class="overflow-hidden rounded-xl border border-antique-gold-soft/40 shadow-xs hidden sm:block w-28 h-20 shrink-0">
+              <Image
+                src={imgHerbolaria}
+                alt="Hierbas Sagradas y Sahumerios"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div>
+              <span class="text-xs font-semibold tracking-wider text-clay-red uppercase font-interface">
+                Magia Verde y Farmacia Sagrada
+              </span>
+              <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+                Compendio de 10 Plantas Mágicas Tradicionales
+              </h4>
+              <p class="text-xs text-paper-muted mt-1">
+                Virtudes esotéricas y uso ritual de los vegetales protectores de
+                la red Amonra.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-2">
+            {sacredPlantsCatalog.map((plant) => (
+              <div class="rounded-xl border border-antique-gold-soft/40 bg-surface-warm/25 p-4 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between border-b border-antique-gold-soft/20 pb-2">
+                    <h5 class="font-editorial text-base font-semibold text-paper-ink">
+                      {plant.name}
+                    </h5>
+                    <span class="text-xs font-semibold text-clay-red">
+                      {plant.element}
+                    </span>
+                  </div>
+                  {plant.popularName && (
+                    <p class="text-xs font-medium text-paper-muted italic mt-1">
+                      {plant.popularName}
+                    </p>
+                  )}
+                  <p class="text-xs text-paper-muted mt-2 leading-relaxed">
+                    {plant.properties}
+                  </p>
+                </div>
+                <div class="mt-3 border-t border-antique-gold-soft/20 pt-2 text-xs text-paper-ink">
+                  <strong>Uso ritual:</strong> {plant.ritualUse}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </ContentTabs>
+  </section>
+</div>
+
+<style>
+  .magic-columns p {
+    max-width: none;
+  }
+</style>

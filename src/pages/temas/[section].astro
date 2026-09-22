@@ -12,6 +12,7 @@ import TarotContent from "../../components/amonra/TarotContent.astro";
 import RunesContent from "../../components/amonra/RunesContent.astro";
 import OraclesContent from "../../components/amonra/OraclesContent.astro";
 import NumerologyContent from "../../components/amonra/NumerologyContent.astro";
+import MagicContent from "../../components/amonra/MagicContent.astro";
 import Breadcrumbs from "../../components/common/Breadcrumbs.astro";
 import Container from "../../components/layout/Container.astro";
 import { amonraMessages } from "../../config/amonra-messages";
@@ -33,6 +34,7 @@ import tarotHero from "../../assets/amonra/tarot-hero.jpg";
 import runesHero from "../../assets/amonra/runas-hero.jpg";
 import oraclesHero from "../../assets/amonra/oraculos-hero.jpg";
 import numerologyHero from "../../assets/amonra/numerologia-hero.jpg";
+import magicHero from "../../assets/amonra/magia-hero.jpg";
 
 interface Props {
   section: AmonraSection;
@@ -59,6 +61,7 @@ const hasCompactHero = [
   "runas",
   "oraculos",
   "numerologia",
+  "magia",
 ].includes(section.slug);
 const currentIndex = amonraSections.findIndex(
   (candidate) => candidate.slug === section.slug,
@@ -162,6 +165,12 @@ const next =
             <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
               Filosofía pitagórica, el Sendero Natal, la Tríada Personal y los
               ciclos del Año Personal.
+            </p>
+          )}
+          {section.slug === "magia" && (
+            <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
+              Doctrina hermética, las siete leyes cósmicas, la rueda del año y
+              los misterios druídicos.
             </p>
           )}
         </div>
@@ -321,6 +330,19 @@ const next =
             />
           </figure>
         )}
+
+        {section.slug === "magia" && (
+          <figure class="m-0">
+            <Image
+              src={magicHero}
+              alt="Misterios de la Magia, alquimia hermética y las cuatro estaciones ceremoniales"
+              widths={[380, 560, 800]}
+              sizes="(min-width: 1024px) 42vw, 88vw"
+              loading="eager"
+              class="mx-auto max-h-[20rem] w-full max-w-[18rem] rounded-xl object-contain drop-shadow-2xl"
+            />
+          </figure>
+        )}
       </Container>
     </header>
 
@@ -416,6 +438,14 @@ const next =
       <section class="border-b border-antique-gold-soft/45 bg-paper py-20 text-paper-ink lg:py-24">
         <Container>
           <NumerologyContent />
+        </Container>
+      </section>
+    )}
+
+    {section.slug === "magia" && (
+      <section class="border-b border-antique-gold-soft/45 bg-paper py-20 text-paper-ink lg:py-24">
+        <Container>
+          <MagicContent />
         </Container>
       </section>
     )}

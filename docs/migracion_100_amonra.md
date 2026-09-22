@@ -2,21 +2,21 @@
 
 **Proyecto:** `amonrav2` (Astro 7.3.2, Tailwind CSS 4, React 19, TypeScript)  
 **Fecha de corte:** 2026-09-22  
-**Estado Actual:** 12 de 15 secciones migradas y publicadas (**80,0% del portal**) — **¡Etapa 1 y Etapa 2 completadas al 100%!**  
+**Estado Actual:** 13 de 15 secciones migradas y publicadas (**86,7% del portal**) — **¡Etapa 1 y Etapa 2 completadas al 100%, Etapa 3 iniciada con Tema 9!**  
 **Objetivo:** Migración del 100% del legado histórico de `backup-original/public_html/amonra.cl/` (216 archivos HTML originales)
 
 ---
 
 ## 1. Estado Global del Proyecto
 
-| Categoría                            | Cantidad | Porcentaje | Detalle                                                                                                                                 |
-| ------------------------------------ | :------: | :--------: | --------------------------------------------------------------------------------------------------------------------------------------- |
-| **Secciones Totales del Portal**     |    15    |    100%    | Configuración canónica en `src/config/amonra-sections.ts`                                                                               |
-| **Secciones Publicadas (Completas)** |    12    |   80,0%    | `fundacion`, `historia`, `amuletos`, `astrologia`, `velas`, `inciensos`, `gemas`, `suenos`, `tarot`, `runas`, `oraculos`, `numerologia` |
-| **Secciones Pendientes (Restantes)** |    3     |   20,0%    | `magia`, `horoscopos`, `terapias` (Etapa 3 final)                                                                                       |
-| **Archivos HTML en Backup Original** |   216    |    100%    | Todos los documentos históricos preservados                                                                                             |
-| **Archivos HTML ya integrados**      |   101    |   46,8%    | Pertenecientes a las 12 secciones publicadas                                                                                            |
-| **Archivos HTML por integrar**       |   115    |   53,2%    | Desglosados exhaustivamente en este documento (Etapa 3 restante)                                                                        |
+| Categoría                            | Cantidad | Porcentaje | Detalle                                                                                                                                          |
+| ------------------------------------ | :------: | :--------: | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Secciones Totales del Portal**     |    15    |    100%    | Configuración canónica en `src/config/amonra-sections.ts`                                                                                        |
+| **Secciones Publicadas (Completas)** |    13    |   86,7%    | `fundacion`, `historia`, `amuletos`, `astrologia`, `velas`, `inciensos`, `gemas`, `suenos`, `tarot`, `runas`, `oraculos`, `numerologia`, `magia` |
+| **Secciones Pendientes (Restantes)** |    2     |   13,3%    | `horoscopos`, `terapias` (Etapa 3 final)                                                                                                         |
+| **Archivos HTML en Backup Original** |   216    |    100%    | Todos los documentos históricos preservados                                                                                                      |
+| **Archivos HTML ya integrados**      |   122    |   56,5%    | Pertenecientes a las 13 secciones publicadas                                                                                                     |
+| **Archivos HTML por integrar**       |    94    |   43,5%    | Desglosados exhaustivamente en este documento (Horóscopos y Terapias)                                                                            |
 
 ---
 
@@ -129,8 +129,8 @@ MIGRACIÓN RESTANTE (168 archivos HTML / 7 secciones)
 
 ### Tema 9: MAGIA (`/temas/magia/`)
 
-- **Estado:** Pendiente (`migration`)
-- **Archivos HTML originales (21 archivos, ~1.100 KB):**
+- **Estado:** **100% COMPLETADO Y PUBLICADO (`published`)**
+- **Archivos HTML originales integrados (21 archivos, ~1.100 KB):**
   - _Doctrina y Ética Hermética (11 archivos):_
     1. `index_magia.html` (94 KB) — Definición hermética de la magia como transmutación de la propia conciencia. Leyes del Kybalion.
     2. `magia.html` (86 KB) — La voluntad enfocada, el respeto al libre albedrío y el peligro del ego en la práctica ritual.
@@ -144,11 +144,12 @@ MIGRACIÓN RESTANTE (168 archivos HTML / 7 secciones)
     10. `magia_hierbas.html` (52 KB) — Herbología mágica tradicional y sahumados protectores.
     11. `magia_amuletos.html` (40 KB) — Carga y consagración de amuletos personales.
   - _Rueda del Año: Solsticios y Equinoccios (10 archivos):_ 12. `solsticio-navidad.html` (35 KB) — El solsticio de invierno (Yule) y el renacimiento de la luz invicta. 13. `solsticio_invierno.html` & `solsticio_invierno10.html` (70 KB) — Rituales del solsticio austral de invierno. 14. `solsticio_verano.html` (48 KB) — El solsticio de verano (Litha), la plenitud de la fuerza solar y fuegos rituales. 15. `equinoccio.htm`, `equinoccio_primavera.html`, `equinoccio_primavera08.html`, `equinoccio_primavera10.htm` (140 KB) — La primavera (Ostara) y la fertilidad de la tierra. 16. `equinoccio-otono10.html` (38 KB) — El otoño (Mabon), la cosecha de frutos y el agradecimiento a la tierra.
-- **Activos disponibles:** Carpeta `backup-original/public_html/amonra.cl/magia/` (259 imágenes).
-- **Entregables técnicos a construir:**
-  - `src/config/magic-data.ts`: Leyes herméticas, correspondencias lunares, herramientas rituales y el calendario de las 8 estaciones.
-  - `src/components/amonra/MagicContent.astro`: 4 pestañas (`doctrina`, `druidas`, `estaciones`, `rituales`).
-  - `src/assets/amonra/magia-hero.jpg`: Hero histórico optimizado.
+- **Activos entregados:** `src/assets/amonra/magia-hero.jpg` (hero histórico optimizado) + `src/assets/amonra/magia/` (7 ilustraciones: `druidas.jpg`, `arbol-celta.jpg`, `magia-celta.jpg`, `magia-blanca.jpg`, `magia-verde.jpg`, `rituales.jpg`, `herbolaria.jpg`).
+- **Entregables técnicos implementados:**
+  - `src/config/magic-data.ts`: Los 7 principios del Kybalion, 5 vertientes tradicionales de luz, las 8 festividades de la Rueda del Año con doble hemisferio (Austral y Boreal), las 5 herramientas sagradas del altar, 4 fases lunares y compendio botánico de 10 plantas mágicas.
+  - `src/components/amonra/MagicContent.astro`: 4 pestañas accesibles (`doctrina`, `druidas`, `estaciones`, `rituales`), maquetación 2 columnas de escritorio con `max-w-none` y callouts balanceados.
+  - `src/pages/temas/[section].astro`: Héroe compacto para `magia`, subtítulo ceremonial y renderizado condicional.
+  - QA Artifact: `qa_etapa3_tema1_magia.md` (100% PASS en 32 pruebas automatizadas).
 
 ---
 

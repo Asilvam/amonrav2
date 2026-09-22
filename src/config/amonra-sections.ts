@@ -102,10 +102,10 @@ export const amonraSections = [
   {
     slug: "magia",
     title: "Magia",
-    description: "Tradiciones y prácticas espirituales.",
+    description: "Tradiciones herméticas, la Rueda del Año y prácticas de luz.",
     group: "practicas",
     intentions: ["profundizar"],
-    status: "migration",
+    status: "published",
     order: 8,
     legacyPath: "amonra.cl/index_magia.html",
   },
