@@ -120,19 +120,26 @@ const { label, tabs } = Astro.props;
   .tab-link {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     min-height: 44px;
     border: 1px solid var(--color-primary-soft);
     border-radius: var(--radius-small);
-    padding: 0.65rem 1rem;
+    padding: 0.65rem 1.15rem;
     color: var(--color-ink);
     font-family: var(--font-ui);
     font-size: 0.9375rem;
     font-weight: 650;
-    line-height: 1.4;
+    line-height: 1.35;
     text-decoration: none;
+    transition:
+      background 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease,
+      box-shadow 0.15s ease;
   }
 
   .tab-link:hover {
+    border-color: var(--color-clay-ink);
     background: var(--color-parchment-soft);
     color: var(--color-ink);
   }
@@ -141,8 +148,22 @@ const { label, tabs } = Astro.props;
     border-color: var(--color-clay-ink);
     background: var(--color-clay-ink);
     color: #fff8df;
-    text-decoration: underline;
-    text-underline-offset: 0.25em;
+    box-shadow: 0 2px 6px rgba(120, 56, 39, 0.22);
+  }
+
+  @media (max-width: 639px) {
+    .tab-list {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 0.75rem;
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-link {
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
   }
 
   .tab-link:focus-visible,
