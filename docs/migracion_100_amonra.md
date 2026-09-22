@@ -1,22 +1,22 @@
 # Hoja de Ruta y Catálogo Exhaustivo para la Migración al 100% de Amonra
 
 **Proyecto:** `amonrav2` (Astro 7.3.2, Tailwind CSS 4, React 19, TypeScript)  
-**Fecha de corte:** 2026-09-20  
-**Estado Actual:** 10 de 15 secciones migradas y publicadas (**66,7% del portal**)  
+**Fecha de corte:** 2026-09-22  
+**Estado Actual:** 12 de 15 secciones migradas y publicadas (**80,0% del portal**) — **¡Etapa 1 y Etapa 2 completadas al 100%!**  
 **Objetivo:** Migración del 100% del legado histórico de `backup-original/public_html/amonra.cl/` (216 archivos HTML originales)
 
 ---
 
 ## 1. Estado Global del Proyecto
 
-| Categoría                            | Cantidad | Porcentaje | Detalle                                                                                                                  |
-| ------------------------------------ | :------: | :--------: | ------------------------------------------------------------------------------------------------------------------------ |
-| **Secciones Totales del Portal**     |    15    |    100%    | Configuración canónica en `src/config/amonra-sections.ts`                                                                |
-| **Secciones Publicadas (Completas)** |    11    |   73,3%    | `fundacion`, `historia`, `amuletos`, `astrologia`, `velas`, `inciensos`, `gemas`, `suenos`, `tarot`, `runas`, `oraculos` |
-| **Secciones Pendientes (Restantes)** |    4     |   26,7%    | `numerologia`, `magia`, `horoscopos`, `terapias`                                                                         |
-| **Archivos HTML en Backup Original** |   216    |    100%    | Todos los documentos históricos preservados                                                                              |
-| **Archivos HTML ya integrados**      |    94    |   43,5%    | Pertenecientes a las 11 secciones publicadas                                                                             |
-| **Archivos HTML por integrar**       |   122    |   56,5%    | Desglosados exhaustivamente en este documento                                                                            |
+| Categoría                            | Cantidad | Porcentaje | Detalle                                                                                                                                 |
+| ------------------------------------ | :------: | :--------: | --------------------------------------------------------------------------------------------------------------------------------------- |
+| **Secciones Totales del Portal**     |    15    |    100%    | Configuración canónica en `src/config/amonra-sections.ts`                                                                               |
+| **Secciones Publicadas (Completas)** |    12    |   80,0%    | `fundacion`, `historia`, `amuletos`, `astrologia`, `velas`, `inciensos`, `gemas`, `suenos`, `tarot`, `runas`, `oraculos`, `numerologia` |
+| **Secciones Pendientes (Restantes)** |    3     |   20,0%    | `magia`, `horoscopos`, `terapias` (Etapa 3 final)                                                                                       |
+| **Archivos HTML en Backup Original** |   216    |    100%    | Todos los documentos históricos preservados                                                                                             |
+| **Archivos HTML ya integrados**      |   101    |   46,8%    | Pertenecientes a las 12 secciones publicadas                                                                                            |
+| **Archivos HTML por integrar**       |   115    |   53,2%    | Desglosados exhaustivamente en este documento (Etapa 3 restante)                                                                        |
 
 ---
 
@@ -107,20 +107,21 @@ MIGRACIÓN RESTANTE (168 archivos HTML / 7 secciones)
 
 ### Tema 8: NUMEROLOGÍA (`/temas/numerologia/`)
 
-- **Estado:** Pendiente (`migration`)
-- **Archivos HTML originales (7 archivos, 338 KB):**
-  1. `index_numerologia.htm` (108 KB) — Filosofía pitagórica, la música de las esferas y los números como principios constructores de la realidad.
-  2. `numerologia1.htm` (50 KB) — La tabla de reducción alfabética pitagórica (letras A-Z correspondientes a dígitos del 1 al 9) y cálculo del Sendero Natal / Destino.
-  3. `numerologia2.htm` (38 KB) — Significado exhaustivo de los números simples (1 al 9): atributos luminosos, sombras, afinidad laboral y relacional.
-  4. `numerologia3.htm` (36 KB) — Los Números Maestros (11, 22, 33, 44): vocación espiritual superior, misión de servicio y mayores exigencias morales.
-  5. `numerologia4.htm` (37 KB) — Los Números Kármicos (13, 14, 16, 19): lecciones pendientes de vidas anteriores y transmutación activa.
-  6. `numerologia5.htm` (37 KB) — Tríada personal: Número de Expresión (nombre completo), Número del Alma (vocales) y Número de la Personalidad (consonantes).
-  7. `numerologia6.htm` (32 KB) — Ciclos temporales: cálculo del Año Personal, meses personales, pinnáculos de vida y desafíos kármicos.
-- **Activos disponibles:** Carpeta `backup-original/public_html/amonra.cl/numerologia/` (48 imágenes de diagramas y tablas).
-- **Entregables técnicos a construir:**
-  - `src/config/numerology-data.ts`: Algoritmos de cálculo, tablas de reducción pitagórica, descripciones de los números del 1 al 9, maestros y kármicos.
-  - `src/components/amonra/NumerologyContent.astro`: 4 pestañas (`pitagoras`, `vibraciones`, `calculos`, `ciclos`).
-  - `src/assets/amonra/numerologia-hero.jpg`: Hero histórico optimizado.
+- **Estado:** **100% COMPLETADO Y PUBLICADO (`published`)** — **¡ETAPA 2 CULMINADA AL 100%!**
+- **Archivos HTML integrados (7 archivos, 338 KB):**
+  1. `index_numerologia.htm` (108 KB) — Filosofía pitagórica, la música de las esferas, tetractys, reducción alfabética (A-Z con Ñ=5), cromología (9 colores y 2 octavas), Sendero Natal, Número del Nombre, Número del Poder Personal y Año Personal.
+  2. `numerologia1.htm` (50 KB) — Significado exhaustivo de los números simples (1 al 9) y maestros (11 y 22): personalidad, regente planetario, virtudes y Consejos de Oro de Amonra.
+  3. `numerologia2.htm` (38 KB) — Los Números Vocales (Deseo del Alma y motivación interior profunda para los números 1 al 9, 11 y 22).
+  4. `numerologia3.htm` (36 KB) — Los Números Consonantes (Personalidad e imagen externa ante el entorno para los números 1 al 9, 11 y 22).
+  5. `numerologia4.htm` (37 KB) — Arquetipos cósmicos (El Guía, El Ayudante, El Constructor, etc.), Dirección de Aprendizaje, Oportunidad Evolutiva y Destino de Vida.
+  6. `numerologia5.htm` (37 KB) — Vibraciones de éxito, vocación y consejos prácticos de realización para cada número.
+  7. `numerologia6.htm` (32 KB) — Ciclos Novenarios del Tiempo: dinámicas, actividades clave y precauciones de los 9 Años Personales.
+- **Activos entregados:** `src/assets/amonra/numerologia-hero.jpg` (Hombre de Vitruvio de Leonardo da Vinci) + 7 imágenes en `src/assets/amonra/numerologia/` (Hombre de Vitruvio, 2 ilustraciones centrales y 4 láminas ceremoniales de números).
+- **Entregables técnicos implementados:**
+  - `src/config/numerology-data.ts`: Modelos canónicos tipados (`NumerologyIntro`, `PythagoreanLetterColumn`, `ChromologyColor`, `CalculationMethod`, `NumberProfile`, `TriadVibration`, `PersonalYearCycle`), cita de Pitágoras, Tetractys, tabla de 27 letras, cromología con octavas, 6 fórmulas canónicas con ejemplo histórico, 11 perfiles con Consejos de Oro, 11 vibraciones duales de la tríada y los 9 Años Personales.
+  - `src/components/amonra/NumerologyContent.astro`: 4 pestañas accesibles (`pitagoras`, `arquetipos`, `triada`, `ciclos`), layout en 2 columnas para escritorio con `max-w-none`, galería de láminas y callouts de advertencia y bendición Amonra/Feliluxor.
+  - `src/pages/temas/[section].astro`: Integración de héroe compacto, subtítulo y componente de contenido.
+  - QA Artifact: `qa_etapa2_tema4_numerologia.md` (100% PASS en 36 pruebas automatizadas de smoke test, build SSG verificado).
 
 ---
 

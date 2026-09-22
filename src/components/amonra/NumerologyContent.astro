@@ -1,0 +1,740 @@
+---
+import { Image } from "astro:assets";
+import ContentTabs from "../common/ContentTabs.astro";
+import {
+  numerologyIntro,
+  pythagoreanAlphabet,
+  chromologyNumbers,
+  coreCalculations,
+  singleAndMasterNumbers,
+  triadVibrations,
+  personalYearCycles,
+} from "../../config/numerology-data";
+
+import imgVitruvio from "../../assets/amonra/numerologia/hombre-vitruvio.jpg";
+import imgCentral from "../../assets/amonra/numerologia/imagen-central.jpg";
+import imgCentral2 from "../../assets/amonra/numerologia/imagen-central2.jpg";
+import imgNumeros1 from "../../assets/amonra/numerologia/numeros-1.jpg";
+import imgNumeros2 from "../../assets/amonra/numerologia/numeros-2.jpg";
+import imgNumeros3 from "../../assets/amonra/numerologia/numeros-3.jpg";
+import imgNumeros4 from "../../assets/amonra/numerologia/numeros-4.jpg";
+
+const numerologyTabs = [
+  { id: "pitagoras", label: "Filosofía Pitagórica y Cálculos" },
+  { id: "arquetipos", label: "Los Números del 1 al 9 y Maestros" },
+  { id: "triada", label: "La Tríada: Alma, Imagen y Expresión" },
+  { id: "ciclos", label: "Ciclos Numéricos y Año Personal" },
+];
+---
+
+<div class="space-y-12">
+  {/* SECCIÓN HERO / LECTURA PRINCIPAL */}
+  <section class="reading-section">
+    <div class="rounded-2xl border-l-4 border-clay-red bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+      <blockquote class="m-0 space-y-3">
+        <p class="max-w-none font-editorial text-[clamp(1.55rem,2.7vw,2.3rem)] leading-tight text-paper-ink italic">
+          {numerologyIntro.pythagorasQuote.text}
+        </p>
+        <footer class="font-interface text-sm font-semibold tracking-wider text-clay-red uppercase">
+          — {numerologyIntro.pythagorasQuote.author} (
+          {numerologyIntro.pythagorasQuote.source})
+        </footer>
+      </blockquote>
+      <p class="mt-5 max-w-none font-editorial text-xl leading-snug text-paper-ink">
+        {numerologyIntro.centralThesis}
+      </p>
+      <p class="mt-5 max-w-none border-t border-antique-gold-soft/40 pt-4 text-[1.02rem] leading-relaxed text-paper-muted">
+        {numerologyIntro.foundationalText}
+      </p>
+      <p class="mt-4 text-sm font-semibold tracking-wide text-clay-red">
+        {numerologyIntro.motto}
+      </p>
+    </div>
+
+    <div class="numerology-columns mt-6 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Nada en la creación puede concebirse sin los números. Para la escuela
+        pitagórica y la doctrina tradicional de Amonra, la numerología es el
+        estudio de las vibraciones secretas que rigen el cosmos y el modo en que
+        éstas moldean el intelecto, las emociones y el destino humano. Lejos de
+        ser una cábala especulativa, es una brújula de autoconocimiento.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        A través del análisis de las letras de tu nombre y de tu fecha natal,
+        descubres tus fortalezas innatas, tus puntos vulnerables, la dirección
+        hacia la cual se orienta tu triunfo vocacional y tu capacidad para amar
+        y construir alianzas duraderas. Los números no imponen una condena: te
+        enseñan a tomar decisiones conscientes en el amor, los negocios y la
+        vida espiritual.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        En esta guía canónica aprenderás a calcular tu Sendero Natal, tu Número
+        de Expresión, la íntima Tríada Personal (Vocales del Alma y Consonantes
+        de la Imagen Social), el enigmático Número del Poder Personal para la
+        madurez a partir de los 30 años, y el ritmo de los Ciclos de Años
+        Personales de 1 a 9.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Descubrirás asimismo la correspondencia entre la Numerología y la
+        Cromología (la ciencia sagrada del color), con las dos octavas
+        espirituales que enlazan el poder terrenal con la sabiduría solar
+        iniciática. Que este conocimiento sea una lámpara luminosa en tu
+        sendero.
+      </p>
+    </div>
+  </section>
+
+  {/* PESTAÑAS PRINCIPALES */}
+  <section
+    aria-labelledby="indice-numerologia"
+    class="border-t border-antique-gold-soft/50 pt-8"
+  >
+    <h2
+      id="indice-numerologia"
+      class="font-editorial text-[clamp(1.9rem,3.2vw,3rem)] leading-tight text-paper-ink"
+    >
+      La Ciencia Sagrada de los Números y sus Vibraciones
+    </h2>
+
+    <ContentTabs label="Contenido de numerología" tabs={numerologyTabs}>
+      {/* PESTAÑA 1: FILOSOFÍA PITAGÓRICA Y TABLAS DE CÁLCULO */}
+      <section id="pitagoras" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+                La Música de las Esferas y el Alfabeto Sagrado
+              </h3>
+              <p class="mt-1 font-interface text-xs font-semibold tracking-wider text-clay-red uppercase">
+                La Tetractys, reducción pitagórica del 1 al 9 y fórmulas
+                canónicas
+              </p>
+            </div>
+            <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3.5 py-1 text-xs font-semibold text-antique-gold-deep">
+              Matriz Pitagórica
+            </span>
+          </div>
+
+          <div class="numerology-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Pitágoras enseñaba en Crotona que el universo está articulado por
+              proporciones numéricas puras. La Tetractys (1 + 2 + 3 + 4 = 10)
+              condensa la creación entera desde el punto indivisible hasta la
+              materia sólida. Cada letra de nuestro alfabeto vibra en una escala
+              de nueve frecuencias arquetípicas.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              En español, las 27 letras del abecedario (incluyendo la Ñ en el
+              número 5 junto a la E, N y W) se reducen a un solo dígito del 1 al
+              9 sumando sus valores constitutivos. De este modo, cualquier
+              palabra o nombre puede transformarse en una signatura vibratoria
+              precisa.
+            </p>
+          </div>
+        </article>
+
+        {/* ILUSTRACIÓN VITRUVIO Y TETRACTYS */}
+        <div class="grid gap-6 md:grid-cols-[280px_1fr] lg:grid-cols-[320px_1fr] md:items-center">
+          <div class="overflow-hidden rounded-2xl border-2 border-antique-gold-soft/70 bg-surface-warm/30 p-2 shadow-md">
+            <Image
+              src={imgVitruvio}
+              alt="Hombre de Vitruvio de Leonardo da Vinci representando las proporciones áureas y la geometría sagrada"
+              width={320}
+              height={330}
+              class="h-auto w-full rounded-xl object-cover"
+              loading="lazy"
+            />
+            <p class="mt-2 text-center font-interface text-[0.72rem] font-semibold text-antique-gold-deep uppercase">
+              El Microcosmos y la Geometría Sagrada
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+              La Tetractys Sagrada y el Retorno a la Unidad
+            </h4>
+            <p class="max-w-none text-sm leading-relaxed text-paper-muted">
+              {numerologyIntro.tetractysMeaning}
+            </p>
+            <div class="rounded-xl border border-antique-gold-soft/40 bg-surface-warm/35 p-4">
+              <p class="font-interface text-xs font-bold tracking-wider text-clay-red uppercase">
+                Regla Canónica de Reducción Pitagórica
+              </p>
+              <p class="mt-1 text-xs leading-relaxed text-paper-muted">
+                La Numerología clásica opera con dígitos del 1 al 9. Todo número
+                de dos o más cifras debe reducirse sumando sus dígitos entre sí
+                (ej. 77 → 7 + 7 = 14 → 1 + 4 = 5), con la única excepción de los
+                Números Maestros (11 y 22), que conservan su potencia
+                trascendente.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* TABLA ALFANUMÉRICA PITAGÓRICA */}
+        <article class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h3 class="font-editorial text-2xl font-medium text-paper-ink">
+                Tabla Alfanumérica Pitagórica Tradicional
+              </h3>
+              <p class="font-interface text-xs font-semibold tracking-wider text-clay-red uppercase">
+                Correspondencia de las 27 letras del alfabeto español (del 1 al
+                9)
+              </p>
+            </div>
+            <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3 py-0.5 text-xs font-semibold text-antique-gold-deep font-interface">
+              Amonra Clásico
+            </span>
+          </div>
+
+          <div class="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-5 md:grid-cols-9">
+            {pythagoreanAlphabet.map((col) => (
+              <div class="flex flex-col items-center rounded-xl border border-antique-gold-soft/50 bg-surface-warm/40 p-3 text-center transition-all hover:border-antique-gold hover:shadow-xs">
+                <span class="font-editorial text-3xl font-bold text-clay-red">
+                  {col.digit}
+                </span>
+                <div class="mt-2 flex flex-wrap justify-center gap-1 font-editorial text-base font-semibold text-paper-ink">
+                  {col.letters.map((l) => (
+                    <span class="rounded bg-paper px-1.5 py-0.5 shadow-2xs">
+                      {l}
+                    </span>
+                  ))}
+                </div>
+                <p class="mt-2 text-[0.68rem] leading-tight text-paper-muted">
+                  {col.vibrationKeyword}
+                </p>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        {/* CROMOLOGÍA Y COLORES DE LOS NÚMEROS */}
+        <article class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h3 class="font-editorial text-2xl font-medium text-paper-ink">
+                Cromología Sagrada: Los Colores de los Números
+              </h3>
+              <p class="font-interface text-xs font-semibold tracking-wider text-clay-red uppercase">
+                Correspondencias cromáticas y las dos octavas espirituales de
+                Amonra
+              </p>
+            </div>
+            <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3 py-0.5 text-xs font-semibold text-antique-gold-deep font-interface">
+              9 Rayos de Luz
+            </span>
+          </div>
+
+          <p class="mt-4 max-w-none text-sm leading-relaxed text-paper-muted">
+            Lejos en apariencia de la ciencia matemática, la Cromología se
+            combina armónicamente con la Numerología. Los primeros siete números
+            corresponden a los colores primarios del espectro visible, mientras
+            que los números 8 y 9 constituyen octavas superiores de evolución:
+            el <strong>Rosado (8)</strong> es la octava del{" "}
+            <strong>Rojo (1)</strong>
+            (transmutando la fuerza física en amor desinteresado), y el
+            <strong>Dorado (9)</strong> es la octava del
+            <strong>Naranja (2)</strong> (elevando la adaptabilidad terrenal a
+            la sabiduría solar trascendente).
+          </p>
+
+          <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {chromologyNumbers.map((c) => (
+              <div class="rounded-xl border border-antique-gold-soft/40 bg-surface-warm/30 p-4">
+                <div class="flex items-center justify-between">
+                  <span class="font-editorial text-xl font-bold text-paper-ink">
+                    {c.digit}. {c.color}
+                  </span>
+                  <span class="font-interface text-[0.7rem] font-semibold text-clay-red uppercase">
+                    {c.harmonicLevel}
+                  </span>
+                </div>
+                <div class="mt-2 flex flex-wrap gap-1">
+                  {c.qualities.map((q) => (
+                    <span class="rounded bg-paper px-1.5 py-0.5 text-[0.7rem] font-medium text-paper-muted">
+                      {q}
+                    </span>
+                  ))}
+                </div>
+                {c.octaveRelation && (
+                  <p class="mt-2.5 border-t border-antique-gold-soft/30 pt-2 text-[0.72rem] leading-relaxed text-antique-gold-deep italic">
+                    {c.octaveRelation}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </article>
+
+        {/* LAS 6 FÓRMULAS CANÓNICAS DE CÁLCULO */}
+        <article class="space-y-6">
+          <div class="border-b border-antique-gold-soft/40 pb-3">
+            <h3 class="font-editorial text-2xl font-medium text-paper-ink">
+              Métodos Canónicos de Cálculo Numerológico
+            </h3>
+            <p class="font-interface text-xs font-semibold tracking-wider text-clay-red uppercase">
+              Instrucciones paso a paso y ejemplos prácticos de la tradición de
+              Amonra
+            </p>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-2">
+            {coreCalculations.map((calc) => (
+              <div class="rounded-2xl border border-antique-gold-soft/45 bg-[var(--color-parchment-soft)] p-6 shadow-xs flex flex-col justify-between">
+                <div>
+                  <h4 class="font-editorial text-xl font-medium text-paper-ink">
+                    {calc.title}
+                  </h4>
+                  <p class="mt-0.5 font-interface text-xs font-semibold text-clay-red uppercase">
+                    {calc.subtitle}
+                  </p>
+                  <p class="mt-3 text-xs leading-relaxed text-paper-muted">
+                    <strong>Objetivo:</strong> {calc.objective}
+                  </p>
+                  <div class="mt-3 rounded-lg border border-antique-gold-soft/30 bg-surface-warm/35 p-3 text-xs leading-relaxed text-paper-muted">
+                    <strong>Procedimiento:</strong> {calc.procedure}
+                  </div>
+                </div>
+
+                <div class="mt-4 border-t border-antique-gold-soft/30 pt-3 space-y-2">
+                  <p class="font-mono text-[0.75rem] text-paper-ink bg-surface-warm/50 p-2 rounded">
+                    <strong>Ejemplo:</strong> {calc.example}
+                  </p>
+                  <p class="text-[0.72rem] font-medium text-antique-gold-deep italic">
+                    ✦ Valor práctico: {calc.practicalValue}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </article>
+      </section>
+
+      {/* PESTAÑA 2: LOS NÚMEROS DEL 1 AL 9 Y MAESTROS */}
+      <section id="arquetipos" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+                Catálogo de los Números Primordiales y Maestros
+              </h3>
+              <p class="mt-1 font-interface text-xs font-semibold tracking-wider text-clay-red uppercase">
+                Fichas monográficas del 1 al 9, 11 (El Iluminado) y 22 (El
+                Maestro Constructor)
+              </p>
+            </div>
+            <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3.5 py-1 text-xs font-semibold text-antique-gold-deep">
+              11 Arquetipos Cósmicos
+            </span>
+          </div>
+
+          <div class="numerology-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Cada número encierra una personalidad completa, un arquetipo
+              psicológico y una misión de aprendizaje. En la doctrina de Amonra,
+              no existen números «buenos» o «malos»: cada vibración contiene una
+              luz creadora y una sombra reactiva que la persona debe aprender a
+              trascender a través de la rectitud y la autodisciplina.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Los números simples del 1 al 9 abarcan la experiencia humana
+              ordinaria. Los Números Maestros 11 y 22 representan frecuencias de
+              alta tensión cósmica que exigen una moral intachable, consagración
+              al servicio del prójimo y una capacidad de resistencia espiritual
+              superior para no derrumbarse ante la prueba.
+            </p>
+          </div>
+        </article>
+
+        {/* GALERÍA DE LÁMINAS NUMEROLÓGICAS */}
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="overflow-hidden rounded-xl border border-antique-gold-soft/50 bg-surface-warm/30 p-2 text-center">
+            <Image
+              src={imgNumeros1}
+              alt="Lámina ceremonial de números de la tradición de Amonra 1"
+              width={280}
+              height={210}
+              class="h-44 w-full rounded-lg object-cover"
+              loading="lazy"
+            />
+            <p class="mt-1.5 font-interface text-[0.68rem] font-bold text-antique-gold-deep uppercase">
+              Signos y Cifras Sagradas (I)
+            </p>
+          </div>
+          <div class="overflow-hidden rounded-xl border border-antique-gold-soft/50 bg-surface-warm/30 p-2 text-center">
+            <Image
+              src={imgNumeros2}
+              alt="Lámina ceremonial de números de la tradición de Amonra 2"
+              width={280}
+              height={210}
+              class="h-44 w-full rounded-lg object-cover"
+              loading="lazy"
+            />
+            <p class="mt-1.5 font-interface text-[0.68rem] font-bold text-antique-gold-deep uppercase">
+              Signos y Cifras Sagradas (II)
+            </p>
+          </div>
+          <div class="overflow-hidden rounded-xl border border-antique-gold-soft/50 bg-surface-warm/30 p-2 text-center">
+            <Image
+              src={imgNumeros3}
+              alt="Lámina ceremonial de números de la tradición de Amonra 3"
+              width={280}
+              height={210}
+              class="h-44 w-full rounded-lg object-cover"
+              loading="lazy"
+            />
+            <p class="mt-1.5 font-interface text-[0.68rem] font-bold text-antique-gold-deep uppercase">
+              Signos y Cifras Sagradas (III)
+            </p>
+          </div>
+          <div class="overflow-hidden rounded-xl border border-antique-gold-soft/50 bg-surface-warm/30 p-2 text-center">
+            <Image
+              src={imgNumeros4}
+              alt="Lámina ceremonial de números de la tradición de Amonra 4"
+              width={280}
+              height={210}
+              class="h-44 w-full rounded-lg object-cover"
+              loading="lazy"
+            />
+            <p class="mt-1.5 font-interface text-[0.68rem] font-bold text-antique-gold-deep uppercase">
+              Signos y Cifras Sagradas (IV)
+            </p>
+          </div>
+        </div>
+
+        {/* FICHAS MONOGRÁFICAS DE CADA NÚMERO */}
+        <div class="space-y-8">
+          {singleAndMasterNumbers.map((num) => (
+            <article class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-8">
+              <div class="flex flex-wrap items-center justify-between gap-3 border-b border-antique-gold-soft/40 pb-4">
+                <div class="flex items-center gap-4">
+                  <span class="flex h-14 w-14 items-center justify-center rounded-xl bg-antique-gold/15 font-editorial text-3xl font-bold text-clay-red">
+                    {num.digit}
+                  </span>
+                  <div>
+                    <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+                      {num.name}: {num.archetype}
+                    </h4>
+                    <p class="font-interface text-xs font-semibold text-clay-red uppercase">
+                      «{num.title}» · Regente: {num.planetaryRuler} · Color:{" "}
+                      {num.colorAffinity}
+                    </p>
+                  </div>
+                </div>
+                <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3 py-1 font-interface text-xs font-semibold text-antique-gold-deep">
+                  Elemento: {num.element}
+                </span>
+              </div>
+
+              {/* PALABRAS CLAVE */}
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                {num.keywords.map((kw) => (
+                  <span class="rounded-full bg-surface-warm px-2.5 py-0.5 font-interface text-xs font-medium text-paper-muted">
+                    {kw}
+                  </span>
+                ))}
+              </div>
+
+              {/* TEXTO DE PERSONALIDAD Y CARÁCTER (2 COLUMNAS) */}
+              <div class="mt-5 grid gap-6 lg:grid-cols-2">
+                <div>
+                  <h5 class="font-interface text-xs font-bold tracking-wider text-antique-gold-deep uppercase">
+                    Personalidad Esencial
+                  </h5>
+                  <p class="mt-1.5 max-w-none text-sm leading-relaxed text-paper-muted">
+                    {num.personalityText}
+                  </p>
+                </div>
+                <div>
+                  <h5 class="font-interface text-xs font-bold tracking-wider text-antique-gold-deep uppercase">
+                    Carácter y Dinámica Social
+                  </h5>
+                  <p class="mt-1.5 max-w-none text-sm leading-relaxed text-paper-muted">
+                    {num.characterText}
+                  </p>
+                </div>
+              </div>
+
+              {/* CONSEJO DE ORO Y TRÍADA DE DESTINO */}
+              <div class="mt-5 grid gap-4 md:grid-cols-3">
+                <div class="rounded-xl border border-antique-gold-soft/30 bg-surface-warm/30 p-3.5">
+                  <p class="font-interface text-xs font-bold text-clay-red uppercase">
+                    Dirección de Aprendizaje
+                  </p>
+                  <p class="mt-1 text-xs leading-relaxed text-paper-muted">
+                    {num.direction}
+                  </p>
+                </div>
+                <div class="rounded-xl border border-antique-gold-soft/30 bg-surface-warm/30 p-3.5">
+                  <p class="font-interface text-xs font-bold text-clay-red uppercase">
+                    Oportunidad Evolutiva
+                  </p>
+                  <p class="mt-1 text-xs leading-relaxed text-paper-muted">
+                    {num.opportunity}
+                  </p>
+                </div>
+                <div class="rounded-xl border border-antique-gold-soft/30 bg-surface-warm/30 p-3.5">
+                  <p class="font-interface text-xs font-bold text-clay-red uppercase">
+                    Destino de Vida
+                  </p>
+                  <p class="mt-1 text-xs leading-relaxed text-paper-muted">
+                    {num.destiny}
+                  </p>
+                </div>
+              </div>
+
+              {/* VOCACIÓN DE ÉXITO */}
+              <div class="mt-4 rounded-xl border-l-4 border-antique-gold bg-surface-warm/40 px-5 py-3.5">
+                <p class="font-interface text-xs font-bold tracking-wider text-antique-gold-deep uppercase">
+                  Áreas de Realización y Éxito
+                </p>
+                <p class="mt-1 text-xs leading-relaxed text-paper-ink">
+                  {num.vocationAdvice}
+                </p>
+              </div>
+
+              {/* CONSEJO DE ORO AMONRA */}
+              <div class="mt-3 rounded-xl border border-clay-red/30 bg-clay-red/5 px-4 py-2.5 text-center">
+                <p class="font-editorial text-sm font-bold text-clay-red italic">
+                  {num.goldenCounsel}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* PESTAÑA 3: LA TRÍADA: ALMA, IMAGEN Y EXPRESIÓN */}
+      <section id="triada" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+                La Tríada del Nombre Personal
+              </h3>
+              <p class="mt-1 font-interface text-xs font-semibold tracking-wider text-clay-red uppercase">
+                Vocales (Deseo del Alma) vs. Consonantes (Imagen Externa /
+                Personalidad)
+              </p>
+            </div>
+            <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3.5 py-1 text-xs font-semibold text-antique-gold-deep">
+              Interior vs. Exterior
+            </span>
+          </div>
+
+          <div class="numerology-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Dentro de tu nombre coexisten dos dimensiones complementarias. Las
+              <strong>vocales</strong> son el aliento íntimo, el número del
+              corazón que expresa tus motivaciones más hondas: lo que anhelas en
+              silencio, cómo sientes las relaciones y qué necesitas para ser
+              pleno.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Las <strong>consonantes</strong> configuran la estructura física y
+              la perspectiva con la que interactúas con los cinco sentidos: la
+              máscara social, la impresión inicial que despiertas en los demás y
+              la energía tangible que irradias al mundo.
+            </p>
+          </div>
+        </article>
+
+        {/* COMPARATIVA DE LA TRÍADA POR NÚMERO */}
+        <div class="space-y-6">
+          {triadVibrations.map((v) => (
+            <article class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-7">
+              <div class="flex flex-wrap items-center justify-between gap-2 border-b border-antique-gold-soft/40 pb-3">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-antique-gold/20 font-editorial text-xl font-bold text-clay-red">
+                    {v.digit}
+                  </span>
+                  <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+                    {v.title}: {v.essence}
+                  </h4>
+                </div>
+                <span class="font-interface text-xs font-semibold text-antique-gold-deep uppercase">
+                  Doble Polaridad Vibracional
+                </span>
+              </div>
+
+              <div class="mt-5 grid gap-6 lg:grid-cols-2">
+                <div class="rounded-xl border border-antique-gold-soft/35 bg-surface-warm/35 p-4">
+                  <div class="flex items-center gap-2 text-clay-red">
+                    <span class="text-base font-bold">♥</span>
+                    <h5 class="font-interface text-xs font-bold tracking-wider uppercase">
+                      El Deseo del Alma (Número Vocal)
+                    </h5>
+                  </div>
+                  <p class="mt-2 text-xs leading-relaxed text-paper-muted">
+                    {v.soulDesireText}
+                  </p>
+                </div>
+
+                <div class="rounded-xl border border-antique-gold-soft/35 bg-surface-warm/35 p-4">
+                  <div class="flex items-center gap-2 text-antique-gold-deep">
+                    <span class="text-base font-bold">◈</span>
+                    <h5 class="font-interface text-xs font-bold tracking-wider uppercase">
+                      La Imagen Externa (Número Consonante)
+                    </h5>
+                  </div>
+                  <p class="mt-2 text-xs leading-relaxed text-paper-muted">
+                    {v.socialImageText}
+                  </p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* PESTAÑA 4: CICLOS NUMÉRICOS Y EL AÑO PERSONAL */}
+      <section id="ciclos" class="scroll-mt-8 space-y-10">
+        <article class="reading-section">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
+                Los Ciclos Novenarios del Tiempo y el Año Personal
+              </h3>
+              <p class="mt-1 font-interface text-xs font-semibold tracking-wider text-clay-red uppercase">
+                La rueda de 9 años: desde la semilla inicial hasta la cosecha y
+                el renacimiento
+              </p>
+            </div>
+            <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3.5 py-1 text-xs font-semibold text-antique-gold-deep">
+              Ciclos de 9 Años
+            </span>
+          </div>
+
+          <div class="numerology-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              La vida no transcurre en una línea recta monótona, sino en
+              espirales evolutivas de nueve años. Cada año posee su propio clima
+              arquetípico. Intentar cosechar en un año de siembra (Año 1) o
+              forzar inicios acelerados en un año de reposo introspectivo (Año
+              7) desgasta la energía inútilmente.
+            </p>
+            <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+              Al calcular tu Año Personal (sumando el día y mes de tu nacimiento
+              al año universal actual reducido), sintonizas con el pulso
+              cósmico. Sabrás con certeza cuándo lanzarte a la acción, cuándo
+              practicar la paciencia diplomática y cuándo soltar viejos lastres
+              para recibir la luz renovada.
+            </p>
+          </div>
+        </article>
+
+        {/* COMPOSICIÓN DE IMÁGENES CENTRALES */}
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="overflow-hidden rounded-2xl border-2 border-antique-gold-soft/70 bg-surface-warm/30 p-2 shadow-md">
+            <Image
+              src={imgCentral}
+              alt="Ilustración ceremonial mística de las esferas celestes y la numerología"
+              width={380}
+              height={300}
+              class="h-56 w-full rounded-xl object-cover"
+              loading="lazy"
+            />
+            <p class="mt-2 text-center font-interface text-[0.72rem] font-semibold text-antique-gold-deep uppercase">
+              La Danza de las Esferas y los Ciclos Temporales
+            </p>
+          </div>
+          <div class="overflow-hidden rounded-2xl border-2 border-antique-gold-soft/70 bg-surface-warm/30 p-2 shadow-md">
+            <Image
+              src={imgCentral2}
+              alt="Diagrama simbólico de las vibraciones numéricas en la tradición de Amonra"
+              width={380}
+              height={300}
+              class="h-56 w-full rounded-xl object-cover"
+              loading="lazy"
+            />
+            <p class="mt-2 text-center font-interface text-[0.72rem] font-semibold text-antique-gold-deep uppercase">
+              El Reloj Cósmico del Alma
+            </p>
+          </div>
+        </div>
+
+        {/* LOS 9 AÑOS PERSONALES */}
+        <div class="space-y-6">
+          {personalYearCycles.map((cyc) => (
+            <article class="rounded-2xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-6 shadow-xs lg:p-7">
+              <div class="flex flex-wrap items-center justify-between gap-3 border-b border-antique-gold-soft/40 pb-3">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-antique-gold/20 font-editorial text-2xl font-bold text-clay-red">
+                    {cyc.yearNumber}
+                  </span>
+                  <div>
+                    <h4 class="font-editorial text-2xl font-medium text-paper-ink">
+                      {cyc.title}
+                    </h4>
+                    <p class="font-interface text-xs font-semibold text-clay-red uppercase">
+                      {cyc.theme}
+                    </p>
+                  </div>
+                </div>
+                <span class="rounded-full border border-antique-gold bg-antique-gold/10 px-3 py-1 font-interface text-xs font-semibold text-antique-gold-deep">
+                  Fase {cyc.yearNumber}/9
+                </span>
+              </div>
+
+              <p class="mt-4 max-w-none text-sm leading-relaxed text-paper-muted">
+                {cyc.dynamics}
+              </p>
+
+              <div class="mt-4 rounded-xl border border-antique-gold-soft/30 bg-surface-warm/25 p-4">
+                <h5 class="font-interface text-xs font-bold tracking-wider text-antique-gold-deep uppercase">
+                  Acciones Recomendadas
+                </h5>
+                <ul class="mt-2 space-y-1 text-xs leading-relaxed text-paper-muted">
+                  {cyc.focalActivities.map((act) => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-clay-red">•</span>
+                      <span>{act}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="mt-3 rounded-lg border border-clay-red/30 bg-clay-red/5 px-4 py-2">
+                <p class="text-xs text-clay-red font-medium">
+                  ⚠️ <strong>Precaución a considerar:</strong> {cyc.caution}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* BENDICIÓN AMONRA / FELILUXOR */}
+        <div class="rounded-2xl border-l-4 border-antique-gold bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+          <div class="grid gap-x-10 gap-y-3 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p class="max-w-none font-editorial text-2xl font-medium leading-snug text-paper-ink">
+                Amonra: Una luz en vuestro camino
+              </p>
+              <p class="mt-1 max-w-none font-interface text-xs font-semibold tracking-wider text-antique-gold-deep uppercase">
+                Armonía numérica para vuestro ser
+              </p>
+            </div>
+            <div>
+              <p class="max-w-none text-[1.02rem] leading-relaxed font-medium text-paper-muted">
+                Feliluxor: Fe y felicidad en la luz de oro.
+              </p>
+              <p class="mt-1 max-w-none text-xs text-paper-muted">
+                Los números marcan los vientos celestes, pero tú sostienes el
+                timón de tu barco. Recuerda que la rectitud moral, el trabajo
+                paciente y el amor desinteresado vencen cualquier obstáculo y
+                coronan el destino con bendiciones duraderas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </ContentTabs>
+  </section>
+</div>
+
+<style>
+  .reading-section p {
+    max-width: none;
+  }
+</style>

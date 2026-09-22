@@ -6,10 +6,10 @@ Sitio web de `amonra.cl`, construido con Astro y generado como un sitio estátic
 
 El proyecto cuenta con 15 secciones configuradas:
 
-- 11 secciones publicadas: Fundación, Historia, Amuletos, Astrología, Gemas,
-  Inciensos, Oráculos, Runas, Sueños, Tarot y Velas (73,3% del portal).
-- 4 secciones en migración: Horóscopos, Magia, Numerología y Terapias (26,7%
-  restante).
+- 12 secciones publicadas: Fundación, Historia, Amuletos, Astrología, Gemas,
+  Inciensos, Numerología, Oráculos, Runas, Sueños, Tarot y Velas (80,0% del
+  portal).
+- 3 secciones en migración: Horóscopos, Magia y Terapias (20,0% restante).
 
 La migración consolida los contenidos históricos en páginas temáticas con
 índices, pestañas y fichas reutilizables. El objetivo es conservar los temas
@@ -89,17 +89,17 @@ npm run preview
 Las secciones marcadas como publicadas en `src/config/amonra-sections.ts` son:
 
 `fundacion`, `historia`, `amuletos`, `astrologia`, `gemas`, `inciensos`,
-`oraculos`, `runas`, `suenos`, `tarot` y `velas`.
+`numerologia`, `oraculos`, `runas`, `suenos`, `tarot` y `velas`.
 
 Las secciones en migración son:
 
-`horoscopos`, `magia`, `numerologia` y `terapias`.
+`horoscopos`, `magia` y `terapias`.
 
 Los bloques con contenido personalizado incluyen Fundación, Historia, Amuletos,
-Astrología, Gemas, Inciensos, Oráculos, Runas, Sueños, Tarot y Velas. Amuletos,
-Gemas, Oráculos, Runas, Tarot y Astrología incorporan índices o pestañas de
-navegación interna; Astrología además cuenta con páginas dinámicas para sus
-artículos.
+Astrología, Gemas, Inciensos, Numerología, Oráculos, Runas, Sueños, Tarot y
+Velas. Amuletos, Gemas, Numerología, Oráculos, Runas, Tarot y Astrología
+incorporan índices o pestañas de navegación interna; Astrología además cuenta
+con páginas dinámicas para sus artículos.
 
 ## Criterios editoriales de la migración
 
@@ -115,6 +115,10 @@ artículos.
   y el diálogo con el inconsciente propuesta por Carl Gustav Jung, despojándola
   de fatalismo predictivo y priorizando el libre albedrío y la soberanía ética
   del consultante.
+- Numerología aborda el simbolismo de los números como arquetipos de
+  autoconocimiento y ciclos temporales de la conciencia (Música de las Esferas
+  de Pitágoras), distinguiendo el análisis ético y psicológico de cualquier
+  determinismo supersticioso.
 - La sección de Sueños evita repetir el resumen de cada símbolo dentro de su
   interpretación ampliada.
 
@@ -128,10 +132,11 @@ npm run build
 ```
 
 La build actual genera 24 rutas estáticas y valida las páginas publicadas,
-incluidas `/temas/oraculos/`, `/temas/runas/`, `/temas/tarot/`, `/temas/gemas/`,
-`/temas/amuletos/`, `/temas/fundacion/` e `/temas/historia/`. El smoke test
-revisa que estas rutas existan, que incluyan sus contenidos clave y que Gemas no
-conserve pautas de ingestión de agua con cristales.
+incluidas `/temas/numerologia/`, `/temas/oraculos/`, `/temas/runas/`,
+`/temas/tarot/`, `/temas/gemas/`, `/temas/amuletos/`, `/temas/fundacion/` e
+`/temas/historia/`. El smoke test revisa que estas rutas existan, que incluyan
+sus contenidos clave y que Gemas no conserve pautas de ingestión de agua con
+cristales.
 
 Si `npm run check` informa una advertencia de Prettier en
 `docs/migracion_100_amonra.md`, corresponde a documentación pendiente de formato
