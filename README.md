@@ -4,17 +4,21 @@ Sitio web de `amonra.cl`, construido con Astro y generado como un sitio estátic
 
 ## Estado actual
 
-El proyecto cuenta con 15 secciones configuradas:
+El proyecto cuenta con las 15 secciones del portal 100% completadas y publicadas:
 
-- 15 secciones publicadas: Fundación, Historia, Amuletos, Astrología, Gemas,
+- **15 secciones publicadas:** Fundación, Historia, Amuletos, Astrología, Gemas,
   Horóscopos, Inciensos, Magia, Numerología, Oráculos, Runas, Sueños, Tarot,
-  Terapias y Velas (100% del portal completado).
-- 0 secciones en migración (100% de la migración histórica culminada).
+  Terapias y Velas.
+- **Arquitectura de Home (Editorial Pura):** Página de inicio optimizada en 3
+  bloques fluidos (Hero → Caminos de conocimiento → Propósito) con **0 KB de
+  JavaScript**, carga instantánea y navegación por anclas con scroll suave.
+- **Analítica web:** Integración nativa con Cloudflare Web Analytics, sin cookies
+  invasivas ni degradación de rendimiento.
 
-La migración consolida los contenidos históricos en páginas temáticas con
-índices, pestañas y fichas reutilizables. El objetivo es conservar los temas
-importantes del sitio original en una experiencia más clara y adaptable a
-escritorio y móvil, sin exigir una página nueva por cada archivo antiguo.
+La migración consolidó los contenidos históricos en páginas temáticas con
+índices accesibles, pestañas y fichas reutilizables. El objetivo es conservar
+los temas importantes del sitio original en una experiencia serena, digna y
+adaptable a móvil, tablet y escritorio.
 
 ## Requisitos
 
@@ -81,7 +85,9 @@ npm run preview
 
 ## Rutas y contenido
 
-- `src/pages/index.astro`: página de inicio.
+- `src/pages/index.astro`: página de inicio (Hero ceremonial con portal y
+  papiro, Caminos de conocimiento con el directorio completo de los 15 temas,
+  y Propósito fundacional).
 - `src/pages/temas/[section].astro`: páginas de las secciones de Amonra.
 - `src/pages/temas/astrologia/[article].astro`: artículos individuales de
   astrología definidos en `src/config/astrology-articles.ts`.
