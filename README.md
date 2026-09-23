@@ -6,10 +6,10 @@ Sitio web de `amonra.cl`, construido con Astro y generado como un sitio estátic
 
 El proyecto cuenta con 15 secciones configuradas:
 
-- 14 secciones publicadas: Fundación, Historia, Amuletos, Astrología, Gemas,
-  Horóscopos, Inciensos, Magia, Numerología, Oráculos, Runas, Sueños, Tarot y Velas
-  (93,3% del portal).
-- 1 sección en migración: Terapias (6,7% restante).
+- 15 secciones publicadas: Fundación, Historia, Amuletos, Astrología, Gemas,
+  Horóscopos, Inciensos, Magia, Numerología, Oráculos, Runas, Sueños, Tarot,
+  Terapias y Velas (100% del portal completado).
+- 0 secciones en migración (100% de la migración histórica culminada).
 
 La migración consolida los contenidos históricos en páginas temáticas con
 índices, pestañas y fichas reutilizables. El objetivo es conservar los temas
@@ -86,30 +86,34 @@ npm run preview
 - `src/pages/temas/astrologia/[article].astro`: artículos individuales de
   astrología definidos en `src/config/astrology-articles.ts`.
 
-Las secciones marcadas como publicadas en `src/config/amonra-sections.ts` son:
+Las secciones marcadas como publicadas en `src/config/amonra-sections.ts` son las 15 secciones totales:
 
 `fundacion`, `historia`, `amuletos`, `astrologia`, `gemas`, `horoscopos`,
-`inciensos`, `magia`, `numerologia`, `oraculos`, `runas`, `suenos`, `tarot` y `velas`.
+`inciensos`, `magia`, `numerologia`, `oraculos`, `runas`, `suenos`, `tarot`,
+`terapias` y `velas`.
 
-Las secciones en migración son:
-
-`terapias`.
+No restan secciones en migración (100% completado).
 
 Los bloques con contenido personalizado incluyen Fundación, Historia, Amuletos,
 Astrología, Gemas, Horóscopos, Inciensos, Magia, Numerología, Oráculos, Runas,
-Sueños, Tarot y Velas. Amuletos, Gemas, Horóscopos, Magia, Numerología, Oráculos,
-Runas, Tarot y Astrología
-incorporan índices o pestañas de navegación interna; Astrología además cuenta
-con páginas dinámicas para sus artículos.
+Sueños, Tarot, Terapias y Velas. Amuletos, Gemas, Horóscopos, Magia, Numerología,
+Oráculos, Runas, Tarot, Terapias y Astrología incorporan índices o pestañas de
+navegación interna; Astrología además cuenta con páginas dinámicas para sus
+artículos.
 
 ## Criterios editoriales de la migración
 
 - Los contenidos históricos y esotéricos se presentan como tradición cultural,
   mitología o interpretación simbólica cuando no corresponden a hechos
   verificables.
-- Gemas, amuletos, inciensos y velas no sustituyen atención médica ni otras
-  formas de ayuda profesional. En particular, la sección Gemas no recomienda
-  ingerir agua que haya estado en contacto con minerales.
+- Gemas, amuletos, inciensos, velas y terapias complementarias no sustituyen
+  atención médica, psiquiátrica ni otras formas de ayuda profesional. En particular,
+  la sección Gemas no recomienda ingerir agua que haya estado en contacto con
+  minerales.
+- Terapias aborda la salud integral de los cuatro cuerpos (físico, emocional,
+  mental y espiritual), la medicina preventiva tradicional y la aromaterapia sagrada
+  como vías complementarias de bienestar, enfatizando que no sustituyen la medicina
+  formal ni el diagnóstico clínico.
 - Runas distingue el Futhark histórico de incorporaciones oraculares modernas,
   como la Runa en Blanco o Wyrd.
 - Oráculos aborda la consulta mántica desde la perspectiva de la sincronicidad

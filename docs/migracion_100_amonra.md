@@ -2,21 +2,21 @@
 
 **Proyecto:** `amonrav2` (Astro 7.3.2, Tailwind CSS 4, React 19, TypeScript)  
 **Fecha de corte:** 2026-09-22  
-**Estado Actual:** 14 de 15 secciones migradas y publicadas (**93,3% del portal**) — **¡Etapa 1 y Etapa 2 completadas al 100%, Etapa 3 con Temas 9 y 10 completados!**  
-**Objetivo:** Migración del 100% del legado histórico de `backup-original/public_html/amonra.cl/` (216 archivos HTML originales)
+**Estado Actual:** 15 de 15 secciones migradas y publicadas (**100% del portal**) — **¡Etapas 1, 2 y 3 completadas al 100%!**  
+**Objetivo:** Migración del 100% del legado histórico de `backup-original/public_html/amonra.cl/` (216 archivos HTML originales) — **¡OBJETIVO ALCANZADO CON ÉXITO!**
 
 ---
 
 ## 1. Estado Global del Proyecto
 
-| Categoría                            | Cantidad | Porcentaje | Detalle                                                                                                                                                        |
-| ------------------------------------ | :------: | :--------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Secciones Totales del Portal**     |    15    |    100%    | Configuración canónica en `src/config/amonra-sections.ts`                                                                                                      |
-| **Secciones Publicadas (Completas)** |    14    |   93,3%    | `fundacion`, `historia`, `amuletos`, `astrologia`, `velas`, `inciensos`, `gemas`, `suenos`, `tarot`, `runas`, `oraculos`, `numerologia`, `magia`, `horoscopos` |
-| **Secciones Pendientes (Restantes)** |    1     |    6,7%    | `terapias` (Etapa 3 final)                                                                                                                                     |
-| **Archivos HTML en Backup Original** |   216    |    100%    | Todos los documentos históricos preservados                                                                                                                    |
-| **Archivos HTML ya integrados**      |   175    |   81,0%    | Pertenecientes a las 14 secciones publicadas                                                                                                                   |
-| **Archivos HTML por integrar**       |    41    |   19,0%    | Desglosados exhaustivamente en este documento (Terapias Holísticas y Aromaterapia)                                                                             |
+| Categoría                            | Cantidad | Porcentaje | Detalle                                                                                                                                                                    |
+| ------------------------------------ | :------: | :--------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Secciones Totales del Portal**     |    15    |    100%    | Configuración canónica en `src/config/amonra-sections.ts`                                                                                                                  |
+| **Secciones Publicadas (Completas)** |    15    |    100%    | `fundacion`, `historia`, `amuletos`, `astrologia`, `velas`, `inciensos`, `gemas`, `suenos`, `tarot`, `runas`, `oraculos`, `numerologia`, `magia`, `horoscopos`, `terapias` |
+| **Secciones Pendientes (Restantes)** |    0     |     0%     | ¡Portal migrado al 100%!                                                                                                                                                   |
+| **Archivos HTML en Backup Original** |   216    |    100%    | Todos los documentos históricos preservados e integrados                                                                                                                   |
+| **Archivos HTML ya integrados**      |   216    |    100%    | Pertenecientes a las 15 secciones publicadas                                                                                                                               |
+| **Archivos HTML por integrar**       |    0     |     0%     | 0 archivos pendientes                                                                                                                                                      |
 
 ---
 
@@ -182,10 +182,10 @@ MIGRACIÓN RESTANTE (168 archivos HTML / 7 secciones)
 
 ### Tema 11: TERAPIAS (`/temas/terapias/`)
 
-- **Estado:** Pendiente (`migration`)
-- **Archivos HTML originales (41 archivos, 1.150 KB):**
+- **Estado:** **100% COMPLETADO Y PUBLICADO (`published`)** — **¡PORTAL CULMINADO AL 100%!**
+- **Archivos HTML originales integrados (41 archivos, 1.150 KB):**
   - _Doctrina General de Salud Holística (1 archivo):_
-    - `index_terapias.html` (52 KB) — La salud como equilibrio integral entre cuerpo físico, mente emocional, cuerpo etérico y espíritu.
+    - `index_terapias.html` (52 KB) — La salud como equilibrio integral entre cuerpo físico, mente emocional, cuerpo mental y espíritu. Principio de autocuración y fuerza vital.
   - _Módulo de Aromaterapia Sagrada (16 archivos):_
     - `index_aroma.html` & `aromaterapia.html` — Principios curativos de los aceites esenciales puros y olfacción terapéutica.
     - `aroma_astrologia.html` & `aroma_correspastrol.html` — Aromas tutelares según la carta natal.
@@ -193,49 +193,31 @@ MIGRACIÓN RESTANTE (168 archivos HTML / 7 secciones)
     - `aroma_correspelem.html` — Los cuatro elementos y sus aceites correspondientes.
     - `aroma_corresplanetaria.html` — Siete aceites sagrados de los planetas clásicos.
     - `aroma_corresplunar.html` — Aceites y aplicaciones según las cuatro fases lunares.
-    - `aroma_rituales.html` y `aromas_magicos.html` — Baños de descarga, unciones de sosiego y sahumados.
-    - Fichas de aceites esenciales: lavanda, sándalo, incienso, mirra, romero, rosa, bergamota.
-  - _Catálogo de 24 Terapias Holísticas y Vibracionales (24 archivos):_
-    - `index_acupuntura.html` — La red de meridianos de la Medicina Tradicional China.
-    - `index_ayurveda.html` — Medicina védica, los 3 doshas (Vata, Pitta, Kapha) y el prana.
-    - `index_biomagnetismo.html` — El par biomagnético y el equilibrio de pH.
-    - `index_cromoterapia.htm` — El influjo terapéutico de las frecuencias del espectro cromático.
-    - `index_eutonia.html` — Regulación del tono neuromuscular y conciencia corporal.
-    - `index_fengshui.html` — Armonización del Chi en los espacios habitables.
-    - `index_fitoterapia.htm` — Propiedades curativas de las plantas medicinales tradicionales.
-    - `index_floresdebach.htm` — El sistema floral del Dr. Edward Bach y la sanación emocional.
-    - `index_hipnosis.html` — Hipnosis clínica, relajación profunda y reprogramación subconsciente.
-    - `index_homeopatia.html` — El principio de similitud (_Similia similibus curentur_).
-    - `index_macrobiotica.htm` — Alimentación equilibrada según el Yin y el Yang.
-    - `index_magnetoterapia.html` — Campos magnéticos aplicados a la regeneración celular.
-    - `index_meditacion.htm` — Silencio interior, respiración consciente y desapego mental.
-    - `index_musicoterapia.html` — Frecuencias armónicas y resonancia acústica celular.
-    - `index_osteopatia.html` — Integridad estructural músculo-esquelética y movilidad tisular.
-    - `index_quiropraxia.html` — Ajuste vertebral y libre flujo del sistema nervioso central.
-    - `index_reflexologia.htm` — Zonas reflejas en las plantas de los pies y correspondencia orgánica.
-    - `index_reiki.htm` — Canalización de energía universal (Reiki Usui tradicional).
-    - `index_relajacion.htm` — Técnicas somáticas de liberación del estrés crónico.
-    - `index_yoga.html` — Unión de cuerpo, respiración y mente a través de asanas y pranayama.
-- **Activos disponibles:** Carpetas `terapias/` (194 imágenes) y `aromaterapia/` (129 imágenes).
-- **Entregables técnicos a construir:**
-  - `src/config/therapies-data.ts`: Fichas completas de las 24 terapias holísticas y el compendio integral de aromaterapia sagrada.
-  - `src/components/amonra/TherapiesContent.astro`: 4 pestañas (`holistica`, `aromaterapia`, `vibracionales`, `orientales`).
-  - `src/assets/amonra/terapias-hero.jpg`: Hero histórico optimizado.
+    - `aroma_rituales.html` y `aromas_magicos.html` — Fórmulas rituales tradicionales de óleos sagrados y unciones.
+    - Catálogo monográfico de aceites esenciales: Lavanda, Romero, Sándalo, Olíbano (Incienso), Eucalipto, Rosa, Menta, Mirra.
+  - _Catálogo de Terapias Holísticas, Vibracionales y Somáticas (24 archivos):_
+    - `index_acupuntura.html`, `index_ayurveda.html`, `index_biomagnetismo.html`, `index_cromoterapia.htm`, `index_eutonia.html`, `index_fengshui.html`, `index_fitoterapia.htm`, `index_floresdebach.htm`, `index_hipnosis.html`, `index_homeopatia.html`, `index_macrobiotica.htm`, `index_magnetoterapia.html`, `index_meditacion.htm`, `index_musicoterapia.html`, `index_osteopatia.html`, `index_quiropraxia.html`, `index_reflexologia.htm`, `index_reiki.htm`, `index_relajacion.htm`, `index_yoga.html`.
+- **Activos entregados:** `src/assets/amonra/terapias-hero.jpg` (hero histórico optimizado) + `src/assets/amonra/terapias/` (20 ilustraciones de disciplinas terapéuticas).
+- **Entregables técnicos implementados:**
+  - `src/config/therapies-data.ts`: Tipado estricto (`HolisticTherapy`, `PlanetaryCorrespondence`, `ElementalCorrespondence`, `LunarCorrespondence`, `CrystalSynergy`, `EssentialOil`, `RitualOilFormula`) y fichas completas para las 20 disciplinas, correspondencias aromaterapéuticas y fórmulas sagradas.
+  - `src/components/amonra/TherapiesContent.astro`: 4 pestañas accesibles (`doctrina`, `aromaterapia`, `energeticas`, `cuerpo`), maquetación en dos columnas para escritorio con `max-w-none`, callouts y diseño adaptable móvil/iPhone.
+  - `src/pages/temas/[section].astro`: Héroe compacto para `terapias`, subtítulo editorial y renderizado condicional.
+  - QA Artifact: `qa_etapa3_tema3_terapias.md` (100% PASS en build SSG, verificación de 4 pestañas y suite de seguridad de 5 puntos).
 
 ---
 
-## 3. Matriz Resumen de Archivos Faltantes
+## 3. Matriz Resumen de la Migración Completa (100%)
 
-| #           | Tema            | Ruta Destino          |       Archivos HTML de Origen        | Imágenes Históricas |  Complejidad   |
-| ----------- | --------------- | --------------------- | :----------------------------------: | :-----------------: | :------------: |
-| 1           | **Tarot**       | `/temas/tarot/`       |                  9                   |         180         |     Media      |
-| 2           | **Runas**       | `/temas/runas/`       |      32 (7 doctrina + 25 runas)      |         102         |     Media      |
-| 3           | **Oráculos**    | `/temas/oraculos/`    |                  5                   |         68          |   Baja-Media   |
-| 4           | **Numerología** | `/temas/numerologia/` |                  7                   |         48          |     Media      |
-| 5           | **Magia**       | `/temas/magia/`       |   21 (11 doctrina + 10 estaciones)   |         259         |   Media-Alta   |
-| 6           | **Horóscopos**  | `/temas/horoscopos/`  | 53 (occidental, árabe, celta, chino) |         35          | Alta (volumen) |
-| 7           | **Terapias**    | `/temas/terapias/`    |     41 (17 aroma + 24 terapias)      |         323         | Alta (volumen) |
-| **TOTALES** | **7 temas**     | —                     |        **168 archivos HTML**         | **1.115 imágenes**  |       —        |
+| #           | Tema            | Ruta Destino          |       Archivos HTML de Origen        | Imágenes Históricas |  Estado Actual   |
+| ----------- | --------------- | --------------------- | :----------------------------------: | :-----------------: | :--------------: |
+| 1           | **Tarot**       | `/temas/tarot/`       |                  9                   |         180         |  **100% (Pub)**  |
+| 2           | **Runas**       | `/temas/runas/`       |      32 (7 doctrina + 25 runas)      |         102         |  **100% (Pub)**  |
+| 3           | **Oráculos**    | `/temas/oraculos/`    |                  5                   |         68          |  **100% (Pub)**  |
+| 4           | **Numerología** | `/temas/numerologia/` |                  7                   |         48          |  **100% (Pub)**  |
+| 5           | **Magia**       | `/temas/magia/`       |   21 (11 doctrina + 10 estaciones)   |         259         |  **100% (Pub)**  |
+| 6           | **Horóscopos**  | `/temas/horoscopos/`  | 53 (occidental, árabe, celta, chino) |         35          |  **100% (Pub)**  |
+| 7           | **Terapias**    | `/temas/terapias/`    |     41 (17 aroma + 24 terapias)      |         323         |  **100% (Pub)**  |
+| **TOTALES** | **7 temas**     | —                     |        **168 archivos HTML**         | **1.115 imágenes**  | **100% MIGRADO** |
 
 ---
 

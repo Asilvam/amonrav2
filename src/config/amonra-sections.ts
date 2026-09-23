@@ -169,10 +169,12 @@ export const amonraSections = [
   {
     slug: "terapias",
     title: "Terapias",
-    description: "Prácticas de bienestar espiritual.",
+    description:
+      "Salud integral de los cuatro cuerpos, alquimia de la aromaterapia y catálogo de terapias complementarias.",
     group: "bienestar",
-    intentions: ["bienestar"],
-    status: "migration",
+    intentions: ["bienestar", "aprender", "profundizar"],
+    status: "published",
+    featured: true,
     order: 14,
     legacyPath: "amonra.cl/index_terapias.html",
   },

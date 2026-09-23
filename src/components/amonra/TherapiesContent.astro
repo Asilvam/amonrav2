@@ -1,0 +1,442 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import ContentTabs from "../common/ContentTabs.astro";
+import {
+  therapiesIntro,
+  aromatherapyModule,
+  energyTherapies,
+  bodyMindTherapies,
+} from "../../config/therapies-data";
+
+// Discipline Illustrations
+import imgAcupuntura from "../../assets/amonra/terapias/acupuntura.jpg";
+import imgAyurveda from "../../assets/amonra/terapias/ayurveda.jpg";
+import imgBiomagnetismo from "../../assets/amonra/terapias/biomagnetismo.jpg";
+import imgAromaterapia from "../../assets/amonra/terapias/aromaterapia.jpg";
+import imgFitoterapia from "../../assets/amonra/terapias/fitoterapia.jpg";
+import imgMeditacion from "../../assets/amonra/terapias/meditacion.jpg";
+import imgYoga from "../../assets/amonra/terapias/yoga.jpg";
+import imgReiki from "../../assets/amonra/terapias/reiki.jpg";
+import imgCromoterapia from "../../assets/amonra/terapias/cromoterapia.jpg";
+import imgMusicoterapia from "../../assets/amonra/terapias/musicoterapia.jpg";
+import imgFloresDeBach from "../../assets/amonra/terapias/floresdebach.jpg";
+import imgEutonia from "../../assets/amonra/terapias/eutonia.jpg";
+import imgFengShui from "../../assets/amonra/terapias/fengshui.jpg";
+import imgHomeopatia from "../../assets/amonra/terapias/homeopatia.jpg";
+import imgOsteopatia from "../../assets/amonra/terapias/osteopatia.jpg";
+import imgReflexologia from "../../assets/amonra/terapias/reflexologia.jpg";
+import imgMacrobiotica from "../../assets/amonra/terapias/macrobiotica.jpg";
+import imgMagnetoterapia from "../../assets/amonra/terapias/magnetoterapia.jpg";
+import imgHipnosis from "../../assets/amonra/terapias/hipnosis.jpg";
+import imgRelajacion from "../../assets/amonra/terapias/relajacion.jpg";
+
+const therapyImages: Record<string, ImageMetadata> = {
+  acupuntura: imgAcupuntura,
+  ayurveda: imgAyurveda,
+  biomagnetismo: imgBiomagnetismo,
+  aromaterapia: imgAromaterapia,
+  fitoterapia: imgFitoterapia,
+  meditacion: imgMeditacion,
+  yoga: imgYoga,
+  reiki: imgReiki,
+  cromoterapia: imgCromoterapia,
+  musicoterapia: imgMusicoterapia,
+  floresdebach: imgFloresDeBach,
+  eutonia: imgEutonia,
+  fengshui: imgFengShui,
+  homeopatia: imgHomeopatia,
+  osteopatia: imgOsteopatia,
+  reflexologia: imgReflexologia,
+  macrobiotica: imgMacrobiotica,
+  magnetoterapia: imgMagnetoterapia,
+  hipnosis: imgHipnosis,
+  relajacion: imgRelajacion,
+};
+
+const therapyTabs = [
+  { id: "doctrina", label: "Salud Integral" },
+  { id: "aromaterapia", label: "Aromaterapia" },
+  { id: "energeticas", label: "Vibracionales" },
+  { id: "cuerpo", label: "Cuerpo y Mente" },
+];
+---
+
+<div class="space-y-12">
+  {/* CABECERA EDITORIAL DE TERAPIAS */}
+  <section class="reading-section">
+    <div class="rounded-2xl border-l-4 border-clay-red bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+      <blockquote class="m-0 space-y-3">
+        <p class="max-w-none font-editorial text-[clamp(1.55rem,2.7vw,2.3rem)] leading-tight text-paper-ink">
+          &ldquo;{therapiesIntro.quote.text}&rdquo;
+        </p>
+        <footer class="font-interface text-sm font-semibold tracking-wider text-clay-red uppercase">
+          — {therapiesIntro.quote.author} ({therapiesIntro.quote.source})
+        </footer>
+      </blockquote>
+      <p class="mt-5 max-w-none font-editorial text-xl leading-snug text-paper-ink">
+        {therapiesIntro.foundationalText}
+      </p>
+    </div>
+
+    <div class="mt-6 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        En la cosmovisión de Amonra, el ser humano no es un mecanismo
+        fragmentado, sino un universo vivo donde la salud resulta del libre
+        flujo de la fuerza vital a través de todos sus niveles de manifestación.
+        Cuando el estrés, la rigidez mental o las heridas emocionales
+        interrumpen esta armonía, el cuerpo físico expresa el síntoma como un
+        llamado de atención para reconectar con la propia fuente de paz.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Las disciplinas tradicionales que aquí se compendian integran milenarias
+        corrientes orientales, saberes botánicos ancestrales y modernas terapias
+        bioenergéticas. Su propósito común no es enmascarar el dolor, sino
+        acompañar al consultante en su propio sendero de autorregulación,
+        conciencia y bienestar duradero.
+      </p>
+    </div>
+  </section>
+
+  {/* TABS DE LAS 4 ÁREAS DE TERAPIA */}
+  <section
+    class="space-y-8"
+    aria-label="Terapias Holísticas y Aromaterapia Sagrada"
+  >
+    <ContentTabs
+      label="Terapias Holísticas y Aromaterapia Sagrada"
+      tabs={therapyTabs}
+    >
+      {/* ------------------------------------------------------------------ */}
+      {/* TAB 1: DOCTRINA Y SALUD INTEGRAL */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="doctrina" class="scroll-mt-8 space-y-12">
+        <article class="space-y-8">
+          <header class="border-b border-antique-gold-soft/50 pb-5">
+            <span class="font-interface text-xs font-bold tracking-widest text-clay-red uppercase">
+              Fundamentos Holísticos de Amonra
+            </span>
+            <h3 class="font-editorial text-[clamp(1.75rem,2.5vw,2.4rem)] text-paper-ink">
+              Los Cuatro Cuerpos del Ser Humano y la Salud Integral
+            </h3>
+            <p class="mt-3 max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              Para la medicina holística, la verdadera sanación requiere atender
+              simultáneamente las cuatro dimensiones esenciales de la
+              experiencia humana. A continuación se presentan sus atributos
+              fundamentales:
+            </p>
+          </header>
+
+          <div class="grid gap-6 md:grid-cols-2">
+            {therapiesIntro.fourBodies.map((body, idx) => (
+              <div class="rounded-xl border border-antique-gold-soft/60 bg-[var(--color-parchment-soft)] p-6 shadow-sm">
+                <div class="flex items-center gap-3 border-b border-antique-gold-soft/40 pb-3">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-full bg-clay-red text-sm font-bold text-ivory">
+                    {idx + 1}
+                  </span>
+                  <h4 class="font-editorial text-2xl font-bold text-paper-ink">
+                    {body.name}
+                  </h4>
+                </div>
+                <p class="mt-4 text-[0.98rem] leading-relaxed text-paper-muted">
+                  {body.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div class="rounded-2xl border border-antique-gold-soft/60 bg-[var(--color-parchment-soft)] p-6 lg:p-8">
+            <h4 class="font-editorial text-2xl font-bold text-clay-red">
+              El Principio de la Autocuración y la Fuerza Vital
+            </h4>
+            <div class="mt-4 grid gap-x-8 gap-y-4 lg:grid-cols-2 text-sm leading-relaxed text-paper-muted">
+              <p>
+                Toda criatura viviente posee una inteligencia biológica innata
+                destinada a preservar la vida y reparar el daño tisular. Las
+                terapias alternativas actúan como catalizadores de esta fuerza
+                interior, brindando el reposo, el orden energético o el estímulo
+                sutil necesario para que el propio organismo reasuma su
+                homeostasis.
+              </p>
+              <p>
+                La prevención consciente es la cúspide de este saber: cultivar
+                hábitos puros, respirar con profundidad, aprender a desaprender
+                patrones de tensión y sintonizar con la naturaleza constituyen
+                la mejor medicina para el alma.
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* TAB 2: AROMATERAPIA SAGRADA */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="aromaterapia" class="scroll-mt-8 space-y-12">
+        <article class="space-y-8">
+          <header class="border-b border-antique-gold-soft/50 pb-5">
+            <span class="font-interface text-xs font-bold tracking-widest text-clay-red uppercase">
+              Alquimia Sutil de los Sentidos
+            </span>
+            <h3 class="font-editorial text-[clamp(1.75rem,2.5vw,2.4rem)] text-paper-ink">
+              {aromatherapyModule.title}
+            </h3>
+            <p class="mt-4 max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              {aromatherapyModule.intro}
+            </p>
+            <p class="mt-3 max-w-none text-sm leading-relaxed text-paper-ink font-medium">
+              {aromatherapyModule.alchemyPrinciples}
+            </p>
+          </header>
+
+          {/* Correspondencias Planetarias */}
+          <div class="space-y-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Correspondencias Planetarias de los Aromas
+            </h4>
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {aromatherapyModule.planetaryCorrespondences.map((p) => (
+                <div class="rounded-xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-4 shadow-sm">
+                  <div class="flex items-center justify-between border-b border-antique-gold-soft/30 pb-2">
+                    <span class="font-editorial text-lg font-bold text-clay-red">
+                      {p.planet}
+                    </span>
+                    <span class="font-interface text-xs font-semibold text-paper-muted uppercase">
+                      {p.day}
+                    </span>
+                  </div>
+                  <p class="mt-2 text-xs leading-relaxed text-paper-muted">
+                    {p.need}
+                  </p>
+                  <div class="mt-3 border-t border-antique-gold-soft/20 pt-2 text-[0.78rem] text-antique-gold-deep font-medium">
+                    <strong>Aromas:</strong> {p.aromas.join(", ")}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Correspondencias Elementales y Lunares */}
+          <div class="grid gap-6 md:grid-cols-2">
+            <div class="space-y-4">
+              <h4 class="font-editorial text-xl text-paper-ink">
+                Los Cuatro Elementos y sus Aromas
+              </h4>
+              <div class="space-y-3">
+                {aromatherapyModule.elementalCorrespondences.map((el) => (
+                  <div class="rounded-lg border border-antique-gold-soft/40 bg-[var(--color-parchment-soft)] p-3 text-xs">
+                    <div class="flex justify-between font-semibold text-clay-red">
+                      <span>{el.element}</span>
+                      <span class="text-paper-muted font-normal">
+                        {el.direction}
+                      </span>
+                    </div>
+                    <p class="mt-1 text-paper-muted">{el.purpose}</p>
+                    <p class="mt-1 font-medium text-antique-gold-deep">
+                      {el.aromas.join(" • ")}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <h4 class="font-editorial text-xl text-paper-ink">
+                Fases Lunares y Gemoterapia
+              </h4>
+              <div class="space-y-3">
+                {aromatherapyModule.lunarCorrespondences.map((l) => (
+                  <div class="rounded-lg border border-antique-gold-soft/40 bg-[var(--color-parchment-soft)] p-3 text-xs">
+                    <div class="flex justify-between font-semibold text-paper-ink">
+                      <span>{l.phase}</span>
+                      <span class="text-clay-red">{l.keyAroma}</span>
+                    </div>
+                    <p class="mt-1 text-paper-muted">{l.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Catálogo de Aceites Esenciales */}
+          <div class="space-y-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Catálogo de Aceites Esenciales Sagrados
+            </h4>
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {aromatherapyModule.essentialOilsCatalog.map((oil) => (
+                <div class="rounded-xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-4 shadow-sm flex flex-col justify-between">
+                  <div>
+                    <h5 class="font-editorial text-lg font-bold text-clay-red">
+                      {oil.name}
+                    </h5>
+                    <p class="font-interface text-[0.7rem] text-antique-gold-deep font-semibold uppercase mt-0.5">
+                      Nota {oil.note} • {oil.element}
+                    </p>
+                    <p class="mt-2 text-xs leading-relaxed text-paper-muted">
+                      {oil.properties}
+                    </p>
+                  </div>
+                  <div class="mt-3 border-t border-antique-gold-soft/20 pt-2 text-[0.75rem] text-paper-ink">
+                    <strong>Uso:</strong> {oil.applications}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Fórmulas Rituales Tradicionales */}
+          <div class="space-y-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Fórmulas Rituales de Óleos Sagrados
+            </h4>
+            <div class="grid gap-6 md:grid-cols-3">
+              {aromatherapyModule.ritualFormulas.map((f) => (
+                <div class="rounded-xl border border-antique-gold-soft/60 bg-[var(--color-parchment-soft)] p-5 shadow-sm">
+                  <h5 class="font-editorial text-lg font-bold text-clay-red">
+                    {f.title}
+                  </h5>
+                  <p class="mt-1 text-xs italic text-paper-muted">
+                    {f.objective}
+                  </p>
+                  <ul class="mt-3 space-y-1 text-xs text-paper-ink border-t border-antique-gold-soft/30 pt-2">
+                    {f.ingredients.map((ing) => (
+                      <li>• {ing}</li>
+                    ))}
+                  </ul>
+                  <p class="mt-3 text-[0.75rem] text-paper-muted border-t border-antique-gold-soft/20 pt-2">
+                    {f.instructions}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* TAB 3: TERAPIAS ENERGÉTICAS Y VIBRACIONALES */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="energeticas" class="scroll-mt-8 space-y-12">
+        <article class="space-y-8">
+          <header class="border-b border-antique-gold-soft/50 pb-5">
+            <span class="font-interface text-xs font-bold tracking-widest text-clay-red uppercase">
+              Vibración, Frecuencia y Campo Mórfico
+            </span>
+            <h3 class="font-editorial text-[clamp(1.75rem,2.5vw,2.4rem)] text-paper-ink">
+              Terapias Energéticas y Medicina Vibracional
+            </h3>
+            <p class="mt-3 max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              Disciplinas que operan sintonizando los campos bioeléctricos, los
+              centros sutiles (chacras) y los meridianos de energía para
+              restablecer el flujo armónico natural del organismo.
+            </p>
+          </header>
+
+          <div class="space-y-8">
+            {energyTherapies.map((therapy) => {
+              const imgMetadata = therapyImages[therapy.id];
+              return (
+                <article class="overflow-hidden rounded-2xl border border-antique-gold-soft/70 bg-[var(--color-parchment-soft)] shadow-md">
+                  <div class="grid lg:grid-cols-12">
+                    <div class="flex flex-col items-center justify-center border-b border-antique-gold-soft/40 p-6 text-center lg:col-span-4 lg:border-r lg:border-b-0">
+                      {imgMetadata && (
+                        <div class="relative overflow-hidden rounded-xl border border-antique-gold-soft shadow-inner">
+                          <Image
+                            src={imgMetadata}
+                            alt={`Terapia Holística: ${therapy.name}`}
+                            class="h-auto w-full max-w-[240px] object-cover transition-transform duration-500 hover:scale-105"
+                          />
+                        </div>
+                      )}
+                      <h4 class="mt-4 font-editorial text-2xl font-bold text-paper-ink">
+                        {therapy.name}
+                      </h4>
+                      <p class="font-interface text-xs font-semibold tracking-wider text-clay-red uppercase">
+                        {therapy.origin}
+                      </p>
+                      <div class="mt-3 rounded-lg bg-[var(--color-parchment-subtle)] px-3 py-1.5 text-xs font-medium text-antique-gold-deep">
+                        {therapy.principle}
+                      </div>
+                    </div>
+
+                    <div class="p-6 lg:col-span-8 lg:p-8 space-y-4">
+                      <h5 class="font-editorial text-lg font-semibold text-clay-red">
+                        Fundamentos y Beneficios Terapéuticos
+                      </h5>
+                      <p class="text-sm leading-relaxed text-paper-ink">
+                        {therapy.description}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </article>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* TAB 4: TERAPIAS DE CUERPO, MOVIMIENTO Y CONCIENCIA */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="cuerpo" class="scroll-mt-8 space-y-12">
+        <article class="space-y-8">
+          <header class="border-b border-antique-gold-soft/50 pb-5">
+            <span class="font-interface text-xs font-bold tracking-widest text-clay-red uppercase">
+              Integración Somática y Filosofía Vital
+            </span>
+            <h3 class="font-editorial text-[clamp(1.75rem,2.5vw,2.4rem)] text-paper-ink">
+              Cuerpo, Movimiento, Nutrición y Conciencia
+            </h3>
+            <p class="mt-3 max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              Métodos somáticos, manuales y de estilo de vida que cultivan la
+              alineación postural, la respiración profunda, la sabiduría
+              alimentaria y el silencio interior.
+            </p>
+          </header>
+
+          <div class="space-y-8">
+            {bodyMindTherapies.map((therapy) => {
+              const imgMetadata = therapyImages[therapy.id];
+              return (
+                <article class="overflow-hidden rounded-2xl border border-antique-gold-soft/70 bg-[var(--color-parchment-soft)] shadow-md">
+                  <div class="grid lg:grid-cols-12">
+                    <div class="flex flex-col items-center justify-center border-b border-antique-gold-soft/40 p-6 text-center lg:col-span-4 lg:border-r lg:border-b-0">
+                      {imgMetadata && (
+                        <div class="relative overflow-hidden rounded-xl border border-antique-gold-soft shadow-inner">
+                          <Image
+                            src={imgMetadata}
+                            alt={`Disciplina Somática: ${therapy.name}`}
+                            class="h-auto w-full max-w-[240px] object-cover transition-transform duration-500 hover:scale-105"
+                          />
+                        </div>
+                      )}
+                      <h4 class="mt-4 font-editorial text-2xl font-bold text-paper-ink">
+                        {therapy.name}
+                      </h4>
+                      <p class="font-interface text-xs font-semibold tracking-wider text-clay-red uppercase">
+                        {therapy.origin}
+                      </p>
+                      <div class="mt-3 rounded-lg bg-[var(--color-parchment-subtle)] px-3 py-1.5 text-xs font-medium text-antique-gold-deep">
+                        {therapy.principle}
+                      </div>
+                    </div>
+
+                    <div class="p-6 lg:col-span-8 lg:p-8 space-y-4">
+                      <h5 class="font-editorial text-lg font-semibold text-clay-red">
+                        Enfoque y Práctica Consciente
+                      </h5>
+                      <p class="text-sm leading-relaxed text-paper-ink">
+                        {therapy.description}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </article>
+      </section>
+    </ContentTabs>
+  </section>
+</div>

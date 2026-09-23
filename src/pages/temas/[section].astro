@@ -14,6 +14,7 @@ import OraclesContent from "../../components/amonra/OraclesContent.astro";
 import NumerologyContent from "../../components/amonra/NumerologyContent.astro";
 import MagicContent from "../../components/amonra/MagicContent.astro";
 import HoroscopesContent from "../../components/amonra/HoroscopesContent.astro";
+import TherapiesContent from "../../components/amonra/TherapiesContent.astro";
 import Breadcrumbs from "../../components/common/Breadcrumbs.astro";
 import Container from "../../components/layout/Container.astro";
 import { amonraMessages } from "../../config/amonra-messages";
@@ -37,6 +38,7 @@ import oraclesHero from "../../assets/amonra/oraculos-hero.jpg";
 import numerologyHero from "../../assets/amonra/numerologia-hero.jpg";
 import magicHero from "../../assets/amonra/magia-hero.jpg";
 import horoscopesHero from "../../assets/amonra/horoscopos-hero.jpg";
+import therapiesHero from "../../assets/amonra/terapias-hero.jpg";
 
 interface Props {
   section: AmonraSection;
@@ -65,6 +67,7 @@ const hasCompactHero = [
   "numerologia",
   "magia",
   "horoscopos",
+  "terapias",
 ].includes(section.slug);
 const currentIndex = amonraSections.findIndex(
   (candidate) => candidate.slug === section.slug,
@@ -180,6 +183,12 @@ const next =
             <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
               Zodíaco solar occidental, armas árabes del desierto, ciclo chino
               Wu Xing y las 13 lunas mayas.
+            </p>
+          )}
+          {section.slug === "terapias" && (
+            <p class="mt-5 max-w-[24ch] font-editorial text-[clamp(1.25rem,2vw,1.7rem)] leading-snug italic text-old-papyrus">
+              Salud integral de los cuatro cuerpos, alquimia de la aromaterapia
+              y catálogo de terapias complementarias.
             </p>
           )}
         </div>
@@ -365,6 +374,19 @@ const next =
             />
           </figure>
         )}
+
+        {section.slug === "terapias" && (
+          <figure class="m-0">
+            <Image
+              src={therapiesHero}
+              alt="Salud integral, terapias holísticas y armonización energética natural"
+              widths={[380, 560, 800]}
+              sizes="(min-width: 1024px) 42vw, 88vw"
+              loading="eager"
+              class="mx-auto max-h-[20rem] w-full max-w-[18rem] rounded-xl object-contain drop-shadow-2xl"
+            />
+          </figure>
+        )}
       </Container>
     </header>
 
@@ -476,6 +498,14 @@ const next =
       <section class="border-b border-antique-gold-soft/45 bg-paper py-20 text-paper-ink lg:py-24">
         <Container>
           <HoroscopesContent />
+        </Container>
+      </section>
+    )}
+
+    {section.slug === "terapias" && (
+      <section class="border-b border-antique-gold-soft/45 bg-paper py-20 text-paper-ink lg:py-24">
+        <Container>
+          <TherapiesContent />
         </Container>
       </section>
     )}
