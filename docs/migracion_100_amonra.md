@@ -2,21 +2,21 @@
 
 **Proyecto:** `amonrav2` (Astro 7.3.2, Tailwind CSS 4, React 19, TypeScript)  
 **Fecha de corte:** 2026-09-22  
-**Estado Actual:** 13 de 15 secciones migradas y publicadas (**86,7% del portal**) — **¡Etapa 1 y Etapa 2 completadas al 100%, Etapa 3 iniciada con Tema 9!**  
+**Estado Actual:** 14 de 15 secciones migradas y publicadas (**93,3% del portal**) — **¡Etapa 1 y Etapa 2 completadas al 100%, Etapa 3 con Temas 9 y 10 completados!**  
 **Objetivo:** Migración del 100% del legado histórico de `backup-original/public_html/amonra.cl/` (216 archivos HTML originales)
 
 ---
 
 ## 1. Estado Global del Proyecto
 
-| Categoría                            | Cantidad | Porcentaje | Detalle                                                                                                                                          |
-| ------------------------------------ | :------: | :--------: | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Secciones Totales del Portal**     |    15    |    100%    | Configuración canónica en `src/config/amonra-sections.ts`                                                                                        |
-| **Secciones Publicadas (Completas)** |    13    |   86,7%    | `fundacion`, `historia`, `amuletos`, `astrologia`, `velas`, `inciensos`, `gemas`, `suenos`, `tarot`, `runas`, `oraculos`, `numerologia`, `magia` |
-| **Secciones Pendientes (Restantes)** |    2     |   13,3%    | `horoscopos`, `terapias` (Etapa 3 final)                                                                                                         |
-| **Archivos HTML en Backup Original** |   216    |    100%    | Todos los documentos históricos preservados                                                                                                      |
-| **Archivos HTML ya integrados**      |   122    |   56,5%    | Pertenecientes a las 13 secciones publicadas                                                                                                     |
-| **Archivos HTML por integrar**       |    94    |   43,5%    | Desglosados exhaustivamente en este documento (Horóscopos y Terapias)                                                                            |
+| Categoría                            | Cantidad | Porcentaje | Detalle                                                                                                                                                        |
+| ------------------------------------ | :------: | :--------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Secciones Totales del Portal**     |    15    |    100%    | Configuración canónica en `src/config/amonra-sections.ts`                                                                                                      |
+| **Secciones Publicadas (Completas)** |    14    |   93,3%    | `fundacion`, `historia`, `amuletos`, `astrologia`, `velas`, `inciensos`, `gemas`, `suenos`, `tarot`, `runas`, `oraculos`, `numerologia`, `magia`, `horoscopos` |
+| **Secciones Pendientes (Restantes)** |    1     |    6,7%    | `terapias` (Etapa 3 final)                                                                                                                                     |
+| **Archivos HTML en Backup Original** |   216    |    100%    | Todos los documentos históricos preservados                                                                                                                    |
+| **Archivos HTML ya integrados**      |   175    |   81,0%    | Pertenecientes a las 14 secciones publicadas                                                                                                                   |
+| **Archivos HTML por integrar**       |    41    |   19,0%    | Desglosados exhaustivamente en este documento (Terapias Holísticas y Aromaterapia)                                                                             |
 
 ---
 
@@ -155,29 +155,28 @@ MIGRACIÓN RESTANTE (168 archivos HTML / 7 secciones)
 
 ### Tema 10: HORÓSCOPOS (`/temas/horoscopos/`)
 
-- **Estado:** Pendiente (`migration`)
-- **Archivos HTML originales (53 archivos, 1.735 KB) — El módulo más extenso en páginas:**
-  - _Zodíaco Solar Tradicional (13 archivos):_
-    - `index_horoscopos.html` (índice general)
-    - 12 archivos de signos: `horoscopos_aries.htm`, `horoscopos_tauro.htm`, `horoscopos_geminis.htm`, `horoscopos_cancer.htm`, `horoscopos_leo.htm`, `horoscopos_virgo.htm`, `horoscopos_libra.htm`, `horoscopos_escorpio.htm`, `horoscopos_sagitario.htm`, `horoscopos_capricornio.htm`, `horoscopos_acuario.htm`, `horoscopos_piscis.htm`.
+- **Estado:** **100% COMPLETADO Y PUBLICADO (`published`)**
+- **Archivos HTML originales integrados (53 archivos + oráculos mayas, ~1.850 KB):**
+  - _Zodíaco Solar Tradicional (14 archivos):_
+    - `index_horoscopos.html` (índice general) y `horoscopos_signos.html` (astronomía de la eclíptica y banda de 18 grados).
+    - `horoscopos_elementos.html` (las 4 triplicidades: fuego, tierra, aire, agua).
+    - 12 archivos de signos: `horoscopos_aries.htm` a `horoscopos_piscis.htm` con dignidades, mitología y jeroglíficos.
   - _Horóscopo Árabe Tradicional (13 archivos):_
-    - `horoscopos_arabe.html` (doctrina de las armas del destino)
-    - 12 armas tradicionales: `horoscopos_alfanje.htm`, `horoscopos_arco.htm`, `horoscopos_cadena.htm`, `horoscopos_clava.htm`, `horoscopos_daga.htm`, `horoscopos_flecha.htm`, `horoscopos_fronda.htm`, `horoscopos_hacha.htm`, `horoscopos_lanza.htm`, `horoscopos_maza.htm`, `horoscopos_machete.htm`, `horosocopos_punal.htm`.
-  - _Horóscopo Druida / Celta de los Árboles (13 archivos):_
-    - `horoscopos_druida.html` (el calendario arbóreo sagrado)
-    - Signos arbóreos: abedul, fresno, sauce, espino, roble, avellano, parra, hiedra, caña, saúco, abeto, álamo.
-  - _Horóscopo Chino y Elementos (14 archivos):_
-    - `horoscopos_chino.html` y `horosocopos_chinaelementos.htm` (las 12 Ramas Terrestres y los 5 Elementos Wu Xing: Madera, Fuego, Tierra, Metal, Agua).
-    - Los 12 animales: Rata, Búfalo, Tigre, Conejo, Dragón, Serpiente, Caballo, Cabra, Mono, Gallo, Perro, Cerdo.
-- **Activos disponibles:** Carpeta `backup-original/public_html/amonra.cl/horoscopo/` (35 imágenes).
-- **Estrategia de diseño recomendada:**
-  - `src/config/horoscopes-data.ts`: Catálogo estructurado y modular que unifique los 4 sistemas astrológicos para evitar crear 53 subpáginas dispersas.
-  - `src/components/amonra/HoroscopesContent.astro`: 4 pestañas accesibles que permitan comparar los sistemas:
-    - Tab 1: `occidental` (Los 12 signos solares clásicos).
-    - Tab 2: `arabe` (Las 12 armas del zodíaco árabe).
-    - Tab 3: `druida` (Los árboles sagrados celtas).
-    - Tab 4: `chino` (Los 12 animales y los 5 elementos).
-  - `src/assets/amonra/horoscopos-hero.jpg`: Hero histórico optimizado.
+    - `horoscopos_arabe.html` (filosofía de las armas del desierto y las 3 clases de armas: cortas, medianas y largas).
+    - 12 armas tradicionales: `horoscopos_alfanje.htm`, `horoscopos_arco.htm`, `horoscopos_cadena.htm`, `horoscopos_clava.htm`, `horoscopos_cuchillo.htm`, `horoscopos_gumia.htm`, `horoscopos_hacha.htm`, `horoscopos_honda.htm`, `horoscopos_lanza.htm`, `horoscopos_machete.htm`, `horoscopos_maza.htm`, `horosocopos_punal.htm`.
+  - _Zodíaco Chino y Wu Xing (19 archivos):_
+    - `horoscopos_chino.htm`, `horoscopos_chinabuda.htm` (leyenda de Buda), `horoscopos_chinayinyang.html` (polaridad cósmica) y `horosocopos_chinaelementos.htm`.
+    - Los 5 elementos: `horoscopos_chinaagua.html`, `horoscopos_chinafuego.html`, `horoscopos_chinamadera.html`, `horoscopos_chinametal.html`, `horoscopos_chinatierra.html`.
+    - 12 animales anuales: `horoscopos_chinarata.html` a `horoscopos_chinajabali.html` con citas filosóficas originales y ramas terrestres.
+  - _Horóscopo Maya y 20 Sellos Solares (3 archivos):_
+    - `horoscopos_maya.html` (calendario de 13 lunas de 28 días + Día Fuera del Tiempo el 25 de julio, y los 20 Sellos Solares).
+    - `oraculos.cl/horoscopomaya.php` y `oraculos.cl/astrologiamaya.php` (las 13 lunas totémicas: Tzootz Murciélago a Aak Tortuga y los peldaños del Génesis Cósmico Maya).
+- **Activos entregados:** `src/assets/amonra/horoscopos-hero.jpg` (hero histórico nítido) + `src/assets/amonra/horoscopos/` (49 ilustraciones: 12 signos occidentales, 12 armas árabes, 12 animales chinos y 13 animales mayas).
+- **Entregables técnicos implementados:**
+  - `src/config/horoscopes-data.ts`: Catálogo estructurado y fuertemente tipado de las 4 tradiciones (Occidental, Árabe, Chino y Maya) con los 12 signos, 12 armas, 12 animales, 5 elementos Wu Xing, 13 lunas y 20 sellos solares.
+  - `src/components/amonra/HoroscopesContent.astro`: 4 pestañas accesibles (`occidental`, `arabe`, `chino`, `maya`), maquetación 2 columnas de escritorio con `max-w-none`, callouts balanceados y optimización iPhone Safari.
+  - `src/pages/temas/[section].astro`: Héroe compacto para `horoscopos`, subtítulo editorial y renderizado condicional.
+  - QA Artifact: `qa_etapa3_tema2_horoscopos.md` (100% PASS en build SSG y validación de contenidos).
 
 ---
 

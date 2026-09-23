@@ -81,10 +81,12 @@ export const amonraSections = [
   {
     slug: "horoscopos",
     title: "Horóscopos",
-    description: "Lecturas e interpretaciones zodiacales.",
+    description:
+      "Zodíaco solar occidental, horóscopo árabe de las armas, ciclo chino Wu Xing y las 13 lunas mayas.",
     group: "autoconocimiento",
-    intentions: ["orientacion"],
-    status: "migration",
+    intentions: ["orientacion", "aprender"],
+    status: "published",
+    featured: true,
     order: 6,
     legacyPath: "amonra.cl/index_horoscopos.html",
   },

@@ -1,0 +1,798 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import ContentTabs from "../common/ContentTabs.astro";
+import {
+  westernIntro,
+  westernElements,
+  westernSigns,
+  arabIntro,
+  arabWeapons,
+  chineseIntro,
+  wuXingElements,
+  chineseAnimals,
+  mayanIntro,
+  mayanSigns,
+  mayanSolarSeals,
+} from "../../config/horoscopes-data";
+
+// Western Signs Images
+import signoAries from "../../assets/amonra/horoscopos/signo-aries.jpg";
+import signoTauro from "../../assets/amonra/horoscopos/signo-tauro.jpg";
+import signoGeminis from "../../assets/amonra/horoscopos/signo-geminis.jpg";
+import signoCancer from "../../assets/amonra/horoscopos/signo-cancer.jpg";
+import signoLeo from "../../assets/amonra/horoscopos/signo-leo.jpg";
+import signoVirgo from "../../assets/amonra/horoscopos/signo-virgo.jpg";
+import signoLibra from "../../assets/amonra/horoscopos/signo-libra.jpg";
+import signoEscorpio from "../../assets/amonra/horoscopos/signo-escorpio.jpg";
+import signoSagitario from "../../assets/amonra/horoscopos/signo-sagitario.jpg";
+import signoCapricornio from "../../assets/amonra/horoscopos/signo-capricornio.jpg";
+import signoAcuario from "../../assets/amonra/horoscopos/signo-acuario.jpg";
+import signoPiscis from "../../assets/amonra/horoscopos/signo-piscis.jpg";
+
+// Arab Weapons Images
+import armaAlfanje from "../../assets/amonra/horoscopos/alfanje.jpg";
+import armaArco from "../../assets/amonra/horoscopos/arco.jpg";
+import armaCadena from "../../assets/amonra/horoscopos/cadena.jpg";
+import armaClava from "../../assets/amonra/horoscopos/clava2.jpg";
+import armaCuchillo from "../../assets/amonra/horoscopos/cuchillo2.jpg";
+import armaGumia from "../../assets/amonra/horoscopos/gumia.jpg";
+import armaHacha from "../../assets/amonra/horoscopos/hacha.jpg";
+import armaHonda from "../../assets/amonra/horoscopos/honda.jpg";
+import armaLanza from "../../assets/amonra/horoscopos/lanza.jpg";
+import armaMachete from "../../assets/amonra/horoscopos/machete.jpg";
+import armaMaza from "../../assets/amonra/horoscopos/maza2.jpg";
+import armaPunal from "../../assets/amonra/horoscopos/punal.jpg";
+
+// Chinese Animals Images
+import chinoRata from "../../assets/amonra/horoscopos/horoscopochino-rata.jpg";
+import chinoBuey from "../../assets/amonra/horoscopos/horoscopochino-buey.jpg";
+import chinoTigre from "../../assets/amonra/horoscopos/horoscopochino-tigre.jpg";
+import chinoConejo from "../../assets/amonra/horoscopos/horoscopochino-conejo.jpg";
+import chinoDragon from "../../assets/amonra/horoscopos/horoscopochino-dragon.jpg";
+import chinoSerpiente from "../../assets/amonra/horoscopos/horoscopochino-serpiente.jpg";
+import chinoCaballo from "../../assets/amonra/horoscopos/horoscopochino-caballo.jpg";
+import chinoCabra from "../../assets/amonra/horoscopos/horoscopochino-cabra.jpg";
+import chinoMono from "../../assets/amonra/horoscopos/horoscopochino-mono.jpg";
+import chinoGallo from "../../assets/amonra/horoscopos/horoscopochino-gallo.jpg";
+import chinoPerro from "../../assets/amonra/horoscopos/horoscopochino-perro.jpg";
+import chinoJabali from "../../assets/amonra/horoscopos/horoscopochino-jabali.jpg";
+
+// Mayan Signs Images
+import mayaMurcielago from "../../assets/amonra/horoscopos/horoscopomaya-murcielago.jpg";
+import mayaEscorpion from "../../assets/amonra/horoscopos/horoscopomaya-escorpion.jpg";
+import mayaVenado from "../../assets/amonra/horoscopos/horoscopomaya-venado.jpg";
+import mayaLechuza from "../../assets/amonra/horoscopos/horoscopomaya-lechuza.jpg";
+import mayaPavoreal from "../../assets/amonra/horoscopos/horoscopomaya-pavoreal.jpg";
+import mayaLagarto from "../../assets/amonra/horoscopos/horoscopomaya-lagarto.jpg";
+import mayaMono from "../../assets/amonra/horoscopos/horoscopomaya-mono.jpg";
+import mayaHalcon from "../../assets/amonra/horoscopos/horoscopomaya-halcon.jpg";
+import mayaJaguar from "../../assets/amonra/horoscopos/horoscopomaya-jaguar.jpg";
+import mayaZorro from "../../assets/amonra/horoscopos/horoscopomaya-zorro.jpg";
+import mayaSerpiente from "../../assets/amonra/horoscopos/horoscopomaya-serpiente.jpg";
+import mayaArdilla from "../../assets/amonra/horoscopos/horoscopomaya-ardilla.jpg";
+import mayaTortuga from "../../assets/amonra/horoscopos/horoscopomaya-tortuga.jpg";
+
+const westernImages: Record<string, ImageMetadata> = {
+  aries: signoAries,
+  tauro: signoTauro,
+  geminis: signoGeminis,
+  cancer: signoCancer,
+  leo: signoLeo,
+  virgo: signoVirgo,
+  libra: signoLibra,
+  escorpion: signoEscorpio,
+  sagitario: signoSagitario,
+  capricornio: signoCapricornio,
+  acuario: signoAcuario,
+  piscis: signoPiscis,
+};
+
+const arabImages: Record<string, ImageMetadata> = {
+  alfanje: armaAlfanje,
+  arco: armaArco,
+  cadena: armaCadena,
+  clava: armaClava,
+  cuchillo: armaCuchillo,
+  gumia: armaGumia,
+  hacha: armaHacha,
+  honda: armaHonda,
+  lanza: armaLanza,
+  machete: armaMachete,
+  maza: armaMaza,
+  punal: armaPunal,
+};
+
+const chineseImages: Record<string, ImageMetadata> = {
+  rata: chinoRata,
+  bufalo: chinoBuey,
+  tigre: chinoTigre,
+  gato: chinoConejo,
+  dragon: chinoDragon,
+  serpiente: chinoSerpiente,
+  caballo: chinoCaballo,
+  cabra: chinoCabra,
+  mono: chinoMono,
+  gallo: chinoGallo,
+  perro: chinoPerro,
+  jabali: chinoJabali,
+};
+
+const mayanImages: Record<string, ImageMetadata> = {
+  murcielago: mayaMurcielago,
+  escorpion: mayaEscorpion,
+  venado: mayaVenado,
+  lechuza: mayaLechuza,
+  pavoreal: mayaPavoreal,
+  lagarto: mayaLagarto,
+  mono: mayaMono,
+  halcon: mayaHalcon,
+  jaguar: mayaJaguar,
+  zorro: mayaZorro,
+  serpiente: mayaSerpiente,
+  ardilla: mayaArdilla,
+  tortuga: mayaTortuga,
+};
+
+const horoscopeTabs = [
+  { id: "occidental", label: "Zodíaco Solar" },
+  { id: "arabe", label: "Horóscopo Árabe" },
+  { id: "chino", label: "Zodíaco Chino" },
+  { id: "maya", label: "Horóscopo Maya" },
+];
+---
+
+<div class="space-y-12">
+  {/* CABECERA EDITORIAL DE HORÓSCOPOS */}
+  <section class="reading-section">
+    <div class="rounded-2xl border-l-4 border-clay-red bg-[var(--color-parchment-soft)] px-6 py-6 shadow-[0_8px_24px_rgba(49,31,14,0.08)] lg:px-8 lg:py-7">
+      <blockquote class="m-0 space-y-3">
+        <p class="max-w-none font-editorial text-[clamp(1.55rem,2.7vw,2.3rem)] leading-tight text-paper-ink">
+          &ldquo;{westernIntro.quote.text}&rdquo;
+        </p>
+        <footer class="font-interface text-sm font-semibold tracking-wider text-clay-red uppercase">
+          — {westernIntro.quote.source}
+        </footer>
+      </blockquote>
+      <p class="mt-5 max-w-none font-editorial text-xl leading-snug text-paper-ink">
+        {westernIntro.eclipticDescription}
+      </p>
+    </div>
+
+    <div class="mt-6 grid gap-x-10 gap-y-5 lg:grid-cols-2">
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Desde la remota antigüedad, las distintas civilizaciones de la Tierra
+        observaron el firmamento en busca de pautas arquetípicas para comprender
+        la condición humana. En Amonra reunimos cuatro de los sistemas
+        astrológicos y oraculares más profundos y trascendentes de la historia:
+        la rueda solar babilónico-grecolatina, el horóscopo guerrero del
+        desierto árabe, el ciclo cósmico taoísta de los 12 animales y los 5
+        elementos, y la sincronía biológica lunar maya con sus 13 lunas y 20
+        sellos sagrados.
+      </p>
+      <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
+        Cada tradición ofrece un espejo complementario del alma. Donde el
+        zodíaco solar destaca la estructura psicológica consciente y la misión
+        solar, el horóscopo árabe revela las armas del carácter para sortear las
+        pruebas de la vida; el sistema chino desentraña las fuerzas polares del
+        Yin y el Yang junto a los ciclos elementales, y el calendario maya
+        conecta la intuición con el latido cósmico de la Tierra y la Luna.
+      </p>
+    </div>
+  </section>
+
+  {/* TABS DE LAS 4 TRADICIONES */}
+  <section
+    class="space-y-8"
+    aria-label="Tradiciones Astrológicas y Horóscopos Comparados"
+  >
+    <ContentTabs
+      label="Tradiciones Astrológicas y Horóscopos Comparados"
+      tabs={horoscopeTabs}
+    >
+      {/* ------------------------------------------------------------------ */}
+      {/* TAB 1: ZODÍACO SOLAR OCCIDENTAL */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="occidental" class="scroll-mt-8 space-y-12">
+        <article class="space-y-8">
+          <header class="border-b border-antique-gold-soft/50 pb-5">
+            <span class="font-interface text-xs font-bold tracking-widest text-clay-red uppercase">
+              Tradición Helenística y Caldea
+            </span>
+            <h3 class="font-editorial text-[clamp(1.75rem,2.5vw,2.4rem)] text-paper-ink">
+              Los Doce Signos Zodiacales y las Cuatro Triplicidades Elementales
+            </h3>
+            <p class="mt-3 max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              Cada signo del zodíaco occidental abarca 30 grados geométricos
+              exactos a lo largo de la eclíptica celestial. A continuación se
+              presentan las cuatro matrices elementales que nutren el
+              temperamento humano, seguidas del compendio arquetípico,
+              mitológico y jeroglífico de los doce signos.
+            </p>
+          </header>
+
+          {/* Cuatro Triplicidades Elementales */}
+          <div class="space-y-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Los Cuatro Elementos de los Signos
+            </h4>
+            <div class="grid gap-6 md:grid-cols-2">
+              {westernElements.map((elem) => (
+                <div class="rounded-xl border border-antique-gold-soft/60 bg-[var(--color-parchment-soft)] p-6 shadow-sm">
+                  <div class="flex items-center justify-between border-b border-antique-gold-soft/40 pb-3">
+                    <span class="font-editorial text-2xl font-bold text-clay-red">
+                      {elem.name}
+                    </span>
+                    <span class="font-interface text-xs font-semibold tracking-wider text-paper-muted uppercase">
+                      {elem.signs.join(" • ")}
+                    </span>
+                  </div>
+                  <p class="mt-4 text-[0.98rem] leading-relaxed text-paper-ink">
+                    {elem.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Galería Exhaustiva de los 12 Signos */}
+          <div class="space-y-6">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Catálogo Exhaustivo de los 12 Signos Zodiacales
+            </h4>
+            <div class="space-y-8">
+              {westernSigns.map((sign) => {
+                const imgMetadata = westernImages[sign.id];
+                return (
+                  <article class="overflow-hidden rounded-2xl border border-antique-gold-soft/70 bg-[var(--color-parchment-soft)] shadow-md">
+                    <div class="grid lg:grid-cols-12">
+                      {/* Columna Izquierda: Imagen e Identidad */}
+                      <div class="flex flex-col items-center justify-center border-b border-antique-gold-soft/40 p-6 text-center lg:col-span-4 lg:border-r lg:border-b-0">
+                        {imgMetadata && (
+                          <div class="relative overflow-hidden rounded-xl border border-antique-gold-soft shadow-inner">
+                            <Image
+                              src={imgMetadata}
+                              alt={`Signo Zodiacal ${sign.name}`}
+                              class="h-auto w-full max-w-[220px] object-cover transition-transform duration-500 hover:scale-105"
+                            />
+                          </div>
+                        )}
+                        <h5 class="mt-4 font-editorial text-3xl font-bold text-paper-ink">
+                          {sign.name}
+                        </h5>
+                        <p class="font-interface text-xs font-semibold tracking-wider text-clay-red uppercase">
+                          {sign.number}
+                        </p>
+                        <p class="mt-1 text-sm font-medium text-paper-muted">
+                          {sign.dates}
+                        </p>
+
+                        <div class="mt-5 w-full space-y-2 rounded-lg bg-[var(--color-parchment-subtle)] p-3 text-left text-xs font-medium text-paper-ink">
+                          <div class="flex justify-between border-b border-antique-gold-soft/30 pb-1">
+                            <span class="text-paper-muted">Elemento:</span>
+                            <span class="font-semibold text-clay-red">
+                              {sign.element}
+                            </span>
+                          </div>
+                          <div class="flex justify-between border-b border-antique-gold-soft/30 pb-1">
+                            <span class="text-paper-muted">Modalidad:</span>
+                            <span>{sign.modality}</span>
+                          </div>
+                          <div class="flex justify-between border-b border-antique-gold-soft/30 pb-1">
+                            <span class="text-paper-muted">Polaridad:</span>
+                            <span>{sign.polarity}</span>
+                          </div>
+                          <div class="flex justify-between border-b border-antique-gold-soft/30 pb-1">
+                            <span class="text-paper-muted">
+                              Planeta Regente:
+                            </span>
+                            <span class="font-semibold text-antique-gold-deep">
+                              {sign.rulingPlanet}
+                            </span>
+                          </div>
+                          <div class="pt-1 text-[0.75rem] text-paper-muted">
+                            {sign.representation}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Columna Derecha: Mitología, Símbolo, Virtudes y Psicología */}
+                      <div class="space-y-5 p-6 lg:col-span-8 lg:p-8">
+                        {sign.symbolism && (
+                          <div>
+                            <h6 class="font-editorial text-base font-bold text-clay-red">
+                              Símbolo y Significado Jeroglífico
+                            </h6>
+                            <p class="mt-1 text-sm leading-relaxed text-paper-ink">
+                              {sign.symbolism}
+                            </p>
+                          </div>
+                        )}
+
+                        {sign.mythology && (
+                          <div class="border-t border-antique-gold-soft/40 pt-4">
+                            <h6 class="font-editorial text-base font-bold text-clay-red">
+                              Historia, Mitología y Origen Caldeo-Griego
+                            </h6>
+                            <p class="mt-1 text-sm leading-relaxed text-paper-muted">
+                              {sign.mythology}
+                            </p>
+                          </div>
+                        )}
+
+                        <div class="grid gap-4 border-t border-antique-gold-soft/40 pt-4 sm:grid-cols-2">
+                          <div class="rounded-lg bg-emerald-950/5 p-3.5 border border-emerald-800/20">
+                            <h6 class="font-interface text-xs font-bold tracking-wider text-emerald-900 uppercase">
+                              Virtudes y Fortalezas
+                            </h6>
+                            <div class="mt-2 flex flex-wrap gap-1.5">
+                              {sign.positiveQualities.map((pos) => (
+                                <span class="rounded bg-emerald-800/10 px-2 py-0.5 text-xs text-emerald-950 font-medium">
+                                  {pos}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div class="rounded-lg bg-amber-950/5 p-3.5 border border-amber-800/20">
+                            <h6 class="font-interface text-xs font-bold tracking-wider text-amber-900 uppercase">
+                              Aspectos de Sombra / Desafíos
+                            </h6>
+                            <div class="mt-2 flex flex-wrap gap-1.5">
+                              {sign.shadowQualities.slice(0, 10).map((neg) => (
+                                <span class="rounded bg-amber-800/10 px-2 py-0.5 text-xs text-amber-950 font-medium">
+                                  {neg}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+
+                        {sign.psychology && (
+                          <div class="border-t border-antique-gold-soft/40 pt-4">
+                            <h6 class="font-editorial text-base font-bold text-paper-ink">
+                              Rasgos Psicológicos en Profundidad
+                            </h6>
+                            <p class="mt-1 text-sm leading-relaxed text-paper-ink">
+                              {sign.psychology}
+                            </p>
+                          </div>
+                        )}
+
+                        <div class="grid gap-3 border-t border-antique-gold-soft/40 pt-4 text-xs sm:grid-cols-2">
+                          {sign.vocations && (
+                            <div>
+                              <strong class="text-clay-red">
+                                Vocaciones Afines:
+                              </strong>{" "}
+                              <span class="text-paper-muted">
+                                {sign.vocations}
+                              </span>
+                            </div>
+                          )}
+                          {sign.anatomyRuled && (
+                            <div>
+                              <strong class="text-clay-red">
+                                Fisiología Regida:
+                              </strong>{" "}
+                              <span class="text-paper-muted">
+                                {sign.anatomyRuled}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </article>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* TAB 2: HORÓSCOPO ÁRABE DE LAS ARMAS */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="arabe" class="scroll-mt-8 space-y-12">
+        <article class="space-y-8">
+          <header class="border-b border-antique-gold-soft/50 pb-5">
+            <span class="font-interface text-xs font-bold tracking-widest text-clay-red uppercase">
+              Sabiduría del Desierto y las Dunas
+            </span>
+            <h3 class="font-editorial text-[clamp(1.75rem,2.5vw,2.4rem)] text-paper-ink">
+              {arabIntro.title}
+            </h3>
+            <blockquote class="mt-4 rounded-xl border-l-4 border-antique-gold bg-[var(--color-parchment-subtle)] p-4 text-paper-ink">
+              <p class="italic text-base">{arabIntro.quote.text}</p>
+              <footer class="mt-2 text-xs font-semibold text-clay-red">
+                — {arabIntro.quote.source}
+              </footer>
+            </blockquote>
+            <p class="mt-4 max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              {arabIntro.historicalContext}
+            </p>
+          </header>
+
+          {/* Clasificación de las Armas */}
+          <div class="space-y-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Las Tres Clases de Armas Tradicionales
+            </h4>
+            <div class="grid gap-6 md:grid-cols-3">
+              {arabIntro.weaponClasses.map((cls) => (
+                <div class="rounded-xl border border-antique-gold-soft/60 bg-[var(--color-parchment-soft)] p-5 shadow-sm">
+                  <h5 class="font-editorial text-xl font-bold text-clay-red">
+                    {cls.type}
+                  </h5>
+                  <p class="mt-2 text-sm leading-relaxed text-paper-muted">
+                    {cls.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Las 12 Armas Árabes */}
+          <div class="space-y-6">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Las Doce Armas del Destino Árabe
+            </h4>
+            <div class="grid gap-8 md:grid-cols-2">
+              {arabWeapons.map((weapon) => {
+                const imgMetadata = arabImages[weapon.id];
+                return (
+                  <div class="flex flex-col overflow-hidden rounded-2xl border border-antique-gold-soft/70 bg-[var(--color-parchment-soft)] shadow-md">
+                    <div class="flex items-center gap-5 border-b border-antique-gold-soft/40 bg-[var(--color-parchment-subtle)] p-5">
+                      {imgMetadata && (
+                        <div class="h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-antique-gold-soft shadow-inner">
+                          <Image
+                            src={imgMetadata}
+                            alt={`Arma Árabe: ${weapon.name}`}
+                            class="h-full w-full object-cover"
+                          />
+                        </div>
+                      )}
+                      <div>
+                        <span class="inline-block rounded-full bg-clay-red/10 px-2.5 py-0.5 font-interface text-[0.7rem] font-bold text-clay-red uppercase">
+                          {weapon.weaponType}
+                        </span>
+                        <h5 class="font-editorial text-2xl font-bold text-paper-ink">
+                          {weapon.name}
+                        </h5>
+                        <p class="text-xs font-medium text-paper-muted">
+                          {weapon.dates}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="flex-1 space-y-4 p-6 text-sm text-paper-ink">
+                      <div class="grid grid-cols-2 gap-2 rounded-lg bg-[var(--color-parchment-subtle)] p-3 text-xs">
+                        <div>
+                          <span class="text-paper-muted">Planeta:</span>{" "}
+                          <strong>{weapon.rulingPlanet}</strong>
+                        </div>
+                        <div>
+                          <span class="text-paper-muted">Metal:</span>{" "}
+                          <strong>{weapon.rulingMetal}</strong>
+                        </div>
+                        <div>
+                          <span class="text-paper-muted">Color:</span>{" "}
+                          <strong>{weapon.color}</strong>
+                        </div>
+                        <div>
+                          <span class="text-paper-muted">
+                            Afinidad Zodíaco:
+                          </span>{" "}
+                          <strong>{weapon.westernSignAffinity}</strong>
+                        </div>
+                      </div>
+
+                      <div class="space-y-2">
+                        <h6 class="font-editorial text-base font-semibold text-clay-red">
+                          Carácter y Personalidad
+                        </h6>
+                        <p class="text-xs leading-relaxed text-paper-muted">
+                          {weapon.personality}
+                        </p>
+                      </div>
+
+                      {weapon.workLife && (
+                        <div class="border-t border-antique-gold-soft/30 pt-3 space-y-1">
+                          <h6 class="font-interface text-xs font-bold text-paper-ink uppercase">
+                            En el Trabajo y Negocios
+                          </h6>
+                          <p class="text-xs leading-relaxed text-paper-muted">
+                            {weapon.workLife}
+                          </p>
+                        </div>
+                      )}
+
+                      {weapon.loveAndRelationships && (
+                        <div class="border-t border-antique-gold-soft/30 pt-3 space-y-1">
+                          <h6 class="font-interface text-xs font-bold text-paper-ink uppercase">
+                            En el Amor y Relaciones
+                          </h6>
+                          <p class="text-xs leading-relaxed text-paper-muted">
+                            {weapon.loveAndRelationships}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </article>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* TAB 3: ZODÍACO CHINO Y WU XING */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="chino" class="scroll-mt-8 space-y-12">
+        <article class="space-y-8">
+          <header class="border-b border-antique-gold-soft/50 pb-5">
+            <span class="font-interface text-xs font-bold tracking-widest text-clay-red uppercase">
+              Cosmovisión Taoísta y Tradición Imperial
+            </span>
+            <h3 class="font-editorial text-[clamp(1.75rem,2.5vw,2.4rem)] text-paper-ink">
+              {chineseIntro.title}
+            </h3>
+            <blockquote class="mt-4 rounded-xl border-l-4 border-antique-gold bg-[var(--color-parchment-subtle)] p-4 text-paper-ink">
+              <p class="italic text-base">{chineseIntro.quote.text}</p>
+              <footer class="mt-2 text-xs font-semibold text-clay-red">
+                — {chineseIntro.quote.source}
+              </footer>
+            </blockquote>
+          </header>
+
+          {/* Leyenda y Filosofía Taoísta */}
+          <div class="grid gap-6 md:grid-cols-2">
+            <div class="rounded-xl border border-antique-gold-soft/60 bg-[var(--color-parchment-soft)] p-6 shadow-sm">
+              <h4 class="font-editorial text-xl font-bold text-clay-red">
+                La Leyenda de la Convocatoria de Buda
+              </h4>
+              <p class="mt-3 text-sm leading-relaxed text-paper-muted">
+                {chineseIntro.buddhaLegend}
+              </p>
+            </div>
+            <div class="rounded-xl border border-antique-gold-soft/60 bg-[var(--color-parchment-soft)] p-6 shadow-sm">
+              <h4 class="font-editorial text-xl font-bold text-clay-red">
+                El Yin Yang y el Ciclo Sexagesimal
+              </h4>
+              <p class="mt-3 text-sm leading-relaxed text-paper-muted">
+                {chineseIntro.yinYangPhilosophy}
+              </p>
+              <p class="mt-3 border-t border-antique-gold-soft/30 pt-3 text-xs leading-relaxed text-paper-ink">
+                {chineseIntro.sexagesimalCycle}
+              </p>
+            </div>
+          </div>
+
+          {/* Los Cinco Elementos Wu Xing */}
+          <div class="space-y-4">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Los Cinco Elementos (Wu Xing)
+            </h4>
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+              {wuXingElements.map((el) => (
+                <div class="rounded-xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-4 text-center shadow-sm">
+                  <h5 class="font-editorial text-lg font-bold text-clay-red">
+                    {el.name}
+                  </h5>
+                  <p class="mt-1 text-xs font-semibold text-antique-gold-deep">
+                    {el.associatedPlanet} • {el.season}
+                  </p>
+                  <p class="mt-2 text-xs leading-relaxed text-paper-muted">
+                    {el.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Los 12 Animales del Zodíaco Chino */}
+          <div class="space-y-6">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Los Doce Animales del Ciclo Anual
+            </h4>
+            <div class="grid gap-8 md:grid-cols-2">
+              {chineseAnimals.map((animal) => {
+                const imgMetadata = chineseImages[animal.id];
+                return (
+                  <div class="flex flex-col overflow-hidden rounded-2xl border border-antique-gold-soft/70 bg-[var(--color-parchment-soft)] shadow-md">
+                    <div class="flex items-center gap-5 border-b border-antique-gold-soft/40 bg-[var(--color-parchment-subtle)] p-5">
+                      {imgMetadata && (
+                        <div class="h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-antique-gold-soft shadow-inner">
+                          <Image
+                            src={imgMetadata}
+                            alt={`Signo Chino: ${animal.animal}`}
+                            class="h-full w-full object-cover"
+                          />
+                        </div>
+                      )}
+                      <div>
+                        <span class="inline-block rounded-full bg-antique-gold-deep/10 px-2.5 py-0.5 font-interface text-[0.7rem] font-bold text-antique-gold-deep uppercase">
+                          Polaridad {animal.polarity} • Rama:{" "}
+                          {animal.earthBranch}
+                        </span>
+                        <h5 class="font-editorial text-2xl font-bold text-paper-ink">
+                          {animal.animal}
+                        </h5>
+                        <p class="text-xs font-medium text-paper-muted">
+                          {animal.fixedSeason} • Elemento Fijo:{" "}
+                          {animal.fixedElement} • {animal.hours}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="flex-1 space-y-4 p-6 text-sm text-paper-ink">
+                      {animal.quote && (
+                        <blockquote class="border-l-2 border-clay-red pl-3 italic text-xs text-clay-red">
+                          &ldquo;{animal.quote}&rdquo;
+                        </blockquote>
+                      )}
+
+                      <div class="space-y-2">
+                        <h6 class="font-editorial text-base font-semibold text-paper-ink">
+                          {animal.archetypalTitle}
+                        </h6>
+                        <p class="text-xs leading-relaxed text-paper-muted">
+                          {animal.description}
+                        </p>
+                      </div>
+
+                      {animal.socialAndWorkLife && (
+                        <div class="border-t border-antique-gold-soft/30 pt-3 space-y-1">
+                          <h6 class="font-interface text-xs font-bold text-clay-red uppercase">
+                            Vocación y Relaciones Sociales
+                          </h6>
+                          <p class="text-xs leading-relaxed text-paper-muted">
+                            {animal.socialAndWorkLife}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </article>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* TAB 4: HORÓSCOPO MAYA: 13 LUNAS Y LOS 20 SELLOS SOLARES */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="maya" class="scroll-mt-8 space-y-12">
+        <article class="space-y-8">
+          <header class="border-b border-antique-gold-soft/50 pb-5">
+            <span class="font-interface text-xs font-bold tracking-widest text-clay-red uppercase">
+              Cosmovisión del Tzolkin y Sincronario Galáctico
+            </span>
+            <h3 class="font-editorial text-[clamp(1.75rem,2.5vw,2.4rem)] text-paper-ink">
+              {mayanIntro.title}
+            </h3>
+            <blockquote class="mt-4 rounded-xl border-l-4 border-antique-gold bg-[var(--color-parchment-subtle)] p-4 text-paper-ink">
+              <p class="italic text-base">{mayanIntro.quote.text}</p>
+              <footer class="mt-2 text-xs font-semibold text-clay-red">
+                — {mayanIntro.quote.source}
+              </footer>
+            </blockquote>
+            <p class="mt-4 max-w-none text-[1.02rem] leading-relaxed text-paper-muted">
+              {mayanIntro.lunarCycleExplanation}
+            </p>
+            <p class="mt-3 max-w-none text-sm leading-relaxed text-paper-ink font-medium">
+              {mayanIntro.genesisMayaPhilosophy}
+            </p>
+          </header>
+
+          {/* Las 13 Lunas Sagradas */}
+          <div class="space-y-6">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              Las Trece Lunas del Horóscopo Maya
+            </h4>
+            <div class="space-y-8">
+              {mayanSigns.map((msign) => {
+                const imgMetadata = mayanImages[msign.id];
+                return (
+                  <article class="overflow-hidden rounded-2xl border border-antique-gold-soft/70 bg-[var(--color-parchment-soft)] shadow-md">
+                    <div class="grid lg:grid-cols-12">
+                      <div class="flex flex-col items-center justify-center border-b border-antique-gold-soft/40 p-6 text-center lg:col-span-4 lg:border-r lg:border-b-0">
+                        {imgMetadata && (
+                          <div class="relative overflow-hidden rounded-xl border border-antique-gold-soft shadow-inner">
+                            <Image
+                              src={imgMetadata}
+                              alt={`Signo Maya: ${msign.animalName}`}
+                              class="h-auto w-full max-w-[200px] object-cover transition-transform duration-500 hover:scale-105"
+                            />
+                          </div>
+                        )}
+                        <span class="mt-4 font-interface text-xs font-bold tracking-widest text-clay-red uppercase">
+                          Luna Nº {msign.moonNumber}
+                        </span>
+                        <h5 class="font-editorial text-2xl font-bold text-paper-ink">
+                          {msign.indigenousName} — {msign.animalName}
+                        </h5>
+                        <p class="mt-1 text-xs font-medium text-paper-muted">
+                          ({msign.dates})
+                        </p>
+                      </div>
+
+                      <div class="space-y-4 p-6 lg:col-span-8 lg:p-8">
+                        <div class="space-y-2">
+                          <h6 class="font-editorial text-lg font-semibold text-clay-red">
+                            Rasgos y Temperamento
+                          </h6>
+                          <p class="text-sm leading-relaxed text-paper-ink">
+                            {msign.personality}
+                          </p>
+                        </div>
+
+                        {msign.genesisMayaStage && (
+                          <div class="rounded-xl border border-antique-gold-soft/50 bg-[var(--color-parchment-subtle)] p-4 text-xs leading-relaxed text-paper-muted">
+                            <strong class="font-interface text-clay-red uppercase tracking-wider block mb-1">
+                              Génesis Cósmico Maya:
+                            </strong>
+                            {msign.genesisMayaStage}
+                          </div>
+                        )}
+
+                        {msign.cosmicSpiralTurn && (
+                          <div class="border-t border-antique-gold-soft/30 pt-3 text-xs font-medium text-antique-gold-deep italic">
+                            {msign.cosmicSpiralTurn}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Los 20 Sellos Solares del Tzolkin */}
+          <div class="space-y-6">
+            <div class="border-t border-antique-gold-soft/50 pt-8">
+              <h4 class="font-editorial text-2xl text-paper-ink">
+                Los Veinte Sellos Solares del Tzolkin
+              </h4>
+              <p class="mt-2 text-sm text-paper-muted">
+                Junto a las trece lunas, los 20 Sellos Solares definen la
+                frecuencia kármica y el propósito del alma encarnada según el
+                calendario sagrado maya.
+              </p>
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {mayanSolarSeals.map((seal) => (
+                <div class="rounded-xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-4 shadow-sm">
+                  <div class="flex items-center justify-between border-b border-antique-gold-soft/30 pb-2">
+                    <span class="font-interface text-xs font-bold text-clay-red">
+                      Sello {seal.number}
+                    </span>
+                    <span class="font-editorial text-sm font-semibold text-antique-gold-deep">
+                      {seal.indigenousName}
+                    </span>
+                  </div>
+                  <h5 class="mt-2 font-editorial text-lg font-bold text-paper-ink">
+                    {seal.name}
+                  </h5>
+                  <p class="mt-2 text-xs leading-relaxed text-paper-muted">
+                    {seal.description}
+                  </p>
+                  {seal.shadow && (
+                    <div class="mt-3 border-t border-antique-gold-soft/20 pt-2 text-[0.75rem] text-amber-900/80">
+                      <strong>Sombra:</strong> {seal.shadow}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+      </section>
+    </ContentTabs>
+  </section>
+</div>

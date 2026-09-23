@@ -6,10 +6,10 @@ Sitio web de `amonra.cl`, construido con Astro y generado como un sitio estátic
 
 El proyecto cuenta con 15 secciones configuradas:
 
-- 13 secciones publicadas: Fundación, Historia, Amuletos, Astrología, Gemas,
-  Inciensos, Magia, Numerología, Oráculos, Runas, Sueños, Tarot y Velas (86,7% del
-  portal).
-- 2 secciones en migración: Horóscopos y Terapias (13,3% restante).
+- 14 secciones publicadas: Fundación, Historia, Amuletos, Astrología, Gemas,
+  Horóscopos, Inciensos, Magia, Numerología, Oráculos, Runas, Sueños, Tarot y Velas
+  (93,3% del portal).
+- 1 sección en migración: Terapias (6,7% restante).
 
 La migración consolida los contenidos históricos en páginas temáticas con
 índices, pestañas y fichas reutilizables. El objetivo es conservar los temas
@@ -88,16 +88,17 @@ npm run preview
 
 Las secciones marcadas como publicadas en `src/config/amonra-sections.ts` son:
 
-`fundacion`, `historia`, `amuletos`, `astrologia`, `gemas`, `inciensos`,
-`magia`, `numerologia`, `oraculos`, `runas`, `suenos`, `tarot` y `velas`.
+`fundacion`, `historia`, `amuletos`, `astrologia`, `gemas`, `horoscopos`,
+`inciensos`, `magia`, `numerologia`, `oraculos`, `runas`, `suenos`, `tarot` y `velas`.
 
 Las secciones en migración son:
 
-`horoscopos` y `terapias`.
+`terapias`.
 
 Los bloques con contenido personalizado incluyen Fundación, Historia, Amuletos,
-Astrología, Gemas, Inciensos, Magia, Numerología, Oráculos, Runas, Sueños, Tarot
-y Velas. Amuletos, Gemas, Magia, Numerología, Oráculos, Runas, Tarot y Astrología
+Astrología, Gemas, Horóscopos, Inciensos, Magia, Numerología, Oráculos, Runas,
+Sueños, Tarot y Velas. Amuletos, Gemas, Horóscopos, Magia, Numerología, Oráculos,
+Runas, Tarot y Astrología
 incorporan índices o pestañas de navegación interna; Astrología además cuenta
 con páginas dinámicas para sus artículos.
 
