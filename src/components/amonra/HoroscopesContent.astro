@@ -639,11 +639,11 @@ const horoscopeTabs = [
                           {animal.archetypalTitle}
                         </h6>
                         <p class="text-xs leading-relaxed text-paper-muted">
-                          {animal.description}
+                          {animal.fullText || animal.description}
                         </p>
                       </div>
 
-                      {animal.socialAndWorkLife && (
+                      {!animal.fullText && animal.socialAndWorkLife && (
                         <div class="border-t border-antique-gold-soft/30 pt-3 space-y-1">
                           <h6 class="font-interface text-xs font-bold text-clay-red uppercase">
                             Vocación y Relaciones Sociales

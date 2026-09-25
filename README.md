@@ -59,6 +59,8 @@ npm run format:check # Comprueba el formato sin modificar archivos
 Antes de integrar cambios, ejecuta:
 
 ```sh
+npm run qa:editorial
+npm run qa:sections
 npm run check
 npm run build
 ```
@@ -150,9 +152,10 @@ npm run build
 La build actual genera 24 rutas estáticas y valida las páginas publicadas,
 incluidas `/temas/numerologia/`, `/temas/oraculos/`, `/temas/runas/`,
 `/temas/tarot/`, `/temas/gemas/`, `/temas/amuletos/`, `/temas/fundacion/` e
-`/temas/historia/`. El smoke test revisa que estas rutas existan, que incluyan
-sus contenidos clave y que Gemas no conserve pautas de ingestión de agua con
-cristales.
+`/temas/historia/` y `/temas/horoscopos/`. `qa:editorial` revisa cantidades,
+campos obligatorios, textos completos comparados con el backup original,
+imágenes árabes byte a byte y el catálogo ampliado de gemas. `qa:sections`
+revisa el resto de los artefactos, sus catálogos, rutas, `legacyPath` y activos.
 
 Si `npm run check` informa una advertencia de Prettier en
 `docs/migracion_100_amonra.md`, corresponde a documentación pendiente de formato

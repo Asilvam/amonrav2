@@ -370,3 +370,270 @@ export const gemCatalog: GemStone[] = [
       "Descubierta por los antiguos incas; sana los lazos afectivos, fomenta el perdón y despierta el amor desinteresado.",
   },
 ];
+
+/**
+ * Fichas recuperadas de las páginas históricas gemas_magnetismo1–5.
+ * Las asociaciones se expresan como tradición simbólica, no como indicación médica.
+ */
+export const additionalGemCatalog: GemStone[] = [
+  {
+    name: "Diamante",
+    mineralGroup: "Carbonatos",
+    color: "Incoloro, amarillo o con tonalidades diversas",
+    energyType: "Emisora",
+    traditionalHealing:
+      "En la tradición mineral se asocia con claridad, firmeza y resistencia.",
+    spiritualUse:
+      "Símbolo de pureza, voluntad y luz interior; invita a sostener una intención con perseverancia.",
+  },
+  {
+    name: "Esmeralda",
+    mineralGroup: "Silicatos / Berilos",
+    color: "Verde intenso a verde azulado",
+    energyType: "Receptiva",
+    traditionalHealing:
+      "Tradicionalmente vinculada con la renovación, la frescura y el equilibrio emocional.",
+    spiritualUse:
+      "Gema de la esperanza y la comprensión; se relaciona con el corazón y la generosidad.",
+  },
+  {
+    name: "Zafiro",
+    mineralGroup: "Óxidos / Corindones",
+    color: "Azul profundo, aunque también existe en otros tonos",
+    energyType: "Receptiva",
+    traditionalHealing:
+      "En el imaginario mineral representa serenidad, sobriedad y concentración.",
+    spiritualUse:
+      "Piedra de la verdad y la disciplina interior; favorece la contemplación lúcida.",
+  },
+  {
+    name: "Rubí",
+    mineralGroup: "Óxidos / Corindones",
+    color: "Rojo carmesí a rojo púrpura",
+    energyType: "Emisora",
+    traditionalHealing:
+      "Tradicionalmente asociado con vitalidad, calor y fuerza de ánimo.",
+    spiritualUse:
+      "Representa pasión, coraje y voluntad creadora; invita a actuar con nobleza.",
+  },
+  {
+    name: "Ópalo",
+    mineralGroup: "Sílice hidratada",
+    color: "Blanco, negro o iridiscente",
+    energyType: "Receptiva",
+    traditionalHealing:
+      "En la tradición simbólica se relaciona con sensibilidad, imaginación y cambio.",
+    spiritualUse:
+      "Su juego de colores evoca la intuición, los sueños y la capacidad de revelar matices ocultos.",
+  },
+  {
+    name: "Topacio",
+    mineralGroup: "Silicatos",
+    color: "Dorado, amarillo, azul o incoloro",
+    energyType: "Emisora",
+    traditionalHealing:
+      "Tradicionalmente representa calidez, claridad y confianza renovada.",
+    spiritualUse:
+      "Se asocia con optimismo, generosidad y una voluntad capaz de orientar la energía.",
+  },
+  {
+    name: "Jaspe",
+    mineralGroup: "Cuarzos / Calcedonias",
+    color: "Rojo, amarillo, verde o multicolor",
+    energyType: "Equilibrante",
+    traditionalHealing:
+      "En las tradiciones minerales simboliza estabilidad, resistencia y arraigo.",
+    spiritualUse:
+      "Piedra de la presencia y la constancia; ayuda a recordar el vínculo con la tierra.",
+  },
+  {
+    name: "Aguamarina",
+    mineralGroup: "Silicatos / Berilos",
+    color: "Azul pálido a azul verdoso",
+    energyType: "Receptiva",
+    traditionalHealing:
+      "Tradicionalmente vinculada con frescura, calma y fluidez emocional.",
+    spiritualUse:
+      "Gema del mar y de la comunicación serena; invita a expresar la verdad sin violencia.",
+  },
+  {
+    name: "Ágata",
+    mineralGroup: "Cuarzos / Calcedonias",
+    color: "Bandas de colores variados",
+    energyType: "Equilibrante",
+    traditionalHealing:
+      "Su estructura estratificada se asocia simbólicamente con estabilidad y protección.",
+    spiritualUse:
+      "Representa paciencia, arraigo y la integración armoniosa de experiencias distintas.",
+  },
+  {
+    name: "Perla",
+    mineralGroup: "Carbonato cálcico orgánico",
+    color: "Blanco, crema, rosado o gris",
+    energyType: "Receptiva",
+    traditionalHealing:
+      "En la tradición se relaciona con suavidad, pureza y equilibrio de las emociones.",
+    spiritualUse:
+      "Símbolo lunar de receptividad, dignidad y sabiduría nacida de la experiencia.",
+  },
+  {
+    name: "Coral",
+    mineralGroup: "Material orgánico calcáreo",
+    color: "Rojo, naranja, blanco o rosado",
+    energyType: "Emisora",
+    traditionalHealing:
+      "Tradicionalmente representa vitalidad, protección y conexión con el mar.",
+    spiritualUse:
+      "Amuleto de fuerza vital y vínculo ancestral con las aguas profundas.",
+  },
+  {
+    name: "Amazonita",
+    mineralGroup: "Silicatos / Feldespatos",
+    color: "Verde azulado con vetas claras",
+    energyType: "Receptiva",
+    traditionalHealing:
+      "En el imaginario mineral se asocia con calma, equilibrio y alivio de tensiones.",
+    spiritualUse:
+      "Favorece la comunicación honesta y la unión entre la sensibilidad y la voluntad.",
+  },
+  {
+    name: "Sodalita",
+    mineralGroup: "Silicatos",
+    color: "Azul oscuro con vetas blancas",
+    energyType: "Receptiva",
+    traditionalHealing:
+      "Tradicionalmente vinculada con serenidad, orden mental y expresión equilibrada.",
+    spiritualUse:
+      "Piedra de la razón intuitiva; acompaña la búsqueda de verdad y coherencia interior.",
+  },
+  {
+    name: "Ojo de gato",
+    mineralGroup: "Crisoberilo / Variedades chatoyantes",
+    color: "Dorado, verde amarillento o pardo",
+    energyType: "Equilibrante",
+    traditionalHealing:
+      "Su brillo móvil se asocia tradicionalmente con vigilancia, protección y equilibrio.",
+    spiritualUse:
+      "Símbolo de percepción y prudencia; invita a observar antes de actuar.",
+  },
+  {
+    name: "Obsidiana",
+    mineralGroup: "Vidrio volcánico natural",
+    color: "Negro, pardo o con reflejos dorados",
+    energyType: "Equilibrante",
+    traditionalHealing:
+      "En la tradición representa arraigo, protección y confrontación con lo oculto.",
+    spiritualUse:
+      "Espejo simbólico de la sombra; ayuda a mirar con honestidad aquello que requiere transformación.",
+  },
+  {
+    name: "Cornalina",
+    mineralGroup: "Cuarzos / Calcedonias",
+    color: "Naranja, rojo o pardo rojizo",
+    energyType: "Emisora",
+    traditionalHealing:
+      "Tradicionalmente asociada con calor, movimiento y recuperación del ánimo.",
+    spiritualUse:
+      "Piedra de impulso creativo, valentía y presencia en el mundo material.",
+  },
+  {
+    name: "Azabache",
+    mineralGroup: "Mineraloide orgánico",
+    color: "Negro brillante",
+    energyType: "Equilibrante",
+    traditionalHealing:
+      "En distintas culturas se ha usado como símbolo de protección y absorción de densidades.",
+    spiritualUse:
+      "Amuleto de recogimiento y defensa simbólica frente a influencias perturbadoras.",
+  },
+  {
+    name: "Azurita",
+    mineralGroup: "Carbonatos de cobre",
+    color: "Azul intenso a azul violáceo",
+    energyType: "Receptiva",
+    traditionalHealing:
+      "Tradicionalmente vinculada con pausa, introspección y claridad de la mirada interior.",
+    spiritualUse:
+      "Acompaña la meditación y la exploración de ideas profundas con discernimiento.",
+  },
+  {
+    name: "Heliotropo",
+    mineralGroup: "Cuarzos / Calcedonias",
+    color: "Verde oscuro con inclusiones rojas",
+    energyType: "Equilibrante",
+    traditionalHealing:
+      "Su combinación de tonos se asocia simbólicamente con fuerza, resistencia y renovación.",
+    spiritualUse:
+      "Representa el vínculo entre la sangre, la tierra y el coraje para atravesar las pruebas.",
+  },
+  {
+    name: "Ónix",
+    mineralGroup: "Cuarzos / Calcedonias",
+    color: "Negro, blanco o bandeado",
+    energyType: "Equilibrante",
+    traditionalHealing:
+      "Tradicionalmente relacionado con firmeza, autocontrol y estabilidad.",
+    spiritualUse:
+      "Ayuda a simbolizar límites sanos, concentración y perseverancia ante la dificultad.",
+  },
+  {
+    name: "Crisocola",
+    mineralGroup: "Silicatos y carbonatos de cobre",
+    color: "Azul verdoso a verde turquesa",
+    energyType: "Receptiva",
+    traditionalHealing:
+      "En la tradición mineral se vincula con calma, suavidad y expresión emocional.",
+    spiritualUse:
+      "Gema de la comunicación compasiva y de la sabiduría serena de la naturaleza.",
+  },
+  {
+    name: "Granate",
+    mineralGroup: "Silicatos",
+    color: "Rojo oscuro, naranja, verde o pardo",
+    energyType: "Emisora",
+    traditionalHealing:
+      "Tradicionalmente asociado con energía, constancia y voluntad de recuperación.",
+    spiritualUse:
+      "Simboliza pasión, compromiso y capacidad de sostener una empresa hasta su maduración.",
+  },
+  {
+    name: "Malaquita",
+    mineralGroup: "Carbonatos de cobre",
+    color: "Verde bandeado claro y oscuro",
+    energyType: "Equilibrante",
+    traditionalHealing:
+      "En el simbolismo mineral representa cambio, limpieza y movimiento de lo estancado.",
+    spiritualUse:
+      "Piedra de transformación y conciencia; invita a reconocer patrones antes de modificarlos.",
+  },
+  {
+    name: "Peridoto",
+    mineralGroup: "Silicatos / Olivinos",
+    color: "Verde amarillento a verde oliva",
+    energyType: "Receptiva",
+    traditionalHealing:
+      "Tradicionalmente vinculado con frescura, ligereza y renovación de la mirada.",
+    spiritualUse:
+      "Representa alegría, claridad y la liberación de cargas antiguas.",
+  },
+  {
+    name: "Turmalina",
+    mineralGroup: "Silicatos complejos",
+    color: "Negro, verde, rosa o multicolor",
+    energyType: "Equilibrante",
+    traditionalHealing:
+      "En distintas tradiciones se asocia con protección, equilibrio y estabilidad energética.",
+    spiritualUse:
+      "Su variedad cromática simboliza integración, discernimiento y protección consciente.",
+  },
+  {
+    name: "Celestita",
+    mineralGroup: "Sulfatos",
+    color: "Azul cielo, blanco o gris azulado",
+    energyType: "Receptiva",
+    traditionalHealing:
+      "Tradicionalmente representa quietud, liviandad y un descanso contemplativo.",
+    spiritualUse:
+      "Gema de serenidad y elevación simbólica; invita a escuchar el silencio interior.",
+  },
+];

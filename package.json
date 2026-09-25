@@ -9,6 +9,8 @@
     "dev": "astro dev --port 4321",
     "build": "astro build",
     "check": "astro check && eslint . && prettier --check .",
+    "qa:editorial": "node scripts/qa-editorial.mjs",
+    "qa:sections": "node scripts/qa-sections.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",

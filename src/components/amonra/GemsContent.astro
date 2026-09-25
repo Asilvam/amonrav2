@@ -4,42 +4,16 @@ import {
   zodiacGems,
   healingWaterSteps,
   gemCatalog,
+  additionalGemCatalog,
 } from "../../config/gems-data";
+
+const allGems = [...gemCatalog, ...additionalGemCatalog];
 
 const gemTabs = [
   { id: "sanacion", label: "Sanación y Energía" },
   { id: "meditacion", label: "Meditación y Chakras" },
   { id: "catalogo", label: "Catálogo de Gemas" },
   { id: "zodiaco", label: "Zodíaco y Piedras" },
-];
-
-const additionalGems = [
-  "Diamante",
-  "Esmeralda",
-  "Zafiro",
-  "Rubí",
-  "Ópalo",
-  "Topacio",
-  "Jaspe",
-  "Aguamarina",
-  "Ágata",
-  "Perla",
-  "Coral",
-  "Amazonita",
-  "Sodalita",
-  "Ojo de gato",
-  "Obsidiana",
-  "Cornalina",
-  "Azabache",
-  "Azurita",
-  "Heliotropo",
-  "Onix",
-  "Crisocola",
-  "Granate",
-  "Malaquita",
-  "Peridoto",
-  "Turmalina",
-  "Celestita",
 ];
 ---
 
@@ -241,7 +215,7 @@ const additionalGems = [
       <section id="catalogo" class="scroll-mt-8 space-y-10">
         <article class="reading-section">
           <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
-            Selección de piedras y cristales
+            Fichas completas de piedras y cristales ({allGems.length})
           </h3>
           <div class="gems-columns mt-5 grid gap-x-10 gap-y-5 lg:grid-cols-2">
             <p class="max-w-none text-[1.04rem] leading-relaxed text-paper-muted">
@@ -261,7 +235,7 @@ const additionalGems = [
         </article>
 
         <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {gemCatalog.map((gem) => (
+          {allGems.map((gem) => (
             <div class="flex flex-col justify-between rounded-xl border border-antique-gold-soft/40 bg-surface-warm/30 p-5 shadow-xs transition hover:border-antique-gold/60">
               <div>
                 <div class="flex items-center justify-between border-b border-antique-gold-soft/30 pb-3">
@@ -304,24 +278,6 @@ const additionalGems = [
               </div>
             </div>
           ))}
-        </div>
-
-        <div class="rounded-xl border border-antique-gold-soft/40 bg-surface-warm/25 p-5">
-          <h4 class="font-editorial text-2xl font-medium text-paper-ink">
-            Otras piedras mencionadas en el compendio original
-          </h4>
-          <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-            Estos nombres también formaban parte del material antiguo. Se
-            mantienen como índice de correspondencias para que la migración no
-            los pierda, aunque todavía no cuentan con una ficha independiente.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            {additionalGems.map((gem) => (
-              <span class="rounded-full border border-antique-gold-soft/40 bg-[var(--color-parchment-soft)] px-3 py-1 text-xs text-paper-muted">
-                {gem}
-              </span>
-            ))}
-          </div>
         </div>
       </section>
 
