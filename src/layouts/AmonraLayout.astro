@@ -64,5 +64,24 @@ const socialImage = image
       <slot />
     </main>
     <AmonraFooter />
+    <script>
+      const closeSelectsOutsideTarget = (target: EventTarget | null) => {
+        if (!(target instanceof Element)) return;
+        for (const select of document.querySelectorAll<HTMLDetailsElement>(
+          "details.site-select[open]",
+        )) {
+          if (!select.contains(target)) select.open = false;
+        }
+      };
+
+      document.addEventListener(
+        "pointerdown",
+        (event) => closeSelectsOutsideTarget(event.target),
+        true,
+      );
+      document.addEventListener("focusin", (event) =>
+        closeSelectsOutsideTarget(event.target),
+      );
+    </script>
   </body>
 </html>

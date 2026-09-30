@@ -42,81 +42,240 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
 
           <form id="petition-form" class="mt-8 space-y-6">
             <div>
-              <label
-                for="petition-kind"
-                class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
-              >
+              <p class="mb-2 block font-interface text-sm font-semibold text-paper-ink">
                 ¿Qué deseas solicitar?
-              </label>
-              <select
+              </p>
+              <input
                 id="petition-kind"
+                type="hidden"
                 name="kind"
-                required
-                class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                value="Cadena de oración"
+              />
+              <details
+                class="site-select"
+                data-custom-select
+                data-select-input="petition-kind"
               >
-                <option value="Cadena de oración">Cadena de oración</option>
-                <option value="Encendido de vela">Encendido de vela</option>
-                <option value="Otra petición">Otra petición</option>
-              </select>
+                <summary
+                  aria-label="¿Qué deseas solicitar?"
+                  aria-controls="petition-kind-options"
+                  class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                >
+                  <span data-select-value>Cadena de oración</span>
+                </summary>
+                <div id="petition-kind-options" class="site-select-options">
+                  <button
+                    type="button"
+                    class="site-select-option"
+                    data-select-option
+                    data-value="Cadena de oración"
+                    aria-pressed="true"
+                  >
+                    Cadena de oración
+                  </button>
+                  <button
+                    type="button"
+                    class="site-select-option"
+                    data-select-option
+                    data-value="Encendido de vela"
+                    aria-pressed="false"
+                  >
+                    Encendido de vela
+                  </button>
+                  <button
+                    type="button"
+                    class="site-select-option"
+                    data-select-option
+                    data-value="Otra petición"
+                    aria-pressed="false"
+                  >
+                    Otra petición
+                  </button>
+                </div>
+              </details>
             </div>
 
             <div id="prayer-details">
-              <label
-                for="prayer-duration"
-                class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
-              >
+              <p class="mb-2 block font-interface text-sm font-semibold text-paper-ink">
                 Duración sugerida para la cadena
-              </label>
-              <select
+              </p>
+              <input
                 id="prayer-duration"
+                type="hidden"
                 name="duration"
-                class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                value="Una semana"
+              />
+              <details
+                class="site-select"
+                data-custom-select
+                data-select-input="prayer-duration"
               >
-                <option>Una semana</option>
-                <option>Un día</option>
-                <option>Un mes</option>
-              </select>
+                <summary
+                  aria-label="Duración sugerida para la cadena"
+                  aria-controls="prayer-duration-options"
+                  class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                >
+                  <span data-select-value>Una semana</span>
+                </summary>
+                <div id="prayer-duration-options" class="site-select-options">
+                  <button
+                    type="button"
+                    class="site-select-option"
+                    data-select-option
+                    data-value="Una semana"
+                    aria-pressed="true"
+                  >
+                    Una semana
+                  </button>
+                  <button
+                    type="button"
+                    class="site-select-option"
+                    data-select-option
+                    data-value="Un día"
+                    aria-pressed="false"
+                  >
+                    Un día
+                  </button>
+                  <button
+                    type="button"
+                    class="site-select-option"
+                    data-select-option
+                    data-value="Un mes"
+                    aria-pressed="false"
+                  >
+                    Un mes
+                  </button>
+                </div>
+              </details>
             </div>
 
             <div id="candle-details" hidden>
               <div class="grid gap-5 sm:grid-cols-2">
                 <div>
-                  <label
-                    for="candle-color"
-                    class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
-                  >
+                  <p class="mb-2 block font-interface text-sm font-semibold text-paper-ink">
                     Color de vela
-                  </label>
-                  <select
+                  </p>
+                  <input
                     id="candle-color"
+                    type="hidden"
                     name="candleColor"
+                    value="Ayúdame a elegir"
                     disabled
-                    class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                  />
+                  <details
+                    class="site-select"
+                    data-custom-select
+                    data-select-input="candle-color"
                   >
-                    <option>Ayúdame a elegir</option>
-                    <option>Blanca</option>
-                    <option>Amarilla</option>
-                    <option>Roja</option>
-                    <option>Azul</option>
-                    <option>Otra</option>
-                  </select>
+                    <summary
+                      aria-label="Color de vela"
+                      aria-controls="candle-color-options"
+                      class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                    >
+                      <span data-select-value>Ayúdame a elegir</span>
+                    </summary>
+                    <div id="candle-color-options" class="site-select-options">
+                      <button
+                        type="button"
+                        class="site-select-option"
+                        data-select-option
+                        data-value="Ayúdame a elegir"
+                        aria-pressed="true"
+                      >
+                        Ayúdame a elegir
+                      </button>
+                      <button
+                        type="button"
+                        class="site-select-option"
+                        data-select-option
+                        data-value="Blanca"
+                        aria-pressed="false"
+                      >
+                        Blanca
+                      </button>
+                      <button
+                        type="button"
+                        class="site-select-option"
+                        data-select-option
+                        data-value="Amarilla"
+                        aria-pressed="false"
+                      >
+                        Amarilla
+                      </button>
+                      <button
+                        type="button"
+                        class="site-select-option"
+                        data-select-option
+                        data-value="Roja"
+                        aria-pressed="false"
+                      >
+                        Roja
+                      </button>
+                      <button
+                        type="button"
+                        class="site-select-option"
+                        data-select-option
+                        data-value="Azul"
+                        aria-pressed="false"
+                      >
+                        Azul
+                      </button>
+                      <button
+                        type="button"
+                        class="site-select-option"
+                        data-select-option
+                        data-value="Otra"
+                        aria-pressed="false"
+                      >
+                        Otra
+                      </button>
+                    </div>
+                  </details>
                 </div>
                 <div>
-                  <label
-                    for="candle-type"
-                    class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
-                  >
+                  <p class="mb-2 block font-interface text-sm font-semibold text-paper-ink">
                     Tipo de encendido
-                  </label>
-                  <select
+                  </p>
+                  <input
                     id="candle-type"
+                    type="hidden"
                     name="candleType"
+                    value="Simbólico"
                     disabled
-                    class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                  />
+                  <details
+                    class="site-select"
+                    data-custom-select
+                    data-select-input="candle-type"
                   >
-                    <option>Simbólico</option>
-                    <option>Vela física</option>
-                  </select>
+                    <summary
+                      aria-label="Tipo de encendido"
+                      aria-controls="candle-type-options"
+                      class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                    >
+                      <span data-select-value>Simbólico</span>
+                    </summary>
+                    <div id="candle-type-options" class="site-select-options">
+                      <button
+                        type="button"
+                        class="site-select-option"
+                        data-select-option
+                        data-value="Simbólico"
+                        aria-pressed="true"
+                      >
+                        Simbólico
+                      </button>
+                      <button
+                        type="button"
+                        class="site-select-option"
+                        data-select-option
+                        data-value="Vela física"
+                        aria-pressed="false"
+                      >
+                        Vela física
+                      </button>
+                    </div>
+                  </details>
                 </div>
               </div>
             </div>
@@ -133,6 +292,7 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
                 name="message"
                 rows="5"
                 maxlength="600"
+                minlength="5"
                 required
                 placeholder="Escribe lo que quieras compartir (máximo 600 caracteres)."
                 class="w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base leading-relaxed text-paper-ink placeholder:text-paper-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
@@ -170,7 +330,9 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
                   <span class="font-normal text-paper-muted">(opcional)</span>
                 </label>
                 <div class="flex min-h-12 items-center rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-clay-red">
-                  <span class="shrink-0 font-interface text-base text-paper-ink">+56 9</span>
+                  <span class="shrink-0 font-interface text-base text-paper-ink">
+                    +56 9
+                  </span>
                   <input
                     id="petition-phone"
                     name="phoneLocal"
@@ -263,32 +425,26 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
             </div>
           </form>
 
-          <section
-            id="petition-feedback"
-            class="mt-8 rounded-lg border border-antique-gold-soft/60 bg-[var(--color-parchment-subtle)] p-5"
-            role="status"
-            aria-live="polite"
-            hidden
-          ></section>
         </div>
       </Container>
     </section>
   </article>
 
   <script>
+    import Swal from "sweetalert2";
+    import "sweetalert2/dist/sweetalert2.min.css";
+
     const form = document.querySelector<HTMLFormElement>("#petition-form");
-    const kind = document.querySelector<HTMLSelectElement>("#petition-kind");
+    const kind = document.querySelector<HTMLInputElement>("#petition-kind");
     const prayerDetails =
       document.querySelector<HTMLElement>("#prayer-details");
     const prayerDuration =
-      document.querySelector<HTMLSelectElement>("#prayer-duration");
+      document.querySelector<HTMLInputElement>("#prayer-duration");
     const candleDetails =
       document.querySelector<HTMLElement>("#candle-details");
     const candleColor =
-      document.querySelector<HTMLSelectElement>("#candle-color");
-    const candleType =
-      document.querySelector<HTMLSelectElement>("#candle-type");
-    const feedback = document.querySelector<HTMLElement>("#petition-feedback");
+      document.querySelector<HTMLInputElement>("#candle-color");
+    const candleType = document.querySelector<HTMLInputElement>("#candle-type");
     const submitButton =
       document.querySelector<HTMLButtonElement>("#petition-submit");
     const phoneInput =
@@ -302,16 +458,57 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
       candleDetails &&
       candleColor &&
       candleType &&
-      feedback &&
       submitButton
     ) {
+      const customSelects = form.querySelectorAll<HTMLDetailsElement>(
+        "[data-custom-select]",
+      );
+      for (const customSelect of customSelects) {
+        const inputId = customSelect.dataset.selectInput;
+        const valueInput = inputId
+          ? form.querySelector<HTMLInputElement>(`#${inputId}`)
+          : null;
+        const valueLabel = customSelect.querySelector<HTMLElement>(
+          "[data-select-value]",
+        );
+        const options = customSelect.querySelectorAll<HTMLButtonElement>(
+          "[data-select-option]",
+        );
+        for (const option of options) {
+          option.addEventListener("click", () => {
+            if (!valueInput || !valueLabel) return;
+            valueInput.value = option.dataset.value || "";
+            valueLabel.textContent =
+              option.textContent?.trim() || valueInput.value;
+            for (const item of options)
+              item.setAttribute("aria-pressed", String(item === option));
+            customSelect.open = false;
+            valueInput.dispatchEvent(new Event("change", { bubbles: true }));
+          });
+        }
+        customSelect.addEventListener("toggle", () => {
+          if (!customSelect.open) return;
+          for (const otherSelect of customSelects)
+            if (otherSelect !== customSelect) otherSelect.open = false;
+        });
+        customSelect.addEventListener("keydown", (event) => {
+          if (event.key !== "Escape") return;
+          customSelect.open = false;
+          customSelect.querySelector("summary")?.focus();
+        });
+      }
+
       phoneInput?.addEventListener("input", () => {
         const value = phoneInput.value;
         const caret = phoneInput.selectionStart ?? value.length;
-        const digitsBeforeCaret = value.slice(0, caret).replace(/\D/gu, "").length;
+        const digitsBeforeCaret = value
+          .slice(0, caret)
+          .replace(/\D/gu, "").length;
         let digits = value.replace(/\D/gu, "");
-        if (digits.length === 11 && digits.startsWith("569")) digits = digits.slice(3);
-        else if (digits.length === 9 && digits.startsWith("9")) digits = digits.slice(1);
+        if (digits.length === 11 && digits.startsWith("569"))
+          digits = digits.slice(3);
+        else if (digits.length === 9 && digits.startsWith("9"))
+          digits = digits.slice(1);
         const localNumber = digits.slice(0, 8);
         let formatted = localNumber.slice(0, 4);
         if (localNumber.length > 4) formatted += ` ${localNumber.slice(4, 8)}`;
@@ -319,7 +516,10 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
         phoneInput.value = formatted;
         let nextCaret = 0;
         let countedDigits = 0;
-        while (nextCaret < formatted.length && countedDigits < digitsBeforeCaret) {
+        while (
+          nextCaret < formatted.length &&
+          countedDigits < digitsBeforeCaret
+        ) {
           if (/\d/u.test(formatted[nextCaret])) countedDigits += 1;
           nextCaret += 1;
         }
@@ -341,10 +541,36 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
         candleType.disabled = !isCandle;
       };
 
+      const resetCustomSelects = () => {
+        for (const customSelect of customSelects) {
+          const inputId = customSelect.dataset.selectInput;
+          const valueInput = inputId
+            ? form.querySelector<HTMLInputElement>(`#${inputId}`)
+            : null;
+          const valueLabel = customSelect.querySelector<HTMLElement>(
+            "[data-select-value]",
+          );
+          if (valueInput && valueLabel)
+            valueLabel.textContent = valueInput.value;
+          for (const option of customSelect.querySelectorAll<HTMLButtonElement>(
+            "[data-select-option]",
+          )) {
+            option.setAttribute(
+              "aria-pressed",
+              String(option.dataset.value === valueInput?.value),
+            );
+          }
+          customSelect.open = false;
+        }
+      };
+
+      let isSubmitting = false;
       kind.addEventListener("change", updateDetails);
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
+        if (isSubmitting) return;
         if (!form.reportValidity()) return;
+        isSubmitting = true;
 
         const values = new FormData(form);
         const payload = {
@@ -369,10 +595,23 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
           website: String(values.get("website") || ""),
         };
 
-        feedback.hidden = false;
-        feedback.textContent = "Enviando tu petición de forma segura…";
         submitButton.disabled = true;
         submitButton.textContent = "Enviando…";
+        Swal.fire({
+          title: "Procesando",
+          text: "Estamos enviando tu petición de forma segura…",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          showConfirmButton: false,
+          showCloseButton: false,
+          customClass: {
+            popup: "amonra-swal-popup",
+            title: "amonra-swal-title",
+            htmlContainer: "amonra-swal-content",
+            loader: "amonra-swal-loader",
+          },
+          didOpen: () => Swal.showLoading(),
+        });
 
         try {
           const apiBase = (
@@ -388,45 +627,66 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
           });
           const result = await response.json();
           if (!response.ok) {
-            const message = Array.isArray(result.message)
+            const apiMessage = Array.isArray(result.message)
               ? result.message.join(" ")
               : result.message;
+            const translatedMessage = String(apiMessage || "").replace(
+              /message must be longer than or equal to 5 characters/giu,
+              "Tu intención o mensaje debe tener al menos 5 caracteres.",
+            );
             throw new Error(
-              message ||
+              translatedMessage ||
                 "No pudimos guardar tu petición. Revisa los datos e inténtalo de nuevo.",
             );
           }
 
-          const heading = document.createElement("h3");
-          heading.className = "font-editorial text-2xl text-paper-ink";
-          heading.textContent = result.confirmationSent
-            ? "Revisa tu correo"
-            : "Petición guardada";
-          const message = document.createElement("p");
-          message.className = "mt-2 text-sm leading-relaxed text-paper-muted";
-          message.textContent = result.message;
-          const reference = document.createElement("p");
-          reference.className = "mt-3 text-sm font-semibold text-paper-ink";
-          reference.textContent = `Referencia: ${result.reference}`;
-          feedback.replaceChildren(heading, message, reference);
-          if (result.trackingToken) {
-            const privateKey = document.createElement("p");
-            privateKey.className =
-              "mt-2 break-all text-xs leading-relaxed text-paper-muted";
-            privateKey.textContent = `Código de seguimiento (10 caracteres): ${result.trackingToken}. Guárdalo para consultar el estado; no lo compartas.`;
-            const statusLink = document.createElement("a");
-            statusLink.href = "/peticiones/estado/";
-            statusLink.className =
-              "mt-3 inline-block text-sm font-semibold text-clay-red underline underline-offset-4";
-            statusLink.textContent = "Consultar el estado de la petición";
-            feedback.append(privateKey, statusLink);
+          const alertContent = document.createElement("div");
+          const alertMessage = document.createElement("p");
+          alertMessage.textContent = result.confirmationSent
+            ? "Te enviamos un enlace para confirmar tu correo. Ábrelo dentro de las próximas 24 horas para registrar la petición."
+            : "La petición quedó guardada, pero no pudimos enviar el correo de confirmación. Inténtalo nuevamente más tarde.";
+          alertContent.append(alertMessage);
+          Swal.close();
+          const alertResult = await Swal.fire({
+            icon: result.confirmationSent ? "success" : "warning",
+            title: result.confirmationSent
+              ? "Revisa tu correo"
+              : "No pudimos enviar el correo",
+            html: alertContent,
+            confirmButtonText: "Entendido",
+            customClass: {
+              popup: "amonra-swal-popup",
+              title: "amonra-swal-title",
+              htmlContainer: "amonra-swal-content",
+              confirmButton: "amonra-swal-confirm",
+            },
+          });
+          if (result.confirmationSent && alertResult.isConfirmed) {
+            window.location.assign("/");
+            return;
           }
-          form.hidden = true;
+          form.reset();
+          resetCustomSelects();
+          updateDetails();
         } catch (error) {
-          feedback.textContent =
-            error instanceof Error
-              ? error.message
-              : "No pudimos conectar con el servicio. Inténtalo de nuevo.";
+          Swal.close();
+          await Swal.fire({
+            icon: "error",
+            title: "No se pudo enviar",
+            text:
+              error instanceof Error
+                ? error.message
+                : "No pudimos conectar con el servicio. Inténtalo de nuevo.",
+            confirmButtonText: "Entendido",
+            customClass: {
+              popup: "amonra-swal-popup",
+              title: "amonra-swal-title",
+              htmlContainer: "amonra-swal-content",
+              confirmButton: "amonra-swal-confirm",
+            },
+          });
+        } finally {
+          isSubmitting = false;
           submitButton.disabled = false;
           submitButton.textContent = "Enviar petición";
         }

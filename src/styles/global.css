@@ -99,6 +99,64 @@
   }
 }
 
+/* Keep browser-autofilled values in the same warm palette as petition fields. */
+#petition-form input:-webkit-autofill,
+#petition-form input:-webkit-autofill:hover,
+#petition-form input:-webkit-autofill:focus,
+#petition-form input:autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-parchment-subtle) inset;
+  box-shadow: 0 0 0 1000px var(--color-parchment-subtle) inset;
+  -webkit-text-fill-color: var(--color-ink);
+  caret-color: var(--color-ink);
+}
+
+.admin-delete-dialog::backdrop {
+  background: rgb(16 25 35 / 58%);
+  backdrop-filter: blur(2px);
+}
+
+.amonra-swal-popup {
+  border: 1px solid var(--color-primary-soft) !important;
+  border-radius: 1.25rem !important;
+  background: var(--color-parchment) !important;
+  color: var(--color-ink) !important;
+  font-family: var(--font-ui) !important;
+}
+
+.amonra-swal-title {
+  color: var(--color-ink) !important;
+  font-family: var(--font-display) !important;
+}
+
+.amonra-swal-content {
+  color: var(--color-ink-muted) !important;
+  font-family: var(--font-ui) !important;
+}
+
+.amonra-swal-confirm {
+  border-radius: 9999px !important;
+  background: var(--color-clay-ink) !important;
+  padding-inline: 1.5rem !important;
+  font-weight: 700 !important;
+}
+
+.amonra-swal-loader {
+  border-color: var(--color-clay-ink) transparent var(--color-clay-ink)
+    transparent !important;
+}
+
+.amonra-tracking-code {
+  display: block;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--color-parchment-subtle);
+  padding: 0.65rem 0.9rem;
+  color: var(--color-ink);
+  font-family: var(--font-ui);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -130,4 +188,78 @@
 
 .text-paper-ink :is(h1, h2, h3) {
   color: var(--color-ink);
+}
+
+.site-select {
+  position: relative;
+}
+
+.site-select[open] {
+  z-index: 60;
+}
+
+.site-select > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  list-style: none;
+  cursor: pointer;
+}
+
+.site-select > summary::-webkit-details-marker {
+  display: none;
+}
+
+.site-select > summary::after {
+  content: "⌄";
+  flex: none;
+  color: var(--color-clay-ink);
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: transform 160ms ease;
+}
+
+.site-select[open] > summary::after {
+  transform: rotate(180deg);
+}
+
+.site-select-options {
+  position: absolute;
+  z-index: 60;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  left: 0;
+  display: grid;
+  gap: 0.25rem;
+  max-height: 15rem;
+  overflow-y: auto;
+  border: 1px solid var(--color-primary-soft);
+  border-radius: 0.75rem;
+  background: var(--color-parchment);
+  padding: 0.35rem;
+  box-shadow: 0 0.5rem 1.25rem rgb(49 31 14 / 12%);
+}
+
+.site-select-option {
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.65rem 0.75rem;
+  background: transparent;
+  color: var(--color-ink);
+  text-align: left;
+  transition:
+    background-color var(--transition-color),
+    color var(--transition-color);
+}
+
+.site-select-option:hover,
+.site-select-option:focus-visible,
+.site-select-option[aria-pressed="true"] {
+  background: var(--color-parchment-soft);
+  color: var(--color-clay-ink);
+}
+
+.site-select-option[aria-pressed="true"] {
+  font-weight: 600;
 }
