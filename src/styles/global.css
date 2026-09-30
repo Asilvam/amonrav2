@@ -263,3 +263,107 @@
 .site-select-option[aria-pressed="true"] {
   font-weight: 600;
 }
+
+.site-select-dialog {
+  position: fixed;
+  inset: auto 0 0;
+  width: 100%;
+  max-width: none;
+  max-height: min(75dvh, 34rem);
+  margin: 0;
+  overflow-y: auto;
+  border: 1px solid var(--color-primary-soft);
+  border-bottom: 0;
+  border-radius: 1.25rem 1.25rem 0 0;
+  background: var(--color-parchment);
+  color: var(--color-ink);
+  padding: 1.25rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom));
+  box-shadow: 0 -0.75rem 2rem rgb(26 19 12 / 18%);
+}
+
+.site-select-dialog::backdrop {
+  background: rgb(16 14 12 / 58%);
+  backdrop-filter: blur(2px);
+}
+
+.site-select-dialog[open] {
+  animation: site-select-sheet-enter 180ms ease-out;
+}
+
+.site-select-dialog-content {
+  width: min(100%, 36rem);
+  margin-inline: auto;
+}
+
+.site-select-dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-select-dialog-close {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: none;
+  place-items: center;
+  border: 1px solid var(--color-primary-soft);
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--color-clay-ink);
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.site-select-dialog-options {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.site-select-dialog-option {
+  display: flex;
+  min-height: 3.5rem;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid var(--color-primary-soft);
+  border-radius: 0.75rem;
+  background: var(--color-parchment-subtle);
+  padding: 0.875rem 1rem;
+  color: var(--color-ink);
+  text-align: left;
+}
+
+.site-select-dialog-option[aria-pressed="true"] {
+  border-color: var(--color-solar-red);
+  background: var(--color-parchment-soft);
+  color: var(--color-clay-ink);
+  font-weight: 600;
+}
+
+.site-select-dialog-option[aria-pressed="true"]::after {
+  content: "✓";
+  color: var(--color-clay-ink);
+  font-size: 1.125rem;
+}
+
+@keyframes site-select-sheet-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-select-dialog[open] {
+    animation: none;
+  }
+}

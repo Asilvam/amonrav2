@@ -424,6 +424,65 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
               </button>
             </div>
           </form>
+          <dialog
+            id="petition-kind-dialog"
+            class="site-select-dialog"
+            aria-labelledby="petition-kind-dialog-title"
+          >
+            <div class="site-select-dialog-content">
+              <header class="site-select-dialog-header">
+                <div>
+                  <p class="eyebrow text-clay-ink">Tu petición</p>
+                  <h2
+                    id="petition-kind-dialog-title"
+                    class="mt-1 font-editorial text-2xl text-paper-ink"
+                  >
+                    ¿Qué deseas solicitar?
+                  </h2>
+                </div>
+                <button
+                  type="button"
+                  class="site-select-dialog-close"
+                  data-mobile-intent-close
+                  aria-label="Cerrar opciones"
+                >
+                  ×
+                </button>
+              </header>
+              <p class="mt-2 text-sm text-paper-muted">
+                Elige una opción para continuar.
+              </p>
+              <div class="site-select-dialog-options">
+                <button
+                  type="button"
+                  class="site-select-dialog-option"
+                  data-mobile-intent-option
+                  data-value="Cadena de oración"
+                  aria-pressed="true"
+                >
+                  Cadena de oración
+                </button>
+                <button
+                  type="button"
+                  class="site-select-dialog-option"
+                  data-mobile-intent-option
+                  data-value="Encendido de vela"
+                  aria-pressed="false"
+                >
+                  Encendido de vela
+                </button>
+                <button
+                  type="button"
+                  class="site-select-dialog-option"
+                  data-mobile-intent-option
+                  data-value="Otra petición"
+                  aria-pressed="false"
+                >
+                  Otra petición
+                </button>
+              </div>
+            </div>
+          </dialog>
         </div>
       </Container>
     </section>
@@ -496,6 +555,66 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
           customSelect.querySelector("summary")?.focus();
         });
       }
+
+      const intentSelect = form.querySelector<HTMLDetailsElement>(
+        '[data-select-input="petition-kind"]',
+      );
+      const intentSummary = intentSelect?.querySelector<HTMLElement>("summary");
+      const intentDialog = document.querySelector<HTMLDialogElement>(
+        "#petition-kind-dialog",
+      );
+      const mobileIntentOptions = intentDialog?.querySelectorAll<HTMLButtonElement>(
+        "[data-mobile-intent-option]",
+      );
+      const mobileSelectViewport = window.matchMedia("(max-width: 47.99rem)");
+      let previousDocumentOverflow = "";
+
+      const closeIntentDialog = () => {
+        if (!intentDialog?.open) return;
+        intentDialog.close();
+      };
+
+      intentSummary?.addEventListener("click", (event) => {
+        if (!mobileSelectViewport.matches || !intentDialog || !kind) return;
+        event.preventDefault();
+        event.stopPropagation();
+        for (const option of mobileIntentOptions || [])
+          option.setAttribute(
+            "aria-pressed",
+            String(option.dataset.value === kind.value),
+          );
+        previousDocumentOverflow = document.documentElement.style.overflow;
+        document.documentElement.style.overflow = "hidden";
+        intentDialog.showModal();
+        intentDialog
+          .querySelector<HTMLButtonElement>(
+            '[data-mobile-intent-option][aria-pressed="true"]',
+          )
+          ?.focus();
+      });
+
+      for (const option of mobileIntentOptions || []) {
+        option.addEventListener("click", () => {
+          const matchingOption = Array.from(
+            intentSelect?.querySelectorAll<HTMLButtonElement>(
+              "[data-select-option]",
+            ) || [],
+          ).find((item) => item.dataset.value === option.dataset.value);
+          matchingOption?.click();
+          closeIntentDialog();
+        });
+      }
+
+      intentDialog
+        ?.querySelector<HTMLButtonElement>("[data-mobile-intent-close]")
+        ?.addEventListener("click", closeIntentDialog);
+      intentDialog?.addEventListener("click", (event) => {
+        if (event.target === intentDialog) closeIntentDialog();
+      });
+      intentDialog?.addEventListener("close", () => {
+        document.documentElement.style.overflow = previousDocumentOverflow;
+        intentSummary?.focus();
+      });
 
       phoneInput?.addEventListener("input", () => {
         const value = phoneInput.value;
