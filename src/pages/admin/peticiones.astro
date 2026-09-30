@@ -110,7 +110,7 @@ import Container from "../../components/layout/Container.astro";
 
       <section id="admin-dashboard" class="mt-8" hidden>
         <div class="flex flex-wrap items-end justify-between gap-4 rounded-xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-4">
-          <div>
+          <div class="w-full sm:w-auto">
             <label
               for="petition-filter"
               class="mb-2 block text-sm font-semibold"
@@ -118,11 +118,11 @@ import Container from "../../components/layout/Container.astro";
               Filtrar por estado
             </label>
             <input id="petition-filter" type="hidden" value="all" />
-            <details id="petition-filter-menu" class="site-select">
+            <details id="petition-filter-menu" class="site-select w-full sm:w-64 md:w-80">
               <summary
                 aria-label="Filtrar por estado"
                 aria-controls="petition-filter-options"
-                class="min-h-11 w-64 rounded-lg border border-antique-gold-soft bg-paper px-3 text-paper-ink"
+                class="min-h-11 w-full rounded-lg border border-antique-gold-soft bg-paper px-3 text-paper-ink"
               >
                 <span data-select-value>Todas</span>
               </summary>
