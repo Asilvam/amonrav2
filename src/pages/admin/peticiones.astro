@@ -257,9 +257,8 @@ import Container from "../../components/layout/Container.astro";
       "#delete-confirm-submit",
     );
     const filter = document.querySelector<HTMLInputElement>("#petition-filter");
-    const refreshButton = document.querySelector<HTMLButtonElement>(
-      "#refresh-petitions",
-    );
+    const refreshButton =
+      document.querySelector<HTMLButtonElement>("#refresh-petitions");
     const refreshSpinner = refreshButton?.querySelector<HTMLElement>(
       "[data-refresh-spinner]",
     );
@@ -750,9 +749,9 @@ import Container from "../../components/layout/Container.astro";
     }
 
     refreshButton?.addEventListener(
-        "click",
-        () => void loadPetitions().catch((error) => setMessage(error.message)),
-      );
+      "click",
+      () => void loadPetitions().catch((error) => setMessage(error.message)),
+    );
     filter?.addEventListener(
       "change",
       () => void loadPetitions().catch((error) => setMessage(error.message)),

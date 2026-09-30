@@ -151,8 +151,7 @@ import Container from "../../components/layout/Container.astro";
               completed: "Realizada",
               cancelled: "Anulada",
             };
-            statusValue.textContent =
-              statusLabels[result.status] || "Recibida";
+            statusValue.textContent = statusLabels[result.status] || "Recibida";
             statusPanel.hidden = false;
           }
           document.title = "Petición validada | Amonra";
