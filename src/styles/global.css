@@ -109,3 +109,25 @@
     translate: 0 0;
   }
 }
+
+/* Readable link and accent colors when light parchment sections contain global accents. */
+.text-paper-ink a {
+  color: var(--color-clay-ink, #783827);
+}
+
+.text-paper-ink a:hover {
+  color: var(--color-ink);
+}
+
+.text-paper-ink .text-clay-red,
+.text-paper-ink .text-antique-gold {
+  color: var(--color-clay-ink, #783827);
+}
+
+.text-paper-ink .bg-clay-red {
+  color: var(--color-ink);
+}
+
+.text-paper-ink :is(h1, h2, h3) {
+  color: var(--color-ink);
+}

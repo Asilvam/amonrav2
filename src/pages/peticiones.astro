@@ -1,0 +1,438 @@
+---
+import Container from "../components/layout/Container.astro";
+import AmonraLayout from "../layouts/AmonraLayout.astro";
+---
+
+<AmonraLayout
+  title="Peticiones"
+  description="Prepara una petición de oración, encendido de vela u otro motivo para Amonra."
+>
+  <article>
+    <header class="border-b border-antique-gold-soft/45 bg-[linear-gradient(120deg,var(--color-legacy-violet-deep),var(--color-surface-warm)_62%)] py-12 text-ivory lg:py-16">
+      <Container>
+        <p class="eyebrow text-antique-gold">
+          Amonra · espacio de acompañamiento
+        </p>
+        <h1 class="mt-4 max-w-[14ch] font-editorial text-[clamp(2.6rem,7vw,5.5rem)] leading-[0.94] font-medium tracking-[-0.04em]">
+          Comparte una intención
+        </h1>
+        <p class="mt-5 max-w-[42rem] font-editorial text-xl leading-relaxed italic text-old-papyrus">
+          Puedes pedir una oración, dedicar una luz o escribirnos por otro
+          motivo. Recibiremos tu mensaje con respeto.
+        </p>
+      </Container>
+    </header>
+
+    <section
+      class="bg-paper py-12 text-paper-ink lg:py-16"
+      aria-labelledby="formulario-peticion"
+    >
+      <Container size="reading">
+        <div class="rounded-2xl border border-antique-gold-soft/60 bg-[var(--color-parchment-soft)] p-6 shadow-sm sm:p-8 lg:p-10">
+          <h2
+            id="formulario-peticion"
+            class="font-editorial text-3xl text-paper-ink"
+          >
+            Tu petición
+          </h2>
+          <p class="mt-2 text-sm leading-relaxed text-paper-muted">
+            Indica tu nombre y correo para confirmar la petición. El número de
+            WhatsApp o celular es opcional.
+          </p>
+
+          <form id="petition-form" class="mt-8 space-y-6">
+            <div>
+              <label
+                for="petition-kind"
+                class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
+              >
+                ¿Qué deseas solicitar?
+              </label>
+              <select
+                id="petition-kind"
+                name="kind"
+                required
+                class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+              >
+                <option value="Cadena de oración">Cadena de oración</option>
+                <option value="Encendido de vela">Encendido de vela</option>
+                <option value="Otra petición">Otra petición</option>
+              </select>
+            </div>
+
+            <div id="prayer-details">
+              <label
+                for="prayer-duration"
+                class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
+              >
+                Duración sugerida para la cadena
+              </label>
+              <select
+                id="prayer-duration"
+                name="duration"
+                class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+              >
+                <option>Una semana</option>
+                <option>Un día</option>
+                <option>Un mes</option>
+              </select>
+            </div>
+
+            <div id="candle-details" hidden>
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label
+                    for="candle-color"
+                    class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
+                  >
+                    Color de vela
+                  </label>
+                  <select
+                    id="candle-color"
+                    name="candleColor"
+                    disabled
+                    class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                  >
+                    <option>Ayúdame a elegir</option>
+                    <option>Blanca</option>
+                    <option>Amarilla</option>
+                    <option>Roja</option>
+                    <option>Azul</option>
+                    <option>Otra</option>
+                  </select>
+                </div>
+                <div>
+                  <label
+                    for="candle-type"
+                    class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
+                  >
+                    Tipo de encendido
+                  </label>
+                  <select
+                    id="candle-type"
+                    name="candleType"
+                    disabled
+                    class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                  >
+                    <option>Simbólico</option>
+                    <option>Vela física</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="petition-message"
+                class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
+              >
+                Tu intención o mensaje
+              </label>
+              <textarea
+                id="petition-message"
+                name="message"
+                rows="5"
+                maxlength="600"
+                required
+                placeholder="Escribe lo que quieras compartir (máximo 600 caracteres)."
+                class="w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base leading-relaxed text-paper-ink placeholder:text-paper-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+              ></textarea>
+              <p class="mt-2 text-xs leading-relaxed text-paper-muted">
+                Evita incluir datos sensibles o información privada de otras
+                personas.
+              </p>
+            </div>
+
+            <div class="grid gap-5">
+              <div>
+                <label
+                  for="petition-name"
+                  class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
+                >
+                  Nombre
+                </label>
+                <input
+                  id="petition-name"
+                  name="name"
+                  maxlength="80"
+                  required
+                  autocomplete="name"
+                  class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink placeholder:text-paper-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                  placeholder="Tu nombre"
+                />
+              </div>
+              <div>
+                <label
+                  for="petition-phone"
+                  class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
+                >
+                  WhatsApp o celular{" "}
+                  <span class="font-normal text-paper-muted">(opcional)</span>
+                </label>
+                <div class="flex min-h-12 items-center rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-clay-red">
+                  <span class="shrink-0 font-interface text-base text-paper-ink">+56 9</span>
+                  <input
+                    id="petition-phone"
+                    name="phoneLocal"
+                    type="tel"
+                    maxlength="20"
+                    autocomplete="tel-national"
+                    aria-describedby="petition-phone-help"
+                    class="min-w-0 flex-1 border-0 bg-transparent pl-2 font-interface text-base text-paper-ink placeholder:text-paper-muted outline-none"
+                    placeholder="1234 5678"
+                  />
+                </div>
+                <p
+                  id="petition-phone-help"
+                  class="mt-2 whitespace-nowrap text-xs leading-relaxed text-paper-muted"
+                >
+                  Completa los 8 dígitos.
+                </p>
+              </div>
+              <div>
+                <label
+                  for="petition-email"
+                  class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
+                >
+                  Correo para confirmar tu petición
+                </label>
+                <input
+                  id="petition-email"
+                  name="email"
+                  type="email"
+                  maxlength="254"
+                  required
+                  autocomplete="email"
+                  class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink placeholder:text-paper-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                  placeholder="tu@correo.cl"
+                />
+              </div>
+            </div>
+
+            <label class="flex items-start gap-3 font-interface text-sm leading-relaxed text-paper-muted">
+              <input
+                type="checkbox"
+                name="share"
+                class="mt-1 size-4 shrink-0 accent-clay-red"
+              />
+              <span>
+                Autorizo que mi intención se comparta en una cadena comunitaria.
+                Si no marco esta casilla, se mantiene privada.
+              </span>
+            </label>
+
+            <label class="flex items-start gap-3 font-interface text-sm leading-relaxed text-paper-muted">
+              <input
+                id="petition-consent"
+                type="checkbox"
+                name="consent"
+                value="true"
+                required
+                class="mt-1 size-4 shrink-0 accent-clay-red"
+              />
+              <span>
+                Acepto que Amonra guarde esta petición para gestionarla y que
+                use mi correo únicamente para confirmar la solicitud y comunicar
+                su estado. Si indico mi celular, autorizo que se use para
+                contactarme por esta petición.
+              </span>
+            </label>
+
+            <div class="absolute -left-[9999px]" aria-hidden="true">
+              <label for="petition-website">Deja este campo vacío</label>
+              <input
+                id="petition-website"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="border-t border-antique-gold-soft/40 pt-5">
+              <p class="text-xs leading-relaxed text-paper-muted">
+                La petición quedará pendiente hasta que confirmes tu correo.
+                Recibirás un enlace válido por 24 horas.
+              </p>
+              <button
+                id="petition-submit"
+                type="submit"
+                class="mt-5 inline-flex min-h-12 items-center justify-center rounded-full bg-clay-red px-7 font-interface text-sm font-semibold text-white transition-colors hover:bg-clay-red/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+              >
+                Enviar petición
+              </button>
+            </div>
+          </form>
+
+          <section
+            id="petition-feedback"
+            class="mt-8 rounded-lg border border-antique-gold-soft/60 bg-[var(--color-parchment-subtle)] p-5"
+            role="status"
+            aria-live="polite"
+            hidden
+          ></section>
+        </div>
+      </Container>
+    </section>
+  </article>
+
+  <script>
+    const form = document.querySelector<HTMLFormElement>("#petition-form");
+    const kind = document.querySelector<HTMLSelectElement>("#petition-kind");
+    const prayerDetails =
+      document.querySelector<HTMLElement>("#prayer-details");
+    const prayerDuration =
+      document.querySelector<HTMLSelectElement>("#prayer-duration");
+    const candleDetails =
+      document.querySelector<HTMLElement>("#candle-details");
+    const candleColor =
+      document.querySelector<HTMLSelectElement>("#candle-color");
+    const candleType =
+      document.querySelector<HTMLSelectElement>("#candle-type");
+    const feedback = document.querySelector<HTMLElement>("#petition-feedback");
+    const submitButton =
+      document.querySelector<HTMLButtonElement>("#petition-submit");
+    const phoneInput =
+      document.querySelector<HTMLInputElement>("#petition-phone");
+
+    if (
+      form &&
+      kind &&
+      prayerDetails &&
+      prayerDuration &&
+      candleDetails &&
+      candleColor &&
+      candleType &&
+      feedback &&
+      submitButton
+    ) {
+      phoneInput?.addEventListener("input", () => {
+        const value = phoneInput.value;
+        const caret = phoneInput.selectionStart ?? value.length;
+        const digitsBeforeCaret = value.slice(0, caret).replace(/\D/gu, "").length;
+        let digits = value.replace(/\D/gu, "");
+        if (digits.length === 11 && digits.startsWith("569")) digits = digits.slice(3);
+        else if (digits.length === 9 && digits.startsWith("9")) digits = digits.slice(1);
+        const localNumber = digits.slice(0, 8);
+        let formatted = localNumber.slice(0, 4);
+        if (localNumber.length > 4) formatted += ` ${localNumber.slice(4, 8)}`;
+
+        phoneInput.value = formatted;
+        let nextCaret = 0;
+        let countedDigits = 0;
+        while (nextCaret < formatted.length && countedDigits < digitsBeforeCaret) {
+          if (/\d/u.test(formatted[nextCaret])) countedDigits += 1;
+          nextCaret += 1;
+        }
+        phoneInput.setSelectionRange(nextCaret, nextCaret);
+        phoneInput.setCustomValidity(
+          localNumber.length > 0 && localNumber.length < 8
+            ? "Completa los ocho dígitos del celular."
+            : "",
+        );
+      });
+
+      const updateDetails = () => {
+        const isPrayer = kind.value === "Cadena de oración";
+        const isCandle = kind.value === "Encendido de vela";
+        prayerDetails.hidden = !isPrayer;
+        prayerDuration.disabled = !isPrayer;
+        candleDetails.hidden = !isCandle;
+        candleColor.disabled = !isCandle;
+        candleType.disabled = !isCandle;
+      };
+
+      kind.addEventListener("change", updateDetails);
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+
+        const values = new FormData(form);
+        const payload = {
+          kind: String(values.get("kind")),
+          ...(values.has("duration")
+            ? { duration: String(values.get("duration")) }
+            : {}),
+          ...(values.has("candleColor")
+            ? { candleColor: String(values.get("candleColor")) }
+            : {}),
+          ...(values.has("candleType")
+            ? { candleType: String(values.get("candleType")) }
+            : {}),
+          message: String(values.get("message") || "").trim(),
+          name: String(values.get("name") || "").trim(),
+          ...(phoneInput?.value.replace(/\D/gu, "").length === 8
+            ? { phone: `+56 9 ${phoneInput.value.trim()}` }
+            : {}),
+          email: String(values.get("email") || "").trim(),
+          share: values.has("share"),
+          consent: values.has("consent"),
+          website: String(values.get("website") || ""),
+        };
+
+        feedback.hidden = false;
+        feedback.textContent = "Enviando tu petición de forma segura…";
+        submitButton.disabled = true;
+        submitButton.textContent = "Enviando…";
+
+        try {
+          const apiBase = (
+            import.meta.env.PUBLIC_API_BASE_URL ||
+            (import.meta.env.DEV
+              ? "http://localhost:3500"
+              : window.location.origin)
+          ).replace(/\/+$/, "");
+          const response = await fetch(`${apiBase}/api/peticiones`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          const result = await response.json();
+          if (!response.ok) {
+            const message = Array.isArray(result.message)
+              ? result.message.join(" ")
+              : result.message;
+            throw new Error(
+              message ||
+                "No pudimos guardar tu petición. Revisa los datos e inténtalo de nuevo.",
+            );
+          }
+
+          const heading = document.createElement("h3");
+          heading.className = "font-editorial text-2xl text-paper-ink";
+          heading.textContent = result.confirmationSent
+            ? "Revisa tu correo"
+            : "Petición guardada";
+          const message = document.createElement("p");
+          message.className = "mt-2 text-sm leading-relaxed text-paper-muted";
+          message.textContent = result.message;
+          const reference = document.createElement("p");
+          reference.className = "mt-3 text-sm font-semibold text-paper-ink";
+          reference.textContent = `Referencia: ${result.reference}`;
+          feedback.replaceChildren(heading, message, reference);
+          if (result.trackingToken) {
+            const privateKey = document.createElement("p");
+            privateKey.className =
+              "mt-2 break-all text-xs leading-relaxed text-paper-muted";
+            privateKey.textContent = `Código de seguimiento (10 caracteres): ${result.trackingToken}. Guárdalo para consultar el estado; no lo compartas.`;
+            const statusLink = document.createElement("a");
+            statusLink.href = "/peticiones/estado/";
+            statusLink.className =
+              "mt-3 inline-block text-sm font-semibold text-clay-red underline underline-offset-4";
+            statusLink.textContent = "Consultar el estado de la petición";
+            feedback.append(privateKey, statusLink);
+          }
+          form.hidden = true;
+        } catch (error) {
+          feedback.textContent =
+            error instanceof Error
+              ? error.message
+              : "No pudimos conectar con el servicio. Inténtalo de nuevo.";
+          submitButton.disabled = false;
+          submitButton.textContent = "Enviar petición";
+        }
+      });
+
+      updateDetails();
+    }
+  </script>
+</AmonraLayout>

@@ -41,7 +41,15 @@ Inicia el servidor de desarrollo:
 npm run dev
 ```
 
-El sitio estará disponible en <http://localhost:4321/>.
+El sitio estará disponible en <http://localhost:4321/>. Para conectar el
+formulario con el backend local, crea `.env` desde `.env.example` y configura
+`PUBLIC_API_BASE_URL=http://localhost:3500`. Esta variable se incorpora al
+sitio durante el build; en producción debe apuntar a la URL pública de la API,
+o dejarse vacía si un proxy publica `/api` bajo el mismo origen.
+
+El panel privado para revisar peticiones está en
+<http://localhost:4321/admin/peticiones/>. Inicia sesión con la variable
+`ADMIN_PASSWORD` configurada en el `.env` del backend.
 
 ## Scripts disponibles
 
