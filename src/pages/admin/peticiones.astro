@@ -266,10 +266,24 @@ import Container from "../../components/layout/Container.astro";
       "#petition-filter-menu",
     );
     const list = document.querySelector<HTMLElement>("#petition-list");
-    const apiBase = (
-      import.meta.env.PUBLIC_API_BASE_URL ||
-      (import.meta.env.DEV ? "http://localhost:3500" : window.location.origin)
-    ).replace(/[/]+$/, "");
+    const envApiBase = import.meta.env.PUBLIC_API_BASE_URL;
+    const devFallback = import.meta.env.DEV
+      ? `http://${window.location.hostname}:3500`
+      : window.location.origin;
+    let apiBase = (envApiBase && envApiBase.trim()) ? envApiBase.trim() : devFallback;
+    apiBase = apiBase.replace(/[/]+$/, "");
+    // If running on a remote device during local development, avoid using `localhost` which resolves to the device itself.
+    if (
+      import.meta.env.DEV &&
+      /^https?:\/\/localhost(:\d+)?/.test(apiBase) &&
+      typeof window !== "undefined" &&
+      window.location.hostname &&
+      window.location.hostname !== "localhost" &&
+      window.location.hostname !== "127.0.0.1"
+    ) {
+      apiBase = `http://${window.location.hostname}:3500`;
+      console.info("[dev] Adjusted PUBLIC_API_BASE_URL to", apiBase, "for remote device testing");
+    }
     const labels: Record<Petition["status"], string> = {
       pending_confirmation: "Pendiente de confirmación",
       received: "Recibida",
