@@ -1,0 +1,791 @@
+---
+import AmonraLayout from "../../layouts/AmonraLayout.astro";
+import Container from "../../components/layout/Container.astro";
+---
+
+<AmonraLayout
+  title="Administrar peticiones"
+  description="Panel privado para revisar y actualizar las peticiones recibidas por Amonra."
+>
+  <main class="min-h-[70vh] bg-paper py-12 text-paper-ink lg:py-16">
+    <Container size="wide">
+      <p class="eyebrow text-clay-red">Amonra · administración</p>
+      <h1 class="mt-3 font-editorial text-4xl text-paper-ink">
+        Peticiones recibidas
+      </h1>
+      <p class="mt-3 max-w-prose text-paper-muted">
+        Panel privado para revisar solicitudes confirmadas y actualizar su
+        estado.
+      </p>
+
+      <p
+        id="admin-message"
+        class="mt-6 text-sm text-paper-ink"
+        role="status"
+        aria-live="polite"
+      ></p>
+      <div
+        id="admin-toast"
+        class="fixed inset-x-4 top-4 z-[100] ml-auto max-w-sm rounded-xl border border-antique-gold-soft bg-clay-ink px-5 py-4 text-sm font-semibold text-white shadow-xl"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        hidden
+      ></div>
+
+      <dialog
+        id="delete-confirm-dialog"
+        class="admin-delete-dialog m-auto w-[min(92vw,32rem)] rounded-2xl border border-antique-gold-soft bg-[var(--color-parchment)] p-0 text-paper-ink shadow-2xl"
+        aria-labelledby="delete-confirm-title"
+        aria-describedby="delete-confirm-description"
+      >
+        <div class="p-6 sm:p-8">
+          <p class="eyebrow text-clay-red">Acción permanente</p>
+          <h2 id="delete-confirm-title" class="mt-3 font-editorial text-2xl">
+            ¿Eliminar esta petición?
+          </h2>
+          <p
+            id="delete-confirm-description"
+            class="mt-3 text-sm leading-relaxed text-paper-muted"
+          >
+            Se borrarán sus datos de forma definitiva y no se podrán recuperar.
+          </p>
+          <div class="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+            <button
+              id="delete-confirm-cancel"
+              type="button"
+              class="min-h-11 rounded-full border border-antique-gold-soft px-5 text-sm font-semibold hover:bg-paper-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-ink"
+            >
+              Cancelar
+            </button>
+            <button
+              id="delete-confirm-submit"
+              type="button"
+              class="min-h-11 rounded-full bg-clay-ink px-5 text-sm font-semibold text-white hover:bg-clay-ink/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-ink"
+            >
+              Eliminar definitivamente
+            </button>
+          </div>
+        </div>
+      </dialog>
+
+      <section
+        id="admin-login"
+        class="mt-8 max-w-xl rounded-2xl border border-antique-gold-soft/60 bg-[var(--color-parchment-soft)] p-6 shadow-sm sm:p-8"
+      >
+        <h2 class="font-editorial text-2xl">Acceso de administración</h2>
+        <form id="admin-login-form" class="mt-5 space-y-4">
+          <div>
+            <label
+              for="admin-password"
+              class="mb-2 block text-sm font-semibold"
+            >
+              Contraseña de administración
+            </label>
+            <input
+              id="admin-password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              maxlength="200"
+              class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-paper px-4 py-3 text-paper-ink"
+            />
+          </div>
+          <button
+            type="submit"
+            class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-clay-red px-6 text-sm font-semibold text-white disabled:opacity-70"
+            aria-busy="false"
+          >
+            <span
+              data-login-spinner
+              class="h-4 w-4 animate-spin rounded-full border-2 border-white/70 border-t-transparent"
+              aria-hidden="true"
+              hidden
+            ></span>
+            Iniciar sesión
+          </button>
+        </form>
+      </section>
+
+      <section id="admin-dashboard" class="mt-8" hidden>
+        <div class="flex flex-wrap items-end justify-between gap-4 rounded-xl border border-antique-gold-soft/50 bg-[var(--color-parchment-soft)] p-4">
+          <div class="w-full sm:w-auto">
+            <label
+              for="petition-filter"
+              class="mb-2 block text-sm font-semibold"
+            >
+              Filtrar por estado
+            </label>
+            <input id="petition-filter" type="hidden" value="all" />
+            <details id="petition-filter-menu" class="site-select w-full sm:w-64 md:w-80">
+              <summary
+                aria-label="Filtrar por estado"
+                aria-controls="petition-filter-options"
+                class="min-h-11 w-full rounded-lg border border-antique-gold-soft bg-paper px-3 text-paper-ink"
+              >
+                <span data-select-value>Todas</span>
+              </summary>
+              <div id="petition-filter-options" class="site-select-options">
+                <button
+                  type="button"
+                  class="site-select-option"
+                  data-filter-value="all"
+                  aria-pressed="true"
+                >
+                  Todas
+                </button>
+                <button
+                  type="button"
+                  class="site-select-option"
+                  data-filter-value="pending_confirmation"
+                  aria-pressed="false"
+                >
+                  Pendientes de confirmación
+                </button>
+                <button
+                  type="button"
+                  class="site-select-option"
+                  data-filter-value="received"
+                  aria-pressed="false"
+                >
+                  Recibidas
+                </button>
+                <button
+                  type="button"
+                  class="site-select-option"
+                  data-filter-value="accepted"
+                  aria-pressed="false"
+                >
+                  Aceptadas
+                </button>
+                <button
+                  type="button"
+                  class="site-select-option"
+                  data-filter-value="in_progress"
+                  aria-pressed="false"
+                >
+                  En proceso
+                </button>
+                <button
+                  type="button"
+                  class="site-select-option"
+                  data-filter-value="completed"
+                  aria-pressed="false"
+                >
+                  Realizadas
+                </button>
+                <button
+                  type="button"
+                  class="site-select-option"
+                  data-filter-value="cancelled"
+                  aria-pressed="false"
+                >
+                  Anuladas
+                </button>
+              </div>
+            </details>
+          </div>
+          <div class="flex gap-3">
+            <button
+              id="refresh-petitions"
+              type="button"
+              class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-antique-gold-soft px-5 text-sm font-semibold hover:bg-paper disabled:opacity-70"
+              aria-busy="false"
+            >
+              <span
+                data-refresh-spinner
+                class="h-4 w-4 animate-spin rounded-full border-2 border-clay-ink/60 border-t-transparent"
+                aria-hidden="true"
+                hidden
+              ></span>
+              Actualizar
+            </button>
+            <button
+              id="admin-logout"
+              type="button"
+              class="min-h-11 rounded-full bg-clay-ink px-5 text-sm font-semibold text-white hover:bg-clay-ink/90"
+            >
+              Cerrar sesión
+            </button>
+          </div>
+        </div>
+        <div id="petition-list" class="mt-6 grid gap-5"></div>
+      </section>
+    </Container>
+  </main>
+
+  <script>
+    type Petition = {
+      reference: string;
+      kind: string;
+      duration?: string;
+      candleColor?: string;
+      candleType?: string;
+      message: string;
+      name: string;
+      phone?: string;
+      email: string;
+      share: boolean;
+      status:
+        | "pending_confirmation"
+        | "received"
+        | "accepted"
+        | "in_progress"
+        | "completed"
+        | "cancelled";
+      createdAt: string;
+      updatedAt: string;
+    };
+
+    const loginSection = document.querySelector<HTMLElement>("#admin-login");
+    const dashboard = document.querySelector<HTMLElement>("#admin-dashboard");
+    const loginForm =
+      document.querySelector<HTMLFormElement>("#admin-login-form");
+    const message = document.querySelector<HTMLElement>("#admin-message");
+    const toast = document.querySelector<HTMLElement>("#admin-toast");
+    const deleteDialog = document.querySelector<HTMLDialogElement>(
+      "#delete-confirm-dialog",
+    );
+    const deleteDescription = document.querySelector<HTMLElement>(
+      "#delete-confirm-description",
+    );
+    const deleteConfirmCancel = document.querySelector<HTMLButtonElement>(
+      "#delete-confirm-cancel",
+    );
+    const deleteConfirmSubmit = document.querySelector<HTMLButtonElement>(
+      "#delete-confirm-submit",
+    );
+    const filter = document.querySelector<HTMLInputElement>("#petition-filter");
+    const refreshButton =
+      document.querySelector<HTMLButtonElement>("#refresh-petitions");
+    const refreshSpinner = refreshButton?.querySelector<HTMLElement>(
+      "[data-refresh-spinner]",
+    );
+    const filterMenu = document.querySelector<HTMLDetailsElement>(
+      "#petition-filter-menu",
+    );
+    const list = document.querySelector<HTMLElement>("#petition-list");
+    const envApiBase = import.meta.env.PUBLIC_API_BASE_URL;
+    const devFallback = import.meta.env.DEV
+      ? `http://${window.location.hostname}:3500`
+      : window.location.origin;
+    let apiBase = (envApiBase && envApiBase.trim()) ? envApiBase.trim() : devFallback;
+    apiBase = apiBase.replace(/[/]+$/, "");
+    // If running on a remote device during local development, avoid using `localhost` which resolves to the device itself.
+    if (
+      import.meta.env.DEV &&
+      /^https?:\/\/localhost(:\d+)?/.test(apiBase) &&
+      typeof window !== "undefined" &&
+      window.location.hostname &&
+      window.location.hostname !== "localhost" &&
+      window.location.hostname !== "127.0.0.1"
+    ) {
+      apiBase = `http://${window.location.hostname}:3500`;
+      console.info("[dev] Adjusted PUBLIC_API_BASE_URL to", apiBase, "for remote device testing");
+    }
+    const labels: Record<Petition["status"], string> = {
+      pending_confirmation: "Pendiente de confirmación",
+      received: "Recibida",
+      accepted: "Aceptada",
+      in_progress: "En proceso",
+      completed: "Realizada",
+      cancelled: "Anulada",
+    };
+
+    async function api(path: string, init: RequestInit = {}) {
+      const response = await fetch(`${apiBase}/api${path}`, {
+        ...init,
+        credentials: "include",
+        headers: { "Content-Type": "application/json", ...init.headers },
+      });
+      const body = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        const error = new Error(
+          Array.isArray(body.message)
+            ? body.message.join(" ")
+            : body.message || "No se pudo completar la operación.",
+        ) as Error & { status?: number };
+        error.status = response.status;
+        throw error;
+      }
+      return body;
+    }
+
+    function setMessage(text: string) {
+      if (message) message.textContent = text;
+    }
+
+    let toastTimer: ReturnType<typeof setTimeout> | undefined;
+    function showToast(text: string) {
+      if (!toast) return;
+      toast.textContent = text;
+      toast.hidden = false;
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.hidden = true;
+      }, 5000);
+    }
+
+    function confirmDeletion(reference: string): Promise<boolean> {
+      if (!deleteDialog || !deleteDescription) return Promise.resolve(false);
+      deleteDescription.textContent = `La petición ${reference} y sus datos se borrarán de forma definitiva y no se podrán recuperar.`;
+      deleteDialog.returnValue = "";
+      deleteDialog.showModal();
+      return new Promise((resolve) => {
+        deleteDialog.addEventListener(
+          "close",
+          () => resolve(deleteDialog.returnValue === "delete"),
+          { once: true },
+        );
+      });
+    }
+
+    deleteConfirmCancel?.addEventListener("click", () =>
+      deleteDialog?.close("cancel"),
+    );
+    deleteConfirmSubmit?.addEventListener("click", () =>
+      deleteDialog?.close("delete"),
+    );
+
+    if (filter && filterMenu) {
+      const filterLabel = filterMenu.querySelector<HTMLElement>(
+        "[data-select-value]",
+      );
+      const filterOptions = filterMenu.querySelectorAll<HTMLButtonElement>(
+        "[data-filter-value]",
+      );
+      for (const option of filterOptions) {
+        option.addEventListener("click", () => {
+          filter.value = option.dataset.filterValue || "all";
+          if (filterLabel)
+            filterLabel.textContent = option.textContent?.trim() || "Todas";
+          for (const item of filterOptions)
+            item.setAttribute("aria-pressed", String(item === option));
+          filterMenu.open = false;
+          filter.dispatchEvent(new Event("change", { bubbles: true }));
+        });
+      }
+      filterMenu.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+        filterMenu.open = false;
+        filterMenu.querySelector("summary")?.focus();
+      });
+    }
+
+    function addText(
+      parent: HTMLElement,
+      tag: string,
+      text: string,
+      className = "",
+    ) {
+      const element = document.createElement(tag);
+      element.textContent = text;
+      if (className) element.className = className;
+      parent.append(element);
+      return element;
+    }
+
+    function renderPetition(petition: Petition) {
+      const card = document.createElement("article");
+      card.className =
+        "rounded-2xl border border-antique-gold-soft/60 bg-[var(--color-parchment-soft)] p-5 shadow-sm sm:p-6";
+      const heading = document.createElement("div");
+      heading.className =
+        "flex flex-wrap items-start justify-between gap-3 border-b border-antique-gold-soft/40 pb-4";
+      addText(
+        heading,
+        "h2",
+        `${petition.kind} · ${petition.reference}`,
+        "font-editorial text-2xl text-paper-ink",
+      );
+      addText(
+        heading,
+        "span",
+        labels[petition.status],
+        "rounded-full bg-paper px-3 py-1 text-xs font-semibold text-paper-ink",
+      );
+      card.append(heading);
+      addText(
+        card,
+        "p",
+        `Recibida: ${new Date(petition.createdAt).toLocaleString("es-CL")}`,
+        "mt-4 text-sm text-paper-muted",
+      );
+      addText(
+        card,
+        "p",
+        `Nombre: ${petition.name || "Sin nombre registrado"}`,
+        "mt-1 break-all text-sm text-paper-ink",
+      );
+      addText(
+        card,
+        "p",
+        `Correo: ${petition.email}`,
+        "mt-1 break-all text-sm text-paper-ink",
+      );
+      addText(
+        card,
+        "p",
+        `WhatsApp o celular: ${petition.phone?.trim() || "No informado"}`,
+        `mt-1 break-all text-sm ${petition.phone?.trim() ? "text-paper-ink" : "text-paper-muted"}`,
+      );
+      addText(
+        card,
+        "p",
+        `Difusión comunitaria: ${petition.share ? "Autorizada" : "No autorizada"}`,
+        "mt-1 text-sm text-paper-muted",
+      );
+      const details = [
+        petition.duration && `Duración: ${petition.duration}`,
+        petition.candleColor && `Color de vela: ${petition.candleColor}`,
+        petition.candleType && `Tipo de encendido: ${petition.candleType}`,
+      ].filter(Boolean);
+      if (details.length)
+        addText(
+          card,
+          "p",
+          details.join(" · "),
+          "mt-2 text-sm text-paper-muted",
+        );
+      addText(
+        card,
+        "p",
+        petition.message,
+        "mt-4 whitespace-pre-wrap break-words rounded-lg bg-paper p-4 text-sm leading-relaxed text-paper-ink",
+      );
+      const editMessageButton = document.createElement("button");
+      editMessageButton.type = "button";
+      editMessageButton.className =
+        "mt-2 min-h-10 rounded-full border border-antique-gold-soft px-4 text-sm font-semibold text-paper-ink hover:bg-paper focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-ink";
+      editMessageButton.textContent = "Editar mensaje";
+      const messageEditor = document.createElement("div");
+      messageEditor.className =
+        "mt-3 rounded-xl border border-antique-gold-soft/50 bg-paper p-4";
+      messageEditor.hidden = true;
+      const messageTextarea = document.createElement("textarea");
+      messageTextarea.value = petition.message;
+      messageTextarea.rows = 5;
+      messageTextarea.minLength = 5;
+      messageTextarea.maxLength = 600;
+      messageTextarea.required = true;
+      messageTextarea.setAttribute(
+        "aria-label",
+        "Editar el mensaje de la petición",
+      );
+      messageTextarea.className =
+        "w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-3 py-2 text-sm leading-relaxed text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red";
+      const messageActions = document.createElement("div");
+      messageActions.className =
+        "mt-3 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end";
+      const cancelMessageEdit = document.createElement("button");
+      cancelMessageEdit.type = "button";
+      cancelMessageEdit.className =
+        "min-h-11 rounded-full border border-antique-gold-soft px-5 text-sm font-semibold text-paper-ink hover:bg-[var(--color-parchment-subtle)]";
+      cancelMessageEdit.textContent = "Cancelar";
+      cancelMessageEdit.addEventListener("click", () => {
+        messageTextarea.value = petition.message;
+        messageEditor.hidden = true;
+        editMessageButton.hidden = false;
+      });
+      const saveMessage = document.createElement("button");
+      saveMessage.type = "button";
+      saveMessage.className =
+        "min-h-11 rounded-full bg-clay-ink px-5 text-sm font-semibold text-white hover:bg-clay-ink/90";
+      saveMessage.textContent = "Guardar mensaje";
+      saveMessage.addEventListener("click", async () => {
+        messageTextarea.value = messageTextarea.value.trim();
+        if (!messageTextarea.reportValidity()) return;
+        saveMessage.disabled = true;
+        try {
+          await api(
+            `/admin/peticiones/${encodeURIComponent(petition.reference)}/mensaje`,
+            {
+              method: "PATCH",
+              body: JSON.stringify({ message: messageTextarea.value }),
+            },
+          );
+          setMessage(`Mensaje actualizado para ${petition.reference}.`);
+          await loadPetitions();
+        } catch (error) {
+          setMessage(
+            error instanceof Error
+              ? error.message
+              : "No pudimos actualizar el mensaje.",
+          );
+          if ((error as Error & { status?: number }).status === 401)
+            showLogin();
+        } finally {
+          saveMessage.disabled = false;
+        }
+      });
+      messageActions.append(cancelMessageEdit, saveMessage);
+      messageEditor.append(messageTextarea, messageActions);
+      editMessageButton.addEventListener("click", () => {
+        messageEditor.hidden = false;
+        editMessageButton.hidden = true;
+        messageTextarea.focus();
+      });
+      card.append(editMessageButton, messageEditor);
+
+      const deleteButton = document.createElement("button");
+      deleteButton.type = "button";
+      deleteButton.setAttribute(
+        "aria-label",
+        `Eliminar definitivamente la petición ${petition.reference}`,
+      );
+      deleteButton.className =
+        "min-h-11 rounded-lg border border-clay-red px-3 text-xs font-semibold text-clay-red hover:bg-clay-red hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red sm:rounded-full sm:px-5 sm:text-sm";
+      const shortDeleteLabel = document.createElement("span");
+      shortDeleteLabel.className = "sm:hidden";
+      shortDeleteLabel.textContent = "Eliminar";
+      const fullDeleteLabel = document.createElement("span");
+      fullDeleteLabel.className = "hidden sm:inline";
+      fullDeleteLabel.textContent = "Eliminar definitivamente";
+      deleteButton.append(shortDeleteLabel, fullDeleteLabel);
+      deleteButton.addEventListener("click", async () => {
+        const confirmed = await confirmDeletion(petition.reference);
+        if (!confirmed) return;
+        deleteButton.disabled = true;
+        try {
+          await api(
+            `/admin/peticiones/${encodeURIComponent(petition.reference)}`,
+            { method: "DELETE" },
+          );
+          showToast(
+            `Petición ${petition.reference} eliminada definitivamente.`,
+          );
+          await loadPetitions();
+        } catch (error) {
+          setMessage(
+            error instanceof Error
+              ? error.message
+              : "No pudimos eliminar la petición.",
+          );
+          if ((error as Error & { status?: number }).status === 401)
+            showLogin();
+        } finally {
+          deleteButton.disabled = false;
+        }
+      });
+
+      if (petition.status === "pending_confirmation") {
+        addText(
+          card,
+          "p",
+          "No se puede administrar hasta que se confirme el correo.",
+          "mt-4 text-sm font-semibold text-paper-muted",
+        );
+        const pendingActions = document.createElement("div");
+        pendingActions.className =
+          "mt-5 flex justify-end border-t border-antique-gold-soft/40 pt-4";
+        pendingActions.append(deleteButton);
+        card.append(pendingActions);
+      } else {
+        const controls = document.createElement("div");
+        controls.className =
+          "mt-5 grid grid-cols-1 gap-3 border-t border-antique-gold-soft/40 pt-4 sm:grid-cols-[minmax(12rem,1fr)_auto_auto] sm:items-center";
+        const statusLabel = addText(controls, "span", "Cambiar estado");
+        statusLabel.className = "text-sm font-semibold sm:col-span-full";
+        const statusField = document.createElement("div");
+        statusField.className = "min-w-0";
+        const statusMenu = document.createElement("details");
+        statusMenu.className = "site-select";
+        const statusTrigger = document.createElement("summary");
+        statusTrigger.className =
+          "min-h-11 w-full rounded-lg border border-antique-gold-soft bg-paper px-3 text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red";
+        const statusValue = document.createElement("span");
+        statusValue.textContent = labels[petition.status];
+        statusTrigger.setAttribute(
+          "aria-label",
+          `Cambiar estado. Estado actual: ${labels[petition.status]}`,
+        );
+        statusTrigger.append(statusValue);
+        const statusOptions = document.createElement("div");
+        statusOptions.className = "site-select-options";
+        let selectedStatus: Exclude<
+          Petition["status"],
+          "pending_confirmation"
+        > = petition.status as Exclude<
+          Petition["status"],
+          "pending_confirmation"
+        >;
+        for (const value of [
+          "received",
+          "accepted",
+          "in_progress",
+          "completed",
+          "cancelled",
+        ] as const) {
+          const option = document.createElement("button");
+          option.type = "button";
+          option.className = "site-select-option";
+          option.textContent = labels[value];
+          option.setAttribute(
+            "aria-pressed",
+            String(value === petition.status),
+          );
+          option.addEventListener("click", () => {
+            selectedStatus = value;
+            statusValue.textContent = labels[value];
+            statusTrigger.setAttribute(
+              "aria-label",
+              `Cambiar estado. Estado actual: ${labels[value]}`,
+            );
+            for (const item of statusOptions.querySelectorAll("button"))
+              item.setAttribute("aria-pressed", String(item === option));
+            statusMenu.open = false;
+          });
+          statusOptions.append(option);
+        }
+        statusMenu.append(statusTrigger, statusOptions);
+        statusField.append(statusMenu);
+        const save = document.createElement("button");
+        save.type = "button";
+        save.className =
+          "min-h-11 rounded-lg bg-clay-ink px-3 text-xs font-semibold text-white hover:bg-clay-ink/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-ink sm:rounded-full sm:px-5 sm:text-sm";
+        save.textContent = "Guardar estado";
+        save.addEventListener("click", async () => {
+          save.disabled = true;
+          try {
+            await api(
+              `/admin/peticiones/${encodeURIComponent(petition.reference)}`,
+              {
+                method: "PATCH",
+                body: JSON.stringify({ status: selectedStatus }),
+              },
+            );
+            setMessage(`Estado actualizado para ${petition.reference}.`);
+            await loadPetitions();
+          } catch (error) {
+            setMessage(
+              error instanceof Error
+                ? error.message
+                : "No pudimos actualizar el estado.",
+            );
+            if ((error as Error & { status?: number }).status === 401)
+              showLogin();
+          } finally {
+            save.disabled = false;
+          }
+        });
+        const actions = document.createElement("div");
+        actions.className = "grid grid-cols-2 gap-3 sm:contents";
+        actions.append(save, deleteButton);
+        controls.append(statusField, actions);
+        card.append(controls);
+      }
+      return card;
+    }
+
+    let activePetitionLoads = 0;
+    async function loadPetitions() {
+      if (!filter || !list) return;
+      activePetitionLoads += 1;
+      if (refreshButton) {
+        refreshButton.disabled = true;
+        refreshButton.setAttribute("aria-busy", "true");
+      }
+      if (refreshSpinner) refreshSpinner.hidden = false;
+      try {
+        const body = await api(
+          `/admin/peticiones?status=${encodeURIComponent(filter.value)}`,
+        );
+        list.replaceChildren();
+        for (const petition of body.petitions as Petition[])
+          list.append(renderPetition(petition));
+        setMessage(
+          body.petitions.length
+            ? `Se muestran ${body.petitions.length} peticiones.`
+            : "No hay peticiones para este filtro.",
+        );
+        if (loginSection) loginSection.hidden = true;
+        if (dashboard) dashboard.hidden = false;
+      } finally {
+        activePetitionLoads -= 1;
+        if (activePetitionLoads === 0) {
+          if (refreshButton) {
+            refreshButton.disabled = false;
+            refreshButton.setAttribute("aria-busy", "false");
+          }
+          if (refreshSpinner) refreshSpinner.hidden = true;
+        }
+      }
+    }
+
+    function showLogin() {
+      if (loginSection) loginSection.hidden = false;
+      if (dashboard) dashboard.hidden = true;
+    }
+
+    let isLoggingIn = false;
+    if (loginForm) {
+      loginForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (isLoggingIn) return;
+        if (!loginForm.reportValidity()) return;
+        const input = loginForm.querySelector<HTMLInputElement>(
+          "input[name=password]",
+        );
+        const submit = loginForm.querySelector<HTMLButtonElement>(
+          "button[type=submit]",
+        );
+        if (!input || !submit) return;
+        isLoggingIn = true;
+        submit.disabled = true;
+        submit.setAttribute("aria-busy", "true");
+        const loginSpinner = submit.querySelector<HTMLElement>(
+          "[data-login-spinner]",
+        );
+        if (loginSpinner) loginSpinner.hidden = false;
+        setMessage("Validando acceso…");
+        try {
+          await api("/admin/login", {
+            method: "POST",
+            body: JSON.stringify({ password: input.value }),
+          });
+          input.value = "";
+          await loadPetitions();
+        } catch (error) {
+          setMessage(
+            error instanceof Error
+              ? error.message
+              : "No pudimos iniciar sesión.",
+          );
+          showLogin();
+        } finally {
+          isLoggingIn = false;
+          submit.disabled = false;
+          submit.setAttribute("aria-busy", "false");
+          if (loginSpinner) loginSpinner.hidden = true;
+        }
+      });
+    }
+
+    refreshButton?.addEventListener(
+      "click",
+      () => void loadPetitions().catch((error) => setMessage(error.message)),
+    );
+    filter?.addEventListener(
+      "change",
+      () => void loadPetitions().catch((error) => setMessage(error.message)),
+    );
+    document
+      .querySelector("#admin-logout")
+      ?.addEventListener("click", async () => {
+        try {
+          await api("/admin/logout", { method: "POST" });
+        } catch {
+          /* cerrar sesión visualmente también si la API no responde */
+        }
+        showLogin();
+        setMessage("Sesión cerrada.");
+      });
+
+    void loadPetitions().catch((error) => {
+      showLogin();
+      if ((error as Error & { status?: number }).status !== 401)
+        setMessage(error.message || "No pudimos conectar con el backend.");
+    });
+  </script>
+</AmonraLayout>

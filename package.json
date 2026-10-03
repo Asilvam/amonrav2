@@ -1,14 +1,16 @@
 {
   "name": "amonrav2",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev --port 4321",
+    "dev": "astro dev --port 4321 --host",
     "build": "astro build",
     "check": "astro check && eslint . && prettier --check .",
+    "qa:editorial": "node scripts/qa-editorial.mjs",
+    "qa:sections": "node scripts/qa-sections.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
@@ -26,6 +28,7 @@
     "astro": "^7.3.2",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
+    "sweetalert2": "^11.26.25",
     "tailwindcss": "^4.3.3"
   },
   "allowScripts": {

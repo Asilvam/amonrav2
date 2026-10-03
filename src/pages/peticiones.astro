@@ -1,0 +1,1043 @@
+---
+import Container from "../components/layout/Container.astro";
+import AmonraLayout from "../layouts/AmonraLayout.astro";
+---
+
+<AmonraLayout
+  title="Peticiones"
+  description="Pide una oración, enciende una vela o comparte otro motivo con Amonra."
+>
+  <article>
+    <header class="border-b border-antique-gold-soft/45 bg-[linear-gradient(120deg,var(--color-legacy-violet-deep),var(--color-surface-warm)_62%)] py-12 text-ivory lg:py-16">
+      <Container>
+        <div class="petition-hero-layout">
+          <div class="petition-hero-copy">
+            <p class="eyebrow text-antique-gold">
+              Amonra · espacio de acompañamiento
+            </p>
+            <h1 class="mt-4 max-w-[14ch] font-editorial text-[clamp(2.6rem,7vw,5.5rem)] leading-[0.94] font-medium tracking-[-0.04em]">
+              Comparte una intención
+            </h1>
+            <p class="mt-5 max-w-[42rem] font-editorial text-xl leading-relaxed italic text-old-papyrus">
+              Puedes pedir una oración, encender una vela o contarnos otro
+              motivo. Leeremos tu mensaje con respeto.
+            </p>
+          </div>
+          <figure
+            class="petition-hero-visual"
+            data-kind="prayer"
+            aria-hidden="true"
+          >
+            <img
+              id="petition-hero-carousel"
+              data-random-carousel
+              data-images={JSON.stringify([
+                "/images/petitions/manos-luz.png",
+                "/images/petitions/manos-oracion.png",
+                "/images/petitions/vela-encendida.png",
+              ])}
+              src="/images/petitions/manos-luz.png"
+              alt=""
+              width="762"
+              height="1244"
+              fetchpriority="high"
+              decoding="async"
+            />
+            <span class="petition-candle-glow" aria-hidden="true"></span>
+            <span class="petition-candle-flame" aria-hidden="true"></span>
+          </figure>
+        </div>
+      </Container>
+    </header>
+
+    <section
+      class="bg-paper py-12 text-paper-ink lg:py-16"
+      aria-labelledby="formulario-peticion"
+    >
+      <Container size="reading">
+        <div class="rounded-2xl border border-antique-gold-soft/60 bg-[var(--color-parchment-soft)] p-6 shadow-sm sm:p-8 lg:p-10">
+          <h2
+            id="formulario-peticion"
+            class="font-editorial text-3xl text-paper-ink"
+          >
+            Cuéntanos qué necesitas
+          </h2>
+          <p class="mt-2 text-sm leading-relaxed text-paper-muted">
+            Necesitamos tu nombre y correo para confirmar la petición. El celular
+            es opcional.
+          </p>
+
+          <form id="petition-form" class="mt-8 space-y-6">
+            <div>
+              <p class="mb-2 block font-interface text-sm font-semibold text-paper-ink">
+                ¿Cómo quieres que te acompañemos?
+              </p>
+              <input
+                id="petition-kind"
+                type="hidden"
+                name="kind"
+                value="Cadena de oración"
+              />
+              <details
+                class="site-select"
+                data-custom-select
+                data-select-input="petition-kind"
+              >
+                <summary
+                  aria-label="¿Cómo quieres que te acompañemos?"
+                  aria-controls="petition-kind-options"
+                  class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                >
+                  <span data-select-value>Pedir una oración</span>
+                </summary>
+                <div id="petition-kind-options" class="site-select-options">
+                  <button
+                    type="button"
+                    class="site-select-option"
+                    data-select-option
+                    data-value="Cadena de oración"
+                    data-label="Pedir una oración"
+                    aria-pressed="true"
+                  >
+                    Pedir una oración
+                  </button>
+                  <button
+                    type="button"
+                    class="site-select-option"
+                    data-select-option
+                    data-value="Encendido de vela"
+                    data-label="Encender una vela"
+                    aria-pressed="false"
+                  >
+                    Encender una vela
+                  </button>
+                  <button
+                    type="button"
+                    class="site-select-option"
+                    data-select-option
+                    data-value="Otra petición"
+                    data-label="Otro motivo"
+                    aria-pressed="false"
+                  >
+                    Otro motivo
+                  </button>
+                </div>
+              </details>
+            </div>
+
+            <div id="prayer-details">
+              <p class="mb-2 block font-interface text-sm font-semibold text-paper-ink">
+                ¿Durante cuánto tiempo quieres que acompañemos tu petición?
+              </p>
+              <input
+                id="prayer-duration"
+                type="hidden"
+                name="duration"
+                value="Una semana"
+              />
+              <details
+                class="site-select"
+                data-custom-select
+                data-select-input="prayer-duration"
+              >
+                <summary
+                  aria-label="¿Durante cuánto tiempo quieres que acompañemos tu petición?"
+                  aria-controls="prayer-duration-options"
+                  class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                >
+                  <span data-select-value>Una semana</span>
+                </summary>
+                <div id="prayer-duration-options" class="site-select-options">
+                  <button
+                    type="button"
+                    class="site-select-option"
+                    data-select-option
+                    data-value="Una semana"
+                    aria-pressed="true"
+                  >
+                    Una semana
+                  </button>
+                  <button
+                    type="button"
+                    class="site-select-option"
+                    data-select-option
+                    data-value="Un día"
+                    aria-pressed="false"
+                  >
+                    Un día
+                  </button>
+                  <button
+                    type="button"
+                    class="site-select-option"
+                    data-select-option
+                    data-value="Un mes"
+                    aria-pressed="false"
+                  >
+                    Un mes
+                  </button>
+                </div>
+              </details>
+            </div>
+
+            <div id="candle-details" hidden>
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <p class="mb-2 block font-interface text-sm font-semibold text-paper-ink">
+                    Color de vela
+                  </p>
+                  <input
+                    id="candle-color"
+                    type="hidden"
+                    name="candleColor"
+                    value="Ayúdame a elegir"
+                    disabled
+                  />
+                  <details
+                    class="site-select"
+                    data-custom-select
+                    data-select-input="candle-color"
+                  >
+                    <summary
+                      aria-label="Color de vela"
+                      aria-controls="candle-color-options"
+                      class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                    >
+                      <span data-select-value>Ayúdame a elegir</span>
+                    </summary>
+                    <div
+                      id="candle-color-options"
+                      class="site-select-options"
+                    >
+                      <button
+                        type="button"
+                        class="site-select-option"
+                        data-select-option
+                        data-value="Ayúdame a elegir"
+                        aria-pressed="true"
+                      >
+                        Ayúdame a elegir
+                      </button>
+                      <button
+                        type="button"
+                        class="site-select-option"
+                        data-select-option
+                        data-value="Blanca"
+                        aria-pressed="false"
+                      >
+                        Blanca
+                      </button>
+                      <button
+                        type="button"
+                        class="site-select-option"
+                        data-select-option
+                        data-value="Amarilla"
+                        aria-pressed="false"
+                      >
+                        Amarilla
+                      </button>
+                      <button
+                        type="button"
+                        class="site-select-option"
+                        data-select-option
+                        data-value="Roja"
+                        aria-pressed="false"
+                      >
+                        Roja
+                      </button>
+                      <button
+                        type="button"
+                        class="site-select-option"
+                        data-select-option
+                        data-value="Azul"
+                        aria-pressed="false"
+                      >
+                        Azul
+                      </button>
+                      <button
+                        type="button"
+                        class="site-select-option"
+                        data-select-option
+                        data-value="Otra"
+                        aria-pressed="false"
+                      >
+                        Otra
+                      </button>
+                    </div>
+                  </details>
+                </div>
+                <div>
+                  <p class="mb-2 block font-interface text-sm font-semibold text-paper-ink">
+                    Tipo de encendido
+                  </p>
+                  <input
+                    id="candle-type"
+                    type="hidden"
+                    name="candleType"
+                    value="Simbólico"
+                    disabled
+                  />
+                  <details
+                    class="site-select"
+                    data-custom-select
+                    data-select-input="candle-type"
+                  >
+                    <summary
+                      aria-label="Tipo de encendido"
+                      aria-controls="candle-type-options"
+                      class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                    >
+                      <span data-select-value>Simbólico</span>
+                    </summary>
+                    <div id="candle-type-options" class="site-select-options">
+                      <button
+                        type="button"
+                        class="site-select-option"
+                        data-select-option
+                        data-value="Simbólico"
+                        aria-pressed="true"
+                      >
+                        Simbólico
+                      </button>
+                      <button
+                        type="button"
+                        class="site-select-option"
+                        data-select-option
+                        data-value="Vela física"
+                        aria-pressed="false"
+                      >
+                        Vela física
+                      </button>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="petition-message"
+                class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
+              >
+                ¿Qué quieres que tengamos presente?
+              </label>
+              <textarea
+                id="petition-message"
+                name="message"
+                rows="5"
+                maxlength="600"
+                minlength="5"
+                required
+                placeholder="Escribe tu mensaje (máximo 600 caracteres)."
+                class="w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base leading-relaxed text-paper-ink placeholder:text-paper-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+              ></textarea>
+              <p class="mt-2 text-xs leading-relaxed text-paper-muted">
+                No incluyas datos sensibles ni información privada de otras
+                personas.
+              </p>
+            </div>
+
+            <div class="grid gap-5">
+              <div>
+                <label
+                  for="petition-name"
+                  class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
+                >
+                  Nombre
+                </label>
+                <input
+                  id="petition-name"
+                  name="name"
+                  maxlength="80"
+                  required
+                  autocomplete="name"
+                  class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink placeholder:text-paper-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                  placeholder="Tu nombre"
+                />
+              </div>
+              <div>
+                <label
+                  for="petition-phone"
+                  class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
+                >
+                  WhatsApp o celular{" "}
+                  <span class="font-normal text-paper-muted">(opcional)</span>
+                </label>
+                <div class="flex min-h-12 items-center rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-clay-red">
+                  <span class="shrink-0 font-interface text-base text-paper-ink">
+                    +56 9
+                  </span>
+                  <input
+                    id="petition-phone"
+                    name="phoneLocal"
+                    type="tel"
+                    maxlength="20"
+                    autocomplete="tel-national"
+                    aria-describedby="petition-phone-help"
+                    class="min-w-0 flex-1 border-0 bg-transparent pl-2 font-interface text-base text-paper-ink placeholder:text-paper-muted outline-none"
+                    placeholder="1234 5678"
+                  />
+                </div>
+                <p
+                  id="petition-phone-help"
+                  class="mt-2 text-xs leading-relaxed text-paper-muted"
+                >
+                  Si lo ingresas, completa los 8 dígitos.
+                </p>
+              </div>
+              <div>
+                <label
+                  for="petition-email"
+                  class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
+                >
+                  Correo electrónico
+                </label>
+                <input
+                  id="petition-email"
+                  name="email"
+                  type="email"
+                  maxlength="254"
+                  required
+                  autocomplete="email"
+                  class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink placeholder:text-paper-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                  placeholder="tu@correo.cl"
+                />
+              </div>
+            </div>
+
+            <label class="flex items-start gap-3 font-interface text-sm leading-relaxed text-paper-muted">
+              <input
+                type="checkbox"
+                name="share"
+                class="mt-1 size-4 shrink-0 accent-clay-red"
+              />
+              <span>
+                Autorizo que esta petición se comparta con la comunidad de Amonra.
+                Si no marco esta casilla, se mantiene privada.
+              </span>
+            </label>
+
+            <label class="flex items-start gap-3 font-interface text-sm leading-relaxed text-paper-muted">
+              <input
+                id="petition-consent"
+                type="checkbox"
+                name="consent"
+                value="true"
+                required
+                class="mt-1 size-4 shrink-0 accent-clay-red"
+              />
+              <span>
+                Acepto que Amonra guarde esta petición para gestionarla y que
+                use mi correo únicamente para confirmar la solicitud y comunicar
+                su estado. Si indico mi celular, autorizo que se use para
+                contactarme por esta petición.
+              </span>
+            </label>
+
+            <div class="absolute -left-[9999px]" aria-hidden="true">
+              <label for="petition-website">Deja este campo vacío</label>
+              <input
+                id="petition-website"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="border-t border-antique-gold-soft/40 pt-5">
+              <p class="text-xs leading-relaxed text-paper-muted">
+                Para comenzar a gestionar tu petición, confirma tu correo desde
+                el enlace que te enviaremos. El enlace vence en 24 horas.
+              </p>
+              <button
+                id="petition-submit"
+                type="submit"
+                class="mt-5 inline-flex min-h-12 items-center justify-center rounded-full bg-clay-red px-7 font-interface text-sm font-semibold text-white transition-colors hover:bg-clay-red/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+              >
+                Enviar petición
+              </button>
+            </div>
+          </form>
+          <dialog
+            id="petition-kind-dialog"
+            class="site-select-dialog"
+            aria-labelledby="petition-kind-dialog-title"
+          >
+            <div class="site-select-dialog-content">
+              <header class="site-select-dialog-header">
+                <div>
+                  <p class="eyebrow text-clay-ink">Amonra · acompañamiento</p>
+                  <h2
+                    id="petition-kind-dialog-title"
+                    class="mt-1 font-editorial text-2xl text-paper-ink"
+                  >
+                    ¿Cómo quieres que te acompañemos?
+                  </h2>
+                </div>
+                <button
+                  type="button"
+                  class="site-select-dialog-close"
+                  data-mobile-intent-close
+                  aria-label="Cerrar opciones"
+                >
+                  ×
+                </button>
+              </header>
+              <p class="mt-2 text-sm text-paper-muted">
+                Elige una opción para continuar.
+              </p>
+              <div class="site-select-dialog-options">
+                <button
+                  type="button"
+                  class="site-select-dialog-option"
+                  data-mobile-intent-option
+                  data-value="Cadena de oración"
+                  aria-pressed="true"
+                >
+                  Pedir una oración
+                </button>
+                <button
+                  type="button"
+                  class="site-select-dialog-option"
+                  data-mobile-intent-option
+                  data-value="Encendido de vela"
+                  aria-pressed="false"
+                >
+                  Encender una vela
+                </button>
+                <button
+                  type="button"
+                  class="site-select-dialog-option"
+                  data-mobile-intent-option
+                  data-value="Otra petición"
+                  aria-pressed="false"
+                >
+                  Otro motivo
+                </button>
+              </div>
+            </div>
+          </dialog>
+        </div>
+      </Container>
+    </section>
+  </article>
+
+  <style>
+    .petition-hero-layout {
+      display: grid;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .petition-hero-copy {
+      position: relative;
+      z-index: 1;
+      min-width: 0;
+    }
+
+    .petition-hero-visual {
+      position: relative;
+      z-index: 0;
+      display: grid;
+      min-width: 0;
+      margin: 0;
+      place-items: center;
+    }
+
+    .petition-hero-visual::before {
+      position: absolute;
+      z-index: -1;
+      width: 90%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgb(255 207 112 / 20%),
+        transparent 70%
+      );
+      filter: blur(2rem);
+      content: "";
+    }
+
+    .petition-hero-visual img {
+      display: block;
+      width: min(100%, 11rem);
+      height: 14rem;
+      border-radius: 0.9rem;
+      object-fit: cover;
+      object-position: center 50%;
+      filter: drop-shadow(0 18px 30px rgb(0 0 0 / 24%));
+      transition: opacity 320ms ease;
+    }
+
+    .petition-hero-visual img.is-transitioning {
+      opacity: 0;
+    }
+
+    .petition-candle-glow,
+    .petition-candle-flame {
+      position: absolute;
+      left: 50%;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: 0;
+    }
+
+    .petition-hero-visual[data-kind="candle"] .petition-candle-glow {
+      top: 24%;
+      width: 18%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgb(255 223 147 / 36%) 0,
+        rgb(255 174 68 / 19%) 38%,
+        transparent 72%
+      );
+      filter: blur(8px);
+      opacity: 0.68;
+      transform: translate(-50%, -50%);
+      animation: candle-glow 1.8s ease-in-out infinite alternate;
+    }
+
+    .petition-hero-visual[data-kind="candle"] .petition-candle-flame {
+      top: 15%;
+      width: 4%;
+      height: 14%;
+      border-radius: 52% 48% 48% 52% / 70% 70% 34% 34%;
+      background: linear-gradient(
+        180deg,
+        rgb(255 249 213 / 25%) 0%,
+        rgb(255 229 151 / 18%) 55%,
+        rgb(255 158 49 / 14%) 100%
+      );
+      filter: blur(1px) drop-shadow(0 0 5px rgb(255 181 71 / 42%));
+      opacity: 0.62;
+      transform: translateX(-50%);
+      transform-origin: 50% 88%;
+      animation: candle-flicker 1.35s ease-in-out infinite alternate;
+    }
+
+    @keyframes candle-flicker {
+      0% {
+        opacity: 0.48;
+        transform: translateX(-54%) rotate(-2deg) scaleX(0.9) scaleY(0.96);
+      }
+      45% {
+        opacity: 0.72;
+        transform: translateX(-48%) rotate(1.6deg) scaleX(1.08) scaleY(1.03);
+      }
+      100% {
+        opacity: 0.58;
+        transform: translateX(-51%) rotate(-0.8deg) scaleX(0.94) scaleY(1.06);
+      }
+    }
+
+    @keyframes candle-glow {
+      from {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(0.9);
+      }
+      to {
+        opacity: 0.78;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+    }
+
+    @media (min-width: 48rem) {
+      .petition-hero-layout {
+        min-height: 26rem;
+        grid-template-columns: minmax(0, 1.15fr) minmax(13rem, 0.85fr);
+        gap: clamp(2rem, 5vw, 5rem);
+      }
+
+      .petition-hero-visual img {
+        width: min(100%, 17rem);
+        height: 24rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .petition-hero-visual img {
+        transition: none;
+      }
+
+      .petition-candle-glow,
+      .petition-candle-flame {
+        animation: none !important;
+      }
+    }
+  </style>
+
+  <script>
+    import Swal from "sweetalert2";
+    import "sweetalert2/dist/sweetalert2.min.css";
+
+    const heroCarousel = document.querySelector<HTMLImageElement>(
+      "[data-random-carousel]",
+    );
+    const heroVisual = heroCarousel?.closest<HTMLElement>(
+      ".petition-hero-visual",
+    );
+    if (heroCarousel && heroVisual) {
+      const carouselImages = JSON.parse(
+        heroCarousel.dataset.images || "[]",
+      ) as string[];
+      let currentImage = heroCarousel.getAttribute("src") || "";
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
+
+      if (!prefersReducedMotion.matches) window.setInterval(() => {
+        if (document.hidden || carouselImages.length < 2) return;
+        const options = carouselImages.filter((src) => src !== currentImage);
+        const nextImage = options[Math.floor(Math.random() * options.length)];
+        if (!nextImage) return;
+
+        const preloadedImage = new Image();
+        preloadedImage.src = nextImage;
+        const showNextImage = () => {
+          if (!preloadedImage.naturalWidth) return;
+          heroCarousel.classList.add("is-transitioning");
+          window.setTimeout(() => {
+            heroCarousel.src = nextImage;
+            currentImage = nextImage;
+            heroVisual.dataset.kind = nextImage.includes("vela-encendida")
+              ? "candle"
+              : "prayer";
+            heroCarousel.classList.remove("is-transitioning");
+          }, 320);
+        };
+
+        if (preloadedImage.complete) showNextImage();
+        else preloadedImage.addEventListener("load", showNextImage, { once: true });
+      }, 7000);
+    }
+
+    const form = document.querySelector<HTMLFormElement>("#petition-form");
+    const kind = document.querySelector<HTMLInputElement>("#petition-kind");
+    const prayerDetails =
+      document.querySelector<HTMLElement>("#prayer-details");
+    const prayerDuration =
+      document.querySelector<HTMLInputElement>("#prayer-duration");
+    const candleDetails =
+      document.querySelector<HTMLElement>("#candle-details");
+    const candleColor =
+      document.querySelector<HTMLInputElement>("#candle-color");
+    const candleType = document.querySelector<HTMLInputElement>("#candle-type");
+    const submitButton =
+      document.querySelector<HTMLButtonElement>("#petition-submit");
+    const phoneInput =
+      document.querySelector<HTMLInputElement>("#petition-phone");
+
+    if (
+      form &&
+      kind &&
+      prayerDetails &&
+      prayerDuration &&
+      candleDetails &&
+      candleColor &&
+      candleType &&
+      submitButton
+    ) {
+      const customSelects = form.querySelectorAll<HTMLDetailsElement>(
+        "[data-custom-select]",
+      );
+      for (const customSelect of customSelects) {
+        const inputId = customSelect.dataset.selectInput;
+        const valueInput = inputId
+          ? form.querySelector<HTMLInputElement>(`#${inputId}`)
+          : null;
+        const valueLabel = customSelect.querySelector<HTMLElement>(
+          "[data-select-value]",
+        );
+        const options = customSelect.querySelectorAll<HTMLButtonElement>(
+          "[data-select-option]",
+        );
+        for (const option of options) {
+          option.addEventListener("click", () => {
+            if (!valueInput || !valueLabel) return;
+            valueInput.value = option.dataset.value || "";
+            valueLabel.textContent =
+              option.dataset.label || option.textContent?.trim() || valueInput.value;
+            for (const item of options)
+              item.setAttribute("aria-pressed", String(item === option));
+            customSelect.open = false;
+            valueInput.dispatchEvent(new Event("change", { bubbles: true }));
+          });
+        }
+        customSelect.addEventListener("toggle", () => {
+          if (!customSelect.open) return;
+          for (const otherSelect of customSelects)
+            if (otherSelect !== customSelect) otherSelect.open = false;
+        });
+        customSelect.addEventListener("keydown", (event) => {
+          if (event.key !== "Escape") return;
+          customSelect.open = false;
+          customSelect.querySelector("summary")?.focus();
+        });
+      }
+
+      const intentSelect = form.querySelector<HTMLDetailsElement>(
+        '[data-select-input="petition-kind"]',
+      );
+      const intentSummary = intentSelect?.querySelector<HTMLElement>("summary");
+      const intentDialog = document.querySelector<HTMLDialogElement>(
+        "#petition-kind-dialog",
+      );
+      const mobileIntentOptions =
+        intentDialog?.querySelectorAll<HTMLButtonElement>(
+          "[data-mobile-intent-option]",
+        );
+      const mobileSelectViewport = window.matchMedia("(max-width: 47.99rem)");
+      let previousDocumentOverflow = "";
+
+      const closeIntentDialog = () => {
+        if (!intentDialog?.open) return;
+        intentDialog.close();
+      };
+
+      intentSummary?.addEventListener("click", (event) => {
+        if (!mobileSelectViewport.matches || !intentDialog || !kind) return;
+        event.preventDefault();
+        event.stopPropagation();
+        for (const option of mobileIntentOptions || [])
+          option.setAttribute(
+            "aria-pressed",
+            String(option.dataset.value === kind.value),
+          );
+        previousDocumentOverflow = document.documentElement.style.overflow;
+        document.documentElement.style.overflow = "hidden";
+        intentDialog.showModal();
+        intentDialog
+          .querySelector<HTMLButtonElement>(
+            '[data-mobile-intent-option][aria-pressed="true"]',
+          )
+          ?.focus();
+      });
+
+      for (const option of mobileIntentOptions || []) {
+        option.addEventListener("click", () => {
+          const matchingOption = Array.from(
+            intentSelect?.querySelectorAll<HTMLButtonElement>(
+              "[data-select-option]",
+            ) || [],
+          ).find((item) => item.dataset.value === option.dataset.value);
+          matchingOption?.click();
+          closeIntentDialog();
+        });
+      }
+
+      intentDialog
+        ?.querySelector<HTMLButtonElement>("[data-mobile-intent-close]")
+        ?.addEventListener("click", closeIntentDialog);
+      intentDialog?.addEventListener("click", (event) => {
+        if (event.target === intentDialog) closeIntentDialog();
+      });
+      intentDialog?.addEventListener("close", () => {
+        document.documentElement.style.overflow = previousDocumentOverflow;
+        intentSummary?.focus();
+      });
+
+      phoneInput?.addEventListener("input", () => {
+        const value = phoneInput.value;
+        const caret = phoneInput.selectionStart ?? value.length;
+        const digitsBeforeCaret = value
+          .slice(0, caret)
+          .replace(/\D/gu, "").length;
+        let digits = value.replace(/\D/gu, "");
+        if (digits.length === 11 && digits.startsWith("569"))
+          digits = digits.slice(3);
+        else if (digits.length === 9 && digits.startsWith("9"))
+          digits = digits.slice(1);
+        const localNumber = digits.slice(0, 8);
+        let formatted = localNumber.slice(0, 4);
+        if (localNumber.length > 4) formatted += ` ${localNumber.slice(4, 8)}`;
+
+        phoneInput.value = formatted;
+        let nextCaret = 0;
+        let countedDigits = 0;
+        while (
+          nextCaret < formatted.length &&
+          countedDigits < digitsBeforeCaret
+        ) {
+          if (/\d/u.test(formatted[nextCaret])) countedDigits += 1;
+          nextCaret += 1;
+        }
+        phoneInput.setSelectionRange(nextCaret, nextCaret);
+        phoneInput.setCustomValidity(
+          localNumber.length > 0 && localNumber.length < 8
+            ? "Completa los ocho dígitos del celular."
+            : "",
+        );
+      });
+
+      const updateDetails = () => {
+        const isPrayer = kind.value === "Cadena de oración";
+        const isCandle = kind.value === "Encendido de vela";
+        prayerDetails.hidden = !isPrayer;
+        prayerDuration.disabled = !isPrayer;
+        candleDetails.hidden = !isCandle;
+        candleColor.disabled = !isCandle;
+        candleType.disabled = !isCandle;
+      };
+
+      const resetCustomSelects = () => {
+        for (const customSelect of customSelects) {
+          const inputId = customSelect.dataset.selectInput;
+          const valueInput = inputId
+            ? form.querySelector<HTMLInputElement>(`#${inputId}`)
+            : null;
+          const valueLabel = customSelect.querySelector<HTMLElement>(
+            "[data-select-value]",
+          );
+          const options = customSelect.querySelectorAll<HTMLButtonElement>(
+            "[data-select-option]",
+          );
+          const selectedOption = Array.from(options).find(
+            (option) => option.dataset.value === valueInput?.value,
+          );
+          if (valueInput && valueLabel)
+            valueLabel.textContent =
+              selectedOption?.dataset.label || selectedOption?.textContent?.trim() || valueInput.value;
+          for (const option of options) {
+            option.setAttribute(
+              "aria-pressed",
+              String(option.dataset.value === valueInput?.value),
+            );
+          }
+          customSelect.open = false;
+        }
+      };
+
+      let isSubmitting = false;
+      kind.addEventListener("change", updateDetails);
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (isSubmitting) return;
+        if (!form.reportValidity()) return;
+        isSubmitting = true;
+
+        const values = new FormData(form);
+        const payload = {
+          kind: String(values.get("kind")),
+          ...(values.has("duration")
+            ? { duration: String(values.get("duration")) }
+            : {}),
+          ...(values.has("candleColor")
+            ? { candleColor: String(values.get("candleColor")) }
+            : {}),
+          ...(values.has("candleType")
+            ? { candleType: String(values.get("candleType")) }
+            : {}),
+          message: String(values.get("message") || "").trim(),
+          name: String(values.get("name") || "").trim(),
+          ...(phoneInput?.value.replace(/\D/gu, "").length === 8
+            ? { phone: `+56 9 ${phoneInput.value.trim()}` }
+            : {}),
+          email: String(values.get("email") || "").trim(),
+          share: values.has("share"),
+          consent: values.has("consent"),
+          website: String(values.get("website") || ""),
+        };
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Enviando…";
+        Swal.fire({
+          title: "Procesando",
+          text: "Espera mientras enviamos tu petición…",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          showConfirmButton: false,
+          showCloseButton: false,
+          customClass: {
+            popup: "amonra-swal-popup",
+            title: "amonra-swal-title",
+            htmlContainer: "amonra-swal-content",
+            loader: "amonra-swal-loader",
+          },
+          didOpen: () => Swal.showLoading(),
+        });
+
+        try {
+          const apiBase = (
+            import.meta.env.PUBLIC_API_BASE_URL ||
+            (import.meta.env.DEV
+              ? "http://localhost:3500"
+              : window.location.origin)
+          ).replace(/\/+$/, "");
+          const response = await fetch(`${apiBase}/api/peticiones`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          const result = await response.json();
+          if (!response.ok) {
+            const apiMessage = Array.isArray(result.message)
+              ? result.message.join(" ")
+              : result.message;
+            const translatedMessage = String(apiMessage || "").replace(
+              /message must be longer than or equal to 5 characters/giu,
+              "Tu intención o mensaje debe tener al menos 5 caracteres.",
+            );
+            throw new Error(
+              translatedMessage ||
+                "No pudimos guardar tu petición. Revisa los datos e inténtalo de nuevo.",
+            );
+          }
+
+          const alertContent = document.createElement("div");
+          const alertMessage = document.createElement("p");
+          alertMessage.textContent = result.confirmationSent
+            ? "Revisa tu correo y abre el enlace para confirmar tu petición. Tienes 24 horas; después comenzaremos a gestionarla."
+            : "La petición quedó guardada, pero no pudimos enviar el correo de confirmación. Inténtalo nuevamente más tarde.";
+          alertContent.append(alertMessage);
+          Swal.close();
+          const alertResult = await Swal.fire({
+            icon: result.confirmationSent ? "success" : "warning",
+            title: result.confirmationSent
+              ? "Revisa tu correo"
+              : "No pudimos enviar el correo",
+            html: alertContent,
+            confirmButtonText: "Entendido",
+            customClass: {
+              popup: "amonra-swal-popup",
+              title: "amonra-swal-title",
+              htmlContainer: "amonra-swal-content",
+              confirmButton: "amonra-swal-confirm",
+            },
+          });
+          if (result.confirmationSent && alertResult.isConfirmed) {
+            window.location.assign("/");
+            return;
+          }
+          form.reset();
+          resetCustomSelects();
+          updateDetails();
+        } catch (error) {
+          Swal.close();
+          await Swal.fire({
+            icon: "error",
+            title: "No se pudo enviar",
+            text:
+              error instanceof Error
+                ? error.message
+                : "No pudimos conectar con el servicio. Inténtalo de nuevo.",
+            confirmButtonText: "Entendido",
+            customClass: {
+              popup: "amonra-swal-popup",
+              title: "amonra-swal-title",
+              htmlContainer: "amonra-swal-content",
+              confirmButton: "amonra-swal-confirm",
+            },
+          });
+        } finally {
+          isSubmitting = false;
+          submitButton.disabled = false;
+          submitButton.textContent = "Enviar petición";
+        }
+      });
+
+      updateDetails();
+    }
+  </script>
+</AmonraLayout>

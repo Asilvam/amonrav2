@@ -1,0 +1,229 @@
+---
+interface Props {
+  label: string;
+  tabs: { id: string; label: string }[];
+}
+
+const { label, tabs } = Astro.props;
+---
+
+<div data-content-tabs>
+  <nav class="tab-list" aria-label={label}>
+    {tabs.map((tab) => (
+      <a id={`${tab.id}-tab`} class="tab-link" href={`#${tab.id}`}>
+        {tab.label}
+      </a>
+    ))}
+  </nav>
+  <div class="tab-panels mt-8 space-y-10">
+    <slot />
+  </div>
+</div>
+
+<script>
+  document
+    .querySelectorAll<HTMLElement>("[data-content-tabs]")
+    .forEach((root) => {
+      const list = root.querySelector<HTMLElement>(".tab-list");
+      const links = Array.from(
+        root.querySelectorAll<HTMLAnchorElement>(".tab-link"),
+      );
+      const panels = links.map((link) =>
+        document.getElementById(link.hash.slice(1)),
+      );
+      if (!list || panels.some((panel) => !panel || !root.contains(panel)))
+        return;
+
+      function selectTab(index: number, focus = false) {
+        links.forEach((link, i) => {
+          link.setAttribute("aria-selected", String(i === index));
+          link.tabIndex = i === index ? 0 : -1;
+          panels[i]!.hidden = i !== index;
+        });
+        if (focus) links[index].focus({ preventScroll: true });
+
+        // Optimización iOS / iPhone: autodesplaza horizontalmente la pestaña activa al centro visible
+        if (window.innerWidth < 640 && links[index]) {
+          links[index].scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center",
+          });
+        }
+      }
+
+      function selectHashTarget() {
+        const target = document.getElementById(location.hash.slice(1));
+        const index = panels.findIndex(
+          (panel) => target && panel!.contains(target),
+        );
+        if (index < 0) return false;
+        selectTab(index);
+        requestAnimationFrame(() => target!.scrollIntoView({ block: "start" }));
+        return true;
+      }
+
+      list.setAttribute("role", "tablist");
+      links.forEach((link, index) => {
+        link.setAttribute("role", "tab");
+        link.setAttribute("aria-controls", panels[index]!.id);
+        panels[index]!.setAttribute("role", "tabpanel");
+        panels[index]!.setAttribute("aria-labelledby", link.id);
+        panels[index]!.tabIndex = 0;
+
+        function activate() {
+          selectTab(index, true);
+          history.replaceState(history.state, "", link.hash);
+        }
+
+        link.addEventListener("click", (event) => {
+          if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+            return;
+          event.preventDefault();
+          activate();
+        });
+
+        link.addEventListener("keydown", (event) => {
+          let next: number;
+          switch (event.key) {
+            case "ArrowRight":
+              next = (index + 1) % links.length;
+              break;
+            case "ArrowLeft":
+              next = (index - 1 + links.length) % links.length;
+              break;
+            case "Home":
+              next = 0;
+              break;
+            case "End":
+              next = links.length - 1;
+              break;
+            case " ":
+            case "Enter":
+              event.preventDefault();
+              activate();
+              return;
+            default:
+              return;
+          }
+          event.preventDefault();
+          selectTab(next, true);
+          history.replaceState(history.state, "", links[next].hash);
+        });
+      });
+
+      if (!selectHashTarget()) selectTab(0);
+      window.addEventListener("hashchange", selectHashTarget);
+    });
+</script>
+
+<style>
+  .tab-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--color-primary-soft);
+    padding-block: 0.5rem 1rem;
+  }
+
+  .tab-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px; /* Cumple estándar táctil Apple HIG de 44pt */
+    border: 1px solid var(--color-primary-soft);
+    border-radius: var(--radius-small);
+    padding: 0.65rem 1.15rem;
+    color: var(--color-ink);
+    font-family: var(--font-ui);
+    font-size: 0.9375rem;
+    font-weight: 650;
+    line-height: 1.35;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+      background 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease,
+      box-shadow 0.15s ease,
+      transform 0.1s ease;
+  }
+
+  .tab-link:active {
+    transform: scale(0.97); /* Respuesta táctil al toque en iOS/iPhone */
+  }
+
+  .tab-link:hover {
+    border-color: var(--color-clay-ink);
+    background: var(--color-parchment-soft);
+    color: var(--color-ink);
+  }
+
+  .tab-link[aria-selected="true"] {
+    border-color: var(--color-clay-ink);
+    background: var(--color-clay-ink);
+    color: #fff8df;
+    box-shadow: 0 2px 6px rgba(120, 56, 39, 0.22);
+  }
+
+  @media (max-width: 639px) {
+    .tab-list {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overscroll-behavior-x: contain; /* Evita que el swipe horizontal active la navegación atrás de iOS Safari */
+      padding-bottom: 0.75rem;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+      -webkit-overflow-scrolling: touch; /* Momentum scrolling nativo de iOS */
+      scroll-snap-type: x proximity;
+      scroll-padding-inline: 1rem;
+      padding-inline-end: 1.5rem; /* Margen de resguardo para que la última pestaña no quede pegada al borde en iPhone */
+    }
+
+    .tab-list::-webkit-scrollbar {
+      display: none; /* Oculta la barra de scroll en iOS Safari */
+    }
+
+    .tab-link {
+      white-space: nowrap;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      user-select: none;
+      -webkit-user-select: none; /* Evita selección de texto accidental al arrastrar */
+    }
+  }
+
+  .tab-link:focus-visible,
+  .tab-panels > :global([role="tabpanel"]:focus-visible) {
+    outline: 3px solid var(--color-clay-ink);
+    outline-offset: 3px;
+  }
+
+  .tab-panels > :global([role="tabpanel"]) {
+    margin-block-start: 0;
+  }
+
+  .tab-panels > :global([hidden]) {
+    display: none;
+  }
+
+  .tab-panels :global(p) {
+    max-width: 68ch;
+  }
+
+  .tab-panels :global(p.max-w-none) {
+    max-width: none;
+  }
+
+  @media print {
+    .tab-list {
+      display: none;
+    }
+    .tab-panels > :global([hidden]) {
+      display: block;
+    }
+    .tab-panels > :global([role="tabpanel"]) {
+      margin-block-start: 2rem;
+    }
+  }
+</style>

@@ -14,6 +14,7 @@
   --color-egypt-blue: var(--color-mineral-blue);
   --color-egypt-blue-soft: var(--color-mineral-blue-soft);
   --color-clay-red: var(--color-solar-red);
+  --color-clay-ink: var(--color-clay-ink);
   --color-old-papyrus: var(--color-papyrus);
   --color-sandstone: var(--color-stone);
   --color-paper: var(--color-parchment);
@@ -30,6 +31,20 @@
   *::before,
   *::after {
     box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 
   body {
@@ -62,6 +77,10 @@
     outline-offset: 0.25rem;
   }
 
+  .text-paper-ink {
+    --color-focus: var(--color-clay-ink);
+  }
+
   ::selection {
     background: var(--color-selection);
   }
@@ -77,5 +96,274 @@
   textarea,
   select {
     font: inherit;
+  }
+}
+
+/* Keep browser-autofilled values in the same warm palette as petition fields. */
+#petition-form input:-webkit-autofill,
+#petition-form input:-webkit-autofill:hover,
+#petition-form input:-webkit-autofill:focus,
+#petition-form input:autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-parchment-subtle) inset;
+  box-shadow: 0 0 0 1000px var(--color-parchment-subtle) inset;
+  -webkit-text-fill-color: var(--color-ink);
+  caret-color: var(--color-ink);
+}
+
+.admin-delete-dialog::backdrop {
+  background: rgb(16 25 35 / 58%);
+  backdrop-filter: blur(2px);
+}
+
+.amonra-swal-popup {
+  border: 1px solid var(--color-primary-soft) !important;
+  border-radius: 1.25rem !important;
+  background: var(--color-parchment) !important;
+  color: var(--color-ink) !important;
+  font-family: var(--font-ui) !important;
+}
+
+.amonra-swal-title {
+  color: var(--color-ink) !important;
+  font-family: var(--font-display) !important;
+}
+
+.amonra-swal-content {
+  color: var(--color-ink-muted) !important;
+  font-family: var(--font-ui) !important;
+}
+
+.amonra-swal-confirm {
+  border-radius: 9999px !important;
+  background: var(--color-clay-ink) !important;
+  padding-inline: 1.5rem !important;
+  font-weight: 700 !important;
+}
+
+.amonra-swal-loader {
+  border-color: var(--color-clay-ink) transparent var(--color-clay-ink)
+    transparent !important;
+}
+
+.amonra-tracking-code {
+  display: block;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--color-parchment-subtle);
+  padding: 0.65rem 0.9rem;
+  color: var(--color-ink);
+  font-family: var(--font-ui);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    translate: 0 0.5rem;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* Readable link and accent colors when light parchment sections contain global accents. */
+.text-paper-ink a {
+  color: var(--color-clay-ink, #783827);
+}
+
+.text-paper-ink a:hover {
+  color: var(--color-ink);
+}
+
+.text-paper-ink .text-clay-red,
+.text-paper-ink .text-antique-gold {
+  color: var(--color-clay-ink, #783827);
+}
+
+.text-paper-ink .bg-clay-red {
+  color: var(--color-ink);
+}
+
+.text-paper-ink :is(h1, h2, h3) {
+  color: var(--color-ink);
+}
+
+.site-select {
+  position: relative;
+}
+
+.site-select[open] {
+  z-index: 60;
+}
+
+.site-select > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  list-style: none;
+  cursor: pointer;
+}
+
+.site-select > summary::-webkit-details-marker {
+  display: none;
+}
+
+.site-select > summary::after {
+  content: "⌄";
+  flex: none;
+  color: var(--color-clay-ink);
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: transform 160ms ease;
+}
+
+.site-select[open] > summary::after {
+  transform: rotate(180deg);
+}
+
+.site-select-options {
+  position: absolute;
+  z-index: 60;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  left: 0;
+  display: grid;
+  gap: 0.25rem;
+  max-height: 15rem;
+  overflow-y: auto;
+  border: 1px solid var(--color-primary-soft);
+  border-radius: 0.75rem;
+  background: var(--color-parchment);
+  padding: 0.35rem;
+  box-shadow: 0 0.5rem 1.25rem rgb(49 31 14 / 12%);
+}
+
+.site-select-option {
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.65rem 0.75rem;
+  background: transparent;
+  color: var(--color-ink);
+  text-align: left;
+  transition:
+    background-color var(--transition-color),
+    color var(--transition-color);
+}
+
+.site-select-option:hover,
+.site-select-option:focus-visible,
+.site-select-option[aria-pressed="true"] {
+  background: var(--color-parchment-soft);
+  color: var(--color-clay-ink);
+}
+
+.site-select-option[aria-pressed="true"] {
+  font-weight: 600;
+}
+
+.site-select-dialog {
+  position: fixed;
+  inset: auto 0 0;
+  width: 100%;
+  max-width: none;
+  max-height: min(75dvh, 34rem);
+  margin: 0;
+  overflow-y: auto;
+  border: 1px solid var(--color-primary-soft);
+  border-bottom: 0;
+  border-radius: 1.25rem 1.25rem 0 0;
+  background: var(--color-parchment);
+  color: var(--color-ink);
+  padding: 1.25rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom));
+  box-shadow: 0 -0.75rem 2rem rgb(26 19 12 / 18%);
+}
+
+.site-select-dialog::backdrop {
+  background: rgb(16 14 12 / 58%);
+  backdrop-filter: blur(2px);
+}
+
+.site-select-dialog[open] {
+  animation: site-select-sheet-enter 180ms ease-out;
+}
+
+.site-select-dialog-content {
+  width: min(100%, 36rem);
+  margin-inline: auto;
+}
+
+.site-select-dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-select-dialog-close {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: none;
+  place-items: center;
+  border: 1px solid var(--color-primary-soft);
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--color-clay-ink);
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.site-select-dialog-options {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.site-select-dialog-option {
+  display: flex;
+  min-height: 3.5rem;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid var(--color-primary-soft);
+  border-radius: 0.75rem;
+  background: var(--color-parchment-subtle);
+  padding: 0.875rem 1rem;
+  color: var(--color-ink);
+  text-align: left;
+}
+
+.site-select-dialog-option[aria-pressed="true"] {
+  border-color: var(--color-solar-red);
+  background: var(--color-parchment-soft);
+  color: var(--color-clay-ink);
+  font-weight: 600;
+}
+
+.site-select-dialog-option[aria-pressed="true"]::after {
+  content: "✓";
+  color: var(--color-clay-ink);
+  font-size: 1.125rem;
+}
+
+@keyframes site-select-sheet-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-select-dialog[open] {
+    animation: none;
   }
 }

@@ -1,0 +1,25 @@
+{
+  "name": "Amonra — Red de Luz Interior",
+  "short_name": "Amonra",
+  "description": "Conocimiento, simbolismo y desarrollo interior.",
+  "lang": "es-CL",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#1b1a18",
+  "theme_color": "#1b1a18",
+  "icons": [
+    {
+      "src": "/amonra-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/amonra-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
