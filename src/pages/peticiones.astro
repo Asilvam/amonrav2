@@ -835,8 +835,63 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
       });
       intentDialog?.addEventListener("close", () => {
         document.documentElement.style.overflow = previousDocumentOverflow;
-        intentSummary?.focus();
       });
+
+      for (const customSelect of customSelects) {
+        if (customSelect === intentSelect) continue;
+        const summary = customSelect.querySelector<HTMLElement>("summary");
+        const valueInput = form.querySelector<HTMLInputElement>(
+          `#${customSelect.dataset.selectInput}`,
+        );
+        if (!summary || !valueInput) continue;
+
+        const dialog = document.createElement("dialog");
+        dialog.className = "site-select-dialog";
+        dialog.setAttribute("aria-label", summary.getAttribute("aria-label") || "Opciones");
+        const content = document.createElement("div");
+        content.className = "site-select-dialog-content";
+        const heading = document.createElement("p");
+        heading.className = "font-editorial text-2xl text-paper-ink";
+        heading.textContent = summary.getAttribute("aria-label") || "Elige una opción";
+        const list = document.createElement("div");
+        list.className = "site-select-dialog-options";
+        const dialogButtons: Array<[HTMLButtonElement, HTMLButtonElement]> = [];
+        for (const source of customSelect.querySelectorAll<HTMLButtonElement>(
+          "[data-select-option]",
+        )) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "site-select-dialog-option";
+          button.textContent = source.textContent?.trim() || "";
+          button.addEventListener("click", () => {
+            source.click();
+            dialog.close();
+          });
+          dialogButtons.push([button, source]);
+          list.append(button);
+        }
+        content.append(heading, list);
+        dialog.append(content);
+        form.after(dialog);
+
+        dialog.addEventListener("click", (event) => {
+          if (event.target === dialog) dialog.close();
+        });
+        dialog.addEventListener("close", () => {
+          document.documentElement.style.overflow = "";
+        });
+        summary.addEventListener("click", (event) => {
+          if (!mobileSelectViewport.matches) return;
+          event.preventDefault();
+          for (const [button, source] of dialogButtons)
+            button.setAttribute(
+              "aria-pressed",
+              String(source.dataset.value === valueInput.value),
+            );
+          document.documentElement.style.overflow = "hidden";
+          dialog.showModal();
+        });
+      }
 
       phoneInput?.addEventListener("input", () => {
         const value = phoneInput.value;
