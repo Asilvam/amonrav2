@@ -42,16 +42,17 @@ const navigation = [
             decoding="async"
             class="home-emblem-bowl home-emblem-bowl-left"
           />
-          <img
-            src="/images/amonra-emblema-transparente.png"
-            alt=""
-            aria-hidden="true"
-            width="1000"
-            height="341"
-            fetchpriority="high"
-            decoding="async"
-            class="home-emblem-wings"
-          />
+          <span class="home-emblem-wings-wrap" aria-hidden="true">
+            <img
+              src="/images/amonra-emblema-transparente.png"
+              alt=""
+              width="1983"
+              height="793"
+              fetchpriority="high"
+              decoding="async"
+              class="home-emblem-wings"
+            />
+          </span>
           <img
             src="/images/amonra/cuenco-ojo-horus-espejado.png"
             alt=""
@@ -74,8 +75,8 @@ const navigation = [
             src="/images/amonra-emblema-transparente.png"
             alt=""
             aria-hidden="true"
-            width="1000"
-            height="341"
+            width="1983"
+            height="793"
             decoding="async"
             class="h-8 w-24 object-contain sm:h-10 sm:w-32"
           />
@@ -122,8 +123,11 @@ const navigation = [
     overflow: hidden;
     background-color: #050811;
     background-image:
-      radial-gradient(ellipse at 50% 0%, rgb(34 47 89 / 55%), transparent 70%),
-      linear-gradient(180deg, #070a14, #03050b);
+      linear-gradient(180deg, rgb(2 9 22 / 5%), rgb(2 7 17 / 12%)),
+      url("/images/amonra-fondo-estrellado-azul.jpg");
+    background-position: center, center 47%;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .home-emblem-site-header::before {
@@ -179,7 +183,7 @@ const navigation = [
 
   .home-emblem-header {
     display: grid;
-    min-height: clamp(9rem, 15vw, 13rem);
+    min-height: clamp(8rem, 12vw, 10.5rem);
     place-items: center;
     padding-block: 0.5rem;
   }
@@ -210,12 +214,46 @@ const navigation = [
     justify-self: start;
   }
 
+  .home-emblem-wings-wrap {
+    position: relative;
+    z-index: 0;
+    display: block;
+    width: min(100%, 34rem);
+    justify-self: center;
+    isolation: isolate;
+  }
+
+  .home-emblem-wings-wrap::before {
+    position: absolute;
+    z-index: -1;
+    top: 29%;
+    left: 50%;
+    width: 56%;
+    height: 92%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+      ellipse,
+      rgb(255 224 112 / 92%) 0%,
+      rgb(255 170 47 / 64%) 28%,
+      rgb(239 97 24 / 32%) 55%,
+      transparent 78%
+    );
+    filter: blur(16px);
+    opacity: 0.88;
+    animation: emblem-sun-aura 3.8s ease-in-out infinite alternate;
+    content: "";
+    pointer-events: none;
+  }
+
   .home-emblem-wings {
     display: block;
-    width: min(100%, 31.5rem);
+    width: 100%;
+    max-height: 9.5rem;
     height: auto;
-    justify-self: center;
-    filter: drop-shadow(0 0 7px rgb(255 199 92 / 28%))
+    object-fit: contain;
+    filter: drop-shadow(0 0 13px rgb(255 205 91 / 58%))
+      drop-shadow(0 0 25px rgb(255 164 51 / 28%))
       drop-shadow(0 8px 12px rgb(0 0 0 / 14%));
     animation: sun-ray-glow 3.8s ease-in-out infinite alternate;
   }
@@ -234,20 +272,33 @@ const navigation = [
 
   @keyframes sun-ray-glow {
     from {
-      filter: drop-shadow(0 0 5px rgb(255 190 73 / 24%))
+      filter: drop-shadow(0 0 11px rgb(255 190 73 / 44%))
+        drop-shadow(0 0 21px rgb(255 164 51 / 20%))
         drop-shadow(0 8px 12px rgb(0 0 0 / 14%));
     }
 
     to {
-      filter: drop-shadow(0 0 13px rgb(255 209 115 / 58%))
-        drop-shadow(0 0 22px rgb(255 164 51 / 20%))
+      filter: drop-shadow(0 0 20px rgb(255 220 132 / 88%))
+        drop-shadow(0 0 36px rgb(255 164 51 / 42%))
         drop-shadow(0 8px 12px rgb(0 0 0 / 14%));
+    }
+  }
+
+  @keyframes emblem-sun-aura {
+    from {
+      opacity: 0.78;
+      filter: blur(18px) brightness(1.05);
+    }
+
+    to {
+      opacity: 1;
+      filter: blur(12px) brightness(1.6);
     }
   }
 
   @media (max-width: 40rem) {
     .home-emblem-header {
-      min-height: 7rem;
+      min-height: 6rem;
     }
 
     .home-emblem-row {
@@ -267,7 +318,8 @@ const navigation = [
 
   @media (prefers-reduced-motion: reduce) {
     .home-emblem-site-header::after,
-    .home-emblem-wings {
+    .home-emblem-wings,
+    .home-emblem-wings-wrap::before {
       animation: none;
     }
   }
