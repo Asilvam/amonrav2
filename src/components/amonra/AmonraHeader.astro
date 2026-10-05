@@ -17,45 +17,310 @@ const navigation = [
 ];
 ---
 
-<header class="border-b border-antique-gold-soft/35 bg-[var(--color-surface-warm)]">
+<header
+  class:list={[
+    "border-b border-antique-gold-soft/35",
+    currentPath === "/"
+      ? "home-emblem-site-header"
+      : "bg-[var(--color-surface-warm)]",
+  ]}
+>
   <Container size="wide">
-    <div class="flex min-h-20 items-center justify-between gap-6 py-4 max-[40rem]:flex-col max-[40rem]:items-center max-[40rem]:gap-3 max-[40rem]:py-3.5">
-      <a
-        class="inline-flex items-baseline gap-3 text-ivory no-underline"
-        href="/"
-        aria-label="Red de Luz Interior Amonra Chile — Inicio"
+    {currentPath === "/" ? (
+      <div
+        class="home-emblem-header"
+        role="img"
+        aria-label="Emblema solar alado de Amonra entre dos cuencos con velas encendidas"
       >
-        <span class="font-editorial text-[1.75rem] tracking-[-0.025em]">
-          Amonra
-        </span>
-        <span class="font-interface text-[var(--font-size-metadata)] font-semibold tracking-[0.14em] text-antique-gold uppercase">
-          Red de Luz Interior
-        </span>
-      </a>
+        <div class="home-emblem-row">
+          <img
+            src="/images/amonra/cuenco-ojo-horus.png"
+            alt=""
+            aria-hidden="true"
+            width="720"
+            height="900"
+            decoding="async"
+            class="home-emblem-bowl home-emblem-bowl-left"
+          />
+          <span class="home-emblem-wings-wrap" aria-hidden="true">
+            <img
+              src="/images/amonra-emblema-transparente.png"
+              alt=""
+              width="1983"
+              height="793"
+              fetchpriority="high"
+              decoding="async"
+              class="home-emblem-wings"
+            />
+          </span>
+          <img
+            src="/images/amonra/cuenco-ojo-horus-espejado.png"
+            alt=""
+            aria-hidden="true"
+            width="750"
+            height="900"
+            decoding="async"
+            class="home-emblem-bowl home-emblem-bowl-right"
+          />
+        </div>
+      </div>
+    ) : (
+      <div class="flex min-h-20 items-center justify-between gap-6 py-4 max-[40rem]:flex-col max-[40rem]:items-center max-[40rem]:gap-3 max-[40rem]:py-3.5">
+        <a
+          class="inline-flex items-center gap-2.5 text-ivory no-underline sm:gap-3"
+          href="/"
+          aria-label="Red de Luz Interior Amonra Chile — Inicio"
+        >
+          <img
+            src="/images/amonra-emblema-transparente.png"
+            alt=""
+            aria-hidden="true"
+            width="1983"
+            height="793"
+            decoding="async"
+            class="h-8 w-24 object-contain sm:h-10 sm:w-32"
+          />
+          <span class="font-editorial text-[1.75rem] tracking-[-0.025em]">
+            Amonra
+          </span>
+          <span class="font-interface text-[var(--font-size-metadata)] font-semibold tracking-[0.14em] text-antique-gold uppercase">
+            Red de Luz Interior
+          </span>
+        </a>
 
-      <nav
-        aria-label="Navegación principal de Amonra"
-        class="max-[40rem]:w-full"
-      >
-        <ul class="m-0 flex list-none flex-wrap items-center gap-1.5 p-0 max-[40rem]:justify-center max-[40rem]:border-t max-[40rem]:border-antique-gold-soft/20 max-[40rem]:pt-2.5 sm:gap-3">
-          {navigation.map((item) => (
-            <li>
-              <a
-                href={item.href}
-                aria-current={item.current ? "page" : undefined}
-                class:list={[
-                  "inline-flex min-h-[38px] items-center rounded-lg px-3.5 py-1.5 font-interface text-[var(--font-size-small)] font-medium no-underline transition-colors",
-                  item.current
-                    ? "border border-antique-gold-soft/50 bg-antique-gold-soft/25 text-ivory shadow-sm"
-                    : "text-ivory-muted hover:bg-antique-gold-soft/10 hover:text-ivory",
-                ]}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </div>
+        <nav
+          aria-label="Navegación principal de Amonra"
+          class="max-[40rem]:w-full"
+        >
+          <ul class="m-0 flex list-none flex-wrap items-center gap-1.5 p-0 max-[40rem]:justify-center max-[40rem]:border-t max-[40rem]:border-antique-gold-soft/20 max-[40rem]:pt-2.5 sm:gap-3">
+            {navigation.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={item.current ? "page" : undefined}
+                  class:list={[
+                    "inline-flex min-h-[38px] items-center rounded-lg px-3.5 py-1.5 font-interface text-[var(--font-size-small)] font-medium no-underline transition-colors",
+                    item.current
+                      ? "border border-antique-gold-soft/50 bg-antique-gold-soft/25 text-ivory shadow-sm"
+                      : "text-ivory-muted hover:bg-antique-gold-soft/10 hover:text-ivory",
+                  ]}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    )}
   </Container>
 </header>
+
+<style>
+  .home-emblem-site-header {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: #050811;
+    background-image:
+      linear-gradient(180deg, rgb(2 9 22 / 5%), rgb(2 7 17 / 12%)),
+      url("/images/amonra-fondo-estrellado-azul.jpg");
+    background-position: center, center 47%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .home-emblem-site-header::before {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    background-image:
+      radial-gradient(2.4px 2.4px at 7% 23%, #fff8df 45%, transparent 75%),
+      radial-gradient(2px 2px at 15% 72%, #d5e3ff 45%, transparent 75%),
+      radial-gradient(2.6px 2.6px at 23% 42%, #fff6dc 45%, transparent 75%),
+      radial-gradient(2px 2px at 31% 82%, #e4dcff 45%, transparent 75%),
+      radial-gradient(2.6px 2.6px at 39% 18%, #fffef4 45%, transparent 75%),
+      radial-gradient(2.2px 2.2px at 47% 69%, #d9e5ff 45%, transparent 75%),
+      radial-gradient(2.6px 2.6px at 55% 27%, #fff4d3 45%, transparent 75%),
+      radial-gradient(2px 2px at 63% 84%, #e8e0ff 45%, transparent 75%),
+      radial-gradient(2.6px 2.6px at 71% 47%, #fffdf0 45%, transparent 75%),
+      radial-gradient(2.2px 2.2px at 79% 15%, #dce7ff 45%, transparent 75%),
+      radial-gradient(2.6px 2.6px at 87% 73%, #fff5d6 45%, transparent 75%),
+      radial-gradient(2.2px 2.2px at 95% 34%, #e3ddff 45%, transparent 75%),
+      radial-gradient(1.5px 1.5px at 4% 53%, #fff 45%, transparent 75%),
+      radial-gradient(1.5px 1.5px at 19% 12%, #fff 45%, transparent 75%),
+      radial-gradient(1.5px 1.5px at 28% 60%, #fff 45%, transparent 75%),
+      radial-gradient(1.5px 1.5px at 44% 92%, #fff 45%, transparent 75%),
+      radial-gradient(1.5px 1.5px at 58% 7%, #fff 45%, transparent 75%),
+      radial-gradient(1.5px 1.5px at 68% 64%, #fff 45%, transparent 75%),
+      radial-gradient(1.5px 1.5px at 83% 49%, #fff 45%, transparent 75%),
+      radial-gradient(1.5px 1.5px at 92% 91%, #fff 45%, transparent 75%);
+    content: "";
+    pointer-events: none;
+  }
+
+  .home-emblem-site-header::after {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgb(255 230 171 / 92%) 0 1px, rgb(255 198 102 / 40%) 2px, transparent 9px),
+      radial-gradient(circle, rgb(229 238 255 / 92%) 0 1px, rgb(167 196 255 / 35%) 2px, transparent 8px),
+      radial-gradient(circle, rgb(255 248 222 / 92%) 0 1px, rgb(255 208 121 / 38%) 2px, transparent 9px),
+      radial-gradient(circle, rgb(230 238 255 / 92%) 0 1px, rgb(174 201 255 / 35%) 2px, transparent 8px);
+    background-position: 11% 31%, 36% 76%, 73% 24%, 91% 67%;
+    background-repeat: no-repeat;
+    background-size: 42px 42px, 36px 36px, 42px 42px, 36px 36px;
+    animation: star-glimmer 3.6s ease-in-out infinite alternate;
+    content: "";
+    pointer-events: none;
+  }
+
+  .home-emblem-site-header > div {
+    position: relative;
+    z-index: 1;
+  }
+
+  .home-emblem-header {
+    display: grid;
+    min-height: clamp(8rem, 12vw, 10.5rem);
+    place-items: center;
+    padding-block: 0.5rem;
+  }
+
+  .home-emblem-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr) minmax(0, 1fr);
+    align-items: end;
+    gap: clamp(0.5rem, 2.5vw, 2rem);
+    width: 100%;
+  }
+
+  .home-emblem-bowl {
+    display: block;
+    width: min(100%, 5.25rem);
+    max-height: 5.25rem;
+    align-self: end;
+    margin-bottom: 0.35rem;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 12px rgb(0 0 0 / 18%));
+  }
+
+  .home-emblem-bowl-left {
+    justify-self: end;
+  }
+
+  .home-emblem-bowl-right {
+    justify-self: start;
+  }
+
+  .home-emblem-wings-wrap {
+    position: relative;
+    z-index: 0;
+    display: block;
+    width: min(100%, 34rem);
+    justify-self: center;
+    isolation: isolate;
+  }
+
+  .home-emblem-wings-wrap::before {
+    position: absolute;
+    z-index: -1;
+    top: 29%;
+    left: 50%;
+    width: 56%;
+    height: 92%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+      ellipse,
+      rgb(255 224 112 / 92%) 0%,
+      rgb(255 170 47 / 64%) 28%,
+      rgb(239 97 24 / 32%) 55%,
+      transparent 78%
+    );
+    filter: blur(16px);
+    opacity: 0.88;
+    animation: emblem-sun-aura 3.8s ease-in-out infinite alternate;
+    content: "";
+    pointer-events: none;
+  }
+
+  .home-emblem-wings {
+    display: block;
+    width: 100%;
+    max-height: 9.5rem;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 13px rgb(255 205 91 / 58%))
+      drop-shadow(0 0 25px rgb(255 164 51 / 28%))
+      drop-shadow(0 8px 12px rgb(0 0 0 / 14%));
+    animation: sun-ray-glow 3.8s ease-in-out infinite alternate;
+  }
+
+  @keyframes star-glimmer {
+    from {
+      opacity: 0.62;
+      filter: brightness(0.86);
+    }
+
+    to {
+      opacity: 1;
+      filter: brightness(1.35);
+    }
+  }
+
+  @keyframes sun-ray-glow {
+    from {
+      filter: drop-shadow(0 0 11px rgb(255 190 73 / 44%))
+        drop-shadow(0 0 21px rgb(255 164 51 / 20%))
+        drop-shadow(0 8px 12px rgb(0 0 0 / 14%));
+    }
+
+    to {
+      filter: drop-shadow(0 0 20px rgb(255 220 132 / 88%))
+        drop-shadow(0 0 36px rgb(255 164 51 / 42%))
+        drop-shadow(0 8px 12px rgb(0 0 0 / 14%));
+    }
+  }
+
+  @keyframes emblem-sun-aura {
+    from {
+      opacity: 0.78;
+      filter: blur(18px) brightness(1.05);
+    }
+
+    to {
+      opacity: 1;
+      filter: blur(12px) brightness(1.6);
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .home-emblem-header {
+      min-height: 6rem;
+    }
+
+    .home-emblem-row {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 3fr) minmax(0, 1fr);
+      gap: 0.35rem;
+    }
+
+    .home-emblem-bowl {
+      width: min(100%, 3.25rem);
+      max-height: 3.65rem;
+    }
+
+    .home-emblem-wings {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-emblem-site-header::after,
+    .home-emblem-wings,
+    .home-emblem-wings-wrap::before {
+      animation: none;
+    }
+  }
+</style>
