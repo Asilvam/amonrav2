@@ -99,10 +99,12 @@ import Container from "../../components/layout/Container.astro";
           >
             <span
               data-login-spinner
-              class="h-4 w-4 animate-spin rounded-full border-2 border-white/70 border-t-transparent"
+              class="amonra-loading-eye amonra-loading-eye--small"
               aria-hidden="true"
               hidden
-            ></span>
+            >
+              <img src="/ojo-de-horus.png" alt="" width="20" height="20" />
+            </span>
             Iniciar sesión
           </button>
         </form>
@@ -118,7 +120,10 @@ import Container from "../../components/layout/Container.astro";
               Filtrar por estado
             </label>
             <input id="petition-filter" type="hidden" value="all" />
-            <details id="petition-filter-menu" class="site-select w-full sm:w-64 md:w-80">
+            <details
+              id="petition-filter-menu"
+              class="site-select w-full sm:w-64 md:w-80"
+            >
               <summary
                 aria-label="Filtrar por estado"
                 aria-controls="petition-filter-options"
@@ -195,10 +200,12 @@ import Container from "../../components/layout/Container.astro";
             >
               <span
                 data-refresh-spinner
-                class="h-4 w-4 animate-spin rounded-full border-2 border-clay-ink/60 border-t-transparent"
+                class="amonra-loading-eye amonra-loading-eye--small"
                 aria-hidden="true"
                 hidden
-              ></span>
+              >
+                <img src="/ojo-de-horus.png" alt="" width="20" height="20" />
+              </span>
               Actualizar
             </button>
             <button
@@ -206,9 +213,28 @@ import Container from "../../components/layout/Container.astro";
               type="button"
               class="min-h-11 rounded-full bg-clay-ink px-5 text-sm font-semibold text-white hover:bg-clay-ink/90"
             >
+              <span
+                data-logout-spinner
+                class="amonra-loading-eye amonra-loading-eye--small mr-2 align-middle"
+                aria-hidden="true"
+                hidden
+              >
+                <img src="/ojo-de-horus.png" alt="" width="20" height="20" />
+              </span>
               Cerrar sesión
             </button>
           </div>
+        </div>
+        <div
+          id="admin-loading"
+          class="amonra-loading-state mt-6"
+          aria-hidden="true"
+          hidden
+        >
+          <span class="amonra-loading-eye" aria-hidden="true">
+            <img src="/ojo-de-horus.png" alt="" width="32" height="32" />
+          </span>
+          <span class="text-sm text-paper-muted">Cargando peticiones…</span>
         </div>
         <div id="petition-list" class="mt-6 grid gap-5"></div>
       </section>
@@ -262,6 +288,12 @@ import Container from "../../components/layout/Container.astro";
     const refreshSpinner = refreshButton?.querySelector<HTMLElement>(
       "[data-refresh-spinner]",
     );
+    const adminLoading = document.querySelector<HTMLElement>("#admin-loading");
+    const logoutButton =
+      document.querySelector<HTMLButtonElement>("#admin-logout");
+    const logoutSpinner = logoutButton?.querySelector<HTMLElement>(
+      "[data-logout-spinner]",
+    );
     const filterMenu = document.querySelector<HTMLDetailsElement>(
       "#petition-filter-menu",
     );
@@ -270,7 +302,8 @@ import Container from "../../components/layout/Container.astro";
     const devFallback = import.meta.env.DEV
       ? `http://${window.location.hostname}:3500`
       : window.location.origin;
-    let apiBase = (envApiBase && envApiBase.trim()) ? envApiBase.trim() : devFallback;
+    let apiBase =
+      envApiBase && envApiBase.trim() ? envApiBase.trim() : devFallback;
     apiBase = apiBase.replace(/[/]+$/, "");
     // If running on a remote device during local development, avoid using `localhost` which resolves to the device itself.
     if (
@@ -282,7 +315,11 @@ import Container from "../../components/layout/Container.astro";
       window.location.hostname !== "127.0.0.1"
     ) {
       apiBase = `http://${window.location.hostname}:3500`;
-      console.info("[dev] Adjusted PUBLIC_API_BASE_URL to", apiBase, "for remote device testing");
+      console.info(
+        "[dev] Adjusted PUBLIC_API_BASE_URL to",
+        apiBase,
+        "for remote device testing",
+      );
     }
     const labels: Record<Petition["status"], string> = {
       pending_confirmation: "Pendiente de confirmación",
@@ -384,6 +421,30 @@ import Container from "../../components/layout/Container.astro";
       if (className) element.className = className;
       parent.append(element);
       return element;
+    }
+
+    function createLoadingEye() {
+      const eye = document.createElement("span");
+      eye.className = "amonra-loading-eye amonra-loading-eye--small mr-2";
+      eye.hidden = true;
+      eye.setAttribute("aria-hidden", "true");
+      const image = document.createElement("img");
+      image.src = "/ojo-de-horus.png";
+      image.alt = "";
+      image.width = 20;
+      image.height = 20;
+      eye.append(image);
+      return eye;
+    }
+
+    function setButtonLoading(
+      button: HTMLButtonElement,
+      eye: HTMLElement,
+      loading: boolean,
+    ) {
+      button.disabled = loading;
+      eye.hidden = !loading;
+      if (loading) button.prepend(eye);
     }
 
     function renderPetition(petition: Petition) {
@@ -492,11 +553,12 @@ import Container from "../../components/layout/Container.astro";
       saveMessage.type = "button";
       saveMessage.className =
         "min-h-11 rounded-full bg-clay-ink px-5 text-sm font-semibold text-white hover:bg-clay-ink/90";
-      saveMessage.textContent = "Guardar mensaje";
+      const saveMessageSpinner = createLoadingEye();
+      saveMessage.append(saveMessageSpinner, "Guardar mensaje");
       saveMessage.addEventListener("click", async () => {
         messageTextarea.value = messageTextarea.value.trim();
         if (!messageTextarea.reportValidity()) return;
-        saveMessage.disabled = true;
+        setButtonLoading(saveMessage, saveMessageSpinner, true);
         try {
           await api(
             `/admin/peticiones/${encodeURIComponent(petition.reference)}/mensaje`,
@@ -516,7 +578,7 @@ import Container from "../../components/layout/Container.astro";
           if ((error as Error & { status?: number }).status === 401)
             showLogin();
         } finally {
-          saveMessage.disabled = false;
+          setButtonLoading(saveMessage, saveMessageSpinner, false);
         }
       });
       messageActions.append(cancelMessageEdit, saveMessage);
@@ -542,11 +604,12 @@ import Container from "../../components/layout/Container.astro";
       const fullDeleteLabel = document.createElement("span");
       fullDeleteLabel.className = "hidden sm:inline";
       fullDeleteLabel.textContent = "Eliminar definitivamente";
-      deleteButton.append(shortDeleteLabel, fullDeleteLabel);
+      const deleteSpinner = createLoadingEye();
+      deleteButton.append(deleteSpinner, shortDeleteLabel, fullDeleteLabel);
       deleteButton.addEventListener("click", async () => {
         const confirmed = await confirmDeletion(petition.reference);
         if (!confirmed) return;
-        deleteButton.disabled = true;
+        setButtonLoading(deleteButton, deleteSpinner, true);
         try {
           await api(
             `/admin/peticiones/${encodeURIComponent(petition.reference)}`,
@@ -565,7 +628,7 @@ import Container from "../../components/layout/Container.astro";
           if ((error as Error & { status?: number }).status === 401)
             showLogin();
         } finally {
-          deleteButton.disabled = false;
+          setButtonLoading(deleteButton, deleteSpinner, false);
         }
       });
 
@@ -644,9 +707,10 @@ import Container from "../../components/layout/Container.astro";
         save.type = "button";
         save.className =
           "min-h-11 rounded-lg bg-clay-ink px-3 text-xs font-semibold text-white hover:bg-clay-ink/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-ink sm:rounded-full sm:px-5 sm:text-sm";
-        save.textContent = "Guardar estado";
+        const saveSpinner = createLoadingEye();
+        save.append(saveSpinner, "Guardar estado");
         save.addEventListener("click", async () => {
-          save.disabled = true;
+          setButtonLoading(save, saveSpinner, true);
           try {
             await api(
               `/admin/peticiones/${encodeURIComponent(petition.reference)}`,
@@ -666,7 +730,7 @@ import Container from "../../components/layout/Container.astro";
             if ((error as Error & { status?: number }).status === 401)
               showLogin();
           } finally {
-            save.disabled = false;
+            setButtonLoading(save, saveSpinner, false);
           }
         });
         const actions = document.createElement("div");
@@ -687,6 +751,7 @@ import Container from "../../components/layout/Container.astro";
         refreshButton.setAttribute("aria-busy", "true");
       }
       if (refreshSpinner) refreshSpinner.hidden = false;
+      if (adminLoading) adminLoading.hidden = false;
       try {
         const body = await api(
           `/admin/peticiones?status=${encodeURIComponent(filter.value)}`,
@@ -709,6 +774,7 @@ import Container from "../../components/layout/Container.astro";
             refreshButton.setAttribute("aria-busy", "false");
           }
           if (refreshSpinner) refreshSpinner.hidden = true;
+          if (adminLoading) adminLoading.hidden = true;
         }
       }
     }
@@ -773,11 +839,22 @@ import Container from "../../components/layout/Container.astro";
     document
       .querySelector("#admin-logout")
       ?.addEventListener("click", async () => {
+        if (logoutButton) {
+          logoutButton.disabled = true;
+          logoutButton.setAttribute("aria-busy", "true");
+        }
+        if (logoutSpinner) logoutSpinner.hidden = false;
+        setMessage("Cerrando sesión…");
         try {
           await api("/admin/logout", { method: "POST" });
         } catch {
           /* cerrar sesión visualmente también si la API no responde */
         }
+        if (logoutButton) {
+          logoutButton.disabled = false;
+          logoutButton.setAttribute("aria-busy", "false");
+        }
+        if (logoutSpinner) logoutSpinner.hidden = true;
         showLogin();
         setMessage("Sesión cerrada.");
       });

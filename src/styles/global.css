@@ -140,9 +140,46 @@
   font-weight: 700 !important;
 }
 
-.amonra-swal-loader {
-  border-color: var(--color-clay-ink) transparent var(--color-clay-ink)
-    transparent !important;
+.amonra-loading-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.amonra-loading-eye {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.amonra-loading-eye img {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  animation: amonra-loading-eye-pulse 1.15s ease-in-out infinite;
+}
+
+.amonra-loading-eye--small img {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.amonra-loading-eye--modal img {
+  width: 4rem;
+  height: 4rem;
+}
+
+@keyframes amonra-loading-eye-pulse {
+  0%,
+  100% {
+    opacity: 0.62;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
 }
 
 .amonra-tracking-code {

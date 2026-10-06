@@ -33,6 +33,17 @@ import Container from "../../components/layout/Container.astro";
         >
           Espera un momento mientras validamos el enlace.
         </p>
+        <div
+          id="confirmation-loading"
+          class="amonra-loading-state mt-4"
+          aria-hidden="true"
+          hidden
+        >
+          <span class="amonra-loading-eye" aria-hidden="true">
+            <img src="/ojo-de-horus.png" alt="" width="32" height="32" />
+          </span>
+          <span class="text-sm text-paper-muted">Validando…</span>
+        </div>
         <section
           id="confirmation-status"
           class="mt-6 rounded-xl border border-antique-gold-soft/60 bg-paper p-5"
@@ -80,6 +91,9 @@ import Container from "../../components/layout/Container.astro";
     const message = document.querySelector<HTMLElement>(
       "#confirmation-message",
     );
+    const loading = document.querySelector<HTMLElement>(
+      "#confirmation-loading",
+    );
     const statusPanel = document.querySelector<HTMLElement>(
       "#confirmation-status",
     );
@@ -114,6 +128,7 @@ import Container from "../../components/layout/Container.astro";
         let invalidLink = false;
         button.disabled = true;
         message.textContent = "Estamos validando tu enlace…";
+        if (loading) loading.hidden = false;
         try {
           const response = await fetch(`${apiBase}/api/peticiones/confirmar`, {
             method: "POST",
@@ -143,6 +158,7 @@ import Container from "../../components/layout/Container.astro";
               "Tu correo quedó confirmado. La petición está registrada y puede comenzar el proceso.";
           }
           message.hidden = true;
+          if (loading) loading.hidden = true;
           if (statusPanel && statusValue) {
             const statusLabels: Record<string, string> = {
               received: "Recibida",
@@ -162,6 +178,7 @@ import Container from "../../components/layout/Container.astro";
             window.location.pathname,
           );
         } catch (error) {
+          if (loading) loading.hidden = true;
           message.textContent =
             error instanceof Error
               ? error.message
