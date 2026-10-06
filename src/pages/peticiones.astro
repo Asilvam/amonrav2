@@ -63,8 +63,8 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
             Cuéntanos qué necesitas
           </h2>
           <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-            Necesitamos tu nombre y correo para confirmar la petición. El celular
-            es opcional.
+            Necesitamos tu nombre y correo para confirmar la petición. El
+            celular es opcional.
           </p>
 
           <form id="petition-form" class="mt-8 space-y-6">
@@ -204,10 +204,7 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
                     >
                       <span data-select-value>Ayúdame a elegir</span>
                     </summary>
-                    <div
-                      id="candle-color-options"
-                      class="site-select-options"
-                    >
+                    <div id="candle-color-options" class="site-select-options">
                       <button
                         type="button"
                         class="site-select-option"
@@ -411,8 +408,8 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
                 class="mt-1 size-4 shrink-0 accent-clay-red"
               />
               <span>
-                Autorizo que esta petición se comparta con la comunidad de Amonra.
-                Si no marco esta casilla, se mantiene privada.
+                Autorizo que esta petición se comparta con la comunidad de
+                Amonra. Si no marco esta casilla, se mantiene privada.
               </span>
             </label>
 
@@ -687,30 +684,34 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
         "(prefers-reduced-motion: reduce)",
       );
 
-      if (!prefersReducedMotion.matches) window.setInterval(() => {
-        if (document.hidden || carouselImages.length < 2) return;
-        const options = carouselImages.filter((src) => src !== currentImage);
-        const nextImage = options[Math.floor(Math.random() * options.length)];
-        if (!nextImage) return;
+      if (!prefersReducedMotion.matches)
+        window.setInterval(() => {
+          if (document.hidden || carouselImages.length < 2) return;
+          const options = carouselImages.filter((src) => src !== currentImage);
+          const nextImage = options[Math.floor(Math.random() * options.length)];
+          if (!nextImage) return;
 
-        const preloadedImage = new Image();
-        preloadedImage.src = nextImage;
-        const showNextImage = () => {
-          if (!preloadedImage.naturalWidth) return;
-          heroCarousel.classList.add("is-transitioning");
-          window.setTimeout(() => {
-            heroCarousel.src = nextImage;
-            currentImage = nextImage;
-            heroVisual.dataset.kind = nextImage.includes("vela-encendida")
-              ? "candle"
-              : "prayer";
-            heroCarousel.classList.remove("is-transitioning");
-          }, 320);
-        };
+          const preloadedImage = new Image();
+          preloadedImage.src = nextImage;
+          const showNextImage = () => {
+            if (!preloadedImage.naturalWidth) return;
+            heroCarousel.classList.add("is-transitioning");
+            window.setTimeout(() => {
+              heroCarousel.src = nextImage;
+              currentImage = nextImage;
+              heroVisual.dataset.kind = nextImage.includes("vela-encendida")
+                ? "candle"
+                : "prayer";
+              heroCarousel.classList.remove("is-transitioning");
+            }, 320);
+          };
 
-        if (preloadedImage.complete) showNextImage();
-        else preloadedImage.addEventListener("load", showNextImage, { once: true });
-      }, 7000);
+          if (preloadedImage.complete) showNextImage();
+          else
+            preloadedImage.addEventListener("load", showNextImage, {
+              once: true,
+            });
+        }, 7000);
     }
 
     const form = document.querySelector<HTMLFormElement>("#petition-form");
@@ -758,7 +759,9 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
             if (!valueInput || !valueLabel) return;
             valueInput.value = option.dataset.value || "";
             valueLabel.textContent =
-              option.dataset.label || option.textContent?.trim() || valueInput.value;
+              option.dataset.label ||
+              option.textContent?.trim() ||
+              valueInput.value;
             for (const item of options)
               item.setAttribute("aria-pressed", String(item === option));
             customSelect.open = false;
@@ -847,12 +850,16 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
 
         const dialog = document.createElement("dialog");
         dialog.className = "site-select-dialog";
-        dialog.setAttribute("aria-label", summary.getAttribute("aria-label") || "Opciones");
+        dialog.setAttribute(
+          "aria-label",
+          summary.getAttribute("aria-label") || "Opciones",
+        );
         const content = document.createElement("div");
         content.className = "site-select-dialog-content";
         const heading = document.createElement("p");
         heading.className = "font-editorial text-2xl text-paper-ink";
-        heading.textContent = summary.getAttribute("aria-label") || "Elige una opción";
+        heading.textContent =
+          summary.getAttribute("aria-label") || "Elige una opción";
         const list = document.createElement("div");
         list.className = "site-select-dialog-options";
         const dialogButtons: Array<[HTMLButtonElement, HTMLButtonElement]> = [];
@@ -953,7 +960,9 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
           );
           if (valueInput && valueLabel)
             valueLabel.textContent =
-              selectedOption?.dataset.label || selectedOption?.textContent?.trim() || valueInput.value;
+              selectedOption?.dataset.label ||
+              selectedOption?.textContent?.trim() ||
+              valueInput.value;
           for (const option of options) {
             option.setAttribute(
               "aria-pressed",
@@ -999,7 +1008,14 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
         submitButton.textContent = "Enviando…";
         Swal.fire({
           title: "Procesando",
-          text: "Espera mientras enviamos tu petición…",
+          html: `
+            <div class="amonra-loading-state amonra-loading-state--modal" role="status" aria-live="polite">
+              <span class="amonra-loading-eye amonra-loading-eye--modal" aria-hidden="true">
+                <img src="/ojo-de-horus.png" alt="" width="64" height="64" />
+              </span>
+              <span>Espera mientras enviamos tu petición…</span>
+            </div>
+          `,
           allowOutsideClick: false,
           allowEscapeKey: false,
           showConfirmButton: false,
@@ -1008,9 +1024,7 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
             popup: "amonra-swal-popup",
             title: "amonra-swal-title",
             htmlContainer: "amonra-swal-content",
-            loader: "amonra-swal-loader",
           },
-          didOpen: () => Swal.showLoading(),
         });
 
         try {

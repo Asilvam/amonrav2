@@ -62,6 +62,14 @@ import Container from "../../components/layout/Container.astro";
             type="submit"
             class="inline-flex min-h-12 items-center justify-center rounded-full bg-clay-red px-7 font-interface text-sm font-semibold text-white transition-colors hover:bg-clay-red/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
           >
+            <span
+              data-status-loading-eye
+              class="amonra-loading-eye amonra-loading-eye--small mr-2"
+              aria-hidden="true"
+              hidden
+            >
+              <img src="/ojo-de-horus.png" alt="" width="20" height="20" />
+            </span>
             Consultar estado
           </button>
         </form>
@@ -72,7 +80,19 @@ import Container from "../../components/layout/Container.astro";
           role="status"
           aria-live="polite"
           hidden
-        ></section>
+        >
+          <div
+            id="status-loading"
+            class="amonra-loading-state"
+            aria-hidden="true"
+            hidden
+          >
+            <span class="amonra-loading-eye" aria-hidden="true">
+              <img src="/ojo-de-horus.png" alt="" width="32" height="32" />
+            </span>
+            <span class="text-sm text-paper-muted">Consultando…</span>
+          </div>
+        </section>
         <p class="mt-6 text-sm text-paper-muted">
           <a class="underline underline-offset-4" href="/peticiones/">
             Volver a peticiones
@@ -88,6 +108,10 @@ import Container from "../../components/layout/Container.astro";
     );
     const submit = document.querySelector<HTMLButtonElement>("#status-submit");
     const result = document.querySelector<HTMLElement>("#status-result");
+    const loading = document.querySelector<HTMLElement>("#status-loading");
+    const loadingEye = submit?.querySelector<HTMLElement>(
+      "[data-status-loading-eye]",
+    );
     const apiBase = (
       import.meta.env.PUBLIC_API_BASE_URL ||
       (import.meta.env.DEV ? "http://localhost:3500" : window.location.origin)
@@ -108,8 +132,13 @@ import Container from "../../components/layout/Container.astro";
       const values = new FormData(form);
       submit.disabled = true;
       submit.textContent = "Consultando…";
+      if (loadingEye) {
+        loadingEye.hidden = false;
+        submit.prepend(loadingEye);
+      }
       result.hidden = false;
-      result.textContent = "Estamos buscando tu petición…";
+      if (loading) result.replaceChildren(loading);
+      if (loading) loading.hidden = false;
 
       try {
         const response = await fetch(`${apiBase}/api/peticiones/estado`, {
@@ -142,11 +171,14 @@ import Container from "../../components/layout/Container.astro";
         reference.textContent = `Referencia: ${body.reference}`;
         result.replaceChildren(heading, reference);
       } catch (error) {
+        if (loading) loading.hidden = true;
         result.textContent =
           error instanceof Error
             ? error.message
             : "No pudimos conectar con el servicio. Inténtalo más tarde.";
       } finally {
+        if (loadingEye) loadingEye.hidden = true;
+        if (loading) loading.hidden = true;
         submit.disabled = false;
         submit.textContent = "Consultar estado";
       }
