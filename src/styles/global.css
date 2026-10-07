@@ -140,6 +140,22 @@
   font-weight: 700 !important;
 }
 
+.amonra-swal-cancel {
+  border: 1px solid var(--color-primary-soft) !important;
+  border-radius: 9999px !important;
+  background: transparent !important;
+  color: var(--color-ink) !important;
+  padding-inline: 1.5rem !important;
+  font-weight: 700 !important;
+}
+
+.amonra-swal-spinner {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  animation: amonra-loading-eye-pulse 1.15s ease-in-out infinite;
+}
+
 .amonra-loading-state {
   display: inline-flex;
   align-items: center;
