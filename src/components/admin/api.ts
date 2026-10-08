@@ -1,7 +1,9 @@
 import {
   AdminApiError,
+  type AdminBlockedContactsResponse,
   type AdminPetitionsResponse,
   type ApiErrorBody,
+  type BlockContactType,
   type ManageablePetitionStatus,
   type PetitionStatus,
 } from "./types";
@@ -79,4 +81,25 @@ export function deletePetition(reference: string) {
     `/admin/peticiones/${encodeURIComponent(reference)}`,
     { method: "DELETE" },
   );
+}
+
+export function blockContact(
+  type: BlockContactType,
+  value: string,
+  reason?: string,
+) {
+  return adminApi<unknown>("/admin/bloqueos", {
+    method: "POST",
+    body: JSON.stringify({ type, value, ...(reason ? { reason } : {}) }),
+  });
+}
+
+export function listBlockedContacts() {
+  return adminApi<AdminBlockedContactsResponse>("/admin/bloqueos");
+}
+
+export function unblockContact(id: string) {
+  return adminApi<unknown>(`/admin/bloqueos/${encodeURIComponent(id)}`, {
+    method: "DELETE",
+  });
 }
