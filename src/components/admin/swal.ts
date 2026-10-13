@@ -51,4 +51,42 @@ export async function confirmAdminDeletion(reference: string) {
   return result.isConfirmed;
 }
 
+export async function confirmAdminBlock(
+  type: "email" | "phone",
+  value: string,
+) {
+  const label = type === "email" ? "correo" : "WhatsApp";
+  const result = await Swal.fire({
+    icon: "warning",
+    title: `¿Bloquear este ${label}?`,
+    text: `Las futuras peticiones con ${value} serán rechazadas. Las peticiones existentes no se eliminarán.`,
+    showCancelButton: true,
+    confirmButtonText: `Bloquear ${label}`,
+    cancelButtonText: "Cancelar",
+    reverseButtons: true,
+    customClass: {
+      ...amonraAdminSwalClasses,
+      cancelButton: "amonra-swal-cancel",
+    },
+  });
+  return result.isConfirmed;
+}
+
+export async function confirmAdminUnblock(value: string) {
+  const result = await Swal.fire({
+    icon: "warning",
+    title: "¿Desbloquear este contacto?",
+    text: `Las futuras peticiones con ${value} volverán a ser aceptadas.`,
+    showCancelButton: true,
+    confirmButtonText: "Desbloquear contacto",
+    cancelButtonText: "Cancelar",
+    reverseButtons: true,
+    customClass: {
+      ...amonraAdminSwalClasses,
+      cancelButton: "amonra-swal-cancel",
+    },
+  });
+  return result.isConfirmed;
+}
+
 export { Swal };
