@@ -63,8 +63,8 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
             Cuéntanos qué necesitas
           </h2>
           <p class="mt-2 text-sm leading-relaxed text-paper-muted">
-            Necesitamos tu nombre y correo para confirmar la petición. El
-            celular es opcional.
+            Necesitamos tu nombre, país, ciudad y correo para confirmar la
+            petición.
           </p>
 
           <form id="petition-form" class="mt-8 space-y-6">
@@ -353,33 +353,37 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
               </div>
               <div>
                 <label
-                  for="petition-phone"
+                  for="petition-country"
                   class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
                 >
-                  WhatsApp o celular{" "}
-                  <span class="font-normal text-paper-muted">(opcional)</span>
+                  País
                 </label>
-                <div class="flex min-h-12 items-center rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-clay-red">
-                  <span class="shrink-0 font-interface text-base text-paper-ink">
-                    +56 9
-                  </span>
-                  <input
-                    id="petition-phone"
-                    name="phoneLocal"
-                    type="tel"
-                    maxlength="20"
-                    autocomplete="tel-national"
-                    aria-describedby="petition-phone-help"
-                    class="min-w-0 flex-1 border-0 bg-transparent pl-2 font-interface text-base text-paper-ink placeholder:text-paper-muted outline-none"
-                    placeholder="1234 5678"
-                  />
-                </div>
-                <p
-                  id="petition-phone-help"
-                  class="mt-2 text-xs leading-relaxed text-paper-muted"
+                <input
+                  id="petition-country"
+                  name="country"
+                  maxlength="80"
+                  required
+                  autocomplete="country-name"
+                  class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink placeholder:text-paper-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                  placeholder="Tu país"
+                />
+              </div>
+              <div>
+                <label
+                  for="petition-city"
+                  class="mb-2 block font-interface text-sm font-semibold text-paper-ink"
                 >
-                  Si lo ingresas, completa los 8 dígitos.
-                </p>
+                  Ciudad
+                </label>
+                <input
+                  id="petition-city"
+                  name="city"
+                  maxlength="80"
+                  required
+                  autocomplete="address-level2"
+                  class="min-h-12 w-full rounded-lg border border-antique-gold-soft bg-[var(--color-parchment-subtle)] px-4 py-3 font-interface text-base text-paper-ink placeholder:text-paper-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-red"
+                  placeholder="Tu ciudad"
+                />
               </div>
               <div>
                 <label
@@ -425,8 +429,7 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
               <span>
                 Acepto que Amonra guarde esta petición para gestionarla y que
                 use mi correo únicamente para confirmar la solicitud y comunicar
-                su estado. Si indico mi celular, autorizo que se use para
-                contactarme por esta petición.
+                su estado.
               </span>
             </label>
 
@@ -727,8 +730,6 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
     const candleType = document.querySelector<HTMLInputElement>("#candle-type");
     const submitButton =
       document.querySelector<HTMLButtonElement>("#petition-submit");
-    const phoneInput =
-      document.querySelector<HTMLInputElement>("#petition-phone");
 
     if (
       form &&
@@ -900,39 +901,6 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
         });
       }
 
-      phoneInput?.addEventListener("input", () => {
-        const value = phoneInput.value;
-        const caret = phoneInput.selectionStart ?? value.length;
-        const digitsBeforeCaret = value
-          .slice(0, caret)
-          .replace(/\D/gu, "").length;
-        let digits = value.replace(/\D/gu, "");
-        if (digits.length === 11 && digits.startsWith("569"))
-          digits = digits.slice(3);
-        else if (digits.length === 9 && digits.startsWith("9"))
-          digits = digits.slice(1);
-        const localNumber = digits.slice(0, 8);
-        let formatted = localNumber.slice(0, 4);
-        if (localNumber.length > 4) formatted += ` ${localNumber.slice(4, 8)}`;
-
-        phoneInput.value = formatted;
-        let nextCaret = 0;
-        let countedDigits = 0;
-        while (
-          nextCaret < formatted.length &&
-          countedDigits < digitsBeforeCaret
-        ) {
-          if (/\d/u.test(formatted[nextCaret])) countedDigits += 1;
-          nextCaret += 1;
-        }
-        phoneInput.setSelectionRange(nextCaret, nextCaret);
-        phoneInput.setCustomValidity(
-          localNumber.length > 0 && localNumber.length < 8
-            ? "Completa los ocho dígitos del celular."
-            : "",
-        );
-      });
-
       const updateDetails = () => {
         const isPrayer = kind.value === "Cadena de oración";
         const isCandle = kind.value === "Encendido de vela";
@@ -995,9 +963,8 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
             : {}),
           message: String(values.get("message") || "").trim(),
           name: String(values.get("name") || "").trim(),
-          ...(phoneInput?.value.replace(/\D/gu, "").length === 8
-            ? { phone: `+56 9 ${phoneInput.value.trim()}` }
-            : {}),
+          country: String(values.get("country") || "").trim(),
+          city: String(values.get("city") || "").trim(),
           email: String(values.get("email") || "").trim(),
           share: values.has("share"),
           consent: values.has("consent"),

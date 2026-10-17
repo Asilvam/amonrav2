@@ -194,6 +194,14 @@ export default function AdminPetitionDetailsPanel({
               label="Nombre"
               value={petition.name || "Sin nombre registrado"}
             />
+            <DetailItem
+              label="País"
+              value={petition.country || "No informado"}
+            />
+            <DetailItem
+              label="Ciudad"
+              value={petition.city || "No informada"}
+            />
             <DetailItem label="Correo" value={petition.email} />
             <DetailItem
               label="WhatsApp o celular"

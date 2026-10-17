@@ -1,0 +1,46 @@
+---
+import Container from "../components/layout/Container.astro";
+import AmonraLayout from "../layouts/AmonraLayout.astro";
+---
+
+<AmonraLayout
+  title="En construcción"
+  description="Estamos preparando nuevos espacios de conocimiento para Amonra."
+>
+  <section class="border-b border-antique-gold-soft/45 bg-paper text-paper-ink">
+    <Container class="flex min-h-[68vh] items-center py-20 lg:py-28">
+      <div class="mx-auto max-w-[46rem] text-center">
+        <p class="font-interface text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-antique-gold-deep">
+          Próximamente en Amonra
+        </p>
+        <div
+          class="mx-auto mt-8 flex h-20 w-20 items-center justify-center rounded-full border border-antique-gold/60 bg-[var(--color-parchment-soft)] font-editorial text-4xl text-antique-gold-deep shadow-[0_8px_24px_rgba(49,31,14,0.1)]"
+          aria-hidden="true"
+        >
+          ✦
+        </div>
+        <h1 class="mt-8 font-editorial text-[clamp(3rem,8vw,6rem)] leading-[0.95] text-paper-ink">
+          Estamos construyendo este espacio
+        </h1>
+        <p class="mx-auto mt-7 max-w-[38rem] font-editorial text-xl leading-relaxed text-paper-muted sm:text-2xl">
+          Estamos preparando este contenido con calma y cuidado para ofrecerte
+          una experiencia completa, clara y coherente con el universo de Amonra.
+        </p>
+        <div class="mt-10 flex flex-wrap justify-center gap-4 font-interface text-sm">
+          <a
+            class="inline-flex min-h-11 items-center justify-center rounded-full bg-clay-red px-6 font-semibold text-white no-underline shadow-[0_8px_18px_rgba(120,43,32,0.18)] transition-colors hover:bg-[#5c2119] hover:text-white"
+            href="/"
+          >
+            Volver al inicio
+          </a>
+          <a
+            class="inline-flex min-h-11 items-center justify-center rounded-full border border-antique-gold-soft/70 px-6 font-semibold text-paper-ink no-underline transition-colors hover:bg-[var(--color-parchment-soft)]"
+            href="/#explorar"
+          >
+            Explorar contenidos disponibles
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+</AmonraLayout>
