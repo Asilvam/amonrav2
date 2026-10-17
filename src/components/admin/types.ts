@@ -32,6 +32,8 @@ export interface AdminPetition {
   candleType?: string;
   message: string;
   name: string;
+  country: string;
+  city: string;
   phone?: string;
   email: string;
   share: boolean;
