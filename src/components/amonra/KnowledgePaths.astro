@@ -75,9 +75,9 @@ const groups: { id: AmonraSectionGroup; label: string }[] = [
                         </span>
                       </a>
                     ) : (
-                      <div
-                        class="grid h-full grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-3 py-4 md:py-6 opacity-70"
-                        aria-disabled="true"
+                      <a
+                        class="group grid h-full grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-3 py-4 text-ivory no-underline opacity-70 transition-colors hover:bg-night-raised focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-antique-gold md:py-6"
+                        href="/en-construccion/"
                       >
                         <div>
                           <h4 class="font-editorial text-2xl font-medium text-ivory-muted">
@@ -90,7 +90,7 @@ const groups: { id: AmonraSectionGroup; label: string }[] = [
                         <span class="rounded-full border border-antique-gold-soft/50 px-3 py-1 font-interface text-[0.65rem] font-medium uppercase tracking-widest text-antique-gold-soft">
                           Preparación
                         </span>
-                      </div>
+                      </a>
                     )}
                   </li>
                 );
