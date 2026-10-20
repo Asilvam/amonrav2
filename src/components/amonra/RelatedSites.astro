@@ -1,0 +1,230 @@
+---
+import Container from "../layout/Container.astro";
+
+const relatedSites = [
+  {
+    title: "Luz Interior",
+    label: "En construcción",
+    description:
+      "Un espacio para la vida interior, la reflexión y el crecimiento espiritual.",
+    href: "/en-construccion/",
+    external: false,
+    theme: "light",
+    symbol: "✦",
+    visualTitle: "Luz Interior",
+  },
+  {
+    title: "Sanación Planeta",
+    label: "En construcción",
+    description:
+      "Una iniciativa vinculada al cuidado de la Tierra y la responsabilidad colectiva.",
+    href: "/en-construccion/",
+    external: false,
+    theme: "planet",
+    symbol: "◉",
+    visualTitle: "Cuidar la Tierra",
+  },
+  {
+    title: "Fundación Liara",
+    label: "En construcción",
+    description:
+      "Estamos preparando una presentación renovada de este proyecto y su legado.",
+    href: "/en-construccion/",
+    external: false,
+    theme: "liara",
+    symbol: "LI",
+    visualTitle: "Servicio y humanidad",
+  },
+];
+---
+
+<section
+  class="border-b border-antique-gold-soft/40 bg-[var(--color-surface-warm)] py-16 lg:py-24"
+  aria-labelledby="related-sites-title"
+>
+  <Container>
+    <div class="max-w-[44rem]">
+      <p class="eyebrow text-antique-gold">Legado y comunidad</p>
+      <h2
+        id="related-sites-title"
+        class="mt-4 font-editorial text-[clamp(2.7rem,5vw,4.8rem)] leading-none font-medium text-ivory"
+      >
+        Sitios y proyectos vinculados
+      </h2>
+      <p class="mt-6 max-w-[42rem] font-editorial text-xl leading-relaxed italic text-old-papyrus">
+        Conoce otros espacios que forman parte de la historia y la vocación de
+        servicio de Amonra.
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-4 md:grid-cols-3">
+      {relatedSites.map((site) => (
+        <a
+          class="group flex min-h-64 flex-col overflow-hidden rounded-2xl border border-antique-gold-soft/40 bg-night-soft text-ivory no-underline transition-[border-color,background-color,transform] hover:-translate-y-1 hover:border-antique-gold hover:bg-night-raised focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-antique-gold"
+          href={site.href}
+          target={site.external ? "_blank" : undefined}
+          rel={site.external ? "noreferrer" : undefined}
+        >
+          <div
+            class:list={["related-site-art", `related-site-art-${site.theme}`]}
+            aria-hidden="true"
+          >
+            <span class="related-site-symbol">{site.symbol}</span>
+            <span class="related-site-visual-title">{site.visualTitle}</span>
+          </div>
+          <div class="flex flex-1 flex-col justify-between p-6">
+            <div class="flex items-start justify-between gap-4">
+              <p class="font-interface text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-antique-gold">
+                {site.label}
+              </p>
+              <span
+                class="text-xl text-antique-gold transition-transform group-hover:translate-x-1"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+            </div>
+            <h3 class="mt-8 font-editorial text-3xl font-medium text-ivory group-hover:text-old-papyrus">
+              {site.title}
+            </h3>
+            <p class="mt-4 text-sm leading-relaxed text-ivory-muted">
+              {site.description}
+            </p>
+          </div>
+          <span class="mt-8 font-interface text-xs font-semibold uppercase tracking-[0.14em] text-old-papyrus">
+            {site.external ? "Visitar sitio" : "Ver estado"}
+          </span>
+        </a>
+      ))}
+    </div>
+  </Container>
+</section>
+
+<style>
+  .related-site-art {
+    position: relative;
+    display: flex;
+    min-height: 9.5rem;
+    align-items: end;
+    overflow: hidden;
+    padding: 1.25rem 1.5rem;
+    isolation: isolate;
+  }
+
+  .related-site-art::before,
+  .related-site-art::after {
+    position: absolute;
+    z-index: -1;
+    content: "";
+  }
+
+  .related-site-art-light {
+    background:
+      radial-gradient(
+        circle at 70% 28%,
+        rgb(255 247 198 / 90%),
+        transparent 14%
+      ),
+      linear-gradient(135deg, #123d75, #2867a1 52%, #8bb9d1);
+  }
+
+  .related-site-art-light::before {
+    top: -3.5rem;
+    right: 12%;
+    width: 9rem;
+    height: 9rem;
+    border: 1px solid rgb(255 246 195 / 60%);
+    border-radius: 999px;
+    box-shadow:
+      0 0 0 1rem rgb(255 246 195 / 12%),
+      0 0 2.5rem rgb(255 246 195 / 35%);
+  }
+
+  .related-site-art-planet {
+    background: linear-gradient(135deg, #163e2c, #2b754d 55%, #8bbd75);
+  }
+
+  .related-site-art-planet::before {
+    right: 13%;
+    bottom: -3rem;
+    width: 10rem;
+    height: 10rem;
+    border: 1px solid rgb(225 248 184 / 70%);
+    border-radius: 50%;
+    background:
+      radial-gradient(
+        circle at 32% 35%,
+        rgb(212 240 173 / 55%) 0 7%,
+        transparent 8%
+      ),
+      radial-gradient(
+        circle at 63% 62%,
+        rgb(212 240 173 / 45%) 0 11%,
+        transparent 12%
+      ),
+      linear-gradient(135deg, #79ac68, #285f43);
+    box-shadow: 0 0 2.5rem rgb(200 238 167 / 28%);
+  }
+
+  .related-site-art-planet::after {
+    right: -2rem;
+    bottom: 1.8rem;
+    width: 17rem;
+    height: 4rem;
+    border-block: 1px solid rgb(225 248 184 / 38%);
+    border-radius: 50%;
+    transform: rotate(-17deg);
+  }
+
+  .related-site-art-liara {
+    background:
+      radial-gradient(
+        circle at 72% 34%,
+        rgb(220 178 105 / 35%),
+        transparent 24%
+      ),
+      linear-gradient(135deg, #2a1b17, #62462d 58%, #a77b4e);
+  }
+
+  .related-site-art-liara::before {
+    right: 12%;
+    bottom: -2rem;
+    width: 8rem;
+    height: 11rem;
+    border-radius: 48% 48% 0 0;
+    background: linear-gradient(
+      180deg,
+      rgb(235 204 151 / 68%),
+      rgb(73 42 29 / 70%)
+    );
+    filter: blur(0.2px);
+  }
+
+  .related-site-symbol {
+    color: #fff2c2;
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 5vw, 4.4rem);
+    line-height: 0.8;
+    text-shadow: 0 2px 18px rgb(0 0 0 / 25%);
+  }
+
+  .related-site-art-liara .related-site-symbol {
+    color: #ead1a0;
+    font-size: 3.5rem;
+    font-weight: 600;
+    letter-spacing: -0.08em;
+  }
+
+  .related-site-visual-title {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.25rem;
+    max-width: 12rem;
+    color: rgb(255 246 220 / 92%);
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    line-height: 1.05;
+    text-align: right;
+    text-shadow: 0 2px 10px rgb(0 0 0 / 35%);
+  }
+</style>
