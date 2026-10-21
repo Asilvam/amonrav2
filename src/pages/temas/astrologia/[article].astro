@@ -20,6 +20,7 @@ import astrologyZodiac from "../../../assets/amonra/astrologia-zodiaco.jpg";
 import personalChart from "../../../assets/amonra/tu-carta-astral.jpg";
 import "../../../styles/topic-identities.css";
 import "../../../styles/topic-palettes.css";
+import "../../../styles/topic-pastels.css";
 
 interface Props {
   article: AstrologyArticle;
@@ -72,7 +73,7 @@ const articleImageAlt: Record<AstrologyArticleSlug, string> = {
   title={`${article.title} | Astrología`}
   description={article.description}
 >
-  <article data-topic-theme="astrologia">
+  <article data-topic-theme="astrologia" data-topic-pastel>
     <div class="border-b border-antique-gold-soft/35 bg-night">
       <Container size="wide" class="py-1">
         <Breadcrumbs

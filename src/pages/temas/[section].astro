@@ -41,6 +41,7 @@ import horoscopesHero from "../../assets/amonra/horoscopos-hero.jpg";
 import therapiesHero from "../../assets/amonra/terapias-hero.jpg";
 import "../../styles/topic-palettes.css";
 import "../../styles/topic-identities.css";
+import "../../styles/topic-pastels.css";
 
 interface Props {
   section: AmonraSection;
@@ -86,7 +87,7 @@ const next =
   title={section.title}
   description={`${section.description} Red de Luz Interior Amonra Chile.`}
 >
-  <article data-topic-theme={section.slug}>
+  <article data-topic-theme={section.slug} data-topic-pastel>
     <div class="border-b border-antique-gold-soft/35 bg-night">
       <Container size="wide" class="py-1">
         <Breadcrumbs
