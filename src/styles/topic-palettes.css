@@ -1,5 +1,5 @@
-/* Pilot hero and reading treatment; values live in topic-identities.css.
- * Only explicitly opted-in topic articles receive this treatment.
+/* Topic hero and reading treatment; values live in topic-identities.css.
+ * Applies to themed topic articles, never the homepage or global chrome.
  */
 
 [data-topic-theme] > header {
@@ -14,6 +14,7 @@
 }
 
 [data-topic-theme] > header h1,
+[data-topic-theme] > header .text-antique-gold,
 [data-topic-theme] > header .text-old-papyrus {
   color: var(--topic-hero-text);
 }
@@ -78,6 +79,7 @@
   }
 
   [data-topic-theme] > header h1,
+  [data-topic-theme] > header .text-antique-gold,
   [data-topic-theme] > header .text-old-papyrus {
     color: var(--color-ink);
   }

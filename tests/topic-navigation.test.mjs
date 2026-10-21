@@ -73,14 +73,27 @@ for (const [index, slug] of topics.entries()) {
     const heroTheme = page.match(
       /<article\b[^>]*data-topic-theme="([^"]+)"/,
     )?.[1];
-    assert.equal(
-      heroTheme,
-      ["runas", "magia", "inciensos"].includes(slug) ? slug : undefined,
-    );
+    assert.equal(heroTheme, slug);
   });
 }
 
 const styleUrl = new URL("src/styles/topic-identities.css", root);
+
+for (const slug of [
+  "astrologia-occidental",
+  "antecedentes-historicos",
+  "vision-caldea",
+  "ecliptica",
+  "zodiaco-signos",
+  "astros",
+  "que-es-carta-astral",
+  "tu-carta-astral",
+]) {
+  test(`${slug}: internal article retains the Astrology identity`, () => {
+    const page = html(`temas/astrologia/${slug}/index.html`);
+    assert.match(page, /<article\b[^>]*data-topic-theme="astrologia"/);
+  });
+}
 const css = readFileSync(styleUrl, "utf8");
 const identities = [
   ...css.matchAll(/\[data-topic-link="([^"]+)"\]\)\s*\{([^}]+)\}/g),
@@ -109,6 +122,23 @@ const luminance = (color) =>
     );
 
 for (const [, slug, declarations] of identities) {
+  test(`${slug}: reading links and active tabs retain readable contrast`, () => {
+    const value = (name) =>
+      declarations.match(new RegExp(`--topic-${name}:\\s*([^;]+);`))?.[1];
+    const ink = rgb(value("ink"));
+    const paper = rgb("#ded3be");
+    const foreground = rgb(value("hero-text"));
+    const ratio = (a, b) =>
+      (Math.max(luminance(a), luminance(b)) + 0.05) /
+      (Math.min(luminance(a), luminance(b)) + 0.05);
+    const softPaper = paper.map(
+      (channel, index) => 0.93 * channel + 0.07 * ink[index],
+    );
+    assert.ok(ratio(ink, paper) >= 4.5, "links on paper");
+    assert.ok(ratio(ink, softPaper) >= 4.5, "links on secondary surfaces");
+    assert.ok(ratio(foreground, ink) >= 4.5, "active tab and badge text");
+  });
+
   test(`${slug}: texture exists and all sampled backgrounds meet 4.5:1`, async () => {
     const value = (name) =>
       declarations.match(new RegExp(`--topic-${name}:\\s*([^;]+);`))?.[1];

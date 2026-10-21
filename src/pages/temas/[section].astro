@@ -54,9 +54,6 @@ export function getStaticPaths() {
 }
 
 const { section } = Astro.props;
-const topicTheme = ["runas", "magia", "inciensos"].includes(section.slug)
-  ? section.slug
-  : undefined;
 const hasCompactHero = [
   "fundacion",
   "historia",
@@ -89,7 +86,7 @@ const next =
   title={section.title}
   description={`${section.description} Red de Luz Interior Amonra Chile.`}
 >
-  <article data-topic-theme={topicTheme}>
+  <article data-topic-theme={section.slug}>
     <div class="border-b border-antique-gold-soft/35 bg-night">
       <Container size="wide" class="py-1">
         <Breadcrumbs

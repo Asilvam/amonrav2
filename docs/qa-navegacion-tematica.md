@@ -2,6 +2,10 @@
 
 Fecha: 2026-10-21, America/Santiago.
 
+Actualización posterior: la identidad se extendió a los 15 temas y a los
+artículos de Astrología; véase `qa-temas-completos.md`. Los resultados de este
+informe corresponden a la fase anterior de navegación temática.
+
 ## Alcance
 
 - Los 15 accesos de Caminos de conocimiento en inicio.
