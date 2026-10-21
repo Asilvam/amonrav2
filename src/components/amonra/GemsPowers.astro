@@ -1,0 +1,21 @@
+---
+import archive from "../../config/gems-archive.json";
+---
+
+<section
+  id="poderes"
+  class="scroll-mt-8 space-y-6"
+  aria-labelledby="poderes-titulo"
+>
+  <h3
+    id="poderes-titulo"
+    class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink"
+  >
+    Los poderes de las piedras
+  </h3>
+  <blockquote class="gems-prose gems-balanced">
+    {archive.powers.paragraphs.map((paragraph) => (
+      <p>{paragraph}</p>
+    ))}
+  </blockquote>
+</section>

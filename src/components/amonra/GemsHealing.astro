@@ -1,0 +1,59 @@
+---
+import archive from "../../config/gems-archive.json";
+const [practice, crystals] = archive.healing.images;
+const [openingParagraph, ...remainingParagraphs] = archive.healing.paragraphs;
+---
+
+<section
+  id="sanacion"
+  class="scroll-mt-8 space-y-8"
+  aria-labelledby="sanacion-titulo"
+>
+  <div class="gems-healing-opening">
+    <header class="gems-heading">
+      <h3
+        id="sanacion-titulo"
+        class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink"
+      >
+        Sanación con agua de cristal de cuarzo
+      </h3>
+      <blockquote
+        cite="https://amonra.cl/gemas_sanacion.html"
+        class="gems-prose gems-healing-lead mt-5"
+      >
+        <p>{openingParagraph}</p>
+      </blockquote>
+    </header>
+    <figure class="gems-healing-practice">
+      <img
+        src={practice.src}
+        width={practice.width}
+        height={practice.height}
+        alt="Práctica de gemoterapia con piedras y un péndulo"
+        loading="lazy"
+        decoding="async"
+        class="h-auto w-full rounded-xl"
+      />
+    </figure>
+  </div>
+
+  <blockquote
+    cite="https://amonra.cl/gemas_sanacion.html"
+    class="gems-prose gems-balanced gems-healing-reading"
+  >
+    {remainingParagraphs.map((paragraph) => (
+      <p>{paragraph}</p>
+    ))}
+    <figure class="gems-healing-crystals">
+      <img
+        src={crystals.src}
+        width={crystals.width}
+        height={crystals.height}
+        alt="Cristales de distintos colores iluminados"
+        loading="lazy"
+        decoding="async"
+        class="h-auto w-full rounded-xl"
+      />
+    </figure>
+  </blockquote>
+</section>

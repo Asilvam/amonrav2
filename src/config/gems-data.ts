@@ -9,12 +9,6 @@ export interface ZodiacGem {
   therapeuticProperties: string;
 }
 
-export interface HealingWaterStep {
-  stepNumber: number;
-  title: string;
-  instruction: string;
-}
-
 export interface GemStone {
   name: string;
   mineralGroup: string;
@@ -180,51 +174,6 @@ export const zodiacGems: ZodiacGem[] = [
       "Calma la hipersensibilidad emotiva, despierta la compasión desinteresada y afina la intuición espiritual.",
     therapeuticProperties:
       "Sedante de los estados de agitación nerviosa, favorece la digestión serena y promueve un sueño reparador.",
-  },
-];
-
-export const healingWaterSteps: HealingWaterStep[] = [
-  {
-    stepNumber: 1,
-    title: "Selección y limpieza previa del cristal",
-    instruction:
-      "La tradición menciona cuarzo blanco y amatista como símbolos de claridad y serenidad. Esta referencia es cultural: no se presentan como métodos preventivos ni curativos.",
-  },
-  {
-    stepNumber: 2,
-    title: "Programación consciente de la gema",
-    instruction:
-      "Como ejercicio contemplativo, sostenga la gema entre las manos y formule una intención de calma, claridad o cuidado. La programación pertenece al lenguaje ritual y no cambia las propiedades físicas del mineral.",
-  },
-  {
-    stepNumber: 3,
-    title: "Preparación del recipiente cristalino",
-    instruction:
-      "El relato original describe un recipiente transparente y luz natural. No coloque minerales directamente en agua destinada al consumo: algunos pueden liberar sustancias, polvo o tratamientos no seguros.",
-  },
-  {
-    stepNumber: 4,
-    title: "Sensibilización magnética de las manos",
-    instruction:
-      "La práctica simbólica propone calentar las manos y mantenerlas sobre el recipiente, sin tocar el agua, mientras se centra la atención en la respiración y en la intención personal.",
-  },
-  {
-    stepNumber: 5,
-    title: "Imposición circular en sentido horario",
-    instruction:
-      "El movimiento circular forma parte del simbolismo ritual descrito en el material original. No implica una modificación medible de la composición o de las propiedades del agua.",
-  },
-  {
-    stepNumber: 6,
-    title: "Exposición solar y potenciación",
-    instruction:
-      "La exposición a la luz solar y la referencia a una pirámide aparecen como elementos simbólicos de contemplación. No convierten el agua en un producto terapéutico y deben evitarse recipientes cerrados que puedan calentarse o contaminarse.",
-  },
-  {
-    stepNumber: 7,
-    title: "Administración y posología tradicional",
-    instruction:
-      "No se incluye una pauta de ingestión. Amonra no recomienda beber agua que haya estado en contacto con cristales ni utilizarla para tratar dolencias; esta etapa queda registrada solo para explicar el contenido del material antiguo.",
   },
 ];
 

@@ -1,0 +1,57 @@
+---
+import archive from "../../config/gems-archive.json";
+const [landscape, crystals] = archive.meditation.images;
+const openingParagraphs = archive.meditation.paragraphs.slice(0, 2);
+const remainingParagraphs = archive.meditation.paragraphs.slice(2);
+---
+
+<section
+  id="meditacion"
+  class="scroll-mt-8 space-y-8"
+  aria-labelledby="meditacion-titulo"
+>
+  <h3
+    id="meditacion-titulo"
+    class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink"
+  >
+    Meditación con los cristales
+  </h3>
+
+  <div class="gems-meditation-row gems-meditation-opening">
+    <figure class="gems-meditation-landscape">
+      <img
+        src={landscape.src}
+        width={landscape.width}
+        height={landscape.height}
+        alt="Silueta de una persona meditando frente al mar bajo un cielo estrellado"
+        loading="lazy"
+        decoding="async"
+        class="h-auto w-full rounded-xl"
+      />
+    </figure>
+    <blockquote class="gems-prose min-w-0">
+      {openingParagraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))}
+    </blockquote>
+  </div>
+
+  <div class="gems-meditation-row gems-meditation-continuation">
+    <figure class="gems-meditation-crystals">
+      <img
+        src={crystals.src}
+        width={crystals.width}
+        height={crystals.height}
+        alt="Cesta con una colección de cuarzos, amatistas y otras piedras"
+        loading="lazy"
+        decoding="async"
+        class="h-auto w-full rounded-xl"
+      />
+    </figure>
+    <blockquote class="gems-prose min-w-0">
+      {remainingParagraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))}
+    </blockquote>
+  </div>
+</section>

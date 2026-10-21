@@ -1,0 +1,84 @@
+---
+import archive from "../../config/gems-archive.json";
+---
+
+<section
+  id="zodiaco"
+  class="scroll-mt-8 space-y-8"
+  aria-labelledby="zodiaco-titulo"
+>
+  <header class="gems-heading reading-section">
+    <h3
+      id="zodiaco-titulo"
+      class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink"
+    >
+      Gemas y signos del zodíaco
+    </h3>
+    <p class="mt-4 font-editorial text-xl leading-relaxed text-paper-ink">
+      {archive.zodiacIntroduction.lead}
+    </p>
+  </header>
+
+  <blockquote class="gems-prose gems-balanced">
+    {archive.zodiacIntroduction.paragraphs.map((paragraph) => (
+      <p>{paragraph}</p>
+    ))}
+  </blockquote>
+
+  <nav class="gems-zodiac-nav" aria-label="Elegir un signo del zodíaco">
+    {archive.zodiac.map((sign) => (
+      <a
+        href={`#${sign.id}`}
+        class="inline-flex min-h-11 items-center gap-2 rounded-lg border border-antique-gold-soft/50 px-4 py-2 text-sm text-paper-ink underline-offset-4 hover:underline"
+      >
+        <span class="gems-zodiac-symbol" aria-hidden="true">
+          {sign.symbol + "\uFE0E"}
+        </span>
+        {sign.sign}
+      </a>
+    ))}
+  </nav>
+
+  <div class="gems-zodiac-grid">
+    {archive.zodiac.map((sign) => (
+      <article
+        id={sign.id}
+        data-gem-sign
+        class="gems-zodiac-card min-w-0 scroll-mt-8 rounded-xl border border-antique-gold-soft/40 bg-surface-warm/30 p-5 shadow-xs sm:p-6"
+      >
+        <header class="flex items-center justify-between gap-4 border-b border-antique-gold-soft/30 pb-4">
+          <div class="min-w-0">
+            <h4 class="font-editorial text-2xl text-paper-ink">
+              <span class="gems-zodiac-symbol" aria-hidden="true">
+                {sign.symbol + "\uFE0E"}
+              </span>{" "}
+              {sign.sign}
+            </h4>
+            <p class="mt-2 text-sm font-semibold text-antique-gold-deep">
+              {sign.primaryGem}
+            </p>
+            {sign.secondaryGems && (
+              <p class="mt-1 text-sm text-paper-muted">
+                También: {sign.secondaryGems}
+              </p>
+            )}
+          </div>
+          <img
+            src={sign.image.src}
+            width={sign.image.width}
+            height={sign.image.height}
+            alt={`Ilustración de ${sign.sign}`}
+            loading="lazy"
+            decoding="async"
+            class="h-auto w-24 shrink-0 rounded-lg sm:w-32"
+          />
+        </header>
+        <blockquote class="gems-prose mt-5">
+          {sign.paragraphs.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </blockquote>
+      </article>
+    ))}
+  </div>
+</section>
