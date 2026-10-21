@@ -13,8 +13,9 @@ La activación se limita al atributo `data-topic-theme` del artículo
 en `src/pages/temas/[section].astro`. Para desactivar un tema basta
 con retirarlo de la lista `topicTheme`.
 
-`src/styles/topic-palettes.css` contiene los colores, restringidos al
-hero del artículo y a sus secciones de lectura. Los colores se toman
+`src/styles/topic-identities.css` centraliza ahora los colores compartidos;
+`src/styles/topic-palettes.css` restringe su tratamiento al hero del artículo
+y a sus secciones de lectura. Los colores se toman
 de estos documentos del respaldo `backup-original/public_html/amonra.cl/`:
 
 | Tema | Documento | Valores utilizados |

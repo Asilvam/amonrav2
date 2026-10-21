@@ -6,6 +6,7 @@ import RelatedSites from "../components/amonra/RelatedSites.astro";
 import Container from "../components/layout/Container.astro";
 import { amonraMessages } from "../config/amonra-messages";
 import AmonraLayout from "../layouts/AmonraLayout.astro";
+import papyrusTexture from "../assets/amonra/papiro-jeroglificos.jpg";
 ---
 
 <AmonraLayout
@@ -21,9 +22,10 @@ import AmonraLayout from "../layouts/AmonraLayout.astro";
     <RelatedSites />
 
     <section
-      class="border-b border-antique-gold-soft/50 bg-paper py-20 text-paper-ink lg:py-28"
+      class="border-b border-[#e9b867] bg-[#eadb9b] py-20 text-paper-ink lg:py-28"
       id="proposito"
       aria-label="Propósito"
+      style={`--purpose-texture: url('${papyrusTexture.src}'); background-image: var(--purpose-texture); background-repeat: repeat;`}
     >
       <Container>
         <AmonraPurpose />

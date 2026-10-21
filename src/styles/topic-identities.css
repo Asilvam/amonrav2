@@ -1,0 +1,168 @@
+/* Shared identities from backup-original/public_html/amonra.cl/.
+ * Link identities describe the destination, not the current article.
+ * Declaring an identity does not opt additional heroes into the pilot.
+ */
+:is([data-topic-theme="fundacion"], [data-topic-link="fundacion"]) {
+  --topic-base: #5b2d13;
+  --topic-depth: #462615;
+  --topic-ink: #462615;
+  --topic-detail: #d6c684;
+  --topic-hero-text: #fdeac6;
+  --topic-texture: url("../assets/amonra/textures/egyptlovertile1.jpg");
+  --topic-veil-start: rgb(70 38 21 / 84%);
+  --topic-veil-end: rgb(91 45 19 / 84%);
+}
+
+:is([data-topic-theme="historia"], [data-topic-link="historia"]) {
+  --topic-base: #7d3e03;
+  --topic-depth: #704828;
+  --topic-ink: #7d3e03;
+  --topic-detail: #e8a12b;
+  --topic-hero-text: #fdeac6;
+  --topic-texture: url("../assets/amonra/textures/historia-marron.jpg");
+  --topic-veil-start: rgb(112 72 40 / 35%);
+  --topic-veil-end: rgb(125 62 3 / 35%);
+}
+
+:is([data-topic-theme="amuletos"], [data-topic-link="amuletos"]) {
+  --topic-base: #5a2c12;
+  --topic-depth: #301100;
+  --topic-ink: #301100;
+  --topic-detail: #e3c54a;
+  --topic-hero-text: #e3c54a;
+  --topic-texture: url("../assets/amonra/textures/bkgesoterico.jpg");
+  --topic-veil-start: rgb(48 17 0 / 35%);
+  --topic-veil-end: rgb(90 44 18 / 35%);
+}
+
+:is([data-topic-theme="astrologia"], [data-topic-link="astrologia"]) {
+  --topic-base: #3a1400;
+  --topic-depth: #725124;
+  --topic-ink: #3a1400;
+  --topic-detail: #e9b867;
+  --topic-hero-text: #fdeac6;
+  --topic-texture: url("../assets/amonra/textures/astrologia-marron.jpg");
+  --topic-veil-start: rgb(114 81 36 / 35%);
+  --topic-veil-end: rgb(58 20 0 / 35%);
+}
+
+:is([data-topic-theme="gemas"], [data-topic-link="gemas"]) {
+  --topic-base: #6b4a1d;
+  --topic-depth: #975820;
+  --topic-ink: #6b4a1d;
+  --topic-detail: #d6c87c;
+  --topic-hero-text: #f4f5d6;
+  --topic-texture: url("../assets/amonra/textures/astrologia-marron.jpg");
+  --topic-veil-start: rgb(107 74 29 / 35%);
+  --topic-veil-end: rgb(151 88 32 / 35%);
+}
+
+:is([data-topic-theme="horoscopos"], [data-topic-link="horoscopos"]) {
+  --topic-base: #020202;
+  --topic-depth: #3e3e3e;
+  --topic-ink: #3e3e3e;
+  --topic-detail: #c0c0c0;
+  --topic-hero-text: #e9e8de;
+  --topic-texture: url("../assets/amonra/textures/fondogris.jpg");
+  --topic-veil-start: rgb(2 2 2 / 72%);
+  --topic-veil-end: rgb(62 62 62 / 72%);
+}
+
+:is([data-topic-theme="inciensos"], [data-topic-link="inciensos"]) {
+  --topic-base: #7b1a09;
+  --topic-depth: #090000;
+  --topic-ink: #7b1a09;
+  --topic-detail: #d1982e;
+  --topic-hero-text: #f8ec9c;
+  --topic-texture: url("../assets/amonra/textures/inciensos-egipto.jpg");
+  --topic-veil-start: rgb(9 0 0 / 80%);
+  --topic-veil-end: rgb(123 26 9 / 74%);
+}
+
+:is([data-topic-theme="magia"], [data-topic-link="magia"]) {
+  --topic-base: #183867;
+  --topic-depth: #12263d;
+  --topic-ink: #183867;
+  --topic-detail: #c0c0c0;
+  --topic-hero-text: #d7d5ca;
+  --topic-texture: url("../assets/amonra/textures/magia-fondo.jpg");
+  --topic-veil-start: rgb(18 38 61 / 82%);
+  --topic-veil-end: rgb(24 56 103 / 82%);
+}
+
+:is([data-topic-theme="numerologia"], [data-topic-link="numerologia"]) {
+  --topic-base: #25160f;
+  --topic-depth: #67412e;
+  --topic-ink: #25160f;
+  --topic-detail: #d6c684;
+  --topic-hero-text: #c9c27b;
+  --topic-texture: url("../assets/amonra/textures/brown_tile.jpg");
+  --topic-veil-start: rgb(37 22 15 / 35%);
+  --topic-veil-end: rgb(103 65 46 / 35%);
+}
+
+:is([data-topic-theme="oraculos"], [data-topic-link="oraculos"]) {
+  --topic-base: #4c4942;
+  --topic-depth: #1c1b17;
+  --topic-ink: #1c1b17;
+  --topic-detail: #d1c586;
+  --topic-hero-text: #e7e370;
+  --topic-texture: url("../assets/amonra/textures/oraculos-marron.jpg");
+  --topic-veil-start: rgb(28 27 23 / 35%);
+  --topic-veil-end: rgb(76 73 66 / 35%);
+}
+
+:is([data-topic-theme="runas"], [data-topic-link="runas"]) {
+  --topic-base: #11341f;
+  --topic-depth: #083d11;
+  --topic-ink: #11341f;
+  --topic-detail: #e8ad40;
+  --topic-hero-text: #f7e1bb;
+  --topic-texture: url("../assets/amonra/textures/runas-celticlionback1.jpg");
+  --topic-veil-start: rgb(8 61 17 / 40%);
+  --topic-veil-end: rgb(17 52 31 / 30%);
+}
+
+:is([data-topic-theme="suenos"], [data-topic-link="suenos"]) {
+  --topic-base: #2b3e53;
+  --topic-depth: #262f50;
+  --topic-ink: #262f50;
+  --topic-detail: #9498c9;
+  --topic-hero-text: #d1d3e9;
+  --topic-texture: url("../assets/amonra/textures/suenosfondo.jpg");
+  --topic-veil-start: rgb(38 47 80 / 86%);
+  --topic-veil-end: rgb(43 62 83 / 86%);
+}
+
+:is([data-topic-theme="tarot"], [data-topic-link="tarot"]) {
+  --topic-base: #001695;
+  --topic-depth: #022248;
+  --topic-ink: #022248;
+  --topic-detail: #9cd9e8;
+  --topic-hero-text: #def8f7;
+  --topic-texture: url("../assets/amonra/textures/tarotfondo.jpg");
+  --topic-veil-start: rgb(2 34 72 / 68%);
+  --topic-veil-end: rgb(0 22 149 / 68%);
+}
+
+:is([data-topic-theme="terapias"], [data-topic-link="terapias"]) {
+  --topic-base: #2b4006;
+  --topic-depth: #2b4006;
+  --topic-ink: #2b4006;
+  --topic-detail: #e3c54a;
+  --topic-hero-text: #bfd79d;
+  --topic-texture: url("../assets/amonra/textures/fondo-terapia.jpg");
+  --topic-veil-start: rgb(43 64 6 / 86%);
+  --topic-veil-end: rgb(43 64 6 / 86%);
+}
+
+:is([data-topic-theme="velas"], [data-topic-link="velas"]) {
+  --topic-base: #3b1e0c;
+  --topic-depth: #100804;
+  --topic-ink: #3b1e0c;
+  --topic-detail: #ceb882;
+  --topic-hero-text: #fffbc6;
+  --topic-texture: url("../assets/amonra/textures/brillianceinnertile.jpg");
+  --topic-veil-start: rgb(16 8 4 / 35%);
+  --topic-veil-end: rgb(59 30 12 / 35%);
+}

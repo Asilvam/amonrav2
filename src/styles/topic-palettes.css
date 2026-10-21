@@ -1,40 +1,6 @@
-/* Pilot palettes from backup-original/public_html/amonra.cl/index_*.html/htm.
- * Only the three opted-in topic articles inherit these colors.
- * Heroes tile the original textures beneath contrast-preserving color veils.
- * Reading surfaces remain softened blends without textures.
+/* Pilot hero and reading treatment; values live in topic-identities.css.
+ * Only explicitly opted-in topic articles receive this treatment.
  */
-[data-topic-theme="runas"] {
-  --topic-base: #11341f;
-  --topic-depth: #083d11;
-  --topic-ink: #11341f;
-  --topic-detail: #e8ad40;
-  --topic-hero-text: #f7e1bb;
-  --topic-texture: url("../assets/amonra/textures/runas-celticlionback1.jpg");
-  --topic-veil-start: rgb(8 61 17 / 40%);
-  --topic-veil-end: rgb(17 52 31 / 30%);
-}
-
-[data-topic-theme="magia"] {
-  --topic-base: #183867;
-  --topic-depth: #12263d;
-  --topic-ink: #183867;
-  --topic-detail: #c0c0c0;
-  --topic-hero-text: #d7d5ca;
-  --topic-texture: url("../assets/amonra/textures/magia-fondo.jpg");
-  --topic-veil-start: rgb(18 38 61 / 82%);
-  --topic-veil-end: rgb(24 56 103 / 82%);
-}
-
-[data-topic-theme="inciensos"] {
-  --topic-base: #7b1a09;
-  --topic-depth: #090000;
-  --topic-ink: #7b1a09;
-  --topic-detail: #d1982e;
-  --topic-hero-text: #f8ec9c;
-  --topic-texture: url("../assets/amonra/textures/inciensos-egipto.jpg");
-  --topic-veil-start: rgb(9 0 0 / 80%);
-  --topic-veil-end: rgb(123 26 9 / 74%);
-}
 
 [data-topic-theme] > header {
   border-bottom-color: var(--topic-detail);

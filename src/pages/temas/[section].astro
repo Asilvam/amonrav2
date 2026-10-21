@@ -15,11 +15,11 @@ import NumerologyContent from "../../components/amonra/NumerologyContent.astro";
 import MagicContent from "../../components/amonra/MagicContent.astro";
 import HoroscopesContent from "../../components/amonra/HoroscopesContent.astro";
 import TherapiesContent from "../../components/amonra/TherapiesContent.astro";
+import TopicLink from "../../components/amonra/TopicLink.astro";
 import Breadcrumbs from "../../components/common/Breadcrumbs.astro";
 import Container from "../../components/layout/Container.astro";
 import { amonraMessages } from "../../config/amonra-messages";
 import {
-  amonraSectionPath,
   amonraSections,
   type AmonraSection,
 } from "../../config/amonra-sections";
@@ -40,6 +40,7 @@ import magicHero from "../../assets/amonra/magia-hero.jpg";
 import horoscopesHero from "../../assets/amonra/horoscopos-hero.jpg";
 import therapiesHero from "../../assets/amonra/terapias-hero.jpg";
 import "../../styles/topic-palettes.css";
+import "../../styles/topic-identities.css";
 
 interface Props {
   section: AmonraSection;
@@ -515,17 +516,9 @@ const next =
       class="border-b border-antique-gold-soft/35 bg-night-soft"
       aria-label="Continuar por los temas de Amonra"
     >
-      <Container class="grid gap-px bg-antique-gold-soft/30 p-px md:grid-cols-2">
+      <Container class="grid gap-4 py-6 md:grid-cols-2">
         {previous ? (
-          <a
-            class="group bg-night px-6 py-6 text-ivory no-underline hover:bg-night-raised"
-            href={amonraSectionPath(previous)}
-          >
-            <span class="eyebrow text-antique-gold">Anterior</span>
-            <span class="mt-2 block font-editorial text-2xl">
-              ← {previous.title}
-            </span>
-          </a>
+          <TopicLink section={previous} variant="previous" />
         ) : (
           <a
             class="group bg-night px-6 py-6 text-ivory no-underline hover:bg-night-raised"
@@ -536,15 +529,7 @@ const next =
           </a>
         )}
         {next ? (
-          <a
-            class="group bg-night px-6 py-6 text-right text-ivory no-underline hover:bg-night-raised"
-            href={amonraSectionPath(next)}
-          >
-            <span class="eyebrow text-antique-gold">Siguiente</span>
-            <span class="mt-2 block font-editorial text-2xl">
-              {next.title} →
-            </span>
-          </a>
+          <TopicLink section={next} variant="next" />
         ) : (
           <a
             class="group bg-night px-6 py-6 text-right text-ivory no-underline hover:bg-night-raised"
