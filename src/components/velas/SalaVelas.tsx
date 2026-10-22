@@ -1,11 +1,17 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type SyntheticEvent } from "react";
 import "./velas.css";
+import {
+  getCandleCountries,
+  getRoomCandles,
+  readTrackingCredentials,
+  trackCandle,
+} from "./api";
+import type { CandleCountry } from "./api";
 import {
   CANDLE_BURN_DURATION_MS,
   CANDLE_FRAMES,
   getCandleFrameIndex,
   getCandleTimeLeft,
-  readRoomCandles,
 } from "./candle-room";
 import type { RoomCandle } from "./candle-room";
 import CandleVisual from "./CandleVisual";
@@ -28,29 +34,93 @@ function burningProgress(startedAt: number, now: number): number {
 
 export default function SalaVelas() {
   const [candles, setCandles] = useState<RoomCandle[]>([]);
+  const [countries, setCountries] = useState<CandleCountry[]>([]);
+  const [locationCountryError, setLocationCountryError] = useState("");
   const [now, setNow] = useState(() => Date.now());
   const [ready, setReady] = useState(false);
   const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [reference, setReference] = useState("");
+  const [trackingToken, setTrackingToken] = useState("");
+  const [trackedCandle, setTrackedCandle] = useState<RoomCandle | null>(null);
+  const [trackingError, setTrackingError] = useState("");
+  const [trackingLoading, setTrackingLoading] = useState(false);
 
   useEffect(() => {
+    let active = true;
+    const requestedReference = new URLSearchParams(window.location.search).get(
+      "vela",
+    );
+    let savedTrackingError = "";
+    const selectedTimer = window.setTimeout(() => {
+      setSelectedId(requestedReference);
+      if (savedTrackingError) setTrackingError(savedTrackingError);
+    }, 0);
+    let credentialsTimer: number | undefined;
+
     const loadRoom = async () => {
       try {
-        setCandles(readRoomCandles());
-        setSelectedId(new URLSearchParams(window.location.search).get("vela"));
-      } catch (storageError) {
-        setError(
-          storageError instanceof Error
-            ? storageError.message
-            : "No pudimos abrir la sala en este navegador.",
-        );
+        const result = await getRoomCandles();
+        if (active) {
+          setCandles(result);
+          setError("");
+        }
+      } catch (loadError) {
+        if (active) {
+          setError(
+            loadError instanceof Error
+              ? loadError.message
+              : "No pudimos cargar las velas de la sala.",
+          );
+        }
+      } finally {
+        if (active) setReady(true);
       }
-      setReady(true);
     };
+    const loadCountries = async () => {
+      try {
+        const result = await getCandleCountries();
+        if (active) setCountries(result);
+      } catch (countryError) {
+        if (active) {
+          setCountries([]);
+          setLocationCountryError(
+            countryError instanceof Error
+              ? countryError.message
+              : "No pudimos cargar los nombres de países.",
+          );
+        }
+      }
+    };
+    try {
+      const savedCredentials = readTrackingCredentials();
+      const saved = savedCredentials.find(
+        (item) => item.reference === requestedReference,
+      );
+      if (saved) {
+        credentialsTimer = window.setTimeout(() => {
+          setReference(saved.reference);
+          setTrackingToken(saved.trackingToken);
+        }, 0);
+      }
+    } catch {
+      savedTrackingError =
+        "No pudimos leer los datos locales de seguimiento. Puedes ingresarlos manualmente.";
+    }
     void loadRoom();
+    void loadCountries();
 
-    const interval = window.setInterval(() => setNow(Date.now()), 30_000);
-    return () => window.clearInterval(interval);
+    const clockInterval = window.setInterval(() => setNow(Date.now()), 30_000);
+    const refreshInterval = window.setInterval(() => void loadRoom(), 60_000);
+    return () => {
+      active = false;
+      window.clearTimeout(selectedTimer);
+      if (credentialsTimer !== undefined) {
+        window.clearTimeout(credentialsTimer);
+      }
+      window.clearInterval(clockInterval);
+      window.clearInterval(refreshInterval);
+    };
   }, []);
 
   useEffect(() => {
@@ -70,6 +140,38 @@ export default function SalaVelas() {
   const extinguishedCandles = candles.filter(
     (candle) => now - candle.startedAt >= CANDLE_BURN_DURATION_MS,
   );
+  const locationFor = (candle: RoomCandle) => {
+    if (!candle.publishLocation || !candle.countryCode) return "";
+    const language = document.documentElement.lang.toLowerCase();
+    const country = countries.find((item) => item.code === candle.countryCode);
+    const countryName = country
+      ? language.startsWith("en")
+        ? country.name.en
+        : country.name.es
+      : candle.countryCode;
+    return [candle.cityName, countryName].filter(Boolean).join(", ");
+  };
+  const submitTracking = async (event: SyntheticEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setTrackingLoading(true);
+    setTrackingError("");
+    setTrackedCandle(null);
+    try {
+      const candle = await trackCandle({
+        reference: reference.trim(),
+        trackingToken: trackingToken.trim(),
+      });
+      setTrackedCandle(candle);
+    } catch (trackError) {
+      setTrackingError(
+        trackError instanceof Error
+          ? trackError.message
+          : "No pudimos consultar esta vela.",
+      );
+    } finally {
+      setTrackingLoading(false);
+    }
+  };
 
   return (
     <div className="candle-room-page">
@@ -96,7 +198,7 @@ export default function SalaVelas() {
         <div className="candle-room-stats" aria-live="polite">
           <div>
             <strong>{ready ? litCandles.length : "—"}</strong>
-            <span>encendidas en esta sesión</span>
+            <span>encendidas en la sala</span>
           </div>
           <div>
             <strong>{ready ? extinguishedCandles.length : "—"}</strong>
@@ -118,6 +220,22 @@ export default function SalaVelas() {
           <p className="mt-12 text-center text-ivory-muted" role="status">
             Preparando la sala de luz…
           </p>
+        ) : error && candles.length === 0 ? (
+          <section className="candle-room-empty">
+            <h2 className="font-editorial text-3xl text-ivory">
+              No pudimos cargar la sala
+            </h2>
+            <p className="mt-3 max-w-lg text-sm leading-relaxed text-ivory-muted">
+              La sala no está disponible en este momento. Inténtalo de nuevo.
+            </p>
+            <button
+              type="button"
+              className="ritual-primary-button mt-6"
+              onClick={() => window.location.reload()}
+            >
+              Volver a intentar
+            </button>
+          </section>
         ) : candles.length === 0 ? (
           <section className="candle-room-empty">
             <div className="candle-room-empty__mark" aria-hidden="true">
@@ -127,7 +245,7 @@ export default function SalaVelas() {
               La primera luz puede ser la tuya
             </h2>
             <p className="mt-3 max-w-lg text-sm leading-relaxed text-ivory-muted">
-              Enciende una vela desde este navegador y aparecerá aquí con su
+              Enciende una vela y aparecerá aquí para toda la comunidad con su
               evolución, intención y tiempo restante.
             </p>
             <a href="/encender-vela/" className="ritual-primary-button mt-6">
@@ -191,6 +309,11 @@ export default function SalaVelas() {
                                 minute: "2-digit",
                               }).format(candle.startedAt)}
                             </span>
+                            {locationFor(candle) && (
+                              <span className="candle-room-card__location">
+                                {locationFor(candle)}
+                              </span>
+                            )}
                             {candle.dedication && (
                               <span className="candle-room-card__dedication">
                                 “{candle.dedication}”
@@ -250,6 +373,11 @@ export default function SalaVelas() {
                       “{selectedCandle.dedication}”
                     </p>
                   )}
+                  {locationFor(selectedCandle) && (
+                    <p className="mt-2 text-sm text-ivory-muted">
+                      {locationFor(selectedCandle)}
+                    </p>
+                  )}
                   <p className="mt-3 text-sm text-ivory-muted">
                     {formatTimeLeft(
                       getCandleTimeLeft(selectedCandle.startedAt, now),
@@ -299,6 +427,11 @@ export default function SalaVelas() {
                         <span className="candle-room-card__meta">
                           {candle.intention} · la llama se ha apagado
                         </span>
+                        {locationFor(candle) && (
+                          <span className="candle-room-card__location">
+                            {locationFor(candle)}
+                          </span>
+                        )}
                         {candle.dedication && (
                           <span className="candle-room-card__dedication">
                             “{candle.dedication}”
@@ -313,9 +446,82 @@ export default function SalaVelas() {
           </>
         )}
 
+        <section
+          className="candle-tracking-panel"
+          aria-labelledby="candle-tracking-title"
+        >
+          <div>
+            <p className="eyebrow text-antique-gold">SEGUIMIENTO PRIVADO</p>
+            <h2
+              id="candle-tracking-title"
+              className="mt-2 font-editorial text-2xl text-ivory"
+            >
+              Consulta tu vela
+            </h2>
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-ivory-muted">
+              Usa la referencia y el código que recibiste al encenderla. El
+              código es privado y no se publica en la Sala.
+            </p>
+          </div>
+          {locationCountryError && (
+            <p className="candle-room-error" role="alert">
+              {locationCountryError} La ubicación de las velas visibles se
+              mostrará usando el código del país.
+            </p>
+          )}
+          <form className="candle-tracking-form" onSubmit={submitTracking}>
+            <label>
+              <span>Referencia</span>
+              <input
+                required
+                value={reference}
+                onChange={(event) => setReference(event.target.value)}
+                autoComplete="off"
+              />
+            </label>
+            <label>
+              <span>Código de seguimiento</span>
+              <input
+                required
+                value={trackingToken}
+                onChange={(event) => setTrackingToken(event.target.value)}
+                autoComplete="off"
+              />
+            </label>
+            <button
+              type="submit"
+              className="ritual-primary-button"
+              disabled={trackingLoading}
+            >
+              {trackingLoading ? "Consultando…" : "Consultar"}
+            </button>
+          </form>
+          {trackingError && (
+            <p className="candle-room-error" role="alert">
+              {trackingError}
+            </p>
+          )}
+          {trackedCandle && (
+            <div className="candle-tracking-result" role="status">
+              <strong>{trackedCandle.intention}</strong>
+              <span>
+                {formatTimeLeft(
+                  getCandleTimeLeft(trackedCandle.startedAt, now),
+                )}
+              </span>
+              {trackedCandle.dedication && (
+                <span>“{trackedCandle.dedication}”</span>
+              )}
+              {locationFor(trackedCandle) && (
+                <span>{locationFor(trackedCandle)}</span>
+              )}
+            </div>
+          )}
+        </section>
+
         <p className="candle-room-note">
-          Por ahora, las velas de esta sala se guardan solo en esta pestaña del
-          navegador; todavía no se comparten entre visitantes.
+          La sala muestra las velas registradas por la comunidad. La ubicación
+          solo aparece cuando quien encendió la vela autorizó compartirla.
         </p>
       </div>
     </div>

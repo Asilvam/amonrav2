@@ -10,9 +10,11 @@ export interface RoomCandle {
   name: string;
   color: CandleColor;
   startedAt: number;
+  countryCode?: string;
+  cityName?: string;
+  publishLocation: boolean;
 }
 
-export const CANDLE_ROOM_STORAGE_KEY = "amonra-candle-room-v1";
 export const CANDLE_BURN_DURATION_MS = 48 * 60 * 60 * 1000;
 export const CANDLE_FRAME_COUNT = 10;
 
@@ -49,42 +51,4 @@ export function getCandleFrameIndex(startedAt: number, now: number): number {
 
 export function getCandleTimeLeft(startedAt: number, now: number): number {
   return Math.max(0, CANDLE_BURN_DURATION_MS - Math.max(0, now - startedAt));
-}
-
-export function readRoomCandles(): RoomCandle[] {
-  const stored = sessionStorage.getItem(CANDLE_ROOM_STORAGE_KEY);
-  if (!stored) return [];
-
-  const parsed: unknown = JSON.parse(stored);
-  if (!Array.isArray(parsed)) {
-    throw new Error(
-      "Los datos guardados de la sala tienen un formato inválido.",
-    );
-  }
-
-  return parsed.filter(isRoomCandle);
-}
-
-export function saveRoomCandle(candle: RoomCandle): void {
-  const candles = readRoomCandles();
-  sessionStorage.setItem(
-    CANDLE_ROOM_STORAGE_KEY,
-    JSON.stringify([
-      candle,
-      ...candles.filter((item) => item.id !== candle.id),
-    ]),
-  );
-}
-
-function isRoomCandle(value: unknown): value is RoomCandle {
-  if (typeof value !== "object" || value === null) return false;
-  const candle = value as Partial<RoomCandle>;
-  return (
-    typeof candle.id === "string" &&
-    typeof candle.startedAt === "number" &&
-    typeof candle.intention === "string" &&
-    typeof candle.dedication === "string" &&
-    typeof candle.name === "string" &&
-    CANDLE_COLORS.some((color) => color.value === candle.color)
-  );
 }
