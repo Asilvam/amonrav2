@@ -125,6 +125,14 @@ const navigation = [
                 </a>
               </li>
             ))}
+            <li>
+              <a
+                href="/sala-de-velas/"
+                class="inline-flex min-h-[38px] items-center gap-2 rounded-full bg-antique-gold px-4 py-1.5 font-interface text-[var(--font-size-small)] font-semibold text-night no-underline transition-colors hover:bg-old-papyrus focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-antique-gold"
+              >
+                Sala de luz <span aria-hidden="true">↗</span>
+              </a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -141,7 +149,9 @@ const navigation = [
     background-image:
       linear-gradient(180deg, rgb(2 9 22 / 5%), rgb(2 7 17 / 12%)),
       url("/images/amonra-fondo-estrellado-azul.jpg");
-    background-position: center, center 47%;
+    background-position:
+      center,
+      center 47%;
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -180,13 +190,41 @@ const navigation = [
     z-index: 0;
     inset: 0;
     background-image:
-      radial-gradient(circle, rgb(255 230 171 / 92%) 0 1px, rgb(255 198 102 / 40%) 2px, transparent 9px),
-      radial-gradient(circle, rgb(229 238 255 / 92%) 0 1px, rgb(167 196 255 / 35%) 2px, transparent 8px),
-      radial-gradient(circle, rgb(255 248 222 / 92%) 0 1px, rgb(255 208 121 / 38%) 2px, transparent 9px),
-      radial-gradient(circle, rgb(230 238 255 / 92%) 0 1px, rgb(174 201 255 / 35%) 2px, transparent 8px);
-    background-position: 11% 31%, 36% 76%, 73% 24%, 91% 67%;
+      radial-gradient(
+        circle,
+        rgb(255 230 171 / 92%) 0 1px,
+        rgb(255 198 102 / 40%) 2px,
+        transparent 9px
+      ),
+      radial-gradient(
+        circle,
+        rgb(229 238 255 / 92%) 0 1px,
+        rgb(167 196 255 / 35%) 2px,
+        transparent 8px
+      ),
+      radial-gradient(
+        circle,
+        rgb(255 248 222 / 92%) 0 1px,
+        rgb(255 208 121 / 38%) 2px,
+        transparent 9px
+      ),
+      radial-gradient(
+        circle,
+        rgb(230 238 255 / 92%) 0 1px,
+        rgb(174 201 255 / 35%) 2px,
+        transparent 8px
+      );
+    background-position:
+      11% 31%,
+      36% 76%,
+      73% 24%,
+      91% 67%;
     background-repeat: no-repeat;
-    background-size: 42px 42px, 36px 36px, 42px 42px, 36px 36px;
+    background-size:
+      42px 42px,
+      36px 36px,
+      42px 42px,
+      36px 36px;
     animation: star-glimmer 3.6s ease-in-out infinite alternate;
     content: "";
     pointer-events: none;
