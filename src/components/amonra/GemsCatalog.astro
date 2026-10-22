@@ -1,0 +1,130 @@
+---
+import archive from "../../config/gems-archive.json";
+
+interface GemImage {
+  src: string;
+  width: number;
+  height: number;
+}
+interface GemEntry {
+  id: string;
+  name: string;
+  paragraphs: string[];
+  image?: GemImage;
+}
+const groups: {
+  id: string;
+  title: string;
+  introduction: string[];
+  gems: GemEntry[];
+}[] = archive.catalogGroups;
+const count = groups.reduce((total, group) => total + group.gems.length, 0);
+---
+
+<section
+  id="catalogo"
+  class="scroll-mt-8 space-y-8"
+  aria-labelledby="catalogo-titulo"
+>
+  <header class="gems-heading reading-section">
+    <h3
+      id="catalogo-titulo"
+      class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink"
+    >
+      Magnetismo de las piedras preciosas
+    </h3>
+    <p class="mt-4 text-[1.04rem] leading-relaxed text-paper-muted">
+      Explora las {count} entradas de piedras y cristales. Abre cada ficha para
+      leer su historia, sus afinidades y las asociaciones que les atribuye la
+      tradición.
+    </p>
+  </header>
+
+  <details class="gems-catalog-intro">
+    <summary>Las piedras en la tradición de Amonra</summary>
+    <blockquote class="gems-prose gems-balanced gems-catalog-reading">
+      {archive.catalogIntroduction.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))}
+    </blockquote>
+  </details>
+
+  <nav class="gems-catalog-nav" aria-label="Grupos del catálogo de gemas">
+    {groups.map((group) => (
+      <a
+        href={`#${group.id}`}
+        class="rounded-lg border border-antique-gold-soft/50 text-paper-ink underline-offset-4 hover:underline"
+      >
+        {group.title}
+      </a>
+    ))}
+  </nav>
+
+  {groups.map((group) => (
+    <section
+      id={group.id}
+      class="gems-catalog-group scroll-mt-8 space-y-5"
+      aria-labelledby={`${group.id}-titulo`}
+    >
+      <h4
+        id={`${group.id}-titulo`}
+        class="font-editorial text-2xl text-paper-ink"
+      >
+        {group.title}
+      </h4>
+      {group.introduction.map((paragraph) => (
+        <p class="text-[1rem] leading-relaxed text-paper-muted">{paragraph}</p>
+      ))}
+      <div class="gems-catalog-grid">
+        {group.gems.map((gem) => (
+          <article
+            id={gem.id}
+            data-gem-entry
+            class="gems-catalog-card min-w-0 scroll-mt-8 rounded-xl border border-antique-gold-soft/40 bg-surface-warm/30 p-5 shadow-xs"
+          >
+            <div class="gems-catalog-card-heading">
+              <h5 class="min-w-0 font-editorial text-2xl leading-tight text-paper-ink">
+                {gem.name}
+              </h5>
+              {gem.image && (
+                <img
+                  src={gem.image.src}
+                  width={gem.image.width}
+                  height={gem.image.height}
+                  alt={gem.name}
+                  loading="lazy"
+                  decoding="async"
+                  class="gems-catalog-image"
+                />
+              )}
+            </div>
+            <details data-gem-reading class="mt-2">
+              <summary class="gems-catalog-toggle font-semibold text-paper-ink">
+                Leer historia y asociaciones
+                <span class="sr-only">de {gem.name}</span>
+              </summary>
+              <blockquote class="gems-prose pb-2">
+                {gem.paragraphs.map((paragraph) => (
+                  <p>{paragraph}</p>
+                ))}
+              </blockquote>
+            </details>
+          </article>
+        ))}
+      </div>
+    </section>
+  ))}
+</section>
+
+<script>
+  function revealGemFromHash() {
+    const id = window.location.hash.slice(1);
+    const entry = document.getElementById(id);
+    if (!entry?.matches("[data-gem-entry]")) return;
+    const reading =
+      entry?.querySelector<HTMLDetailsElement>("[data-gem-reading]");
+    if (reading) reading.open = true;
+  }
+  revealGemFromHash();
+  window.addEventListener("hashchange", revealGemFromHash);
+</script>

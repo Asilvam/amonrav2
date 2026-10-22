@@ -1,0 +1,86 @@
+/* Topic hero and reading treatment; values live in topic-identities.css.
+ * Applies to themed topic articles, never the homepage or global chrome.
+ */
+
+[data-topic-theme] > header {
+  border-bottom-color: var(--topic-detail);
+  background-color: var(--topic-base);
+  background-image:
+    linear-gradient(120deg, var(--topic-veil-start), var(--topic-veil-end) 75%),
+    var(--topic-texture);
+  background-repeat: no-repeat, repeat;
+  background-position: center, center;
+  background-size: auto, auto;
+}
+
+[data-topic-theme] > header h1,
+[data-topic-theme] > header .text-antique-gold,
+[data-topic-theme] > header .text-old-papyrus {
+  color: var(--topic-hero-text);
+}
+
+[data-topic-theme] > section.text-paper-ink {
+  --color-clay-ink: var(--topic-ink);
+  --color-solar-red: var(--topic-ink);
+  --color-primary: var(--topic-detail);
+  --color-primary-soft: color-mix(
+    in srgb,
+    var(--topic-ink) 55%,
+    var(--color-parchment)
+  );
+  --color-parchment-soft: color-mix(
+    in srgb,
+    var(--topic-ink) 7%,
+    var(--color-parchment)
+  );
+  --color-focus: var(--topic-ink);
+}
+
+[data-topic-theme] > section.text-paper-ink .bg-clay-red {
+  color: var(--topic-hero-text);
+}
+
+[data-topic-theme] > section.text-paper-ink .tab-list {
+  border-bottom-color: var(--color-primary-soft);
+}
+
+[data-topic-theme] > section.text-paper-ink .tab-link:hover {
+  border-color: var(--topic-ink);
+  background: var(--color-parchment-soft);
+  color: var(--topic-ink);
+}
+
+[data-topic-theme] > section.text-paper-ink .tab-link[aria-selected="true"] {
+  border-color: var(--topic-ink);
+  background: var(--topic-ink);
+  color: var(--topic-hero-text);
+  box-shadow: inset 0 -3px 0 var(--topic-detail);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+[data-topic-theme] > section.text-paper-ink .tab-link:focus-visible {
+  outline-color: var(--topic-ink);
+}
+
+@media (forced-colors: active) {
+  [data-topic-theme] > section.text-paper-ink .tab-link[aria-selected="true"] {
+    border-color: Highlight;
+    background: Highlight;
+    color: HighlightText;
+    box-shadow: none;
+  }
+}
+
+@media print {
+  [data-topic-theme] > header {
+    background: none;
+  }
+
+  [data-topic-theme] > header h1,
+  [data-topic-theme] > header .text-antique-gold,
+  [data-topic-theme] > header .text-old-papyrus {
+    color: var(--color-ink);
+  }
+}

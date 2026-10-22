@@ -235,69 +235,85 @@ const horoscopeTabs = [
             </div>
           </div>
 
-          {/* Galería Exhaustiva de los 12 Signos */}
-          <div class="space-y-6">
-            <h4 class="font-editorial text-2xl text-paper-ink">
-              Catálogo Exhaustivo de los 12 Signos Zodiacales
+          <section class="space-y-6" aria-labelledby="signos-zodiaco-titulo">
+            <h4
+              id="signos-zodiaco-titulo"
+              class="font-editorial text-2xl text-paper-ink"
+            >
+              Los Doce Signos del Zodiaco
             </h4>
+            <nav class="zodiac-index" aria-label="Los doce signos del zodiaco">
+              {westernSigns.map((sign) => (
+                <a href={`#signo-${sign.id}`}>
+                  <span>{sign.name}</span>
+                  <span class="zodiac-index-dates">{sign.dates}</span>
+                </a>
+              ))}
+            </nav>
             <div class="space-y-8">
               {westernSigns.map((sign) => {
                 const imgMetadata = westernImages[sign.id];
                 return (
-                  <article class="overflow-hidden rounded-2xl border border-antique-gold-soft/70 bg-[var(--color-parchment-soft)] shadow-md">
-                    <div class="grid lg:grid-cols-12">
-                      {/* Columna Izquierda: Imagen e Identidad */}
-                      <div class="flex flex-col items-center justify-center border-b border-antique-gold-soft/40 p-6 text-center lg:col-span-4 lg:border-r lg:border-b-0">
+                  <article
+                    id={`signo-${sign.id}`}
+                    aria-labelledby={`signo-${sign.id}-titulo`}
+                    tabindex="-1"
+                    class="zodiac-card overflow-hidden rounded-2xl border border-antique-gold-soft/70 bg-[var(--color-parchment-soft)] shadow-sm"
+                  >
+                    <div>
+                      <header class="zodiac-card-header">
                         {imgMetadata && (
-                          <div class="relative overflow-hidden rounded-xl border border-antique-gold-soft shadow-inner">
+                          <div class="zodiac-image overflow-hidden rounded-xl border border-antique-gold-soft">
                             <Image
                               src={imgMetadata}
                               alt={`Signo Zodiacal ${sign.name}`}
-                              class="h-auto w-full max-w-[220px] object-cover transition-transform duration-500 hover:scale-105"
+                              class="h-auto w-full object-contain"
                             />
                           </div>
                         )}
-                        <h5 class="mt-4 font-editorial text-3xl font-bold text-paper-ink">
-                          {sign.name}
-                        </h5>
-                        <p class="font-interface text-xs font-semibold tracking-wider text-clay-red uppercase">
-                          {sign.number}
-                        </p>
-                        <p class="mt-1 text-sm font-medium text-paper-muted">
-                          {sign.dates}
-                        </p>
-
-                        <div class="mt-5 w-full space-y-2 rounded-lg bg-[var(--color-parchment-subtle)] p-3 text-left text-xs font-medium text-paper-ink">
-                          <div class="flex justify-between border-b border-antique-gold-soft/30 pb-1">
-                            <span class="text-paper-muted">Elemento:</span>
-                            <span class="font-semibold text-clay-red">
-                              {sign.element}
-                            </span>
-                          </div>
-                          <div class="flex justify-between border-b border-antique-gold-soft/30 pb-1">
-                            <span class="text-paper-muted">Modalidad:</span>
-                            <span>{sign.modality}</span>
-                          </div>
-                          <div class="flex justify-between border-b border-antique-gold-soft/30 pb-1">
-                            <span class="text-paper-muted">Polaridad:</span>
-                            <span>{sign.polarity}</span>
-                          </div>
-                          <div class="flex justify-between border-b border-antique-gold-soft/30 pb-1">
-                            <span class="text-paper-muted">
-                              Planeta Regente:
-                            </span>
-                            <span class="font-semibold text-antique-gold-deep">
-                              {sign.rulingPlanet}
-                            </span>
-                          </div>
-                          <div class="pt-1 text-[0.75rem] text-paper-muted">
+                        <div class="zodiac-identity">
+                          <h5
+                            id={`signo-${sign.id}-titulo`}
+                            class="font-editorial text-3xl font-bold text-paper-ink"
+                          >
+                            {sign.name}
+                          </h5>
+                          <p class="font-interface text-xs font-semibold tracking-wider text-clay-red uppercase">
+                            {sign.number}
+                          </p>
+                          <p class="mt-1 text-sm font-medium text-paper-muted">
+                            {sign.dates}
+                          </p>
+                          <p class="mt-2 text-sm text-paper-muted">
                             {sign.representation}
-                          </div>
+                          </p>
                         </div>
-                      </div>
 
-                      {/* Columna Derecha: Mitología, Símbolo, Virtudes y Psicología */}
-                      <div class="space-y-5 p-6 lg:col-span-8 lg:p-8">
+                        <dl class="zodiac-facts text-sm text-paper-ink">
+                          <div>
+                            <dt class="text-paper-muted">Elemento:</dt>
+                            <dd class="font-semibold text-clay-red">
+                              {sign.element}
+                            </dd>
+                          </div>
+                          <div>
+                            <dt class="text-paper-muted">Modalidad:</dt>
+                            <dd>{sign.modality}</dd>
+                          </div>
+                          <div>
+                            <dt class="text-paper-muted">Polaridad:</dt>
+                            <dd>{sign.polarity}</dd>
+                          </div>
+                          <div>
+                            <dt class="text-paper-muted">Planeta Regente:</dt>
+                            <dd class="font-semibold text-antique-gold-deep">
+                              {sign.rulingPlanet}
+                            </dd>
+                          </div>
+                        </dl>
+                      </header>
+
+                      <div class="zodiac-card-body space-y-6">
                         {sign.symbolism && (
                           <div>
                             <h6 class="font-editorial text-base font-bold text-clay-red">
@@ -359,7 +375,7 @@ const horoscopeTabs = [
                           </div>
                         )}
 
-                        <div class="grid gap-3 border-t border-antique-gold-soft/40 pt-4 text-xs sm:grid-cols-2">
+                        <div class="grid gap-5 border-t border-antique-gold-soft/40 pt-4 text-sm leading-relaxed sm:grid-cols-2">
                           {sign.vocations && (
                             <div>
                               <strong class="text-clay-red">
@@ -387,7 +403,7 @@ const horoscopeTabs = [
                 );
               })}
             </div>
-          </div>
+          </section>
         </article>
       </section>
 
@@ -601,7 +617,10 @@ const horoscopeTabs = [
               {chineseAnimals.map((animal) => {
                 const imgMetadata = chineseImages[animal.id];
                 return (
-                  <div class="flex flex-col overflow-hidden rounded-2xl border border-antique-gold-soft/70 bg-[var(--color-parchment-soft)] shadow-md">
+                  <div
+                    data-chinese-animal={animal.id}
+                    class="flex flex-col overflow-hidden rounded-2xl border border-antique-gold-soft/70 bg-[var(--color-parchment-soft)] shadow-md"
+                  >
                     <div class="flex items-center gap-5 border-b border-antique-gold-soft/40 bg-[var(--color-parchment-subtle)] p-5">
                       {imgMetadata && (
                         <div class="h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-antique-gold-soft shadow-inner">
@@ -622,7 +641,14 @@ const horoscopeTabs = [
                         </h5>
                         <p class="text-xs font-medium text-paper-muted">
                           {animal.fixedSeason} • Elemento Fijo:{" "}
-                          {animal.fixedElement} • {animal.hours}
+                          {animal.fixedElement}
+                          <span
+                            data-chinese-years
+                            class="mt-1 block leading-relaxed"
+                          >
+                            <span class="font-semibold">Años:</span>{" "}
+                            {animal.years.join(", ")}
+                          </span>
                         </p>
                       </div>
                     </div>
@@ -796,3 +822,141 @@ const horoscopeTabs = [
     </ContentTabs>
   </section>
 </div>
+
+<style>
+  .zodiac-index {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .zodiac-index a {
+    display: flex;
+    min-height: 44px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+    border: 1px solid var(--color-primary-soft);
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    color: var(--color-ink);
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .zodiac-index-dates {
+    color: var(--color-paper-muted);
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .zodiac-index a:hover {
+    background: var(--color-parchment-soft);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .zodiac-index a:focus-visible,
+  .zodiac-card:focus-visible {
+    outline: 3px solid var(--color-clay-ink);
+    outline-offset: 3px;
+  }
+
+  .zodiac-card {
+    scroll-margin-block-start: 1.5rem;
+  }
+
+  .zodiac-card-header {
+    display: grid;
+    grid-template-columns: 5rem minmax(0, 1fr);
+    align-items: start;
+    gap: 1.25rem;
+    padding: clamp(1rem, 3vw, 2rem);
+    border-bottom: 1px solid var(--color-primary-soft);
+  }
+
+  .zodiac-image {
+    align-self: start;
+  }
+
+  .zodiac-facts {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 0;
+  }
+
+  .zodiac-facts div {
+    min-width: 0;
+    border-top: 1px solid var(--color-primary-soft);
+    padding-top: 0.5rem;
+  }
+
+  .zodiac-facts dd {
+    margin: 0.25rem 0 0;
+  }
+
+  .zodiac-card-body {
+    max-width: 82ch;
+    margin-inline: auto;
+    padding: clamp(1rem, 3vw, 2rem);
+    font-size: 1rem;
+  }
+
+  .zodiac-card-body p {
+    max-width: none;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .zodiac-card-body h6 {
+    line-height: 1.4;
+  }
+
+  .zodiac-card-body h6.font-editorial {
+    font-size: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .zodiac-index {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .zodiac-card-header {
+      grid-template-columns: 7rem minmax(0, 1fr);
+    }
+
+    .zodiac-facts {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .zodiac-index {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .zodiac-card-header {
+      grid-template-columns: 8rem minmax(0, 1fr) minmax(0, 1.25fr);
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .zodiac-facts {
+      grid-column: auto;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media print {
+    .zodiac-index {
+      display: none;
+    }
+
+    .zodiac-card-header {
+      break-inside: avoid;
+    }
+  }
+</style>

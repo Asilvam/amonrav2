@@ -1,8 +1,8 @@
 ---
 import Container from "../layout/Container.astro";
+import TopicLink from "./TopicLink.astro";
 import {
   amonraSections,
-  amonraSectionPath,
   type AmonraSectionGroup,
 } from "../../config/amonra-sections";
 
@@ -48,53 +48,12 @@ const groups: { id: AmonraSectionGroup; label: string }[] = [
               {group.label}
             </h3>
 
-            <ol class="grid list-none gap-x-8 p-0 md:grid-cols-2 lg:grid-cols-3">
-              {sectionsInGroup.map((section) => {
-                const isPublished = section.status === "published";
-
-                return (
-                  <li class="border-b border-antique-gold-soft/35">
-                    {isPublished ? (
-                      <a
-                        class="group grid h-full grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-3 py-4 text-ivory no-underline transition-colors hover:bg-night-raised focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-antique-gold md:py-6"
-                        href={amonraSectionPath(section)}
-                      >
-                        <div>
-                          <h4 class="font-editorial text-2xl font-medium text-ivory group-hover:text-old-papyrus">
-                            {section.title}
-                          </h4>
-                          <p class="mt-1 pr-4 text-sm leading-relaxed text-ivory-muted">
-                            {section.description}
-                          </p>
-                        </div>
-                        <span
-                          aria-hidden="true"
-                          class="text-xl text-antique-gold"
-                        >
-                          →
-                        </span>
-                      </a>
-                    ) : (
-                      <div
-                        class="grid h-full grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-3 py-4 md:py-6 opacity-70"
-                        aria-disabled="true"
-                      >
-                        <div>
-                          <h4 class="font-editorial text-2xl font-medium text-ivory-muted">
-                            {section.title}
-                          </h4>
-                          <p class="mt-1 pr-4 text-sm leading-relaxed text-ivory-muted">
-                            {section.description}
-                          </p>
-                        </div>
-                        <span class="rounded-full border border-antique-gold-soft/50 px-3 py-1 font-interface text-[0.65rem] font-medium uppercase tracking-widest text-antique-gold-soft">
-                          Preparación
-                        </span>
-                      </div>
-                    )}
-                  </li>
-                );
-              })}
+            <ol class="grid list-none gap-4 p-0 md:grid-cols-2 lg:grid-cols-3">
+              {sectionsInGroup.map((section) => (
+                <li class="min-w-0">
+                  <TopicLink section={section} />
+                </li>
+              ))}
             </ol>
           </div>
         );

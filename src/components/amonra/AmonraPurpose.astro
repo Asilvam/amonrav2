@@ -3,8 +3,8 @@ import { Image } from "astro:assets";
 import egyptianEmblem from "../../assets/amonra/emblema-egipcio.png";
 ---
 
-<div class="space-y-10 text-[clamp(1.02rem,1.1vw,1.16rem)] leading-[1.78] text-paper-muted">
-  <section class="grid items-center gap-8 lg:grid-cols-[minmax(12rem,0.6fr)_minmax(0,1.4fr)] lg:gap-14">
+<div class="purpose-content space-y-10 text-[clamp(1.02rem,1.1vw,1.16rem)] leading-[1.78]">
+  <section class="purpose-intro grid items-center gap-8 lg:grid-cols-[minmax(12rem,0.6fr)_minmax(0,1.4fr)] lg:gap-14">
     <figure class="m-0 flex justify-center">
       <Image
         src={egyptianEmblem}
@@ -17,7 +17,7 @@ import egyptianEmblem from "../../assets/amonra/emblema-egipcio.png";
     </figure>
 
     <div>
-      <p class="eyebrow text-[#78531d]">Red de Luz Interior Amonra Chile</p>
+      <p class="eyebrow text-[#3a1400]">Red de Luz Interior Amonra Chile</p>
       <h2 class="mt-4 font-editorial text-[clamp(2.7rem,5vw,4.6rem)] leading-[0.98] text-paper-ink">
         Objetivo y propósito
       </h2>
@@ -37,7 +37,7 @@ import egyptianEmblem from "../../assets/amonra/emblema-egipcio.png";
   </section>
 
   <details class="group/details border-t border-antique-gold-soft/50 pt-6">
-    <summary class="group w-fit cursor-pointer list-none py-3 font-interface font-semibold text-clay-ink transition-colors hover:text-clay-red focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-antique-gold [&::-webkit-details-marker]:hidden">
+    <summary class="purpose-toggle group w-fit cursor-pointer list-none font-interface font-semibold [&::-webkit-details-marker]:hidden">
       <span class="inline-flex items-center gap-2">
         Leer nuestro propósito completo
         <span
@@ -48,7 +48,7 @@ import egyptianEmblem from "../../assets/amonra/emblema-egipcio.png";
         </span>
       </span>
     </summary>
-    <div class="mt-8 space-y-10 animate-[fade-in_0.4s_ease-out]">
+    <div class="purpose-reading mt-8 space-y-10 animate-[fade-in_0.4s_ease-out]">
       <section aria-labelledby="como-vivimos-title">
         <div class="mb-6 flex items-end justify-between gap-6 border-b border-antique-gold-soft/35 pb-5">
           <h3
@@ -57,7 +57,7 @@ import egyptianEmblem from "../../assets/amonra/emblema-egipcio.png";
           >
             Cómo lo vivimos
           </h3>
-          <span class="hidden font-interface text-xs tracking-[0.16em] text-[#78531d] uppercase sm:block">
+          <span class="hidden font-interface text-xs tracking-[0.16em] text-[#725124] uppercase sm:block">
             Conocimiento y práctica
           </span>
         </div>
@@ -106,11 +106,11 @@ import egyptianEmblem from "../../assets/amonra/emblema-egipcio.png";
         </div>
 
         <div class="grid gap-6">
-          <aside class="flex flex-col justify-center rounded-2xl border border-[#9b7135]/45 bg-[#382116] px-7 py-8 text-center shadow-[0_10px_28px_rgba(49,31,14,0.14)]">
-            <p class="font-interface text-xs font-bold tracking-[0.18em] text-[#d8bd78] uppercase">
+          <aside class="flex flex-col justify-center rounded-2xl border border-[#e9b867] bg-[#3a1400] px-7 py-8 text-center shadow-[0_10px_28px_rgba(49,31,14,0.14)]">
+            <p class="font-interface text-xs font-bold tracking-[0.18em] text-[#eadb9b] uppercase">
               Nuestra máxima es
             </p>
-            <p class="mt-4 font-editorial text-[clamp(2rem,3.3vw,3.2rem)] leading-[1.04] text-[#fff3cf]">
+            <p class="mt-4 font-editorial text-[clamp(2rem,3.3vw,3.2rem)] leading-[1.04] text-[#eadb9b]">
               Crecer, crecer, crecer…
             </p>
           </aside>
@@ -124,7 +124,7 @@ import egyptianEmblem from "../../assets/amonra/emblema-egipcio.png";
       </section>
 
       <section class="reading-section">
-        <p class="font-editorial text-lg tracking-[0.18em] text-[#782b20]">
+        <p class="font-editorial text-lg tracking-[0.18em] text-[#725124]">
           FIAT LUX
         </p>
         <div class="mt-6 grid gap-6 lg:grid-cols-2 lg:gap-10">
@@ -171,3 +171,63 @@ import egyptianEmblem from "../../assets/amonra/emblema-egipcio.png";
     </div>
   </details>
 </div>
+
+<style>
+  .purpose-content {
+    --color-ink: #3a1400;
+    --color-ink-muted: #534a2f;
+    --color-clay-ink: #3a1400;
+    --color-solar-red: #e9b867;
+    --color-primary: #e9b867;
+    --color-primary-soft: #725124;
+    --color-focus: #3a1400;
+    color: var(--color-ink-muted);
+  }
+
+  .purpose-intro {
+    color: var(--color-ink);
+  }
+
+  .purpose-toggle {
+    min-height: 44px;
+    border: 1px solid var(--color-primary-soft);
+    border-radius: var(--radius-small);
+    background-color: #eadb9b;
+    background-image: var(--purpose-texture);
+    background-repeat: repeat;
+    padding: 0.75rem 1rem;
+    color: var(--color-ink);
+  }
+
+  .purpose-toggle:hover,
+  .purpose-toggle:focus-visible {
+    border-color: var(--color-ink);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .purpose-toggle:focus-visible {
+    outline: 3px solid var(--color-ink);
+    outline-offset: 4px;
+  }
+
+  .purpose-reading {
+    border: 1px solid var(--color-primary-soft);
+    border-radius: var(--radius-medium);
+    background: var(--color-parchment);
+    padding: clamp(1rem, 3vw, 2.5rem);
+  }
+
+  @media (forced-colors: active) {
+    .purpose-toggle,
+    .purpose-reading {
+      border-color: ButtonText;
+      background: Canvas;
+      color: CanvasText;
+    }
+
+    .purpose-toggle:focus-visible {
+      outline-color: Highlight;
+    }
+  }
+</style>

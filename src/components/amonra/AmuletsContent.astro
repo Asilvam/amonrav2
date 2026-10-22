@@ -1,5 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import ContentTabs from "../common/ContentTabs.astro";
+import original from "../../config/amulets-original.json";
+import amuletCharms from "../../assets/amonra/amuletos-colgantes.png";
+import amuletMedallion from "../../assets/amonra/amuletos-medallon.png";
 
 const amuletTabs = [
   { id: "amuletos-signos-zodiaco", label: "Signos del zodiaco" },
@@ -15,107 +19,109 @@ const amuletTabs = [
     <h2 class="font-editorial text-[clamp(2rem,2.8vw,2.8rem)] leading-tight text-paper-ink">
       Amuletos y talismanes
     </h2>
-    <div class="mt-4 grid gap-x-10 gap-y-5 lg:grid-cols-2">
-      <p class="text-[1.04rem] leading-relaxed text-paper-muted">
-        La palabra amuleto proviene del latín “amuletum”, término que Plinio el
-        Viejo empleó para referirse a objetos asociados al resguardo frente a
-        riesgos, enfermedades e influencias negativas. Su etimología resume una
-        historia de prácticas protectoras, pero no demuestra efectos médicos.
-      </p>
-      <p class="text-[1.04rem] leading-relaxed text-paper-muted">
-        Su forma puede provenir del reino vegetal, animal o mineral: serpiente,
-        escarabajo, elefante, trébol, cruces, ojos protectores y otros símbolos
-        tradicionales. También se reconocen fetiches elaborados en madera,
-        piedra o metal.
-      </p>
-      <p class="text-[1.04rem] leading-relaxed text-paper-muted">
-        En la tradición, el amuleto se usa como protección cotidiana y apoyo de
-        fe; el talismán se considera una forma consagrada para una finalidad
-        específica. En la cultura egipcia, uno de los emblemas más reconocidos
-        fue el escarabajo, junto con pergaminos y metales grabados con
-        jeroglíficos.
-      </p>
-      <p class="text-[1.04rem] leading-relaxed text-paper-muted">
-        Tradicionalmente se portan al cuello, en bolsas de tela o en espacios
-        personales del hogar, con la intención de proteger, equilibrar y
-        fortalecer la confianza espiritual de quien los lleva.
-      </p>
-      <p class="text-[1.04rem] leading-relaxed text-paper-muted">
-        Con el paso del tiempo, su uso no desapareció: se expandió entre
-        diversas culturas y escuelas espirituales. De ahí surge la importancia
-        de conocer su simbolismo, su intención y el modo correcto de elegirlos o
-        consagrarlos.
-      </p>
-      <p class="text-[1.04rem] leading-relaxed text-paper-muted">
-        En distintas épocas, su popularidad generó rechazo en algunos sectores,
-        pero su presencia continuó en la vida cotidiana. Incluso cuando se
-        intentaron limitar ciertas prácticas, los amuletos siguieron siendo
-        utilizados como apoyo de fe, protección y confianza.
-      </p>
-      <p class="text-[1.04rem] leading-relaxed text-paper-muted">
-        También se transmite que muchos amuletos se preparan en relación con un
-        pentáculo y con siete poderes jerárquicos, por lo que su consagración
-        puede extenderse durante siete días.
-      </p>
-      <p class="text-[1.04rem] leading-relaxed text-paper-muted">
-        En esa práctica, color, metal, símbolo e intención deben corresponder
-        entre sí.
-      </p>
-      <p class="text-[1.04rem] leading-relaxed text-paper-muted">
-        Estas referencias reúnen tradiciones egipcias, mediterráneas, cristianas
-        y esotéricas posteriores. Se presentan como historia cultural y
-        simbolismo; un amuleto no sustituye atención médica, asesoría legal ni
-        otras formas de ayuda profesional.
-      </p>
+    <div
+      id="diferencia-esencial"
+      class="amulets-prose scroll-mt-28 mt-6 space-y-5"
+    >
+      {original.introduction.map((paragraph) => (
+        <p class="text-[1.04rem] leading-relaxed text-paper-muted">
+          {paragraph}
+        </p>
+      ))}
+    </div>
+    <div class="amulets-intro-layout mt-8">
+      <div class="amulets-intro-copy space-y-5">
+        {original.amulets.map((paragraph) => (
+          <p class="text-[1.04rem] leading-relaxed text-paper-muted">
+            {paragraph}
+          </p>
+        ))}
+      </div>
+      <div class="amulets-intro-gallery">
+        <figure data-amulet-image="colgantes" class="amulets-intro-image">
+          <Image
+            src={amuletCharms}
+            alt="Colgantes simbólicos sobre una mano, con un ojo azul, una estrella de seis puntas y una mano de Fátima"
+            widths={[320, 480, 768]}
+            sizes="(min-width: 1024px) 20rem, (min-width: 640px) 44vw, 92vw"
+            loading="lazy"
+            class="h-auto w-full object-contain"
+          />
+        </figure>
+        <figure data-amulet-image="medallon" class="amulets-intro-image">
+          <Image
+            src={amuletMedallion}
+            alt="Medallón circular dorado con motivos geométricos en turquesa, rojo y azul"
+            widths={[320, 480, 768]}
+            sizes="(min-width: 1024px) 20rem, (min-width: 640px) 44vw, 92vw"
+            loading="lazy"
+            class="h-auto w-full object-contain"
+          />
+        </figure>
+      </div>
     </div>
   </section>
 
-  <section class="grid gap-6 lg:grid-cols-2">
-    <article id="diferencia-esencial" class="scroll-mt-28 reading-section">
-      <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
-        Diferencia esencial
-      </h3>
-      <p class="mt-4 text-[1.04rem] leading-relaxed text-paper-muted">
-        Muchas personas confunden amuletos y talismanes. El amuleto se porta al
-        cuello, en una bolsa o cerca del cuerpo, y cumple una función de
-        protección general.
-      </p>
-      <p class="mt-4 text-[1.04rem] leading-relaxed text-paper-muted">
-        El talismán, en cambio, es un amuleto en un estado más consagrado,
-        orientado a un objetivo determinado. Tradicionalmente se prepara con un
-        material, color y día vinculados a un planeta y a un signo celeste.
-      </p>
-      <p class="mt-4 text-[1.04rem] leading-relaxed text-paper-muted">
-        En la tradición esotérica, su elaboración requiere conocimiento
-        espiritual, disciplina ritual y una intención clara.
-      </p>
-      <p class="mt-4 text-[1.04rem] leading-relaxed text-paper-muted">
-        También se transmite que la forma del talismán puede ser circular,
-        hexagonal o pentagonal, y que su fuerza se refuerza cuando símbolo,
-        material y día de consagración corresponden al objetivo espiritual.
-      </p>
-    </article>
+  <section id="talismanes" class="amulets-prose scroll-mt-28 reading-section">
+    <h2 class="font-editorial text-[clamp(2rem,2.8vw,2.8rem)] leading-tight text-paper-ink">
+      Talismanes
+    </h2>
+    <div class="mt-6 space-y-5">
+      {original.talismans.map((paragraph) => (
+        <p class="text-[1.04rem] leading-relaxed text-paper-muted">
+          {paragraph}
+        </p>
+      ))}
+    </div>
+    <div
+      class="mt-8 overflow-x-auto"
+      tabindex="0"
+      role="region"
+      aria-label="Correspondencias tradicionales por planeta"
+    >
+      <table
+        data-original-correspondences
+        class="w-full min-w-[30rem] border-collapse text-left text-sm text-paper-ink"
+      >
+        <caption class="mb-4 text-left font-editorial text-2xl">
+          Correspondencias tradicionales
+        </caption>
+        <thead>
+          <tr class="border-b border-antique-gold-soft/40">
+            {original.correspondences.headers.map((heading) => (
+              <th
+                scope="col"
+                class="px-3 py-3 font-interface tracking-[0.08em] uppercase"
+              >
+                {heading}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {original.correspondences.rows.map((row) => (
+            <tr class="border-b border-antique-gold-soft/20">
+              {row.map((cell) => (
+                <td class="px-3 py-3">{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-    <article id="uso-eleccion" class="scroll-mt-28 reading-section">
-      <h3 class="font-editorial text-[clamp(1.7rem,2.4vw,2.3rem)] leading-tight text-paper-ink">
-        Uso y elección
-      </h3>
-      <p class="mt-4 text-[1.04rem] leading-relaxed text-paper-muted">
-        El uso tradicional aconseja elegir solo aquello que atraiga, llame la
-        atención y transmita buena vibración. Si genera rechazo, se considera
-        que no es el símbolo adecuado para esa persona.
-      </p>
-      <p class="mt-4 text-[1.04rem] leading-relaxed text-paper-muted">
-        En resumen: si portas una figura simbólica para protección cotidiana, se
-        trata de un amuleto. Si ese objeto se prepara para un fin específico con
-        correspondencias rituales, se trata de un talismán.
-      </p>
-      <p class="mt-4 text-[1.04rem] leading-relaxed text-paper-muted">
-        La tradición recomienda no acumular objetos sin criterio: elegir uno o
-        pocos símbolos afines, mantenerlos limpios, y renovarlos cuando pierdan
-        su sentido personal o su fuerza simbólica.
-      </p>
-    </article>
+  <section id="uso-eleccion" class="amulets-prose scroll-mt-28 reading-section">
+    <h2 class="font-editorial text-[clamp(2rem,2.8vw,2.8rem)] leading-tight text-paper-ink">
+      Uso y elección
+    </h2>
+    <div class="mt-6 space-y-5">
+      {original.usage.map((paragraph) => (
+        <p class="text-[1.04rem] leading-relaxed text-paper-muted">
+          {paragraph}
+        </p>
+      ))}
+    </div>
   </section>
 
   <section
@@ -856,91 +862,65 @@ const amuletTabs = [
             </p>
           </article>
         </div>
-        <h4 class="mt-8 font-editorial text-[clamp(1.4rem,2vw,1.8rem)] text-paper-ink">
-          Correspondencias tradicionales
-        </h4>
-        <div
-          class="mt-5 overflow-x-auto"
-          tabindex="0"
-          role="region"
-          aria-label="Correspondencias tradicionales por planeta"
-        >
-          <table class="w-full min-w-[34rem] border-collapse text-left text-sm text-paper-ink">
-            <thead>
-              <tr class="border-b border-antique-gold-soft/40">
-                <th
-                  scope="col"
-                  class="px-3 py-2 font-interface tracking-[0.08em] uppercase"
-                >
-                  Planeta
-                </th>
-                <th
-                  scope="col"
-                  class="px-3 py-2 font-interface tracking-[0.08em] uppercase"
-                >
-                  Metal
-                </th>
-                <th
-                  scope="col"
-                  class="px-3 py-2 font-interface tracking-[0.08em] uppercase"
-                >
-                  Color
-                </th>
-                <th
-                  scope="col"
-                  class="px-3 py-2 font-interface tracking-[0.08em] uppercase"
-                >
-                  Día
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-b border-antique-gold-soft/20">
-                <td class="px-3 py-2">Sol</td>
-                <td class="px-3 py-2">Oro</td>
-                <td class="px-3 py-2">Amarillo</td>
-                <td class="px-3 py-2">Domingo</td>
-              </tr>
-              <tr class="border-b border-antique-gold-soft/20">
-                <td class="px-3 py-2">Luna</td>
-                <td class="px-3 py-2">Plata</td>
-                <td class="px-3 py-2">Blanco</td>
-                <td class="px-3 py-2">Lunes</td>
-              </tr>
-              <tr class="border-b border-antique-gold-soft/20">
-                <td class="px-3 py-2">Marte</td>
-                <td class="px-3 py-2">Hierro</td>
-                <td class="px-3 py-2">Rojo</td>
-                <td class="px-3 py-2">Martes</td>
-              </tr>
-              <tr class="border-b border-antique-gold-soft/20">
-                <td class="px-3 py-2">Mercurio</td>
-                <td class="px-3 py-2">Azogue</td>
-                <td class="px-3 py-2">Verde y rojo</td>
-                <td class="px-3 py-2">Miércoles</td>
-              </tr>
-              <tr class="border-b border-antique-gold-soft/20">
-                <td class="px-3 py-2">Júpiter</td>
-                <td class="px-3 py-2">Estaño</td>
-                <td class="px-3 py-2">Azul celeste</td>
-                <td class="px-3 py-2">Jueves</td>
-              </tr>
-              <tr class="border-b border-antique-gold-soft/20">
-                <td class="px-3 py-2">Venus</td>
-                <td class="px-3 py-2">Cobre</td>
-                <td class="px-3 py-2">Verde</td>
-                <td class="px-3 py-2">Viernes</td>
-              </tr>
-              <tr>
-                <td class="px-3 py-2">Saturno</td>
-                <td class="px-3 py-2">Plomo</td>
-                <td class="px-3 py-2">Negro</td>
-                <td class="px-3 py-2">Sábado</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </section>
     </ContentTabs>
   </section>
 </div>
+
+<style>
+  .amulets-intro-layout {
+    display: grid;
+    align-items: start;
+    gap: clamp(2rem, 4vw, 3rem);
+  }
+
+  .amulets-intro-copy {
+    min-width: 0;
+  }
+
+  .amulets-prose {
+    max-width: 78ch;
+  }
+
+  .amulets-prose p,
+  .amulets-intro-copy p {
+    max-width: none;
+    line-height: 1.75;
+    text-wrap: pretty;
+  }
+
+  .amulets-intro-gallery {
+    display: grid;
+    align-items: start;
+    gap: 1.5rem;
+  }
+
+  .amulets-intro-image {
+    width: 100%;
+    max-width: 22rem;
+    margin: 0;
+    justify-self: center;
+    border: 1px solid var(--color-primary-soft);
+    background: var(--color-parchment-soft);
+    box-shadow: 0 0.3rem 1rem rgb(48 17 0 / 8%);
+  }
+
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .amulets-intro-gallery {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) and (min-height: 760px) {
+    .amulets-intro-gallery {
+      position: sticky;
+      top: 6.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .amulets-intro-layout {
+      grid-template-columns: minmax(0, 1fr) 20rem;
+    }
+  }
+</style>

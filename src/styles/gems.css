@@ -1,0 +1,328 @@
+.gems-content [data-content-tabs] .gems-prose p,
+.gems-content [data-content-tabs] .gems-heading p {
+  max-width: none;
+}
+
+.gems-content .gems-heading p {
+  text-wrap: pretty;
+}
+
+.gems-content .gems-prose {
+  color: var(--color-paper-muted);
+  font-size: clamp(1rem, 0.25vw + 0.95rem, 1.065rem);
+  line-height: 1.8;
+  overflow-wrap: break-word;
+}
+
+.gems-content .gems-prose p {
+  margin-block: 0 1.2em;
+  orphans: 3;
+  widows: 3;
+}
+
+.gems-content .gems-prose p:last-child {
+  margin-block-end: 0;
+}
+
+.gems-content .gems-balanced {
+  column-gap: clamp(2rem, 4vw, 3.5rem);
+  column-fill: balance;
+}
+
+.gems-content .gems-balanced p {
+  break-inside: avoid-column;
+}
+
+.gems-content .gems-zodiac-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.gems-content .gems-zodiac-nav a {
+  min-width: 0;
+  justify-content: center;
+  gap: 0.45rem;
+  padding-inline: 0.65rem;
+  font-size: 0.875rem;
+}
+
+.gems-content .gems-zodiac-symbol {
+  color: var(--color-clay-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-variant-emoji: text;
+  font-weight: 400;
+}
+
+.gems-content .gems-zodiac-nav .gems-zodiac-symbol {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.gems-content .gems-zodiac-grid {
+  display: grid;
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
+.gems-content .gems-zodiac-card {
+  height: 100%;
+}
+
+.gems-content .gems-zodiac-card > header {
+  min-height: 7rem;
+}
+
+.gems-content .gems-zodiac-card .gems-prose {
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.gems-content .gems-illustrated {
+  display: grid;
+  align-items: start;
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+}
+
+@media (min-width: 480px) {
+  .gems-content .gems-zodiac-nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .gems-content .gems-zodiac-nav {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .gems-content .gems-zodiac-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gems-content .gems-zodiac-card > header {
+    min-height: 8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gems-content .gems-balanced {
+    column-count: 2;
+  }
+
+  .gems-content .gems-illustrated {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.55fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .gems-content .gems-zodiac-nav {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+.gems-content .gems-meditation-row {
+  display: grid;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.gems-content .gems-meditation-landscape {
+  width: 100%;
+  max-width: 38rem;
+  margin-inline: auto;
+}
+
+.gems-content .gems-meditation-opening .gems-prose > p:first-child {
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.gems-content .gems-meditation-continuation {
+  border-block-start: 1px solid var(--color-primary-soft);
+  padding-block-start: clamp(1.75rem, 4vw, 3rem);
+}
+
+.gems-content .gems-meditation-crystals {
+  width: 100%;
+  max-width: 20rem;
+  margin-inline: auto;
+}
+
+@media (min-width: 1024px) {
+  .gems-content .gems-meditation-opening {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  }
+
+  .gems-content .gems-meditation-opening > figure {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .gems-content .gems-meditation-opening > blockquote {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .gems-content .gems-meditation-continuation {
+    grid-template-columns: minmax(0, 0.74fr) minmax(0, 1.26fr);
+  }
+
+  .gems-content .gems-meditation-crystals {
+    max-width: 22rem;
+  }
+}
+
+.gems-content .gems-healing-opening {
+  display: grid;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.gems-content .gems-healing-lead {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1.55vw, 1.45rem);
+  line-height: 1.6;
+  color: var(--color-ink);
+}
+
+.gems-content .gems-healing-reading {
+  border-block-start: 1px solid var(--color-primary-soft);
+  padding-block-start: clamp(1.75rem, 4vw, 3rem);
+}
+
+.gems-content .gems-healing-reading p,
+.gems-content .gems-catalog-reading p {
+  break-inside: auto;
+}
+
+.gems-content .gems-healing-crystals {
+  break-inside: avoid;
+  width: 100%;
+  max-width: 28rem;
+  margin: 1.5rem auto 0;
+}
+
+.gems-content .gems-catalog-intro {
+  border-block: 1px solid var(--color-primary-soft);
+  padding-block: 0.25rem;
+}
+
+.gems-content .gems-catalog-intro > summary {
+  min-height: 3.5rem;
+  padding-block: 0.85rem;
+  cursor: pointer;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.gems-content .gems-catalog-intro > summary::marker,
+.gems-content .gems-catalog-toggle::marker {
+  color: var(--color-clay-ink);
+}
+
+.gems-content .gems-catalog-reading {
+  padding-block: 0.5rem 1.5rem;
+}
+
+.gems-content .gems-catalog-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.625rem;
+}
+
+.gems-content .gems-catalog-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.75rem;
+  padding: 0.75rem;
+  text-align: center;
+  text-wrap: balance;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.gems-content .gems-catalog-nav a:last-child {
+  grid-column: 1 / -1;
+}
+
+.gems-content .gems-catalog-group {
+  border-block-start: 1px solid var(--color-primary-soft);
+  padding-block-start: 1.75rem;
+}
+
+.gems-content .gems-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  align-items: start;
+  gap: 1.25rem;
+}
+
+.gems-content .gems-catalog-card-heading {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  align-items: center;
+  min-height: 7rem;
+  gap: 1rem;
+  border-block-end: 1px solid var(--color-primary-soft);
+  padding-block-end: 1rem;
+}
+
+.gems-content .gems-catalog-card-heading h5 {
+  grid-column: 2;
+  grid-row: 1;
+  text-wrap: balance;
+}
+
+.gems-content .gems-catalog-card-heading h5:only-child {
+  grid-column: 1 / -1;
+}
+
+.gems-content .gems-catalog-image {
+  grid-column: 1;
+  grid-row: 1;
+  width: 6rem;
+  height: 6rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--color-parchment-soft);
+  object-fit: contain;
+}
+
+.gems-content .gems-catalog-toggle {
+  min-height: 2.75rem;
+  padding-block: 0.75rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.gems-content .gems-catalog-card .gems-prose {
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+@media (min-width: 1024px) {
+  .gems-content .gems-healing-opening {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  }
+
+  .gems-content .gems-catalog-nav {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .gems-content .gems-catalog-nav a:last-child {
+    grid-column: auto;
+  }
+}
+
+@media print {
+  .gems-content .gems-balanced {
+    column-count: 1;
+  }
+}
