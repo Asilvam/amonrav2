@@ -1,12 +1,7 @@
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import "./velas.css";
 import CandleVisual from "./CandleVisual";
-import {
-  createCandle,
-  getCandleCountries,
-  saveTrackingCredentials,
-  searchCandleCities,
-} from "./api";
+import { createCandle, getCandleCountries, searchCandleCities } from "./api";
 import type { CandleCountry, CandleCity } from "./api";
 import { CANDLE_COLORS } from "./candle-room";
 import type { CandleColor, Intention } from "./candle-room";
@@ -106,12 +101,7 @@ export default function EncenderVela() {
   const [publishLocation, setPublishLocation] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [saveError, setSaveError] = useState("");
-  const [completion, setCompletion] = useState<{
-    reference: string;
-    trackingToken: string;
-    storageSaved: boolean;
-  } | null>(null);
-  const [copyMessage, setCopyMessage] = useState("");
+  const [completion, setCompletion] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -200,7 +190,7 @@ export default function EncenderVela() {
     setSaveError("");
     setIsSubmitting(true);
     try {
-      const result = await createCandle({
+      await createCandle({
         intention,
         dedication: dedication.trim(),
         name: name.trim(),
@@ -212,20 +202,7 @@ export default function EncenderVela() {
         publishLocation:
           publishLocation && Boolean(countryCode && selectedCity),
       });
-      let storageSaved = true;
-      try {
-        saveTrackingCredentials({
-          reference: result.candle.id,
-          trackingToken: result.trackingToken,
-        });
-      } catch {
-        storageSaved = false;
-      }
-      setCompletion({
-        reference: result.candle.id,
-        trackingToken: result.trackingToken,
-        storageSaved,
-      });
+      setCompletion(true);
     } catch (error) {
       setSaveError(
         error instanceof Error
@@ -238,24 +215,7 @@ export default function EncenderVela() {
   };
 
   const goToRoom = () => {
-    if (!completion) return;
-    window.location.assign(
-      `/sala-de-velas/?vela=${encodeURIComponent(completion.reference)}`,
-    );
-  };
-
-  const copyTracking = async () => {
-    if (!completion) return;
-    try {
-      await navigator.clipboard.writeText(
-        `Referencia: ${completion.reference}\nCódigo de seguimiento: ${completion.trackingToken}`,
-      );
-      setCopyMessage("Datos de seguimiento copiados.");
-    } catch {
-      setCopyMessage(
-        "No se pudo copiar automáticamente. Selecciona y guarda los datos.",
-      );
-    }
+    window.location.assign("/sala-de-velas/");
   };
 
   return (
@@ -312,37 +272,9 @@ export default function EncenderVela() {
           {completion && (
             <div className="mt-7 space-y-5" role="status">
               <p className="font-editorial text-xl leading-relaxed text-ivory-muted">
-                Tu luz ya forma parte de la Sala de luz. Guarda estos datos para
-                consultar su seguimiento más adelante.
+                Tu luz ya forma parte de la Sala de luz y acompaña a la
+                comunidad.
               </p>
-              <dl className="candle-tracking-details">
-                <div>
-                  <dt>Referencia</dt>
-                  <dd>{completion.reference}</dd>
-                </div>
-                <div>
-                  <dt>Código privado de seguimiento</dt>
-                  <dd>{completion.trackingToken}</dd>
-                </div>
-              </dl>
-              {!completion.storageSaved && (
-                <p className="text-sm text-amber-100" role="alert">
-                  El navegador no permitió guardar los datos localmente.
-                  Guárdalos ahora; la vela sí quedó registrada en el servicio.
-                </p>
-              )}
-              <button
-                type="button"
-                onClick={() => void copyTracking()}
-                className="ritual-text-button"
-              >
-                Copiar referencia y código
-              </button>
-              {copyMessage && (
-                <p className="text-xs text-ivory-muted" role="status">
-                  {copyMessage}
-                </p>
-              )}
               <div>
                 <button
                   type="button"
