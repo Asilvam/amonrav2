@@ -24,13 +24,6 @@ export interface CreateCandlePayload {
   publishLocation: boolean;
 }
 
-export interface TrackingCredentials {
-  reference: string;
-  trackingToken: string;
-}
-
-const TRACKING_STORAGE_KEY = "amonra-candle-tracking-v1";
-
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
 }
@@ -170,23 +163,16 @@ export async function searchCandleCities(
 
 export async function createCandle(
   payload: CreateCandlePayload,
-): Promise<{ candle: RoomCandle; trackingToken: string }> {
+): Promise<RoomCandle> {
   const body = await requestJson("", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
-  if (
-    !isRecord(body) ||
-    typeof body.trackingToken !== "string" ||
-    !body.trackingToken
-  ) {
-    throw new Error("El servicio no devolvió los datos de seguimiento.");
+  if (!isRecord(body)) {
+    throw new Error("El servicio no devolvió los datos de la vela.");
   }
-  return {
-    candle: parseCandle(body.candle),
-    trackingToken: body.trackingToken,
-  };
+  return parseCandle(body.candle);
 }
 
 export async function getRoomCandles(): Promise<RoomCandle[]> {
@@ -195,47 +181,4 @@ export async function getRoomCandles(): Promise<RoomCandle[]> {
     throw new Error("No pudimos leer las velas de la sala.");
   }
   return body.candles.map(parseCandle);
-}
-
-export async function trackCandle(
-  credentials: TrackingCredentials,
-): Promise<RoomCandle> {
-  const body = await requestJson("/seguimiento", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(credentials),
-  });
-  if (!isRecord(body)) {
-    throw new Error("El servicio no devolvió los datos de seguimiento.");
-  }
-  return parseCandle(body.candle);
-}
-
-export function saveTrackingCredentials(
-  credentials: TrackingCredentials,
-): void {
-  const existing = readTrackingCredentials();
-  const next = [
-    credentials,
-    ...existing.filter((item) => item.reference !== credentials.reference),
-  ];
-  window.localStorage.setItem(TRACKING_STORAGE_KEY, JSON.stringify(next));
-}
-
-export function readTrackingCredentials(): TrackingCredentials[] {
-  const raw = window.localStorage.getItem(TRACKING_STORAGE_KEY);
-  if (!raw) return [];
-
-  const stored: unknown = JSON.parse(raw);
-  if (!Array.isArray(stored)) {
-    throw new Error(
-      "Los datos locales de seguimiento tienen un formato inválido.",
-    );
-  }
-  return stored.filter(
-    (value): value is TrackingCredentials =>
-      isRecord(value) &&
-      typeof value.reference === "string" &&
-      typeof value.trackingToken === "string",
-  );
 }
