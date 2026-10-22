@@ -17,6 +17,7 @@ import HoroscopesContent from "../../components/amonra/HoroscopesContent.astro";
 import TherapiesContent from "../../components/amonra/TherapiesContent.astro";
 import TopicLink from "../../components/amonra/TopicLink.astro";
 import Breadcrumbs from "../../components/common/Breadcrumbs.astro";
+import ImageCarousel from "../../components/common/ImageCarousel.astro";
 import Container from "../../components/layout/Container.astro";
 import { amonraMessages } from "../../config/amonra-messages";
 import {
@@ -24,7 +25,8 @@ import {
   type AmonraSection,
 } from "../../config/amonra-sections";
 import AmonraLayout from "../../layouts/AmonraLayout.astro";
-import amuletsHero from "../../assets/amonra/amuletos-hero.jpg";
+import amuletsHero from "../../assets/amonra/amuletos-hero-egipcio.png";
+import amuletsWingedGoddess from "../../assets/amonra/amuletos-diosa-alada.png";
 import astrologyHero from "../../assets/amonra/astrologia-hero.jpg";
 import candlesHero from "../../assets/amonra/velas-hero.png";
 import foundationHero from "../../assets/amonra/fundacion-hero.png";
@@ -220,16 +222,19 @@ const next =
         )}
 
         {section.slug === "amuletos" && (
-          <figure class="m-0">
-            <Image
-              src={amuletsHero}
-              alt="Composición de amuletos y talismanes de la tradición egipcia"
-              widths={[560, 860, 1200]}
-              sizes="(min-width: 1024px) 58vw, 100vw"
-              loading="eager"
-              class="mx-auto max-h-[20rem] w-full max-w-[18rem] object-contain drop-shadow-2xl"
-            />
-          </figure>
+          <ImageCarousel
+            label="Imágenes de amuletos y talismanes"
+            slides={[
+              {
+                src: amuletsHero,
+                alt: "Figura egipcia con un anj y el ojo de Horus entre columnas ornamentadas",
+              },
+              {
+                src: amuletsWingedGoddess,
+                alt: "Diosa egipcia sentada entre dos figuras con alas doradas sobre un pedestal ornamentado",
+              },
+            ]}
+          />
         )}
 
         {section.slug === "astrologia" && (
