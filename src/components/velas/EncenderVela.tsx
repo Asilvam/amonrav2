@@ -1,4 +1,10 @@
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import "./velas.css";
 import CandleVisual from "./CandleVisual";
 import { createCandle, getCandleCountries, searchCandleCities } from "./api";
@@ -54,6 +60,51 @@ const STAGE_COPY: Record<Stage, string> = {
   lighting: "Acércate a la luz",
 };
 
+function prepareGongAudio(): AudioContext | null {
+  if (typeof window === "undefined" || !window.AudioContext) return null;
+
+  const context = new AudioContext();
+  if (context.state === "suspended") {
+    void context.resume().catch(() => {});
+  }
+  return context;
+}
+
+function playMeditationGong(context: AudioContext | null) {
+  if (!context || context.state !== "running") return;
+
+  const now = context.currentTime;
+  const master = context.createGain();
+  master.gain.setValueAtTime(0.0001, now);
+  master.gain.exponentialRampToValueAtTime(0.12, now + 0.12);
+  master.gain.exponentialRampToValueAtTime(0.0001, now + 6);
+  master.connect(context.destination);
+
+  const partials = [
+    { frequency: 130.81, gain: 0.34 },
+    { frequency: 196.4, gain: 0.22 },
+    { frequency: 262.6, gain: 0.15 },
+    { frequency: 349.2, gain: 0.1 },
+    { frequency: 523.8, gain: 0.06 },
+  ];
+
+  for (const partial of partials) {
+    const oscillator = context.createOscillator();
+    const voice = context.createGain();
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(partial.frequency, now);
+    voice.gain.setValueAtTime(partial.gain, now);
+    oscillator.connect(voice);
+    voice.connect(master);
+    oscillator.start(now);
+    oscillator.stop(now + 6.1);
+  }
+
+  window.setTimeout(() => {
+    void context.close();
+  }, 6_500);
+}
+
 function StepIndicator({ stage }: { stage: Stage }) {
   const steps: Stage[] = ["intention", "dedication", "lighting"];
   const activeIndex = steps.indexOf(stage);
@@ -103,6 +154,7 @@ export default function EncenderVela() {
   const [saveError, setSaveError] = useState("");
   const [completion, setCompletion] = useState(false);
   const [createdCandle, setCreatedCandle] = useState<RoomCandle | null>(null);
+  const submissionInProgress = useRef(false);
 
   useEffect(() => {
     let active = true;
@@ -183,13 +235,15 @@ export default function EncenderVela() {
   }, [countries, countryQuery]);
 
   const igniteCandle = async () => {
-    if (!intention || isSubmitting) return;
+    if (!intention || submissionInProgress.current || completion) return;
     if (cityQuery.trim() && !selectedCity) {
       setSaveError("Elige una ciudad de los resultados o borra la búsqueda.");
       return;
     }
+    submissionInProgress.current = true;
     setSaveError("");
     setIsSubmitting(true);
+    const gongAudio = prepareGongAudio();
     try {
       const candle = await createCandle({
         intention,
@@ -205,7 +259,10 @@ export default function EncenderVela() {
       });
       setCreatedCandle(candle);
       setCompletion(true);
+      playMeditationGong(gongAudio);
     } catch (error) {
+      submissionInProgress.current = false;
+      if (gongAudio) void gongAudio.close();
       setSaveError(
         error instanceof Error
           ? error.message
@@ -249,6 +306,7 @@ export default function EncenderVela() {
             color={color}
             label={completion ? "Vela recién encendida" : "Vela sin encender"}
             interactive={stage === "lighting"}
+            disabled={isSubmitting || completion}
             onIgnite={igniteCandle}
           />
           <p className="absolute bottom-2 font-interface text-[0.65rem] uppercase tracking-[0.3em] text-antique-gold/65">

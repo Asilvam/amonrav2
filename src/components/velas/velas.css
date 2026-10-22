@@ -208,6 +208,10 @@
   transform: translateX(-50%);
 }
 
+.candle-photo__wick-target:disabled {
+  cursor: wait;
+}
+
 .candle-photo__wick-target span {
   position: absolute;
   top: 0.2rem;

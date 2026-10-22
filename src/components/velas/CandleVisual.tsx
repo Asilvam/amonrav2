@@ -24,6 +24,7 @@ interface CandleVisualProps {
   color: CandleColor;
   label: string;
   interactive?: boolean;
+  disabled?: boolean;
   onIgnite?: () => void;
   className?: string;
 }
@@ -34,6 +35,7 @@ export default function CandleVisual({
   color,
   label,
   interactive = false,
+  disabled = false,
   onIgnite,
   className = "",
 }: CandleVisualProps) {
@@ -98,6 +100,7 @@ export default function CandleVisual({
           type="button"
           className="candle-photo__wick-target"
           onClick={onIgnite}
+          disabled={disabled}
           aria-label="Tocar la mecha para encender la vela"
         >
           <span>Toca la mecha</span>
