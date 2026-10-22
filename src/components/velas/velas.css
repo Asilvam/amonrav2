@@ -136,6 +136,10 @@
 
 .candle-photo__image--base {
   z-index: 1;
+}
+
+.candle-photo[data-stage]:not([data-stage="0"]):not([data-stage="9"])
+  .candle-photo__image--base {
   mask-image: radial-gradient(
     ellipse 7% 11% at 50% var(--candle-flame-center, 18%),
     transparent 70%,
