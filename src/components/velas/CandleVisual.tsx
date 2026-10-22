@@ -3,10 +3,20 @@ import {
   CANDLE_BURN_DURATION_MS,
   CANDLE_FRAMES,
   CANDLE_SMOKE_DURATION_MS,
-  getCandleFrameBlend,
   getCandleFrameIndex,
 } from "./candle-room";
 import type { CandleColor } from "./candle-room";
+
+const FLAME_BOUNDS: Record<number, { top: number; bottom: number }> = {
+  1: { top: 7, bottom: 24 },
+  2: { top: 8, bottom: 27 },
+  3: { top: 3, bottom: 24 },
+  4: { top: 7, bottom: 28 },
+  5: { top: 11, bottom: 34 },
+  6: { top: 14, bottom: 39 },
+  7: { top: 21, bottom: 51 },
+  8: { top: 38, bottom: 56 },
+};
 
 interface CandleVisualProps {
   startedAt?: number;
@@ -31,10 +41,7 @@ export default function CandleVisual({
     startedAt === undefined
       ? 0
       : getCandleFrameIndex(startedAt, now ?? startedAt);
-  const frameBlend =
-    startedAt === undefined
-      ? null
-      : getCandleFrameBlend(startedAt, now ?? startedAt);
+  const flameBounds = FLAME_BOUNDS[frameIndex];
   const extinguishedAt =
     startedAt === undefined ? null : startedAt + CANDLE_BURN_DURATION_MS;
   const smokeIsSettling =
@@ -54,24 +61,26 @@ export default function CandleVisual({
       data-stage={frameIndex}
       style={
         {
-          "--candle-flame-top": `${14 + burningProgress * 10}%`,
+          "--candle-flame-top": `${flameBounds?.top ?? 14 + burningProgress * 10}%`,
+          "--candle-flame-bottom": `${flameBounds?.bottom ?? 30}%`,
+          "--candle-flame-center": `${flameBounds ? (flameBounds.top + flameBounds.bottom) / 2 : 20}%`,
         } as CSSProperties
       }
     >
       <div className="candle-photo__glow" aria-hidden="true" />
       <img
-        src={CANDLE_FRAMES[frameBlend?.fromIndex ?? frameIndex]}
+        key={frameIndex}
+        src={CANDLE_FRAMES[frameIndex]}
         alt={label}
-        className="candle-photo__image"
+        className="candle-photo__image candle-photo__image--base"
         loading="eager"
       />
-      {frameBlend && frameBlend.toIndex !== frameBlend.fromIndex && (
+      {flameBounds && (
         <img
-          src={CANDLE_FRAMES[frameBlend.toIndex]}
+          src={CANDLE_FRAMES[frameIndex]}
           alt=""
           aria-hidden="true"
-          className="candle-photo__image candle-photo__image--next"
-          style={{ opacity: frameBlend.progress }}
+          className="candle-photo__image candle-photo__flame"
           loading="eager"
         />
       )}

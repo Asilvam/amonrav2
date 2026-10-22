@@ -178,9 +178,14 @@ export default function SalaVelas() {
         )}
 
         {!ready ? (
-          <p className="mt-12 text-center text-ivory-muted" role="status">
-            Preparando la sala de luz…
-          </p>
+          <div
+            className="candle-room-loading mt-12"
+            role="status"
+            aria-live="polite"
+          >
+            <span className="candle-room-spinner" aria-hidden="true" />
+            <span>Preparando la sala de luz…</span>
+          </div>
         ) : error && candles.length === 0 ? (
           <section className="candle-room-empty">
             <h2 className="font-editorial text-3xl text-ivory">
