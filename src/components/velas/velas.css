@@ -1,0 +1,688 @@
+.ritual-atmosphere {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 26% 55%, rgb(190 104 36 / 22%), transparent 38%),
+    radial-gradient(ellipse at 74% 12%, rgb(117 73 30 / 16%), transparent 36%),
+    linear-gradient(120deg, #241308 0%, #17130f 48%, #0e1114 100%);
+}
+
+.ritual-atmosphere::after {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgb(255 255 255 / 10%) 0.6px,
+    transparent 0.6px
+  );
+  background-size: 5px 5px;
+  content: "";
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.ritual-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgb(228 187 112 / 16%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.ritual-orbit--outer {
+  width: min(90vw, 35rem);
+  aspect-ratio: 1;
+  border-style: dashed;
+  animation: ritual-orbit-turn 100s linear infinite;
+}
+
+.ritual-orbit--inner {
+  width: min(72vw, 28rem);
+  aspect-ratio: 1;
+}
+
+.ritual-stars {
+  position: absolute;
+  inset: 12% 8%;
+  color: var(--color-antique-gold);
+  pointer-events: none;
+}
+
+.ritual-stars span {
+  position: absolute;
+  font-family: var(--font-editorial);
+  font-size: 1.1rem;
+  opacity: 0.55;
+}
+
+.ritual-stars span:nth-child(1) {
+  top: 12%;
+  left: 22%;
+}
+
+.ritual-stars span:nth-child(2) {
+  top: 27%;
+  right: 15%;
+  font-size: 1.8rem;
+}
+
+.ritual-stars span:nth-child(3) {
+  right: 20%;
+  bottom: 21%;
+}
+
+.ritual-stars span:nth-child(4) {
+  bottom: 14%;
+  left: 17%;
+  font-size: 1.8rem;
+}
+
+.ritual-stars span:nth-child(5) {
+  top: 42%;
+  left: 8%;
+}
+
+.candle-photo {
+  position: relative;
+  display: grid;
+  width: min(100%, 17rem);
+  height: 29rem;
+  flex: 0 0 auto;
+  place-items: center;
+  margin: 0;
+  isolation: isolate;
+}
+
+.candle-photo__glow {
+  position: absolute;
+  z-index: 0;
+  top: 43%;
+  left: 50%;
+  width: 115%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgb(255 194 104 / 30%),
+    rgb(228 126 47 / 12%) 36%,
+    transparent 72%
+  );
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 1.2s ease;
+}
+
+.candle-photo[data-stage]:not([data-stage="0"]):not([data-stage="9"])
+  .candle-photo__glow {
+  opacity: 1;
+  animation: ritual-halo-breathe 4s ease-in-out infinite alternate;
+}
+
+.candle-photo__image {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 1.25rem 2rem rgb(0 0 0 / 24%));
+  transition: filter 1s ease;
+}
+
+.candle-photo[data-color="ambar"] .candle-photo__image {
+  filter: sepia(0.18) saturate(1.12)
+    drop-shadow(0 1.25rem 2rem rgb(0 0 0 / 24%));
+}
+
+.candle-photo[data-color="rosa"] .candle-photo__image {
+  filter: sepia(0.12) saturate(0.78) hue-rotate(322deg)
+    drop-shadow(0 1.25rem 2rem rgb(0 0 0 / 24%));
+}
+
+.candle-photo[data-color="azul"] .candle-photo__image {
+  filter: sepia(0.1) saturate(0.62) hue-rotate(160deg)
+    drop-shadow(0 1.25rem 2rem rgb(0 0 0 / 24%));
+}
+
+.candle-photo[data-stage]:not([data-stage="0"]):not([data-stage="9"])
+  .candle-photo__image {
+  animation:
+    ritual-frame-enter 900ms ease-out,
+    ritual-candle-flicker var(--candle-flicker-duration, 3.4s) ease-in-out
+      infinite alternate;
+}
+
+.candle-photo__wick-target {
+  position: absolute;
+  z-index: 2;
+  top: 8%;
+  left: 50%;
+  width: 3.5rem;
+  height: 4.2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transform: translateX(-50%);
+}
+
+.candle-photo__wick-target span {
+  position: absolute;
+  top: 0.2rem;
+  left: calc(100% + 0.4rem);
+  width: max-content;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgb(232 195 128 / 42%);
+  border-radius: 999px;
+  background: rgb(29 23 17 / 88%);
+  color: var(--color-old-papyrus);
+  font-family: var(--font-interface);
+  font-size: 0.72rem;
+  animation: ritual-prompt-glow 2s ease-in-out infinite alternate;
+}
+
+.candle-photo__wick-target:focus-visible {
+  outline: 2px solid var(--color-antique-gold);
+  outline-offset: 0.2rem;
+}
+
+.candle-room-page {
+  position: relative;
+  min-height: calc(100svh - 5rem);
+  overflow: hidden;
+  background: var(--color-night);
+  color: var(--color-ivory);
+}
+
+.candle-room-atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 22%, rgb(146 75 26 / 21%), transparent 42%),
+    linear-gradient(145deg, #211307, #17130f 54%, #0e1114);
+}
+
+.candle-room-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgb(232 195 128 / 20%);
+}
+
+.candle-room-stats {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 4vw, 3rem);
+  padding: 1.5rem 0 2.5rem;
+}
+
+.candle-room-stats div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.candle-room-stats strong {
+  color: var(--color-antique-gold);
+  font-family: var(--font-editorial);
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.candle-room-stats div span,
+.candle-room-live {
+  color: var(--color-ivory-muted);
+  font-family: var(--font-interface);
+  font-size: 0.75rem;
+}
+
+.candle-room-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.candle-room-live > span {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #c99f5d;
+  box-shadow: 0 0 0.75rem rgb(232 195 128 / 55%);
+}
+
+.candle-room-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: 1.25rem;
+}
+
+.candle-room-card {
+  overflow: hidden;
+  border: 1px solid rgb(232 195 128 / 19%);
+  border-radius: 0.95rem;
+  background: rgb(11 10 9 / 34%);
+  transition:
+    border-color 200ms ease,
+    transform 200ms ease,
+    background-color 200ms ease;
+}
+
+.candle-room-card:hover,
+.candle-room-card.is-selected {
+  border-color: rgb(232 195 128 / 70%);
+  background: rgb(255 255 255 / 4%);
+  transform: translateY(-3px);
+}
+
+.candle-room-card__open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.candle-room-card__visual {
+  width: 100%;
+  height: 19rem;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at 50% 48%,
+    rgb(157 86 34 / 16%),
+    transparent 62%
+  );
+}
+
+.candle-room-card__visual .candle-photo__image {
+  padding: 0.8rem 1rem 0;
+}
+
+.candle-room-card__content {
+  display: grid;
+  gap: 0.45rem;
+  padding: 1rem 1.1rem 1.2rem;
+}
+
+.candle-room-card__name {
+  overflow: hidden;
+  color: var(--color-ivory);
+  font-family: var(--font-editorial);
+  font-size: 1.25rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.candle-room-card__meta,
+.candle-room-card__time {
+  color: var(--color-ivory-muted);
+  font-family: var(--font-interface);
+  font-size: 0.75rem;
+}
+
+.candle-room-card__dedication {
+  overflow: hidden;
+  color: var(--color-old-papyrus);
+  font-family: var(--font-editorial);
+  font-size: 0.95rem;
+  font-style: italic;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.candle-room-card__time {
+  margin-top: 0.35rem;
+  color: var(--color-antique-gold);
+}
+
+.candle-room-progress {
+  height: 2px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgb(232 195 128 / 16%);
+}
+
+.candle-room-progress > span {
+  display: block;
+  height: 100%;
+  background: var(--color-antique-gold);
+  transition: width 800ms linear;
+}
+
+.candle-room-card.is-out {
+  opacity: 0.62;
+}
+
+.candle-room-card.is-out .candle-photo__image {
+  filter: grayscale(0.35) brightness(0.82);
+}
+
+.candle-room-selected {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(9rem, 14rem) 1fr;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 48rem;
+  margin: 2rem auto 0;
+  padding: 1.5rem;
+  border: 1px solid rgb(232 195 128 / 40%);
+  border-radius: 1rem;
+  background: rgb(15 13 11 / 78%);
+}
+
+.candle-room-selected__visual {
+  width: 100%;
+  height: 17rem;
+}
+
+.candle-room-selected__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.9rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-ivory-muted);
+  font-size: 1.75rem;
+  cursor: pointer;
+}
+
+.candle-room-empty {
+  display: grid;
+  justify-items: center;
+  padding: clamp(2rem, 9vw, 6rem) 1.25rem;
+  border: 1px dashed rgb(232 195 128 / 30%);
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.candle-room-empty__mark {
+  margin-bottom: 1rem;
+  color: var(--color-antique-gold);
+  font-family: var(--font-editorial);
+  font-size: 3rem;
+}
+
+.candle-room-note {
+  margin-top: 3.5rem;
+  border-top: 1px solid rgb(232 195 128 / 17%);
+  padding-top: 1rem;
+  color: var(--color-ivory-muted);
+  font-family: var(--font-interface);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.candle-room-error {
+  margin: 1rem 0;
+  border: 1px solid rgb(240 150 130 / 35%);
+  border-radius: 0.75rem;
+  background: rgb(110 27 20 / 16%);
+  padding: 1rem;
+  color: #ffd4c9;
+  font-size: 0.9rem;
+}
+
+.ritual-breath-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--color-antique-gold);
+  box-shadow: 0 0 1rem rgb(232 195 128 / 85%);
+  animation: ritual-breath 5s ease-in-out infinite;
+}
+
+.ritual-primary-button {
+  display: inline-flex;
+  min-height: 3.15rem;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 0.8rem 1.4rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: var(--font-interface);
+  font-size: 0.875rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.ritual-primary-button {
+  background: var(--color-antique-gold);
+  color: var(--color-night);
+}
+
+.ritual-primary-button:hover:not(:disabled) {
+  background: var(--color-old-papyrus);
+  transform: translateY(-2px);
+}
+
+.ritual-primary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.ritual-primary-button:focus-visible,
+.ritual-text-button:focus-visible,
+.ritual-intention-card:focus-visible,
+.ritual-color-swatch:focus-visible {
+  outline: 2px solid var(--color-antique-gold);
+  outline-offset: 4px;
+}
+
+.ritual-text-button {
+  min-height: 2.75rem;
+  padding: 0.5rem 0.25rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-ivory-muted);
+  font-family: var(--font-interface);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.ritual-text-button:hover {
+  color: var(--color-ivory);
+}
+
+.ritual-intention-card {
+  display: flex;
+  min-height: 9rem;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+  border: 1px solid rgb(232 195 128 / 24%);
+  border-radius: 0.85rem;
+  background: rgb(255 255 255 / 2%);
+  color: var(--color-ivory);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.ritual-intention-card:hover {
+  border-color: rgb(232 195 128 / 65%);
+  transform: translateY(-2px);
+}
+
+.ritual-intention-card.is-selected {
+  border-color: var(--color-antique-gold);
+  background: rgb(232 195 128 / 10%);
+  box-shadow: inset 0 0 0 1px rgb(232 195 128 / 25%);
+}
+
+.ritual-input {
+  display: block;
+  width: 100%;
+  border: 1px solid rgb(232 195 128 / 35%);
+  border-radius: 0.75rem;
+  background: rgb(9 11 13 / 45%);
+  padding: 0.8rem 0.9rem;
+  color: var(--color-ivory);
+  font-family: var(--font-interface);
+  font-size: 0.925rem;
+}
+
+.ritual-input::placeholder {
+  color: rgb(241 238 231 / 43%);
+}
+
+.ritual-input:focus-visible {
+  border-color: var(--color-antique-gold);
+  outline: 2px solid rgb(232 195 128 / 35%);
+  outline-offset: 2px;
+}
+
+.ritual-color-swatch {
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.ritual-color-swatch span {
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 50%;
+  background: var(--swatch-color);
+  box-shadow: inset -0.25rem -0.2rem 0.4rem rgb(0 0 0 / 18%);
+}
+
+.ritual-color-swatch.is-selected {
+  border-color: var(--color-antique-gold);
+  box-shadow: 0 0 0 2px rgb(232 195 128 / 20%);
+}
+
+@keyframes ritual-orbit-turn {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes ritual-halo-breathe {
+  from {
+    opacity: 0.65;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+@keyframes ritual-frame-enter {
+  from {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ritual-candle-flicker {
+  from {
+    opacity: 0.94;
+    transform: scale(0.995);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.01);
+  }
+}
+
+@keyframes ritual-prompt-glow {
+  from {
+    box-shadow: 0 0 0 rgb(232 195 128 / 0%);
+  }
+
+  to {
+    box-shadow: 0 0 1.2rem rgb(232 195 128 / 18%);
+  }
+}
+
+@keyframes ritual-breath {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(0.75);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ritual-orbit--outer,
+  .candle-photo[data-stage]:not([data-stage="0"]):not([data-stage="9"])
+    .candle-photo__image,
+  .candle-photo__wick-target span,
+  .ritual-breath-dot {
+    animation: none !important;
+  }
+
+  .candle-photo__image,
+  .candle-photo__glow,
+  .candle-room-progress > span,
+  .ritual-intention-card,
+  .ritual-primary-button {
+    transition: none;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .candle-photo {
+    width: min(100%, 14rem);
+    height: 24rem;
+  }
+
+  .candle-room-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .candle-room-stats {
+    flex-wrap: wrap;
+  }
+
+  .candle-room-live {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .candle-room-selected {
+    grid-template-columns: minmax(6rem, 9rem) 1fr;
+    gap: 0.85rem;
+    padding: 1rem;
+  }
+
+  .candle-room-selected__visual {
+    height: 12rem;
+  }
+}
