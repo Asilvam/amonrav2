@@ -98,26 +98,28 @@
 .candle-photo__glow {
   position: absolute;
   z-index: 0;
-  top: 43%;
+  top: var(--candle-flame-top, 18%);
   left: 50%;
-  width: 115%;
+  width: 76%;
   aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgb(255 194 104 / 30%),
-    rgb(228 126 47 / 12%) 36%,
-    transparent 72%
+    rgb(255 215 143 / 32%),
+    rgb(228 126 47 / 16%) 34%,
+    transparent 70%
   );
   opacity: 0;
   transform: translate(-50%, -50%);
-  transition: opacity 1.2s ease;
+  transition:
+    opacity 2.4s ease,
+    top 2.4s ease;
 }
 
 .candle-photo[data-stage]:not([data-stage="0"]):not([data-stage="9"])
   .candle-photo__glow {
-  opacity: 1;
-  animation: ritual-halo-breathe 4s ease-in-out infinite alternate;
+  opacity: 0.9;
+  animation: ritual-halo-breathe 6s ease-in-out infinite alternate;
 }
 
 .candle-photo__image {
@@ -129,7 +131,18 @@
   height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 1.25rem 2rem rgb(0 0 0 / 24%));
-  transition: filter 1s ease;
+  transition:
+    filter 1s ease,
+    opacity 2.4s linear;
+}
+
+.candle-photo__image--next {
+  z-index: 2;
+}
+
+.candle-photo[data-stage]:not([data-stage="0"]):not([data-stage="9"])
+  > .candle-photo__image {
+  animation: ritual-candle-burn 10s ease-in-out infinite alternate;
 }
 
 .candle-photo[data-color="ambar"] .candle-photo__image {
@@ -147,12 +160,20 @@
     drop-shadow(0 1.25rem 2rem rgb(0 0 0 / 24%));
 }
 
-.candle-photo[data-stage]:not([data-stage="0"]):not([data-stage="9"])
-  .candle-photo__image {
-  animation:
-    ritual-frame-enter 900ms ease-out,
-    ritual-candle-flicker var(--candle-flicker-duration, 3.4s) ease-in-out
-      infinite alternate;
+.candle-photo[data-stage="9"] .candle-photo__image {
+  clip-path: inset(61% 0 0);
+}
+
+.candle-photo__smoke {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  clip-path: inset(0 0 39%);
+  pointer-events: none;
+  animation: ritual-smoke-settle 7s ease-out forwards;
 }
 
 .candle-photo__wick-target {
@@ -628,37 +649,45 @@
 
 @keyframes ritual-halo-breathe {
   from {
-    opacity: 0.65;
-    transform: translate(-50%, -50%) scale(0.92);
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(0.88);
   }
 
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1.08);
+    transform: translate(-50%, -50%) scale(1.12);
   }
 }
 
-@keyframes ritual-frame-enter {
+@keyframes ritual-candle-burn {
   from {
-    opacity: 0.7;
-    transform: scale(0.98);
-  }
-
-  to {
-    opacity: 1;
     transform: scale(1);
   }
-}
-
-@keyframes ritual-candle-flicker {
-  from {
-    opacity: 0.94;
-    transform: scale(0.995);
-  }
 
   to {
-    opacity: 1;
-    transform: scale(1.01);
+    transform: scale(1.008);
+  }
+}
+
+@keyframes ritual-smoke-settle {
+  0% {
+    opacity: 0.9;
+    transform: translateY(0) translateX(0) scale(1);
+  }
+
+  28% {
+    opacity: 0.78;
+    transform: translateY(-0.35rem) translateX(-0.15rem) scale(1.01);
+  }
+
+  62% {
+    opacity: 0.45;
+    transform: translateY(-0.9rem) translateX(0.2rem) scale(0.97);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-1.4rem) translateX(0.05rem) scale(0.92);
   }
 }
 
@@ -687,8 +716,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .ritual-orbit--outer,
+  .candle-photo__glow,
   .candle-photo[data-stage]:not([data-stage="0"]):not([data-stage="9"])
-    .candle-photo__image,
+    > .candle-photo__image,
+  .candle-photo__smoke,
   .candle-photo__wick-target span,
   .ritual-breath-dot {
     animation: none !important;

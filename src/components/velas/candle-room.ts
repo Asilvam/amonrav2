@@ -16,6 +16,7 @@ export interface RoomCandle {
 }
 
 export const CANDLE_BURN_DURATION_MS = 48 * 60 * 60 * 1000;
+export const CANDLE_SMOKE_DURATION_MS = 7_000;
 export const CANDLE_FRAME_COUNT = 10;
 
 export const CANDLE_FRAMES = Array.from(
@@ -47,6 +48,26 @@ export function getCandleFrameIndex(startedAt: number, now: number): number {
       Math.floor((elapsed / CANDLE_BURN_DURATION_MS) * burningFrameCount),
     )
   );
+}
+
+export function getCandleFrameBlend(
+  startedAt: number,
+  now: number,
+): { fromIndex: number; toIndex: number; progress: number } | null {
+  const elapsed = Math.max(0, now - startedAt);
+  if (elapsed >= CANDLE_BURN_DURATION_MS) return null;
+
+  const lastBurningFrame = CANDLE_FRAME_COUNT - 2;
+  const frameProgress =
+    (elapsed / CANDLE_BURN_DURATION_MS) * (lastBurningFrame - 1);
+  const frameOffset = Math.floor(frameProgress);
+  const fromIndex = 1 + frameOffset;
+
+  return {
+    fromIndex,
+    toIndex: Math.min(fromIndex + 1, lastBurningFrame),
+    progress: frameProgress - frameOffset,
+  };
 }
 
 export function getCandleTimeLeft(startedAt: number, now: number): number {

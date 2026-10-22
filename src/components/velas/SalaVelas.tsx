@@ -5,6 +5,7 @@ import type { CandleCountry } from "./api";
 import {
   CANDLE_BURN_DURATION_MS,
   CANDLE_FRAMES,
+  CANDLE_SMOKE_DURATION_MS,
   getCandleFrameIndex,
   getCandleTimeLeft,
 } from "./candle-room";
@@ -76,7 +77,7 @@ export default function SalaVelas() {
     void loadRoom();
     void loadCountries();
 
-    const clockInterval = window.setInterval(() => setNow(Date.now()), 30_000);
+    const clockInterval = window.setInterval(() => setNow(Date.now()), 1_000);
     const refreshInterval = window.setInterval(() => void loadRoom(), 60_000);
     return () => {
       active = false;
@@ -84,6 +85,26 @@ export default function SalaVelas() {
       window.clearInterval(refreshInterval);
     };
   }, []);
+
+  useEffect(() => {
+    const nextCandleChangeAt = candles.reduce<number | null>((next, candle) => {
+      const extinguishAt = candle.startedAt + CANDLE_BURN_DURATION_MS;
+      const nextChangeAt =
+        extinguishAt > now
+          ? extinguishAt
+          : extinguishAt + CANDLE_SMOKE_DURATION_MS;
+      return nextChangeAt > now && (next === null || nextChangeAt < next)
+        ? nextChangeAt
+        : next;
+    }, null);
+    if (nextCandleChangeAt === null) return;
+
+    const timeout = window.setTimeout(
+      () => setNow(Date.now()),
+      Math.max(0, nextCandleChangeAt - now),
+    );
+    return () => window.clearTimeout(timeout);
+  }, [candles, now]);
 
   useEffect(() => {
     for (const frame of CANDLE_FRAMES) {

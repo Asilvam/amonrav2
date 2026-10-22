@@ -4,7 +4,7 @@ import CandleVisual from "./CandleVisual";
 import { createCandle, getCandleCountries, searchCandleCities } from "./api";
 import type { CandleCountry, CandleCity } from "./api";
 import { CANDLE_COLORS } from "./candle-room";
-import type { CandleColor, Intention } from "./candle-room";
+import type { CandleColor, Intention, RoomCandle } from "./candle-room";
 
 type Stage = "arrival" | "intention" | "dedication" | "lighting";
 
@@ -102,6 +102,7 @@ export default function EncenderVela() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [saveError, setSaveError] = useState("");
   const [completion, setCompletion] = useState(false);
+  const [createdCandle, setCreatedCandle] = useState<RoomCandle | null>(null);
 
   useEffect(() => {
     let active = true;
@@ -190,7 +191,7 @@ export default function EncenderVela() {
     setSaveError("");
     setIsSubmitting(true);
     try {
-      await createCandle({
+      const candle = await createCandle({
         intention,
         dedication: dedication.trim(),
         name: name.trim(),
@@ -202,6 +203,7 @@ export default function EncenderVela() {
         publishLocation:
           publishLocation && Boolean(countryCode && selectedCity),
       });
+      setCreatedCandle(candle);
       setCompletion(true);
     } catch (error) {
       setSaveError(
@@ -242,8 +244,10 @@ export default function EncenderVela() {
             <span>✧</span>
           </div>
           <CandleVisual
+            startedAt={createdCandle?.startedAt}
+            now={createdCandle?.startedAt}
             color={color}
-            label="Vela sin encender"
+            label={completion ? "Vela recién encendida" : "Vela sin encender"}
             interactive={stage === "lighting"}
             onIgnite={igniteCandle}
           />
@@ -260,7 +264,7 @@ export default function EncenderVela() {
             className="max-w-[13ch] font-editorial text-[clamp(2.6rem,6vw,4.8rem)] leading-[0.98] font-medium tracking-[-0.04em] text-ivory"
             aria-live="polite"
           >
-            {completion ? "Tu vela está encendida" : STAGE_COPY[stage]}
+            {completion ? "Gracias por encender tu vela" : STAGE_COPY[stage]}
           </h1>
 
           {stage !== "arrival" && !completion && (
@@ -272,7 +276,7 @@ export default function EncenderVela() {
           {completion && (
             <div className="mt-7 space-y-5" role="status">
               <p className="font-editorial text-xl leading-relaxed text-ivory-muted">
-                Tu luz ya forma parte de la Sala de luz y acompaña a la
+                Tu luz ya forma parte de la Sala de velas y acompaña a la
                 comunidad.
               </p>
               <div>
@@ -281,7 +285,7 @@ export default function EncenderVela() {
                   onClick={goToRoom}
                   className="ritual-primary-button"
                 >
-                  Ir a la Sala de luz <span aria-hidden="true">↗</span>
+                  Ver la Sala de velas <span aria-hidden="true">↗</span>
                 </button>
               </div>
             </div>
