@@ -14,6 +14,11 @@ const navigation = [
     href: "/#explorar",
     current: currentPath.startsWith("/temas/"),
   },
+  {
+    label: "Sala de luz",
+    href: "/sala-de-velas/",
+    current: currentPath.startsWith("/sala-de-velas"),
+  },
 ];
 ---
 
@@ -81,7 +86,7 @@ const navigation = [
         </div>
       </div>
     ) : (
-      <div class="flex min-h-20 items-center justify-between gap-6 py-4 max-[40rem]:flex-col max-[40rem]:items-center max-[40rem]:gap-3 max-[40rem]:py-3.5">
+      <div class="flex min-h-20 items-center justify-between gap-6 py-4 max-[80rem]:flex-col max-[80rem]:items-center max-[80rem]:gap-3 max-[80rem]:py-3.5">
         <a
           class="inline-flex items-center gap-2.5 text-ivory no-underline sm:gap-3"
           href="/"
@@ -106,16 +111,16 @@ const navigation = [
 
         <nav
           aria-label="Navegación principal de Amonra"
-          class="max-[40rem]:w-full"
+          class="max-[80rem]:w-full"
         >
-          <ul class="m-0 flex list-none flex-wrap items-center gap-1.5 p-0 max-[40rem]:justify-center max-[40rem]:border-t max-[40rem]:border-antique-gold-soft/20 max-[40rem]:pt-2.5 sm:gap-3">
+          <ul class="m-0 flex list-none flex-wrap items-center gap-1.5 p-0 max-[40rem]:flex-nowrap max-[40rem]:gap-0.5 max-[80rem]:justify-center max-[80rem]:border-t max-[80rem]:border-antique-gold-soft/20 max-[80rem]:pt-2.5 sm:gap-3">
             {navigation.map((item) => (
               <li>
                 <a
                   href={item.href}
                   aria-current={item.current ? "page" : undefined}
                   class:list={[
-                    "inline-flex min-h-[38px] items-center rounded-lg px-3.5 py-1.5 font-interface text-[var(--font-size-small)] font-medium no-underline transition-colors",
+                    "inline-flex min-h-11 items-center whitespace-nowrap rounded-lg px-3.5 py-1.5 font-interface text-[var(--font-size-small)] font-medium no-underline transition-colors max-[40rem]:px-2 max-[40rem]:text-xs",
                     item.current
                       ? "border border-antique-gold-soft/50 bg-antique-gold-soft/25 text-ivory shadow-sm"
                       : "text-ivory-muted hover:bg-antique-gold-soft/10 hover:text-ivory",
@@ -125,14 +130,6 @@ const navigation = [
                 </a>
               </li>
             ))}
-            <li>
-              <a
-                href="/sala-de-velas/"
-                class="inline-flex min-h-[38px] items-center gap-2 rounded-full bg-antique-gold px-4 py-1.5 font-interface text-[var(--font-size-small)] font-semibold text-night no-underline transition-colors hover:bg-old-papyrus focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-antique-gold"
-              >
-                Sala de luz <span aria-hidden="true">↗</span>
-              </a>
-            </li>
           </ul>
         </nav>
       </div>

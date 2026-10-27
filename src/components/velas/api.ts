@@ -1,6 +1,13 @@
 import { extractApiErrorMessage, getApiBase } from "../peticiones/api";
 import type { ApiErrorBody } from "../peticiones/types";
 import type { CandleColor, Intention, RoomCandle } from "./candle-room";
+import { CANDLE_PAGE_SIZE } from "./candle-room";
+
+export type CandleStatus = "active" | "extinguished";
+export interface CandlePage {
+  candles: RoomCandle[];
+  pagination: { total: number; skip: number; limit: number; hasMore: boolean };
+}
 
 export interface CandleCountry {
   code: string;
@@ -175,10 +182,39 @@ export async function createCandle(
   return parseCandle(body.candle);
 }
 
-export async function getRoomCandles(): Promise<RoomCandle[]> {
-  const body = await requestJson("");
+export async function getRoomCandles(
+  status: CandleStatus,
+  skip = 0,
+  signal?: AbortSignal,
+): Promise<CandlePage> {
+  const params = new URLSearchParams({
+    status,
+    limit: String(CANDLE_PAGE_SIZE),
+    skip: String(skip),
+  });
+  const body = await requestJson(`?${params}`, { signal });
   if (!isRecord(body) || !Array.isArray(body.candles)) {
     throw new Error("No pudimos leer las velas de la sala.");
   }
-  return body.candles.map(parseCandle);
+  const pagination = body.pagination;
+  if (
+    !isRecord(pagination) ||
+    !Number.isInteger(pagination.total) ||
+    Number(pagination.total) < 0 ||
+    pagination.limit !== CANDLE_PAGE_SIZE ||
+    pagination.skip !== skip ||
+    typeof pagination.hasMore !== "boolean" ||
+    body.candles.length > CANDLE_PAGE_SIZE
+  ) {
+    throw new Error("El servicio devolvió una paginación inválida.");
+  }
+  return {
+    candles: body.candles.map(parseCandle),
+    pagination: {
+      total: Number(pagination.total),
+      limit: CANDLE_PAGE_SIZE,
+      skip,
+      hasMore: pagination.hasMore,
+    },
+  };
 }

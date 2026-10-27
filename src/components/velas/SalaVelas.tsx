@@ -1,25 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
 import "./velas.css";
-import { getCandleCountries, getRoomCandles } from "./api";
+import { getCandleCountries } from "./api";
 import type { CandleCountry } from "./api";
 import {
   CANDLE_BURN_DURATION_MS,
   CANDLE_FRAMES,
   CANDLE_SMOKE_DURATION_MS,
-  getCandleFrameIndex,
-  getCandleTimeLeft,
 } from "./candle-room";
 import type { RoomCandle } from "./candle-room";
 import CandleVisual from "./CandleVisual";
-
-function formatTimeLeft(milliseconds: number): string {
-  if (milliseconds <= 0) return "La llama se ha apagado";
-  const totalMinutes = Math.ceil(milliseconds / 60_000);
-  const hours = Math.floor(totalMinutes / 60);
-  const minutes = totalMinutes % 60;
-  if (hours === 0) return `Se consume en ${minutes} min`;
-  return `${hours} h ${String(minutes).padStart(2, "0")} min restantes`;
-}
+import CandleCollection from "./CandleCollection";
+import CandleStartedAt from "./CandleStartedAt";
+import CandlePagination from "./CandlePagination";
+import CandleRoomIcon from "./CandleRoomIcon";
+import { useCandlePage } from "./useCandlePage";
 
 function burningProgress(startedAt: number, now: number): number {
   return Math.min(
@@ -29,36 +23,27 @@ function burningProgress(startedAt: number, now: number): number {
 }
 
 export default function SalaVelas() {
-  const [candles, setCandles] = useState<RoomCandle[]>([]);
   const [countries, setCountries] = useState<CandleCountry[]>([]);
   const [locationCountryError, setLocationCountryError] = useState("");
   const [now, setNow] = useState(() => Date.now());
-  const [ready, setReady] = useState(false);
-  const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+
+  const activePage = useCandlePage("active");
+  const restingPage = useCandlePage("extinguished");
+  const litCandles = activePage.candles;
+  const extinguishedCandles = restingPage.candles;
+  const refreshActive = activePage.refresh;
+  const refreshResting = restingPage.refresh;
+  const candles = useMemo(
+    () => [...litCandles, ...extinguishedCandles],
+    [litCandles, extinguishedCandles],
+  );
+  const ready = activePage.loaded && restingPage.loaded;
+  const error = [activePage.error, restingPage.error].filter(Boolean).join(" ");
 
   useEffect(() => {
     let active = true;
 
-    const loadRoom = async () => {
-      try {
-        const result = await getRoomCandles();
-        if (active) {
-          setCandles(result);
-          setError("");
-        }
-      } catch (loadError) {
-        if (active) {
-          setError(
-            loadError instanceof Error
-              ? loadError.message
-              : "No pudimos cargar las velas de la sala.",
-          );
-        }
-      } finally {
-        if (active) setReady(true);
-      }
-    };
     const loadCountries = async () => {
       try {
         const result = await getCandleCountries();
@@ -74,15 +59,12 @@ export default function SalaVelas() {
         }
       }
     };
-    void loadRoom();
     void loadCountries();
 
     const clockInterval = window.setInterval(() => setNow(Date.now()), 1_000);
-    const refreshInterval = window.setInterval(() => void loadRoom(), 60_000);
     return () => {
       active = false;
       window.clearInterval(clockInterval);
-      window.clearInterval(refreshInterval);
     };
   }, []);
 
@@ -107,6 +89,21 @@ export default function SalaVelas() {
   }, [candles, now]);
 
   useEffect(() => {
+    if (litCandles.length === 0) return;
+    const nextExpiry = Math.min(
+      ...litCandles.map((candle) => candle.startedAt + CANDLE_BURN_DURATION_MS),
+    );
+    const timeout = window.setTimeout(
+      () => {
+        refreshActive();
+        refreshResting();
+      },
+      Math.max(1000, nextExpiry - Date.now() + 100),
+    );
+    return () => window.clearTimeout(timeout);
+  }, [litCandles, refreshActive, refreshResting]);
+
+  useEffect(() => {
     for (const frame of CANDLE_FRAMES) {
       const image = new Image();
       image.src = frame;
@@ -116,12 +113,6 @@ export default function SalaVelas() {
   const selectedCandle = useMemo(
     () => candles.find((candle) => candle.id === selectedId),
     [candles, selectedId],
-  );
-  const litCandles = candles.filter(
-    (candle) => now - candle.startedAt < CANDLE_BURN_DURATION_MS,
-  );
-  const extinguishedCandles = candles.filter(
-    (candle) => now - candle.startedAt >= CANDLE_BURN_DURATION_MS,
   );
   const locationFor = (candle: RoomCandle) => {
     if (!candle.publishLocation || !candle.countryCode) return "";
@@ -151,18 +142,19 @@ export default function SalaVelas() {
               desde el primer brillo hasta su último hilo de humo.
             </p>
           </div>
-          <a href="/encender-vela/" className="ritual-primary-button shrink-0">
-            Encender una vela <span aria-hidden="true">↗</span>
+          <a href="/encender-vela/" className="candle-room-action shrink-0">
+            <CandleRoomIcon name="candle" />
+            Encender una vela
           </a>
         </header>
 
         <div className="candle-room-stats" aria-live="polite">
           <div>
-            <strong>{ready ? litCandles.length : "—"}</strong>
+            <strong>{ready ? activePage.total : "—"}</strong>
             <span>encendidas en la sala</span>
           </div>
           <div>
-            <strong>{ready ? extinguishedCandles.length : "—"}</strong>
+            <strong>{ready ? restingPage.total : "—"}</strong>
             <span>que ya completaron su ciclo</span>
           </div>
           <span className="candle-room-live">
@@ -196,16 +188,17 @@ export default function SalaVelas() {
             </p>
             <button
               type="button"
-              className="ritual-primary-button mt-6"
+              className="candle-room-action mt-6"
               onClick={() => window.location.reload()}
             >
+              <CandleRoomIcon name="retry" />
               Volver a intentar
             </button>
           </section>
         ) : candles.length === 0 ? (
           <section className="candle-room-empty">
             <div className="candle-room-empty__mark" aria-hidden="true">
-              ✧
+              <CandleRoomIcon name="candle" />
             </div>
             <h2 className="font-editorial text-3xl text-ivory">
               La primera luz puede ser la tuya
@@ -214,8 +207,9 @@ export default function SalaVelas() {
               Enciende una vela y aparecerá aquí para toda la comunidad con su
               evolución, intención y tiempo restante.
             </p>
-            <a href="/encender-vela/" className="ritual-primary-button mt-6">
-              Encender la primera vela <span aria-hidden="true">↗</span>
+            <a href="/encender-vela/" className="candle-room-action mt-6">
+              <CandleRoomIcon name="candle" />
+              Encender la primera vela
             </a>
           </section>
         ) : (
@@ -233,16 +227,18 @@ export default function SalaVelas() {
                     </h2>
                   </div>
                   <span className="font-interface text-sm text-ivory-muted">
-                    {litCandles.length}{" "}
-                    {litCandles.length === 1 ? "vela" : "velas"}
+                    {activePage.total}{" "}
+                    {activePage.total === 1 ? "vela" : "velas"}
                   </span>
                 </div>
-                <div className="candle-room-grid">
+                <CandleCollection
+                  key={`active-${activePage.page}`}
+                  count={litCandles.length}
+                  total={activePage.total}
+                  loading={activePage.loading}
+                  label="Llamas encendidas"
+                >
                   {litCandles.map((candle) => {
-                    const frameIndex = getCandleFrameIndex(
-                      candle.startedAt,
-                      now,
-                    );
                     const selected = selectedId === candle.id;
                     return (
                       <article
@@ -261,7 +257,7 @@ export default function SalaVelas() {
                             startedAt={candle.startedAt}
                             now={now}
                             color={candle.color}
-                            label={`Vela ${candle.intention.toLowerCase()}, fase ${frameIndex + 1} de 10`}
+                            label={`Vela encendida de ${candle.intention.toLowerCase()}`}
                             className="candle-room-card__visual"
                           />
                           <span className="candle-room-card__content">
@@ -269,12 +265,9 @@ export default function SalaVelas() {
                               {candle.name || candle.intention}
                             </span>
                             <span className="candle-room-card__meta">
-                              {candle.intention} · encendida{" "}
-                              {new Intl.DateTimeFormat("es-CL", {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                              }).format(candle.startedAt)}
+                              {candle.intention}
                             </span>
+                            <CandleStartedAt startedAt={candle.startedAt} />
                             {locationFor(candle) && (
                               <span className="candle-room-card__location">
                                 {locationFor(candle)}
@@ -285,11 +278,6 @@ export default function SalaVelas() {
                                 “{candle.dedication}”
                               </span>
                             )}
-                            <span className="candle-room-card__time">
-                              {frameIndex < CANDLE_FRAMES.length - 1
-                                ? `Fase ${frameIndex + 1} de 10 · ${formatTimeLeft(getCandleTimeLeft(candle.startedAt, now))}`
-                                : "Fase 10 de 10 · La llama se ha apagado"}
-                            </span>
                             <span
                               className="candle-room-progress"
                               role="progressbar"
@@ -311,7 +299,14 @@ export default function SalaVelas() {
                       </article>
                     );
                   })}
-                </div>
+                </CandleCollection>
+                <CandlePagination
+                  page={activePage.page}
+                  total={activePage.total}
+                  loading={activePage.loading}
+                  label="Llamas encendidas"
+                  onPageChange={activePage.setPage}
+                />
               </section>
             )}
 
@@ -334,6 +329,9 @@ export default function SalaVelas() {
                   <h3 className="mt-2 font-editorial text-2xl text-ivory">
                     {selectedCandle.intention}
                   </h3>
+                  <p className="mt-3">
+                    <CandleStartedAt startedAt={selectedCandle.startedAt} />
+                  </p>
                   {selectedCandle.dedication && (
                     <p className="mt-3 font-editorial text-lg italic text-ivory-muted">
                       “{selectedCandle.dedication}”
@@ -344,11 +342,6 @@ export default function SalaVelas() {
                       {locationFor(selectedCandle)}
                     </p>
                   )}
-                  <p className="mt-3 text-sm text-ivory-muted">
-                    {formatTimeLeft(
-                      getCandleTimeLeft(selectedCandle.startedAt, now),
-                    )}
-                  </p>
                 </div>
                 <button
                   type="button"
@@ -356,7 +349,7 @@ export default function SalaVelas() {
                   onClick={() => setSelectedId(null)}
                   aria-label="Cerrar detalle"
                 >
-                  ×
+                  <CandleRoomIcon name="close" />
                 </button>
               </aside>
             )}
@@ -373,39 +366,55 @@ export default function SalaVelas() {
                 >
                   Luces que descansan
                 </h2>
-                <div className="candle-room-grid mt-6">
-                  {extinguishedCandles.map((candle) => (
-                    <article
-                      key={candle.id}
-                      className="candle-room-card is-out"
-                    >
-                      <CandleVisual
-                        startedAt={candle.startedAt}
-                        now={now}
-                        color={candle.color}
-                        label={`Vela apagada por ${candle.intention.toLowerCase()}`}
-                        className="candle-room-card__visual"
-                      />
-                      <div className="candle-room-card__content">
-                        <span className="candle-room-card__name">
-                          {candle.name || candle.intention}
-                        </span>
-                        <span className="candle-room-card__meta">
-                          {candle.intention} · la llama se ha apagado
-                        </span>
-                        {locationFor(candle) && (
-                          <span className="candle-room-card__location">
-                            {locationFor(candle)}
+                <div className="mt-6">
+                  <CandleCollection
+                    key={`extinguished-${restingPage.page}`}
+                    count={extinguishedCandles.length}
+                    total={restingPage.total}
+                    loading={restingPage.loading}
+                    label="Luces que descansan"
+                  >
+                    {extinguishedCandles.map((candle) => (
+                      <article
+                        key={candle.id}
+                        className="candle-room-card is-out"
+                      >
+                        <CandleVisual
+                          startedAt={candle.startedAt}
+                          now={now}
+                          color={candle.color}
+                          label={`Vela apagada por ${candle.intention.toLowerCase()}`}
+                          className="candle-room-card__visual"
+                        />
+                        <div className="candle-room-card__content">
+                          <span className="candle-room-card__name">
+                            {candle.name || candle.intention}
                           </span>
-                        )}
-                        {candle.dedication && (
-                          <span className="candle-room-card__dedication">
-                            “{candle.dedication}”
+                          <span className="candle-room-card__meta">
+                            {candle.intention} · la llama se ha apagado
                           </span>
-                        )}
-                      </div>
-                    </article>
-                  ))}
+                          <CandleStartedAt startedAt={candle.startedAt} />
+                          {locationFor(candle) && (
+                            <span className="candle-room-card__location">
+                              {locationFor(candle)}
+                            </span>
+                          )}
+                          {candle.dedication && (
+                            <span className="candle-room-card__dedication">
+                              “{candle.dedication}”
+                            </span>
+                          )}
+                        </div>
+                      </article>
+                    ))}
+                  </CandleCollection>
+                  <CandlePagination
+                    page={restingPage.page}
+                    total={restingPage.total}
+                    loading={restingPage.loading}
+                    label="Luces que descansan"
+                    onPageChange={restingPage.setPage}
+                  />
                 </div>
               </section>
             )}

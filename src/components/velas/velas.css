@@ -130,7 +130,10 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 1.25rem 2rem rgb(0 0 0 / 24%));
+  filter: var(
+    --candle-color-filter,
+    drop-shadow(0 1.25rem 2rem rgb(0 0 0 / 24%))
+  );
   animation: ritual-frame-enter 1.2s ease-out both;
 }
 
@@ -163,17 +166,17 @@
 }
 
 .candle-photo[data-color="ambar"] .candle-photo__image {
-  filter: sepia(0.18) saturate(1.12)
+  --candle-color-filter: sepia(0.18) saturate(1.12)
     drop-shadow(0 1.25rem 2rem rgb(0 0 0 / 24%));
 }
 
 .candle-photo[data-color="rosa"] .candle-photo__image {
-  filter: sepia(0.12) saturate(0.78) hue-rotate(322deg)
+  --candle-color-filter: sepia(0.12) saturate(0.78) hue-rotate(322deg)
     drop-shadow(0 1.25rem 2rem rgb(0 0 0 / 24%));
 }
 
 .candle-photo[data-color="azul"] .candle-photo__image {
-  filter: sepia(0.1) saturate(0.62) hue-rotate(160deg)
+  --candle-color-filter: sepia(0.1) saturate(0.62) hue-rotate(160deg)
     drop-shadow(0 1.25rem 2rem rgb(0 0 0 / 24%));
 }
 
@@ -326,6 +329,151 @@
   gap: 1.25rem;
 }
 
+.candle-room-grid--carousel {
+  --candle-card-width: calc((100% - 3.75rem) / 4);
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--candle-card-width);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(232 195 128 / 45%) transparent;
+  padding-block: 0.35rem 0.75rem;
+}
+
+.candle-room-grid--carousel > .candle-room-card {
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+.candle-room-carousel-controls,
+.candle-room-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--color-ivory-muted);
+}
+
+.candle-room-pagination {
+  border-top: 1px solid rgb(232 195 128 / 20%);
+  padding-top: 1rem;
+  margin-top: 1.25rem;
+}
+
+.candle-room-pagination > span {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 9rem;
+  text-align: center;
+}
+
+.candle-room-pagination strong {
+  font-weight: 600;
+}
+.candle-room-pagination small {
+  font-size: 0.75rem;
+}
+
+.candle-room-icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.candle-room-action {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.25rem;
+  border: 1px solid var(--color-antique-gold-soft);
+  border-radius: var(--radius-small);
+  background: linear-gradient(
+    135deg,
+    var(--color-clay-ink),
+    color-mix(in srgb, var(--color-clay-ink) 65%, #17130f)
+  );
+  color: var(--color-ivory);
+  font-family: var(--font-interface);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: inset 0 1px rgb(243 237 223 / 7%);
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.candle-room-action .candle-room-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-old-papyrus);
+}
+
+.candle-room-action:hover:not(:disabled) {
+  border-color: var(--color-antique-gold);
+  background: var(--color-clay-ink);
+  color: var(--color-ivory);
+}
+
+.candle-room-action:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.candle-room-carousel-controls button,
+.candle-room-pagination button,
+.candle-room-selected__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid rgb(232 195 128 / 35%);
+  border-radius: var(--radius-small);
+  color: var(--color-antique-gold);
+  background: rgb(11 10 9 / 34%);
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.candle-room-carousel-controls button:hover:not(:disabled),
+.candle-room-pagination button:hover:not(:disabled),
+.candle-room-selected__close:hover {
+  border-color: var(--color-antique-gold);
+  background: rgb(199 173 112 / 12%);
+}
+
+.candle-room-carousel-controls button:disabled,
+.candle-room-pagination button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.candle-room-grid--carousel:focus-visible,
+.candle-room-action:focus-visible,
+.candle-room-selected__close:focus-visible,
+.candle-room-carousel-controls button:focus-visible,
+.candle-room-pagination button:focus-visible,
+.candle-room-card__open:focus-visible {
+  outline: 2px solid var(--color-antique-gold);
+  outline-offset: 2px;
+}
+
+@media (min-width: 48rem) and (max-width: 79.99rem) {
+  .candle-room-grid--carousel {
+    --candle-card-width: calc((100% - 1.25rem) / 2);
+  }
+}
+
 .candle-room-card {
   overflow: hidden;
   border: 1px solid rgb(232 195 128 / 19%);
@@ -356,6 +504,7 @@
 }
 
 .candle-room-card__visual {
+  margin-inline: auto;
   width: 100%;
   height: 19rem;
   overflow: hidden;
@@ -368,6 +517,11 @@
 
 .candle-room-card__visual .candle-photo__image {
   padding: 0.8rem 1rem 0;
+}
+
+.candle-room-card__visual[data-stage="9"] .candle-photo__image--base,
+.candle-room-card__visual[data-stage="9"] .candle-photo__smoke {
+  translate: 0 -20%;
 }
 
 .candle-room-card__content {
@@ -386,7 +540,7 @@
 }
 
 .candle-room-card__meta,
-.candle-room-card__time {
+.candle-room-card__date {
   color: var(--color-ivory-muted);
   font-family: var(--font-interface);
   font-size: 0.75rem;
@@ -408,11 +562,6 @@
   white-space: nowrap;
 }
 
-.candle-room-card__time {
-  margin-top: 0.35rem;
-  color: var(--color-antique-gold);
-}
-
 .candle-room-progress {
   height: 2px;
   overflow: hidden;
@@ -432,7 +581,11 @@
 }
 
 .candle-room-card.is-out .candle-photo__image {
-  filter: grayscale(0.35) brightness(0.82);
+  filter: var(
+      --candle-color-filter,
+      drop-shadow(0 1.25rem 2rem rgb(0 0 0 / 24%))
+    )
+    brightness(0.82);
 }
 
 .candle-room-selected {
@@ -458,11 +611,6 @@
   position: absolute;
   top: 0.75rem;
   right: 0.9rem;
-  border: 0;
-  background: transparent;
-  color: var(--color-ivory-muted);
-  font-size: 1.75rem;
-  cursor: pointer;
 }
 
 .candle-room-empty {
@@ -477,8 +625,11 @@
 .candle-room-empty__mark {
   margin-bottom: 1rem;
   color: var(--color-antique-gold);
-  font-family: var(--font-editorial);
-  font-size: 3rem;
+}
+
+.candle-room-empty__mark .candle-room-icon {
+  width: 3rem;
+  height: 3rem;
 }
 
 .candle-room-note {
@@ -552,41 +703,6 @@
   animation: ritual-breath 5s ease-in-out infinite;
 }
 
-.ritual-primary-button {
-  display: inline-flex;
-  min-height: 3.15rem;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
-  padding: 0.8rem 1.4rem;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  font-family: var(--font-interface);
-  font-size: 0.875rem;
-  font-weight: 650;
-  text-decoration: none;
-  transition:
-    transform 180ms ease,
-    background-color 180ms ease,
-    border-color 180ms ease;
-}
-
-.ritual-primary-button {
-  background: var(--color-antique-gold);
-  color: var(--color-night);
-}
-
-.ritual-primary-button:hover:not(:disabled) {
-  background: var(--color-old-papyrus);
-  transform: translateY(-2px);
-}
-
-.ritual-primary-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.45;
-}
-
-.ritual-primary-button:focus-visible,
 .ritual-text-button:focus-visible,
 .ritual-intention-card:focus-visible,
 .ritual-color-swatch:focus-visible {
@@ -595,13 +711,18 @@
 }
 
 .ritual-text-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   min-height: 2.75rem;
   padding: 0.5rem 0.25rem;
   border: 0;
   background: transparent;
-  color: var(--color-ivory-muted);
+  color: var(--color-old-papyrus);
   font-family: var(--font-interface);
   font-size: 0.875rem;
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -792,13 +913,27 @@
 
   .candle-photo__glow,
   .candle-room-progress > span,
-  .ritual-intention-card,
-  .ritual-primary-button {
+  .candle-room-action,
+  .candle-room-carousel-controls button,
+  .candle-room-pagination button,
+  .candle-room-selected__close,
+  .ritual-intention-card {
     transition: none;
   }
 }
 
 @media (max-width: 47.99rem) {
+  .candle-room-grid:not(.candle-room-grid--carousel) {
+    grid-template-columns: minmax(0, 22rem);
+    justify-content: center;
+  }
+
+  .candle-room-grid--carousel {
+    --candle-card-width: min(22rem, calc(100vw - 4.5rem));
+    padding-inline: calc((100% - var(--candle-card-width)) / 2);
+    scroll-padding-inline: calc((100% - var(--candle-card-width)) / 2);
+  }
+
   .candle-photo {
     width: min(100%, 14rem);
     height: 24rem;
@@ -818,8 +953,16 @@
     margin-left: 0;
   }
 
+  .candle-room-card__visual {
+    width: min(100%, 14rem);
+    height: 18rem;
+    margin-inline: auto;
+  }
+
   .candle-room-selected {
-    grid-template-columns: minmax(6rem, 9rem) 1fr;
+    justify-items: center;
+    text-align: center;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.85rem;
     padding: 1rem;
   }

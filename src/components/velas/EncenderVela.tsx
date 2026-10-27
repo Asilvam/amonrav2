@@ -7,6 +7,8 @@ import {
 } from "react";
 import "./velas.css";
 import CandleVisual from "./CandleVisual";
+import CandleRoomIcon from "./CandleRoomIcon";
+import type { IconName } from "./CandleRoomIcon";
 import { createCandle, getCandleCountries, searchCandleCities } from "./api";
 import type { CandleCountry, CandleCity } from "./api";
 import { CANDLE_COLORS } from "./candle-room";
@@ -17,39 +19,39 @@ type Stage = "arrival" | "intention" | "dedication" | "lighting";
 interface IntentionOption {
   label: Intention;
   description: string;
-  symbol: string;
+  symbol: IconName;
 }
 
 const INTENTIONS: IntentionOption[] = [
   {
     label: "Gratitud",
     description: "Dar espacio a lo bueno que ya está.",
-    symbol: "✳",
+    symbol: "sun",
   },
   {
     label: "Esperanza",
     description: "Cuidar una posibilidad que comienza.",
-    symbol: "↗",
+    symbol: "sprout",
   },
   {
     label: "Calma",
     description: "Volver, con suavidad, al presente.",
-    symbol: "≈",
+    symbol: "waves",
   },
   {
     label: "Amor",
     description: "Acompañar un vínculo importante.",
-    symbol: "♡",
+    symbol: "heart",
   },
   {
     label: "Fortaleza",
     description: "Reconocer la fuerza que te sostiene.",
-    symbol: "⌁",
+    symbol: "shield",
   },
   {
     label: "Recuerdo",
     description: "Mantener cerca a quien llevas contigo.",
-    symbol: "✧",
+    symbol: "star",
   },
 ];
 
@@ -273,10 +275,6 @@ export default function EncenderVela() {
     }
   };
 
-  const goToRoom = () => {
-    window.location.assign("/sala-de-velas/");
-  };
-
   return (
     <div className="relative isolate min-h-[calc(100svh-5rem)] overflow-hidden bg-night text-ivory">
       <div className="ritual-atmosphere" aria-hidden="true" />
@@ -334,17 +332,14 @@ export default function EncenderVela() {
           {completion && (
             <div className="mt-7 space-y-5" role="status">
               <p className="font-editorial text-xl leading-relaxed text-ivory-muted">
-                Tu luz ya forma parte de la Sala de velas y acompaña a la
+                Tu luz ya forma parte de la Sala de luz y acompaña a la
                 comunidad.
               </p>
               <div>
-                <button
-                  type="button"
-                  onClick={goToRoom}
-                  className="ritual-primary-button"
-                >
-                  Ver la Sala de velas <span aria-hidden="true">↗</span>
-                </button>
+                <a href="/sala-de-velas/" className="candle-room-action">
+                  <CandleRoomIcon name="candle" />
+                  Ver la sala de luz
+                </a>
               </div>
             </div>
           )}
@@ -359,17 +354,19 @@ export default function EncenderVela() {
                 <span className="ritual-breath-dot" aria-hidden="true" />
                 <span>Inhala despacio. Exhala con calma.</span>
               </div>
-              <button
-                type="button"
-                onClick={() => setStage("intention")}
-                className="ritual-primary-button mt-9"
-              >
-                Comenzar
-                <span aria-hidden="true">↗</span>
-              </button>
-              <a href="/sala-de-velas/" className="ritual-text-button ml-4">
-                Visitar la sala →
-              </a>
+              <div className="mt-9 flex flex-wrap items-center gap-x-5 gap-y-3">
+                <button
+                  type="button"
+                  onClick={() => setStage("intention")}
+                  className="candle-room-action"
+                >
+                  <CandleRoomIcon name="candle" />
+                  Comenzar
+                </button>
+                <a href="/sala-de-velas/" className="ritual-text-button">
+                  Visitar la sala <CandleRoomIcon name="next" />
+                </a>
+              </div>
               <p className="mt-5 max-w-sm text-xs leading-relaxed text-ivory-muted/70">
                 Tu vela se registrará en la sala compartida. La ubicación es
                 opcional y solo será pública si lo autorizas expresamente.
@@ -397,7 +394,7 @@ export default function EncenderVela() {
                       }`}
                     >
                       <span className="text-xl text-antique-gold">
-                        {option.symbol}
+                        <CandleRoomIcon name={option.symbol} />
                       </span>
                       <span className="mt-2 font-interface text-sm font-semibold">
                         {option.label}
@@ -415,15 +412,15 @@ export default function EncenderVela() {
                   onClick={() => setStage("arrival")}
                   className="ritual-text-button"
                 >
-                  ← Volver
+                  <CandleRoomIcon name="previous" /> Volver
                 </button>
                 <button
                   type="button"
                   disabled={!intention}
                   onClick={() => setStage("dedication")}
-                  className="ritual-primary-button"
+                  className="candle-room-action"
                 >
-                  Continuar <span aria-hidden="true">↗</span>
+                  Continuar <CandleRoomIcon name="next" />
                 </button>
               </div>
             </div>
@@ -679,7 +676,7 @@ export default function EncenderVela() {
                         setPublishLocation(false);
                       }}
                     >
-                      Quitar ciudad
+                      <CandleRoomIcon name="close" /> Quitar ciudad
                     </button>
                   )}
                 </div>
@@ -715,14 +712,14 @@ export default function EncenderVela() {
                   onClick={() => setStage("intention")}
                   className="ritual-text-button"
                 >
-                  ← Volver
+                  <CandleRoomIcon name="previous" /> Volver
                 </button>
                 <button
                   type="button"
                   onClick={() => setStage("lighting")}
-                  className="ritual-primary-button"
+                  className="candle-room-action"
                 >
-                  Preparar la vela <span aria-hidden="true">↗</span>
+                  <CandleRoomIcon name="candle" /> Preparar la vela
                 </button>
               </div>
             </div>
@@ -745,7 +742,7 @@ export default function EncenderVela() {
                   onClick={() => setStage("dedication")}
                   className="ritual-text-button"
                 >
-                  ← Volver
+                  <CandleRoomIcon name="previous" /> Volver
                 </button>
                 <span className="max-w-40 text-right font-interface text-xs text-antique-gold">
                   {isSubmitting

@@ -16,6 +16,24 @@ export interface RoomCandle {
 }
 
 export const CANDLE_BURN_DURATION_MS = 48 * 60 * 60 * 1000;
+export const CANDLE_PAGE_SIZE = 20;
+
+export function shouldUseCandleCarousel(count: number): boolean {
+  return count > 4;
+}
+
+const candleStartedAtFormatter = new Intl.DateTimeFormat("es-CL", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+  hourCycle: "h23",
+});
+
+export function formatCandleStartedAt(startedAt: number): string {
+  return candleStartedAtFormatter.format(startedAt);
+}
 export const CANDLE_SMOKE_DURATION_MS = 7_000;
 export const CANDLE_FRAME_COUNT = 10;
 
